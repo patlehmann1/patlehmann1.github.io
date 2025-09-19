@@ -30,7 +30,7 @@ export function Contact() {
   ];
 
   return (
-    <section id="contact" className="py-20 px-4">
+    <section id="contact" className="py-16 sm:py-20 px-3 sm:px-4 lg:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,66 +46,116 @@ export function Contact() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-6 mb-12">
-          {contactLinks.map((link, index) => (
-            <motion.div
-              key={link.label}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <a
-                href={link.href}
-                target={link.href.startsWith('mailto:') ? '_self' : '_blank'}
-                rel={link.href.startsWith('mailto:') ? '' : 'noopener noreferrer'}
-                className="block bg-card p-6 rounded-lg border shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300 group"
-              >
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="text-primary group-hover:scale-110 transition-transform">
-                    {link.icon}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+            className="space-y-6 sm:space-y-8"
+          >
+            <div>
+              <h3 className="text-2xl font-bold mb-4 gradient-warm">Let&apos;s Build Something Great</h3>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Whether you need someone to navigate complex legacy systems, architect modern solutions,
+                or lead cross-functional initiatives, I&apos;m ready to bring value to your team from day one.
+              </p>
+            </div>
+
+            <div className="space-y-4 sm:space-y-6">
+              {contactLinks.map((link, index) => (
+                <motion.div
+                  key={link.label}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                  className="group"
+                >
+                  <a
+                    href={link.href}
+                    target={link.href.startsWith('mailto:') ? '_self' : '_blank'}
+                    rel={link.href.startsWith('mailto:') ? '' : 'noopener noreferrer'}
+                    className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card border rounded-lg hover:shadow-warm hover:border-primary/30 transition-all duration-300"
+                  >
+                    <div className="p-3 bg-primary/10 rounded-lg text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                      {link.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-semibold mb-1">{link.label}</h4>
+                      <p className="text-sm text-primary font-mono">{link.value}</p>
+                      <p className="text-xs text-muted-foreground mt-1">{link.description}</p>
+                    </div>
+                  </a>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="space-y-4 sm:space-y-6 mt-8 lg:mt-0"
+          >
+            <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 sm:p-8">
+              <h3 className="text-xl font-bold mb-6 text-primary">What I Bring to the Table</h3>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                  <div>
+                    <div className="font-medium mb-1">Cross-Platform Expertise</div>
+                    <div className="text-sm text-muted-foreground">C#/.NET, TypeScript, Angular, React - I speak your tech stack</div>
                   </div>
-                  <h3 className="font-semibold">{link.label}</h3>
                 </div>
-                <p className="text-primary font-mono text-sm mb-2">{link.value}</p>
-                <p className="text-muted-foreground text-sm">{link.description}</p>
-              </a>
-            </motion.div>
-          ))}
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                  <div>
+                    <div className="font-medium mb-1">Enterprise Experience</div>
+                    <div className="text-sm text-muted-foreground">Analytics integrations, international auth, complex migrations</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                  <div>
+                    <div className="font-medium mb-1">AI-Forward Approach</div>
+                    <div className="text-sm text-muted-foreground">Championing modern development with GitHub Copilot & Claude Code</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                  <div>
+                    <div className="font-medium mb-1">Adaptability</div>
+                    <div className="text-sm text-muted-foreground">Thrived through 3 team transitions in 3.5 years</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-card border rounded-lg p-4 text-center">
+                <MapPin className="h-5 w-5 mx-auto mb-2 text-primary" />
+                <div className="font-medium text-sm">Location</div>
+                <div className="text-xs text-muted-foreground">Remote/Hybrid</div>
+              </div>
+              <div className="bg-card border rounded-lg p-4 text-center">
+                <Calendar className="h-5 w-5 mx-auto mb-2 text-primary" />
+                <div className="font-medium text-sm">Work Style</div>
+                <div className="text-xs text-muted-foreground">Remote-focused</div>
+              </div>
+            </div>
+
+            <div className="text-center">
+              <Button size="lg" className="shadow-warm hover:shadow-lg transition-all duration-300" asChild>
+                <a href="mailto:patlehmann1@gmail.com">
+                  <Mail className="mr-2 h-4 w-4" />
+                  Start the Conversation
+                </a>
+              </Button>
+            </div>
+          </motion.div>
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-blue-600/20 rounded-lg p-8 text-center"
-        >
-          <h3 className="text-xl font-semibold mb-4">Ready to Start a Conversation?</h3>
-          <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Whether you&apos;re looking for a full-stack developer who can navigate complex systems,
-            lead technical integrations, or adapt quickly to new challenges, I&apos;d love to hear about
-            your needs.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-6">
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <MapPin className="h-4 w-4" />
-              <span>Available for remote or hybrid opportunities</span>
-            </div>
-            <div className="flex items-center gap-2 text-muted-foreground">
-              <Calendar className="h-4 w-4" />
-              <span>Open to new opportunities</span>
-            </div>
-          </div>
-
-          <Button size="lg" asChild>
-            <a href="mailto:patlehmann1@gmail.com">
-              <Mail className="mr-2 h-4 w-4" />
-              Send Message
-            </a>
-          </Button>
-        </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}

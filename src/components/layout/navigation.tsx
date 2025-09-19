@@ -46,12 +46,12 @@ export function Navigation() {
           : "bg-transparent"
       }`}
     >
-      <nav className="max-w-6xl mx-auto px-4 py-4">
+      <nav className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <motion.button
             onClick={() => handleNavClick("#")}
-            className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
+            className="text-xl font-bold gradient-warm"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

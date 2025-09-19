@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function About() {
   return (
-    <section id="about" className="py-20 px-4">
+    <section id="about" className="py-16 sm:py-20 px-3 sm:px-4 lg:px-6">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -19,63 +19,113 @@ export function About() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-16 items-start">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
             viewport={{ once: true }}
+            className="lg:col-span-2 space-y-6 sm:space-y-8"
           >
-            <h3 className="text-2xl font-semibold mb-6">Delivering Value Through Change</h3>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                Over the past 6+ years, I&apos;ve built my career on a simple principle: delivering consistent
-                business value regardless of technological shifts or organizational changes.
-              </p>
-              <p>
-                At Global Payments, I&apos;ve successfully navigated three different teams and tech stacks
-                in 3.5 years - from legacy systems to cutting-edge analytics platforms.
-                Each transition has strengthened my ability to quickly adapt and contribute meaningfully
-                to new domains.
-              </p>
-              <p>
-                I champion modern development practices including AI-assisted development with GitHub
-                Copilot and Claude Code, helping teams streamline processes and reduce bottlenecks while
-                maintaining high quality standards.
-              </p>
-              <p>
-                When I&apos;m not coding, you&apos;ll find me on the disc golf course working on precision and strategy -
-                skills that translate perfectly to software development.
+            <div>
+              <h3 className="text-3xl font-bold mb-6 gradient-warm">The Art of Adaptation</h3>
+              <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+                <p>
+                  Over 6+ years, I&apos;ve discovered that the best engineers aren&apos;t just masters of code—they&apos;re
+                  masters of change. Whether it&apos;s a complete tech stack migration or a sudden pivot in business
+                  requirements, I thrive in the chaos and deliver results that matter.
+                </p>
+                <p>
+                  At Global Payments, I&apos;ve worn many hats across three teams: from wrestling with legacy
+                  Backbone.js systems to architecting modern Angular microfrontends with Pendo Analytics.
+                  Each transition taught me something new about resilience, problem-solving, and the art of
+                  making complex systems work together.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+              <div className="bg-primary/5 border-l-4 border-primary p-4 sm:p-6 rounded-r-lg">
+                <h4 className="font-bold text-primary mb-3">🚀 Current Focus</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• International auth for UK/Ireland markets</li>
+                  <li>• Enterprise analytics platform integration</li>
+                  <li>• AI-assisted development advocacy</li>
+                </ul>
+              </div>
+              <div className="bg-muted/50 border-l-4 border-muted-foreground p-4 sm:p-6 rounded-r-lg">
+                <h4 className="font-bold text-muted-foreground mb-3">🎯 Beyond Code</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Disc golf strategy & precision</li>
+                  <li>• Cross-team mentoring</li>
+                  <li>• Process optimization</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 rounded-lg border border-primary/20">
+              <h4 className="font-semibold mb-3 text-primary">The Disc Golf Connection</h4>
+              <p className="text-muted-foreground">
+                Just like in disc golf, software development is about reading the course, adapting to conditions,
+                and making precise decisions under pressure. Whether I&apos;m debugging a complex integration or
+                throwing a forehand around a guardian tree, it&apos;s all about finding the right line and executing
+                with confidence.
               </p>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6 mt-8 lg:mt-0"
           >
-            <div className="bg-card p-6 rounded-lg border">
-              <h4 className="font-semibold text-lg mb-2">Technical Leadership</h4>
-              <p className="text-muted-foreground text-sm">
-                Leading complex integrations like Pendo Analytics across enterprise-scale applications
-              </p>
+            <div className="bg-card border rounded-lg p-6 shadow-warm">
+              <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
+                <div className="w-3 h-3 bg-primary rounded-full" />
+                What Drives Me
+              </h4>
+              <div className="space-y-4 text-sm text-muted-foreground">
+                <div className="flex items-start gap-3">
+                  <span className="text-primary font-mono text-xs mt-1">01</span>
+                  <span>Solving complex problems with elegant solutions</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-primary font-mono text-xs mt-1">02</span>
+                  <span>Mentoring teams through technological transitions</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-primary font-mono text-xs mt-1">03</span>
+                  <span>Building systems that scale and adapt</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-primary font-mono text-xs mt-1">04</span>
+                  <span>Championing modern development practices</span>
+                </div>
+              </div>
             </div>
 
-            <div className="bg-card p-6 rounded-lg border">
-              <h4 className="font-semibold text-lg mb-2">Legacy System Navigation</h4>
-              <p className="text-muted-foreground text-sm">
-                Expert at maintaining and modernizing complex codebases while managing technical debt
-              </p>
-            </div>
-
-            <div className="bg-card p-6 rounded-lg border">
-              <h4 className="font-semibold text-lg mb-2">AI-Assisted Development</h4>
-              <p className="text-muted-foreground text-sm">
-                Pioneering modern development practices to improve team efficiency and code quality
-              </p>
+            <div className="bg-muted/30 border rounded-lg p-6">
+              <h4 className="font-bold text-lg mb-4">Quick Stats</h4>
+              <div className="grid grid-cols-2 gap-4 text-center">
+                <div>
+                  <div className="text-2xl font-bold text-primary">6+</div>
+                  <div className="text-xs text-muted-foreground">Years Experience</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-primary">4</div>
+                  <div className="text-xs text-muted-foreground">Team Transitions</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-primary">∞</div>
+                  <div className="text-xs text-muted-foreground">Disc Golf Rounds</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-primary">100%</div>
+                  <div className="text-xs text-muted-foreground">Remote Ready</div>
+                </div>
+              </div>
             </div>
           </motion.div>
         </div>

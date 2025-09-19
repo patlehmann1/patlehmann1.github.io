@@ -4,48 +4,50 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 0 0% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 3.9%;
-    --primary: 0 0% 9%;
-    --primary-foreground: 0 0% 98%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 45.1%;
-    --accent: 0 0% 96.1%;
-    --accent-foreground: 0 0% 9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 0 0% 3.9%;
-    --radius: 0.5rem;
+    /* Warm, professional palette inspired by natural tones */
+    --background: 38 15% 97%;
+    --foreground: 25 25% 15%;
+    --card: 38 15% 99%;
+    --card-foreground: 25 25% 15%;
+    --popover: 38 15% 99%;
+    --popover-foreground: 25 25% 15%;
+    --primary: 23 72% 44%;
+    --primary-foreground: 38 15% 97%;
+    --secondary: 35 20% 90%;
+    --secondary-foreground: 25 25% 15%;
+    --muted: 35 15% 92%;
+    --muted-foreground: 25 15% 45%;
+    --accent: 23 45% 85%;
+    --accent-foreground: 25 25% 15%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 38 15% 97%;
+    --border: 35 15% 85%;
+    --input: 35 15% 85%;
+    --ring: 23 72% 44%;
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 0 0% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
-    --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
-    --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
+    /* Rich, sophisticated dark theme */
+    --background: 25 25% 8%;
+    --foreground: 38 15% 92%;
+    --card: 25 20% 10%;
+    --card-foreground: 38 15% 92%;
+    --popover: 25 20% 10%;
+    --popover-foreground: 38 15% 92%;
+    --primary: 23 65% 55%;
+    --primary-foreground: 25 25% 8%;
+    --secondary: 25 15% 15%;
+    --secondary-foreground: 38 15% 92%;
+    --muted: 25 15% 13%;
+    --muted-foreground: 35 10% 65%;
+    --accent: 25 20% 18%;
+    --accent-foreground: 38 15% 92%;
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 38 15% 97%;
+    --border: 25 15% 18%;
+    --input: 25 15% 18%;
+    --ring: 23 65% 55%;
   }
 }
 
@@ -53,7 +55,78 @@
   * {
     @apply border-border;
   }
+  html {
+    overflow-x: hidden;
+  }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+    min-width: 0;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-warm {
+    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(23 85% 60%) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .border-warm {
+    border-image: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(23 85% 60%) 100%) 1;
+  }
+
+  .shadow-warm {
+    box-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.15);
+  }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes pulse-warm {
+    0%, 100% {
+      box-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.15);
+    }
+    50% {
+      box-shadow: 0 8px 30px -4px hsl(var(--primary) / 0.3);
+    }
+  }
+
+  @keyframes slide-in-stagger {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-warm {
+    animation: pulse-warm 2s ease-in-out infinite;
+  }
+
+  .animate-slide-in-stagger {
+    animation: slide-in-stagger 0.6s ease-out forwards;
   }
 }

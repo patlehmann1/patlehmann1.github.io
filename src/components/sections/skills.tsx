@@ -37,7 +37,7 @@ export function Skills() {
   ];
 
   return (
-    <section id="skills" className="py-20 px-4">
+    <section id="skills" className="py-16 sm:py-20 px-3 sm:px-4 lg:px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,30 +52,48 @@ export function Skills() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="space-y-12 sm:space-y-16 mb-16">
           {skillCategories.map((category, index) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-card p-6 rounded-lg border shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
+              className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start lg:items-center"
             >
-              <div className="flex items-center gap-3 mb-4">
-                <div className="text-primary">{category.icon}</div>
-                <h3 className="text-lg font-semibold">{category.title}</h3>
-              </div>
-              <div className="space-y-2">
-                {category.skills.map((skill) => (
-                  <div
-                    key={skill}
-                    className="flex items-center gap-2 text-sm text-muted-foreground"
-                  >
-                    <span className="w-1.5 h-1.5 bg-primary rounded-full" />
-                    {skill}
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <div className="p-3 bg-primary/10 rounded-lg text-primary">
+                    {category.icon}
                   </div>
-                ))}
+                  <h3 className="text-2xl font-bold">{category.title}</h3>
+                </div>
+                <div className="text-muted-foreground">
+                  {category.title === "Languages" && "Core programming languages I use daily"}
+                  {category.title === "Frameworks" && "Modern frameworks for building robust applications"}
+                  {category.title === "Cloud & DevOps" && "Infrastructure and deployment expertise"}
+                  {category.title === "Data & APIs" && "Database and API integration technologies"}
+                </div>
+              </div>
+
+              <div className="lg:col-span-2 mt-6 lg:mt-0">
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+                  {category.skills.map((skill, skillIndex) => (
+                    <motion.div
+                      key={skill}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.4, delay: (index * 0.1) + (skillIndex * 0.05) }}
+                      viewport={{ once: true }}
+                      className="group bg-card border rounded-lg p-3 sm:p-4 text-center hover:shadow-warm hover:border-primary/30 transition-all duration-300"
+                    >
+                      <div className="font-medium text-xs sm:text-sm group-hover:text-primary transition-colors">
+                        {skill}
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
               </div>
             </motion.div>
           ))}
