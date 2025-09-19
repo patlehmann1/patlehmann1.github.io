@@ -36,22 +36,27 @@ jobs:
         run: npm ci
 
       - name: Build with Next.js
-        run: npm run build
+        run: |
+          echo "Building with Next.js..."
+          npm run build
+          echo "Build completed. Checking output directory..."
+          ls -la
+          if [ -d "out" ]; then
+            echo "✓ out directory created successfully"
+            echo "Contents of out directory:"
+            ls -la out/
+          else
+            echo "✗ Error: out directory not found after build"
+            exit 1
+          fi
 
       - name: Add .nojekyll file
         run: |
-          if [ -d "out" ]; then
-            cp .nojekyll out/
-            echo ".nojekyll file copied successfully to out directory"
-            ls -la out/ | grep nojekyll
-          else
-            echo "Error: out directory not found"
-            echo "Contents of current directory:"
-            ls -la
-            echo "Checking if build created any output directories:"
-            find . -name "out" -o -name "build" -o -name "dist" -type d
-            exit 1
-          fi
+          echo "Copying .nojekyll file to out directory..."
+          cp .nojekyll out/
+          echo "✓ .nojekyll file copied successfully"
+          echo "Verifying .nojekyll file exists in out directory:"
+          ls -la out/ | grep nojekyll || echo "Warning: .nojekyll file not found"
 
       - name: List output directory
         run: |
