@@ -67,7 +67,7 @@ export function Skills() {
                 <h3 className="text-lg font-semibold">{category.title}</h3>
               </div>
               <div className="space-y-2">
-                {category.skills.map((skill, skillIndex) => (
+                {category.skills.map((skill) => (
                   <div
                     key={skill}
                     className="flex items-center gap-2 text-sm text-muted-foreground"

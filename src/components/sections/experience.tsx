@@ -99,7 +99,7 @@ export function Experience() {
               </div>
 
               <div className="space-y-6">
-                {exp.teams.map((team, teamIndex) => (
+                {exp.teams.map((team) => (
                   <div key={team.name} className="border-l-4 border-primary pl-6">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
                       <h4 className="text-lg font-medium">{team.name}</h4>

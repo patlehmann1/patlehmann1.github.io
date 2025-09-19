@@ -41,7 +41,7 @@ export function Contact() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Ready to deliver value through your next technical challenge. Let's discuss how my
+            Ready to deliver value through your next technical challenge. Let&apos;s discuss how my
             adaptability and full-stack expertise can benefit your team.
           </p>
         </motion.div>
@@ -83,8 +83,8 @@ export function Contact() {
         >
           <h3 className="text-xl font-semibold mb-4">Ready to Start a Conversation?</h3>
           <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-            Whether you're looking for a full-stack developer who can navigate complex systems,
-            lead technical integrations, or adapt quickly to new challenges, I'd love to hear about
+            Whether you&apos;re looking for a full-stack developer who can navigate complex systems,
+            lead technical integrations, or adapt quickly to new challenges, I&apos;d love to hear about
             your needs.
           </p>
 

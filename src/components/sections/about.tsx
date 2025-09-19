@@ -29,11 +29,11 @@ export function About() {
             <h3 className="text-2xl font-semibold mb-6">Delivering Value Through Change</h3>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                Over the past 6+ years, I've built my career on a simple principle: delivering consistent
+                Over the past 6+ years, I&apos;ve built my career on a simple principle: delivering consistent
                 business value regardless of technological shifts or organizational changes.
               </p>
               <p>
-                At Global Payments, I've successfully navigated three different teams and tech stacks
+                At Global Payments, I&apos;ve successfully navigated three different teams and tech stacks
                 in 3.5 years - from legacy systems to cutting-edge analytics platforms.
                 Each transition has strengthened my ability to quickly adapt and contribute meaningfully
                 to new domains.
@@ -44,7 +44,7 @@ export function About() {
                 maintaining high quality standards.
               </p>
               <p>
-                When I'm not coding, you'll find me on the disc golf course working on precision and strategy -
+                When I&apos;m not coding, you&apos;ll find me on the disc golf course working on precision and strategy -
                 skills that translate perfectly to software development.
               </p>
             </div>
