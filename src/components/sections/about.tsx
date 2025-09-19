@@ -37,7 +37,7 @@ export function About() {
                 </p>
                 <p>
                   At Global Payments, I&apos;ve worn many hats across three teams: from wrestling with legacy
-                  Backbone.js systems to architecting modern Angular microfrontends with Pendo Analytics.
+                  Backbone.js systems to integrating modern Angular microfrontends with Pendo Analytics.
                   Each transition taught me something new about resilience, problem-solving, and the art of
                   making complex systems work together.
                 </p>
