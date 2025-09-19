@@ -60,7 +60,7 @@ export function Skills() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-card p-6 rounded-lg border shadow-sm"
+              className="bg-card p-6 rounded-lg border shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="text-primary">{category.icon}</div>

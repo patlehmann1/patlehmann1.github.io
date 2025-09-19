@@ -59,7 +59,7 @@ export function Contact() {
                 href={link.href}
                 target={link.href.startsWith('mailto:') ? '_self' : '_blank'}
                 rel={link.href.startsWith('mailto:') ? '' : 'noopener noreferrer'}
-                className="block bg-card p-6 rounded-lg border shadow-sm hover:shadow-md transition-shadow group"
+                className="block bg-card p-6 rounded-lg border shadow-sm hover:shadow-lg hover:scale-105 transition-all duration-300 group"
               >
                 <div className="flex items-center gap-3 mb-3">
                   <div className="text-primary group-hover:scale-110 transition-transform">

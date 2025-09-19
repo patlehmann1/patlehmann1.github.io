@@ -34,7 +34,7 @@ export function About() {
               </p>
               <p>
                 At Global Payments, I've successfully navigated three different teams and tech stacks
-                in 3.5 years - from legacy e-commerce systems to cutting-edge analytics platforms.
+                in 3.5 years - from legacy systems to cutting-edge analytics platforms.
                 Each transition has strengthened my ability to quickly adapt and contribute meaningfully
                 to new domains.
               </p>
@@ -42,6 +42,10 @@ export function About() {
                 I champion modern development practices including AI-assisted development with GitHub
                 Copilot and Claude Code, helping teams streamline processes and reduce bottlenecks while
                 maintaining high quality standards.
+              </p>
+              <p>
+                When I'm not coding, you'll find me on the disc golf course working on precision and strategy -
+                skills that translate perfectly to software development.
               </p>
             </div>
           </motion.div>
