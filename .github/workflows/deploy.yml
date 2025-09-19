@@ -50,13 +50,16 @@ jobs:
             exit 1
           fi
 
-      - name: Add .nojekyll file
+      - name: Verify .nojekyll file
         run: |
-          echo "Copying .nojekyll file to out directory..."
-          cp .nojekyll out/
-          echo "✓ .nojekyll file copied successfully"
-          echo "Verifying .nojekyll file exists in out directory:"
-          ls -la out/ | grep nojekyll || echo "Warning: .nojekyll file not found"
+          echo "Checking for .nojekyll file in out directory..."
+          if [ -f "out/.nojekyll" ]; then
+            echo "✓ .nojekyll file found in out directory"
+          else
+            echo "✗ .nojekyll file not found in out directory"
+            echo "Contents of out directory:"
+            ls -la out/
+          fi
 
       - name: List output directory
         run: |
