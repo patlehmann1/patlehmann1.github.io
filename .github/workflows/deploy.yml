@@ -41,11 +41,15 @@ jobs:
       - name: Add .nojekyll file
         run: |
           if [ -d "out" ]; then
-            cp .nojekyll out/.nojekyll
-            echo ".nojekyll file copied successfully"
+            cp .nojekyll out/
+            echo ".nojekyll file copied successfully to out directory"
+            ls -la out/ | grep nojekyll
           else
             echo "Error: out directory not found"
+            echo "Contents of current directory:"
             ls -la
+            echo "Checking if build created any output directories:"
+            find . -name "out" -o -name "build" -o -name "dist" -type d
             exit 1
           fi
 
