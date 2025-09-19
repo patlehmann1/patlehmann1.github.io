@@ -39,7 +39,15 @@ jobs:
         run: npm run build
 
       - name: Add .nojekyll file
-        run: touch out/.nojekyll
+        run: |
+          if [ -d "out" ]; then
+            cp .nojekyll out/.nojekyll
+            echo ".nojekyll file copied successfully"
+          else
+            echo "Error: out directory not found"
+            ls -la
+            exit 1
+          fi
 
       - name: List output directory
         run: |
