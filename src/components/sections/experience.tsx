@@ -75,7 +75,6 @@ export function Experience() {
         </motion.div>
 
         <div className="relative">
-          {/* Timeline line - hidden on mobile */}
           <div className="hidden sm:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent" />
 
           <div className="space-y-12 sm:space-y-16">
@@ -88,10 +87,9 @@ export function Experience() {
                 viewport={{ once: true }}
                 className="relative"
               >
-                {/* Timeline marker - hidden on mobile */}
                 <div className="hidden sm:block absolute left-6 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-warm" />
 
-                <div className="ml-0 sm:ml-20 pl-0 sm:pl-0">
+                <div className="ml-0 sm:ml-20">
                   <div className="mb-8">
                     <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-4">
                       <div>

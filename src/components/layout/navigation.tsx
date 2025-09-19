@@ -48,7 +48,6 @@ export function Navigation() {
     >
       <nav className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
           <motion.button
             onClick={() => handleNavClick("#")}
             className="text-xl font-bold gradient-warm"
@@ -58,7 +57,6 @@ export function Navigation() {
             Patrick Lehmann
           </motion.button>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
               <motion.button
@@ -75,7 +73,6 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
           <Button
             variant="ghost"
             size="sm"
@@ -86,7 +83,6 @@ export function Navigation() {
           </Button>
         </div>
 
-        {/* Mobile Navigation */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div

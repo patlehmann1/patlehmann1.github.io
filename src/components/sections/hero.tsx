@@ -7,17 +7,14 @@ import { Github, Linkedin, Mail, MapPin, Coffee } from "lucide-react";
 export function Hero() {
   return (
     <section className="min-h-screen relative overflow-hidden">
-      {/* Background elements */}
       <div className="absolute inset-0 bg-grid opacity-20 sm:opacity-30" />
       <div className="hidden sm:block absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl" />
       <div className="hidden sm:block absolute bottom-20 left-10 w-96 h-96 bg-primary/3 rounded-full blur-3xl" />
-      {/* Mobile background elements */}
       <div className="sm:hidden absolute top-10 right-4 w-32 h-32 bg-primary/3 rounded-full blur-2xl" />
       <div className="sm:hidden absolute bottom-10 left-4 w-40 h-40 bg-primary/2 rounded-full blur-2xl" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-16 sm:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-start lg:items-center min-h-[70vh] sm:min-h-[80vh]">
-          {/* Main content - left side */}
           <div className="lg:col-span-8 space-y-6 sm:space-y-8 min-w-0">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -73,7 +70,6 @@ export function Hero() {
             </motion.div>
           </div>
 
-          {/* Side info - right side */}
           <div className="lg:col-span-4 space-y-4 sm:space-y-6 mt-8 lg:mt-0 min-w-0">
             <motion.div
               initial={{ opacity: 0, x: 30 }}
