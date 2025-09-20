@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -71,6 +72,13 @@ export function Navigation() {
                 {item.name}
               </motion.button>
             ))}
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: navItems.length * 0.1 }}
+            >
+              <ThemeToggle />
+            </motion.div>
           </div>
 
           <Button
@@ -112,6 +120,15 @@ export function Navigation() {
                     {item.name}
                   </motion.button>
                 ))}
+                <motion.div
+                  className="flex justify-center pt-4 mt-4 border-t border-border"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3, delay: navItems.length * 0.05 }}
+                >
+                  <ThemeToggle />
+                </motion.div>
               </motion.div>
             </motion.div>
           )}
