@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { BlogPost } from "@/lib/types";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import Link from "next/link";
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -22,10 +23,10 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
           className="mb-8"
         >
           <Button variant="ghost" size="sm" className="mb-6 -ml-2" asChild>
-            <a href="/blog">
+            <Link href="/blog">
               <ArrowLeft className="mr-2 h-4 w-4" />
               Back to Articles
-            </a>
+            </Link>
           </Button>
 
           <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground mb-6">
@@ -108,9 +109,9 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
                 </a>
               </Button>
               <Button variant="outline" size="sm" asChild>
-                <a href="/blog">
+                <Link href="/blog">
                   More Articles
-                </a>
+                </Link>
               </Button>
             </div>
           </div>

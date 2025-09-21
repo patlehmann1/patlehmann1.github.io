@@ -5,6 +5,7 @@ import { Calendar, Clock, ArrowRight, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getAllPosts, getAllTags } from "@/lib/blog";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function BlogPage() {
   const allPosts = getAllPosts();
@@ -165,9 +166,9 @@ export default function BlogPage() {
           className="text-center mt-12"
         >
           <Button variant="outline" asChild>
-            <a href="/">
+            <Link href="/">
               ← Back to Home
-            </a>
+            </Link>
           </Button>
         </motion.div>
       </div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/lib/blog";
+import Link from "next/link";
 
 export function Blog() {
   const featuredPosts = getFeaturedPosts(3);
@@ -93,10 +94,10 @@ export function Blog() {
           className="text-center"
         >
           <Button size="lg" variant="outline" asChild>
-            <a href="/blog">
+            <Link href="/blog">
               View All Articles
               <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
+            </Link>
           </Button>
         </motion.div>
       </div>
