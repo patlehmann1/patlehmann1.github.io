@@ -13,8 +13,41 @@ interface BlogPostContentProps {
 }
 
 export function BlogPostContent({ post }: BlogPostContentProps) {
+  // JSON-LD structured data for SEO
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": post.title,
+    "description": post.description,
+    "author": {
+      "@type": "Person",
+      "name": "Patrick Lehmann",
+      "url": "https://patricklehmann.com"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Patrick Lehmann"
+    },
+    "datePublished": post.publishedAt,
+    "dateModified": post.publishedAt,
+    "keywords": post.tags.join(", "),
+    "articleSection": "Technology",
+    "inLanguage": "en-US",
+    "wordCount": post.content.split(" ").length,
+    "timeRequired": `PT${post.readingTime}M`,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://patricklehmann.com/blog/${post.slug}`
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      {/* JSON-LD structured data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="max-w-4xl mx-auto px-3 sm:px-4 lg:px-6 py-16 sm:py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
