@@ -35,6 +35,14 @@ export function Navigation() {
     setIsMenuOpen(false);
     if (href.startsWith("/")) {
       window.location.href = href;
+    } else if (href === "#") {
+      // Handle click on name/logo - scroll to top
+      if (pathname === "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        // Navigate to home page
+        window.location.href = "/";
+      }
     } else {
       // Check if we're on the home page
       if (pathname === "/") {
