@@ -57,6 +57,7 @@ export function About() {
                 <h4 className="font-bold text-muted-foreground mb-3">🎯 Beyond Code</h4>
                 <ul className="space-y-2 text-sm text-muted-foreground">
                   <li>• Disc golf strategy & precision</li>
+                  <li>• Christian study & apologetics</li>
                   <li>• Cross-team mentoring</li>
                   <li>• Process optimization</li>
                 </ul>
@@ -102,6 +103,10 @@ export function About() {
                 <div className="flex items-start gap-3">
                   <span className="text-primary font-mono text-xs mt-1">04</span>
                   <span>Championing modern development practices</span>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="text-primary font-mono text-xs mt-1">05</span>
+                  <span>Living out my Christian faith through work and service</span>
                 </div>
               </div>
             </div>

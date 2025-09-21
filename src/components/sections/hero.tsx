@@ -102,7 +102,7 @@ export function Hero() {
               <div className="border-l-4 border-primary pl-4">
                 <div className="text-sm font-medium text-primary">Fun Fact</div>
                 <div className="text-sm text-muted-foreground mt-1">
-                  When I&apos;m not coding, you&apos;ll find me on the disc golf course working on precision and strategy.
+                  When I&apos;m not coding, you&apos;ll find me on the disc golf course working on precision and strategy, or at church with my wife Hillary and our daughter Adeline.
                 </div>
               </div>
             </motion.div>
