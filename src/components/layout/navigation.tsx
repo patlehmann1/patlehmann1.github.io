@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { usePathname } from "next/navigation";
 
 const navItems = [
   { name: "About", href: "#about" },
@@ -18,6 +19,7 @@ const navItems = [
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -39,6 +41,13 @@ export function Navigation() {
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
+  };
+
+  const isActiveItem = (href: string) => {
+    if (href.startsWith("/")) {
+      return pathname.startsWith(href);
+    }
+    return false;
   };
 
   return (
@@ -68,7 +77,11 @@ export function Navigation() {
               <motion.button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
-                className="text-muted-foreground hover:text-foreground transition-colors duration-200"
+                className={`transition-colors duration-200 ${
+                  isActiveItem(item.href)
+                    ? "text-primary font-medium"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -115,7 +128,11 @@ export function Navigation() {
                   <motion.button
                     key={item.name}
                     onClick={() => handleNavClick(item.href)}
-                    className="block w-full text-left py-3 px-2 text-muted-foreground hover:text-foreground transition-colors duration-200"
+                    className={`block w-full text-left py-3 px-2 transition-colors duration-200 ${
+                      isActiveItem(item.href)
+                        ? "text-primary font-medium"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: -20 }}

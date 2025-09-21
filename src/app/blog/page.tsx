@@ -5,7 +5,6 @@ import { Calendar, Clock, ArrowRight, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getAllPosts, getAllTags } from "@/lib/blog";
 import { useState } from "react";
-import Link from "next/link";
 
 export default function BlogPage() {
   const allPosts = getAllPosts();
@@ -23,7 +22,7 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-16 sm:py-20">
+      <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-8 sm:py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -158,19 +157,6 @@ export default function BlogPage() {
           </motion.div>
         )}
 
-        {/* Back to Home */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="text-center mt-12"
-        >
-          <Button variant="outline" asChild>
-            <Link href="/">
-              ← Back to Home
-            </Link>
-          </Button>
-        </motion.div>
       </div>
     </div>
   );
