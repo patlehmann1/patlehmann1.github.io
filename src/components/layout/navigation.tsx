@@ -36,9 +36,15 @@ export function Navigation() {
     if (href.startsWith("/")) {
       window.location.href = href;
     } else {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+      // Check if we're on the home page
+      if (pathname === "/") {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        // Navigate to home page with hash
+        window.location.href = `/${href}`;
       }
     }
   };

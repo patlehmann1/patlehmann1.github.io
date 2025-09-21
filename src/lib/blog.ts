@@ -5,7 +5,7 @@ export function getAllPosts(): BlogPost[] {
   return articlesData.map(article => ({
     ...article,
     content: article.content || ""
-  }));
+  })).sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
 
 export function getFeaturedPosts(limit: number = 3): BlogPost[] {
