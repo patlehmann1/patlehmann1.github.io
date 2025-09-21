@@ -19,6 +19,7 @@ export interface BlogPost {
   publishedAt: string;
   tags: string[];
   readingTime: number;
+  featured?: boolean;
 }
 
 export interface ContactForm {
