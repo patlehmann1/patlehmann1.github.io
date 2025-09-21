@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowRight, Search } from "lucide-react";
+import { Calendar, Clock, ArrowRight, Search, Rss } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getAllPosts, getAllTags } from "@/lib/blog";
 import { useState } from "react";
@@ -30,9 +30,15 @@ export function BlogPageClient() {
           className="text-center mb-12"
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Articles & Insights</h1>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-6">
             Exploring AI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering
           </p>
+          <Button variant="outline" size="sm" asChild>
+            <a href="/rss.xml" target="_blank" rel="noopener noreferrer">
+              <Rss className="mr-2 h-4 w-4" />
+              Subscribe to RSS
+            </a>
+          </Button>
         </motion.div>
 
         {/* Filters */}

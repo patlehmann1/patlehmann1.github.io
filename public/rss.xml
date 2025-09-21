@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Patrick Lehmann - Articles &amp; Insights</title>
+    <description>Exploring AI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering</description>
+    <link>http://localhost:3000</link>
+    <language>en-US</language>
+    <managingEditor>patlehmann1@gmail.com (Patrick Lehmann)</managingEditor>
+    <webMaster>patlehmann1@gmail.com (Patrick Lehmann)</webMaster>
+    <lastBuildDate>Sun, 21 Sep 2025 15:39:33 GMT</lastBuildDate>
+    <pubDate>Sun, 21 Sep 2025 15:39:33 GMT</pubDate>
+    <generator>Next.js RSS Generator</generator>
+    <image>
+      <url>http://localhost:3000/favicon.svg</url>
+      <title>Patrick Lehmann - Articles &amp; Insights</title>
+      <link>http://localhost:3000</link>
+    </image>
+    <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Coding as Worship: How Programming Reflects God&#39;s Creative Nature</title>
+      <description>Exploring the spiritual parallels between programming and divine creation. How writing code reflects being made in the image of a Creator God who spoke the universe into existence.</description>
+      <link>http://localhost:3000/blog/coding-as-worship</link>
+      <guid isPermaLink="true">http://localhost:3000/blog/coding-as-worship</guid>
+      <pubDate>Sat, 20 Sep 2025 00:00:00 GMT</pubDate>
+      <author>patlehmann1@gmail.com (Patrick Lehmann)</author>
+      <category>Faith</category><category>Programming</category><category>Purpose</category><category>Christianity</category><category>Development</category>
+    </item>
+    <item>
+      <title>The One Phrase That Transformed How I Work with AI (And It&#39;s Probably Not What You Think)</title>
+      <description>How a simple phrase changed my entire approach to AI collaboration, turning AI from a code-generating vending machine into a thoughtful colleague.</description>
+      <link>http://localhost:3000/blog/one-phrase-transformed-ai-work</link>
+      <guid isPermaLink="true">http://localhost:3000/blog/one-phrase-transformed-ai-work</guid>
+      <pubDate>Mon, 08 Sep 2025 00:00:00 GMT</pubDate>
+      <author>patlehmann1@gmail.com (Patrick Lehmann)</author>
+      <category>AI</category><category>Collaboration</category><category>Productivity</category><category>Development</category>
+    </item>
+    <item>
+      <title>How AI Helps Me Code Smarter, Not Harder (So I Can Actually Be Present for What Matters)</title>
+      <description>How AI tools like GitHub Copilot and Claude Code help me maintain strict 40-hour work weeks while delivering quality code. The secret to being fully present for family time.</description>
+      <link>http://localhost:3000/blog/ai-helps-code-smarter-not-harder</link>
+      <guid isPermaLink="true">http://localhost:3000/blog/ai-helps-code-smarter-not-harder</guid>
+      <pubDate>Thu, 28 Aug 2025 00:00:00 GMT</pubDate>
+      <author>patlehmann1@gmail.com (Patrick Lehmann)</author>
+      <category>AI</category><category>Work-Life Balance</category><category>Productivity</category><category>GitHub Copilot</category><category>Personal Growth</category>
+    </item>
+  </channel>
+</rss>
