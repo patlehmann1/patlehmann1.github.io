@@ -31,7 +31,7 @@ export default function BlogPage() {
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Articles & Insights</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Sharing experiences and lessons learned from enterprise development, team transitions, and modern development practices
+            Exploring AI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering
           </p>
         </motion.div>
 

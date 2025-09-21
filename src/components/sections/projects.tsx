@@ -12,7 +12,7 @@ export function Projects() {
       description: "Led full-stack implementation of Pendo Analytics and OneTrust Cookie Consent across enterprise portal, integrating with Angular microfrontends and backend systems.",
       period: "2025",
       impact: "Enhanced user experience tracking across entire platform",
-      technologies: ["Angular", "TypeScript", "C#/.NET", "Enterprise APIs"],
+      technologies: ["Angular", "TypeScript", "C#/.NET", "Pendo", "OneTrust Cookie Consent"],
       highlights: [
         "Full-stack implementation from UI to database",
         "Cross-team collaboration and expertise leveraging",

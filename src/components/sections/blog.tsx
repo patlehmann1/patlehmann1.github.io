@@ -21,7 +21,7 @@ export function Blog() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Articles & Insights</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Sharing experiences and lessons learned from enterprise development, team transitions, and modern development practices
+            Exploring AI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering
           </p>
         </motion.div>
 
@@ -51,8 +51,13 @@ export function Blog() {
                   </div>
                 </div>
 
-                <h3 className="text-xl font-semibold mb-3 group-hover:text-primary transition-colors line-clamp-2">
-                  {post.title}
+                <h3 className="text-xl font-semibold mb-3 line-clamp-2">
+                  <a
+                    href={`/blog/${post.slug}`}
+                    className="hover:text-primary transition-colors"
+                  >
+                    {post.title}
+                  </a>
                 </h3>
 
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
@@ -73,12 +78,12 @@ export function Blog() {
                 <Button
                   variant="ghost"
                   size="sm"
-                  className="group-hover:bg-primary/10 transition-colors p-0 h-auto"
+                  className="hover:bg-primary/10 transition-colors"
                   asChild
                 >
                   <a href={`/blog/${post.slug}`}>
                     Read Article
-                    <ArrowRight className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
                   </a>
                 </Button>
               </div>
