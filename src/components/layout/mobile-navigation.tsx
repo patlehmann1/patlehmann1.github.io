@@ -21,7 +21,7 @@ export function MobileNavigation({ isMenuOpen, onNavClick, isActiveItem }: Mobil
       animate={{ opacity: 1, height: "auto" }}
       exit={{ opacity: 0, height: 0 }}
       transition={{ duration: 0.3 }}
-      className="md:hidden mt-4 overflow-hidden"
+      className="md:hidden mt-4 overflow-hidden relative z-10"
     >
       <motion.div
         className="bg-card/95 backdrop-blur-md rounded-lg border border-border p-4"

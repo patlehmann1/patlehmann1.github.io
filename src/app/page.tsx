@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Navigation />
-      <main className="pt-20">
+      <main className="pt-16 sm:pt-20">
         <Hero />
         <About />
         <Experience />

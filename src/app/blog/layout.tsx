@@ -10,7 +10,7 @@ export default function BlogLayout({
     <>
       <ReadingProgressBar />
       <Navigation />
-      <main className="pt-20">
+      <main className="pt-16 sm:pt-20">
         {children}
       </main>
     </>
