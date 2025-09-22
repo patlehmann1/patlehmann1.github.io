@@ -11,7 +11,7 @@ export function Contact() {
       label: "Email",
       value: "patlehmann1@gmail.com",
       href: "mailto:patlehmann1@gmail.com",
-      description: "Best way to reach me for opportunities"
+      description: "Best way to reach me"
     },
     {
       icon: <Linkedin className="h-5 w-5" />,
@@ -41,8 +41,8 @@ export function Contact() {
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Ready to deliver value through your next technical challenge. Let&apos;s discuss how my
-            adaptability and full-stack expertise can benefit your team.
+            I enjoy connecting with fellow developers, discussing technical challenges, and exploring
+            interesting projects. Feel free to reach out if you&apos;d like to chat about technology, share ideas, or collaborate.
           </p>
         </motion.div>
 
@@ -57,8 +57,8 @@ export function Contact() {
             <div>
               <h3 className="text-2xl font-bold mb-4 gradient-warm">Let&apos;s Build Something Great</h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Whether you need someone to navigate complex legacy systems, architect modern solutions,
-                or lead cross-functional initiatives, I&apos;m ready to bring value to your team from day one.
+                Whether you&apos;re working on complex legacy systems, modern architecture challenges,
+                or interesting technical projects, I&apos;m always interested in discussing solutions and sharing insights.
               </p>
             </div>
 
@@ -150,7 +150,7 @@ export function Contact() {
               <Button size="lg" className="shadow-warm hover:shadow-lg transition-all duration-300" asChild>
                 <a href="mailto:patlehmann1@gmail.com">
                   <Mail className="mr-2 h-4 w-4" />
-                  Start the Conversation
+                  Get In Touch
                 </a>
               </Button>
             </div>
