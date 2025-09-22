@@ -137,9 +137,9 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             </div>
             <div className="flex gap-2">
               <Button variant="outline" size="sm" asChild>
-                <a href="/contact">
+                <Link href="/#contact">
                   Get in Touch
-                </a>
+                </Link>
               </Button>
               <Button variant="outline" size="sm" asChild>
                 <Link href="/blog">

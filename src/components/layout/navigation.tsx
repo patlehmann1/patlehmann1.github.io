@@ -6,24 +6,18 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { usePathname } from "next/navigation";
-
-const navItems = [
-  { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "#contact" },
-];
+import { useScrollToSection } from "@/hooks/useScrollToSection";
+import { UI, SITE_CONFIG } from "@/lib/constants";
 
 export function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const pathname = usePathname();
+  const scrollToSection = useScrollToSection();
 
   React.useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 20;
+      const isScrolled = window.scrollY > UI.scrollThreshold;
       setScrolled(isScrolled);
     };
 
@@ -31,31 +25,10 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const handleNavClick = React.useCallback((href: string) => {
     setIsMenuOpen(false);
-    if (href.startsWith("/")) {
-      window.location.href = href;
-    } else if (href === "#") {
-      // Handle click on name/logo - scroll to top
-      if (pathname === "/") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        // Navigate to home page
-        window.location.href = "/";
-      }
-    } else {
-      // Check if we're on the home page
-      if (pathname === "/") {
-        const element = document.querySelector(href);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth" });
-        }
-      } else {
-        // Navigate to home page with hash
-        window.location.href = `/${href}`;
-      }
-    }
-  };
+    scrollToSection(href);
+  }, [scrollToSection]);
 
   const isActiveItem = (href: string) => {
     if (href.startsWith("/")) {
@@ -83,11 +56,11 @@ export function Navigation() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Patrick Lehmann
+            {SITE_CONFIG.name}
           </motion.button>
 
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
+            {UI.navItems.map((item, index) => (
               <motion.button
                 key={item.name}
                 onClick={() => handleNavClick(item.href)}
@@ -107,7 +80,7 @@ export function Navigation() {
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: navItems.length * 0.1 }}
+              transition={{ duration: 0.5, delay: UI.navItems.length * 0.1 }}
             >
               <ThemeToggle />
             </motion.div>
@@ -138,7 +111,7 @@ export function Navigation() {
                 animate={{ y: 0 }}
                 exit={{ y: -10 }}
               >
-                {navItems.map((item, index) => (
+                {UI.navItems.map((item, index) => (
                   <motion.button
                     key={item.name}
                     onClick={() => handleNavClick(item.href)}
@@ -161,7 +134,7 @@ export function Navigation() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3, delay: navItems.length * 0.05 }}
+                  transition={{ duration: 0.3, delay: UI.navItems.length * 0.05 }}
                 >
                   <ThemeToggle />
                 </motion.div>

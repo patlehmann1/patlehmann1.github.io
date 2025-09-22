@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowRight, Search, Rss } from "lucide-react";
+import { Search, Rss } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getAllPosts, getAllTags } from "@/lib/blog";
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { BlogCard } from "@/components/blog/blog-card";
 
 export function BlogPageClient() {
   const allPosts = getAllPosts();
@@ -12,13 +13,15 @@ export function BlogPageClient() {
   const [selectedTag, setSelectedTag] = useState<string>("");
   const [searchQuery, setSearchQuery] = useState("");
 
-  const filteredPosts = allPosts.filter(post => {
-    const matchesTag = !selectedTag || post.tags.includes(selectedTag);
-    const matchesSearch = !searchQuery ||
-      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      post.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesTag && matchesSearch;
-  });
+  const filteredPosts = useMemo(() => {
+    return allPosts.filter(post => {
+      const matchesTag = !selectedTag || post.tags.includes(selectedTag);
+      const matchesSearch = !searchQuery ||
+        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        post.description.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchesTag && matchesSearch;
+    });
+  }, [allPosts, selectedTag, searchQuery]);
 
   return (
     <div className="min-h-screen bg-background">
@@ -93,66 +96,7 @@ export function BlogPageClient() {
         {/* Articles Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredPosts.map((post, index) => (
-            <motion.article
-              key={post.slug}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group bg-card border rounded-lg overflow-hidden shadow-warm hover:shadow-lg transition-all duration-300"
-            >
-              <div className="p-6">
-                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                  <div className="flex items-center gap-1">
-                    <Calendar className="h-4 w-4" />
-                    {new Date(post.publishedAt).toLocaleDateString('en-US', {
-                      month: 'short',
-                      day: 'numeric',
-                      year: 'numeric'
-                    })}
-                  </div>
-                  <div className="flex items-center gap-1">
-                    <Clock className="h-4 w-4" />
-                    {post.readingTime} min read
-                  </div>
-                </div>
-
-                <h2 className="text-xl font-semibold mb-3 line-clamp-2">
-                  <a
-                    href={`/blog/${post.slug}`}
-                    className="hover:text-primary transition-colors"
-                  >
-                    {post.title}
-                  </a>
-                </h2>
-
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4 line-clamp-3">
-                  {post.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {post.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="text-xs px-2 py-1 bg-primary/10 text-primary rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="hover:bg-primary/10 transition-colors"
-                  asChild
-                >
-                  <a href={`/blog/${post.slug}`}>
-                    Read Article
-                    <ArrowRight className="ml-1 h-3 w-3 transition-transform group-hover:translate-x-1" />
-                  </a>
-                </Button>
-              </div>
-            </motion.article>
+            <BlogCard key={post.slug} post={post} index={index} />
           ))}
         </div>
 
