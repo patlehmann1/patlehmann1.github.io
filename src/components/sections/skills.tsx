@@ -117,7 +117,7 @@ export function Skills() {
                 viewport={{ once: true }}
                 className="flex items-center gap-3 p-3 bg-card rounded-lg border"
               >
-                <span className="w-2 h-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
+                <span className="w-2 h-2 bg-primary rounded-full" />
                 <span className="text-sm font-medium">{practice}</span>
               </motion.div>
             ))}
@@ -131,8 +131,8 @@ export function Skills() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <div className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-blue-600/20 rounded-lg p-6">
-            <p className="text-lg font-medium text-blue-600 mb-2">
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-6">
+            <p className="text-lg font-medium text-primary mb-2">
               AI-Assisted Development Pioneer
             </p>
             <p className="text-muted-foreground">

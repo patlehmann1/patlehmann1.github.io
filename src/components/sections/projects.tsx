@@ -146,8 +146,8 @@ export function Projects() {
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
-          <div className="bg-gradient-to-r from-blue-600/10 to-purple-600/10 border border-blue-600/20 rounded-lg p-8">
-            <h3 className="text-xl font-semibold text-blue-600 mb-4">
+          <div className="bg-primary/5 border border-primary/20 rounded-lg p-8">
+            <h3 className="text-xl font-semibold text-primary mb-4">
               Consistent Value Delivery
             </h3>
             <p className="text-muted-foreground mb-6 max-w-3xl mx-auto">
