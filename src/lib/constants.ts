@@ -54,3 +54,12 @@ export const SEO = {
   creator: "Patrick Lehmann",
   publisher: "Patrick Lehmann",
 } as const;
+
+// Reading Progress Configuration
+export const READING_PROGRESS = {
+  throttleDelay: 16, // ~60fps for smooth updates
+  showThreshold: 0.01, // Start showing at 1% progress
+  hideThreshold: 0.95, // Hide after 95% progress
+  barHeight: 3, // Height in pixels
+  contentSelector: "article", // Default content selector
+} as const;
