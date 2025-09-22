@@ -67,7 +67,6 @@ jest.mock('../blog', () => {
 })
 
 import { getAllPosts, getFeaturedPosts, getPostBySlug, getPostsByTag, getAllTags } from '../blog'
-import { BlogPost } from '../types'
 
 describe('Blog utilities', () => {
   describe('getAllPosts', () => {
