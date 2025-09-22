@@ -1,3 +1,7 @@
+/**
+ * @jest-environment-options {"url": "https://localhost/"}
+ */
+
 import { renderHook } from '@testing-library/react'
 import { useScrollToSection } from '../useScrollToSection'
 
@@ -24,45 +28,11 @@ Object.defineProperty(document, 'querySelector', {
   writable: true,
 })
 
-// Store original location and create spy
-const originalLocation = window.location
-
-beforeAll(() => {
-  // @ts-ignore
-  delete window.location
-  // Create a location mock with configurable pathname
-  const locationMock = {
-    _pathname: '/',
-    get pathname() {
-      return this._pathname
-    },
-    set pathname(value) {
-      this._pathname = value
-    },
-    assign: jest.fn(),
-    reload: jest.fn(),
-    replace: jest.fn(),
-    href: 'http://localhost/',
-    search: '',
-    hash: '',
-    host: 'localhost',
-    hostname: 'localhost',
-    origin: 'http://localhost',
-    port: '',
-    protocol: 'http:',
-  }
-  // @ts-ignore
-  window.location = locationMock
-})
-
-afterAll(() => {
-  window.location = originalLocation
-})
-
 describe('useScrollToSection', () => {
   beforeEach(() => {
     jest.clearAllMocks()
-    window.location.pathname = '/'
+    // Reset location using the jsdom approach
+    window.history.pushState({}, '', 'https://localhost/')
   })
 
   describe('Route navigation', () => {
@@ -91,7 +61,7 @@ describe('useScrollToSection', () => {
 
   describe('Home navigation (#)', () => {
     it('should scroll to top when on home page and href is #', () => {
-      window.location.pathname = '/'
+      window.history.pushState({}, '', 'https://localhost/')
       const { result } = renderHook(() => useScrollToSection())
 
       result.current('#')
@@ -100,10 +70,8 @@ describe('useScrollToSection', () => {
       expect(mockPush).not.toHaveBeenCalled()
     })
 
-    // Note: This test is skipped due to jsdom limitations with window.location mocking
-    // The core functionality is covered by other tests
-    it.skip('should navigate to home when not on home page and href is #', () => {
-      window.location.pathname = '/about'
+    it('should navigate to home when not on home page and href is #', () => {
+      window.history.pushState({}, '', 'https://localhost/about')
       const { result } = renderHook(() => useScrollToSection())
 
       result.current('#')
@@ -115,7 +83,7 @@ describe('useScrollToSection', () => {
 
   describe('Hash link navigation', () => {
     it('should scroll to section when on home page and element exists', () => {
-      window.location.pathname = '/'
+      window.history.pushState({}, '', 'https://localhost/')
       const mockElement = { scrollIntoView: mockScrollIntoView }
       mockQuerySelector.mockReturnValue(mockElement)
 
@@ -129,7 +97,7 @@ describe('useScrollToSection', () => {
     })
 
     it('should not scroll when on home page but element does not exist', () => {
-      window.location.pathname = '/'
+      window.history.pushState({}, '', 'https://localhost/')
       mockQuerySelector.mockReturnValue(null)
 
       const { result } = renderHook(() => useScrollToSection())
@@ -141,10 +109,8 @@ describe('useScrollToSection', () => {
       expect(mockPush).not.toHaveBeenCalled()
     })
 
-    // Note: This test is skipped due to jsdom limitations with window.location mocking
-    // The core functionality is covered by other tests
-    it.skip('should navigate to home with hash when not on home page', () => {
-      window.location.pathname = '/about'
+    it('should navigate to home with hash when not on home page', () => {
+      window.history.pushState({}, '', 'https://localhost/about')
       const { result } = renderHook(() => useScrollToSection())
 
       result.current('#contact')
@@ -185,7 +151,7 @@ describe('useScrollToSection', () => {
 
   describe('Different href patterns', () => {
     beforeEach(() => {
-      window.location.pathname = '/'
+      window.history.pushState({}, '', 'https://localhost/')
     })
 
     it('should handle hash links with various formats', () => {
@@ -230,7 +196,7 @@ describe('useScrollToSection', () => {
     })
 
     it('should handle special characters in hash', () => {
-      window.location.pathname = '/'
+      window.history.pushState({}, '', 'https://localhost/')
       const mockElement = { scrollIntoView: mockScrollIntoView }
       mockQuerySelector.mockReturnValue(mockElement)
 
