@@ -43,6 +43,11 @@ export interface ContactForm {
   message: string;
 }
 
+export interface NewsletterForm {
+  email: string;
+  firstName: string;
+}
+
 // Component prop types
 export interface BaseComponentProps {
   className?: string;

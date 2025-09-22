@@ -7,6 +7,7 @@ import { BlogPost } from "@/lib/types";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
+import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -121,6 +122,15 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
             {post.content}
           </ReactMarkdown>
         </motion.article>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="mt-12"
+        >
+          <NewsletterSignup />
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
