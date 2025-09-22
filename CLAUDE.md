@@ -18,36 +18,31 @@ Personal software developer portfolio website built with Next.js 14, TypeScript,
 - **React Markdown + Remark GFM** for content rendering
 - **JSON-based content management** for blog posts
 - **RSS & Sitemap generation** for SEO optimization
+- **Jest + React Testing Library** for comprehensive testing
 
 ## Development Commands
 
 ```bash
-# Start development server with Turbopack
-npm run dev
+# Development
+npm run dev                 # Start development server with Turbopack
+npm run build              # Build for production (includes RSS & sitemap generation)
+npm run export             # Export for static hosting (includes RSS & sitemap generation)
+npm start                  # Start production server
 
-# Build for production (includes RSS & sitemap generation)
-npm run build
+# Code Quality
+npm run lint               # Run linting
+npx tsc --noEmit          # Type checking
 
-# Export for static hosting (includes RSS & sitemap generation)
-npm run export
+# Testing
+npm test                   # Run all tests
+npm run test:watch         # Run tests in watch mode
+npm run test:coverage      # Run tests with coverage report
+npm run test:ci            # Run tests for CI/CD pipeline
 
-# Start production server
-npm start
-
-# Run linting
-npm run lint
-
-# Type checking
-npx tsc --noEmit
-
-# Generate RSS feed
-npm run generate-rss
-
-# Generate sitemap
-npm run generate-sitemap
-
-# Generate both RSS and sitemap
-npm run generate-seo
+# SEO Generation
+npm run generate-rss       # Generate RSS feed
+npm run generate-sitemap   # Generate sitemap
+npm run generate-seo       # Generate both RSS and sitemap
 ```
 
 ## Project Structure
@@ -67,7 +62,8 @@ src/
 │   ├── ui/                # Reusable UI components (Button, ThemeToggle)
 │   ├── sections/          # Page sections (Hero, About, Projects, Blog)
 │   ├── layout/            # Layout components (Navigation, sub-components)
-│   └── blog/              # Blog-specific components (BlogCard, BlogContent, ReadingProgressBar)
+│   ├── blog/              # Blog-specific components (BlogCard, BlogContent, ReadingProgressBar)
+│   └── newsletter/        # Newsletter signup components
 ├── hooks/                 # Custom React hooks
 │   ├── useScrollToSection.ts # Navigation with smooth scrolling
 │   ├── useBlogFiltering.ts   # Blog filtering logic
@@ -86,109 +82,15 @@ src/
 scripts/                   # Build and generation scripts
 ├── generate-rss.js        # RSS feed generation script
 └── generate-sitemap.js    # Sitemap generation script
-public/                    # Static assets (includes generated RSS & sitemap)
+docs/                       # Detailed documentation
+├── architecture.md        # System design and architecture details
+├── testing.md             # Comprehensive testing guide
+├── development-guidelines.md # Code quality and best practices
+└── code-review-checklist.md # Review requirements and checklists
+public/                     # Static assets (includes generated RSS & sitemap)
+jest.config.js             # Jest testing configuration
+setupTests.ts              # Global test setup and mocks
 ```
-
-## Architecture Notes
-
-### Component System
-- Uses a shadcn/ui-inspired design system with custom Tailwind colors
-- Components are built with composition in mind using React forwardRef patterns
-- CSS variables for theming with HSL color values for better dark mode support
-
-### Styling Approach
-- Tailwind CSS with custom design tokens defined in CSS variables
-- Uses `cn()` utility function (clsx + tailwind-merge) for conditional classes
-- Responsive design with mobile-first approach
-
-### Type Safety
-- Comprehensive TypeScript types in `src/lib/types.ts`
-- Interfaces for Project, BlogPost, and ContactForm entities
-- Strict TypeScript configuration
-
-### Blog System
-- **JSON-based content management**: Articles stored in `src/content/blog/articles.json` for easy editing
-- **React Markdown rendering**: GitHub Flavored Markdown support with remark-gfm
-- **Dynamic routing**: Blog posts use `[slug]` dynamic routing pattern
-- **Rich metadata**: Each post includes title, description, tags, publication date, and featured status
-- **Content utilities**: Post filtering, sorting, tag management, and reading time calculation
-- **SEO-optimized**: Structured data, metadata generation, and RSS feed integration
-
-### RSS & Sitemap Generation
-- Automated RSS feed generation for blog posts
-- Sitemap generation for SEO optimization
-- Build process integration via Node.js scripts in `scripts/` directory
-- Environment-aware URL generation (development vs production)
-- RSS feeds include proper metadata, categories, and XML escaping
-
-### SEO & Performance
-- Structured data with JSON-LD for blog posts
-- Dynamic metadata generation for all pages
-- RSS feed linked in HTML head for feed discovery
-- Sitemap includes proper lastmod dates and priority values
-- Theme provider with system preference detection
-
-### Reading Progress System
-- **Performance optimized**: Uses `requestAnimationFrame` for smooth 60fps updates
-- **Accessibility compliant**: ARIA progressbar with screen reader support and reduced motion support
-- **Configurable thresholds**: Shows at 1% progress, hides at 95% completion
-- **Automatic content detection**: Works with any CSS selector (defaults to `article`)
-- **Smooth animations**: Framer Motion spring physics for natural feel
-- **Visibility controls**: Smart show/hide logic based on scroll progress
-
-### Content Management
-- Static project data can be stored in `src/content/projects/`
-- Utility functions for date formatting and reading time calculation
-
-## Code Quality Standards
-
-This project prioritizes **readability**, **maintainability**, **YAGNI compliance**, and adherence to **React/Next.js/TypeScript best practices**.
-
-### 📚 Readability Principles
-- **Clear naming**: Use descriptive variable and function names that explain intent
-- **Consistent formatting**: Follow established patterns for imports, exports, and structure
-- **Logical organization**: Group related functionality together
-- **Minimal cognitive load**: Keep functions and components focused on a single responsibility
-- **Self-documenting code**: Write code that explains itself; add JSDoc for complex logic
-
-### 🔧 Maintainability Focus
-- **Small, focused components**: Keep components under 100 lines when possible
-- **Single responsibility**: Each component/function should have one clear purpose
-- **DRY principles**: Extract reusable logic into custom hooks or utility functions
-- **Clear separation of concerns**: UI logic separate from business logic
-- **Consistent patterns**: Follow established architectural patterns throughout the codebase
-- **Proper abstraction**: Create reusable components and utilities, but avoid over-abstraction
-
-### 🎯 YAGNI Compliance (You Aren't Gonna Need It)
-- **Implement only what's needed**: Don't build features "just in case"
-- **Avoid premature optimization**: Optimize when performance issues are identified
-- **Simple solutions first**: Choose the simplest approach that meets current requirements
-- **Resist over-engineering**: Don't add complexity for hypothetical future needs
-- **Delete unused code**: Remove commented code, unused imports, and dead code paths
-
-### ⚛️ React Best Practices
-- **Composition over inheritance**: Use component composition for flexibility
-- **Custom hooks**: Extract stateful logic into reusable custom hooks
-- **Performance optimization**: Use `useCallback`, `useMemo`, and `React.memo` judiciously
-- **Component size**: Break large components into smaller, focused sub-components
-- **State management**: Keep state as local as possible, lift up only when necessary
-- **Error boundaries**: Implement error boundaries for robust error handling
-
-### 🚀 Next.js Best Practices
-- **App Router patterns**: Use proper server/client component separation
-- **SEO optimization**: Implement metadata API and structured data
-- **Performance**: Leverage `next/image`, `next/link`, and built-in optimizations
-- **Static generation**: Use static generation where possible for better performance
-- **API routes**: Keep API routes focused and well-structured
-- **Environment configuration**: Use environment variables for configuration
-
-### 🔷 TypeScript Best Practices
-- **Strict typing**: Enable strict mode and avoid `any` type
-- **Interface definitions**: Create clear, well-documented interfaces
-- **Utility types**: Use TypeScript utility types for common patterns
-- **Branded types**: Use branded types for better type safety (e.g., `BlogSlug`)
-- **Type guards**: Implement type guards for runtime type checking
-- **Generic types**: Use generics for reusable, type-safe functions
 
 ## Key Features
 
@@ -197,118 +99,50 @@ This project prioritizes **readability**, **maintainability**, **YAGNI complianc
 2. **Projects Showcase** - Interactive grid with filtering
 3. **Blog Section** - JSON-powered articles with full blog layout
 4. **Contact Form** - React Hook Form with Zod validation
-5. **Dark Mode** - next-themes implementation with system preference
-6. **SEO Optimization** - Metadata API, structured data, RSS feeds, and sitemap
-7. **RSS Feed Generation** - Automated feed generation for blog posts
-8. **Sitemap Generation** - SEO-optimized sitemap with proper metadata
-9. **Blog Navigation** - Enhanced navigation with active link styling
-10. **Content Management** - JSON-based blog system with filtering and search
-11. **Reading Progress Indicator** - Smooth animated progress bar for blog posts
+5. **Newsletter Subscription** - Kit.com integration with form validation
+6. **Dark Mode** - next-themes implementation with system preference
+7. **SEO Optimization** - Metadata API, structured data, RSS feeds, and sitemap
+8. **RSS Feed Generation** - Automated feed generation for blog posts
+9. **Sitemap Generation** - SEO-optimized sitemap with proper metadata
+10. **Blog Navigation** - Enhanced navigation with active link styling
+11. **Content Management** - JSON-based blog system with filtering and search
+12. **Reading Progress Indicator** - Smooth animated progress bar for blog posts
+13. **Comprehensive Jest Testing Suite** - 96% test success rate with full coverage
 
 ### 🚀 Potential Future Enhancements
 - Blog post comments system
-- Newsletter subscription
 - Advanced blog filtering (by date range, multiple tags)
 - Blog post series/categories
 - Related posts suggestions
 
-## Development Guidelines
+## 📖 Detailed Documentation
 
-### 🏗️ Component Architecture
-- **Follow established patterns**: Use existing component patterns in `src/components/ui/`
-- **Component hierarchy**: Organize components by domain (ui/, sections/, layout/, blog/)
-- **Props interface**: Define clear, well-typed props interfaces for all components
-- **Forwarded refs**: Use `React.forwardRef` for components that need DOM access
-- **Composition patterns**: Prefer composition over prop drilling for complex components
+For comprehensive information about specific aspects of the project, refer to these detailed guides:
 
-### 🎨 Styling & UI
-- **Tailwind utilities**: Use Tailwind CSS classes for styling
-- **Conditional classes**: Use `cn()` utility for className merging and conditional styles
-- **Design system**: Follow the established design tokens and color variables
-- **Responsive design**: Implement mobile-first responsive design patterns
-- **Animations**: Use Framer Motion for smooth, meaningful animations
-- **Accessibility**: Ensure WCAG compliance with semantic HTML and ARIA labels
+- **[🏗️ Architecture & System Design](docs/architecture.md)** - Component system, styling approach, blog architecture, SEO implementation, and technical details
+- **[🧪 Testing Guide](docs/testing.md)** - Jest configuration, testing patterns, coverage requirements, and testing best practices
+- **[📝 Development Guidelines](docs/development-guidelines.md)** - Code quality standards, React/Next.js/TypeScript best practices, and anti-patterns to avoid
+- **[✅ Code Review Checklist](docs/code-review-checklist.md)** - Comprehensive review requirements, quality checks, and approval criteria
 
-### 🔗 Navigation & Routing
-- **Next.js Link**: Use `next/link` for internal navigation
-- **Smooth scrolling**: Implement smooth scrolling for hash-based navigation
-- **Active states**: Provide clear visual feedback for active navigation items
-- **SEO-friendly**: Ensure all routes are accessible and properly indexed
+## Quick Reference
 
-### 📊 Data Management
-- **Type safety**: Use strict TypeScript types for all data structures
-- **Custom hooks**: Extract data logic into reusable custom hooks
-- **State optimization**: Use `useMemo` and `useCallback` for expensive operations
-- **Error handling**: Implement proper error boundaries and loading states
+### Essential Guidelines
+- **Readability**: Write self-documenting code with clear naming and structure
+- **Maintainability**: Keep components focused, use composition, follow DRY principles
+- **YAGNI Compliance**: Implement only what's needed, avoid over-engineering
+- **Type Safety**: Use strict TypeScript, avoid `any`, implement proper interfaces
+- **Testing**: Write tests for new features, maintain 70% coverage minimum
 
-### 🧪 Testing & Quality
-- **Type checking**: Run `npx tsc --noEmit` before committing
-- **Linting**: Run `npm run lint` to ensure code quality
-- **Performance**: Monitor component re-renders and optimize when necessary
-- **Accessibility**: Test with screen readers and keyboard navigation
+### Before Committing
+- [ ] Run `npm test` - All tests pass
+- [ ] Run `npx tsc --noEmit` - No TypeScript errors
+- [ ] Run `npm run lint` - No linting issues
+- [ ] Review relevant checklist items in [Code Review Checklist](docs/code-review-checklist.md)
 
-## Code Review Checklist
+### Architecture Patterns
+- **Component Organization**: Domain-based structure (ui/, sections/, layout/, blog/)
+- **State Management**: Local state with custom hooks, context for global state
+- **Styling**: Tailwind CSS with design system tokens, `cn()` utility for conditional classes
+- **Testing**: React Testing Library for components, Jest for utilities, comprehensive mocking
 
-Before submitting code, ensure:
-
-### ✅ Component Quality
-- [ ] Component is under 100 lines (if larger, consider splitting)
-- [ ] Single responsibility principle is followed
-- [ ] Props are properly typed with interfaces
-- [ ] No unused imports or variables
-- [ ] Consistent naming conventions
-
-### ✅ Performance
-- [ ] `useCallback` used for functions passed to children
-- [ ] `useMemo` used for expensive calculations
-- [ ] No unnecessary re-renders
-- [ ] Proper dependency arrays in hooks
-
-### ✅ Type Safety
-- [ ] No `any` types used
-- [ ] All props and state properly typed
-- [ ] Event handlers have correct types
-- [ ] No TypeScript errors or warnings
-
-### ✅ Code Organization
-- [ ] Related code is grouped together
-- [ ] Imports are organized (React, libraries, local)
-- [ ] Files are in appropriate directories
-- [ ] JSDoc comments for complex functions
-
-### ✅ Accessibility & UX
-- [ ] Semantic HTML elements used
-- [ ] ARIA labels where necessary
-- [ ] Keyboard navigation support
-- [ ] Color contrast meets standards
-- [ ] Loading and error states handled
-
-## Anti-Patterns to Avoid
-
-### ❌ Component Anti-Patterns
-- **Monolithic components**: Components over 150 lines
-- **Prop drilling**: Passing props through multiple levels
-- **Mixed concerns**: Mixing UI logic with business logic
-- **Inline styles**: Using style props instead of Tailwind classes
-- **Direct DOM manipulation**: Using refs to manipulate DOM directly
-
-### ❌ React Anti-Patterns
-- **Missing dependency arrays**: useEffect without proper dependencies
-- **Mutating state**: Directly modifying state objects
-- **Using array indices as keys**: Using unstable keys in lists
-- **Unnecessary state**: Creating state for derived values
-- **Class component patterns**: Using legacy patterns in functional components
-
-### ❌ TypeScript Anti-Patterns
-- **Using `any`**: Avoiding proper typing
-- **Type assertions**: Using `as` without proper validation
-- **Optional everything**: Making all props optional
-- **Interface pollution**: Adding unrelated properties to interfaces
-- **Ignoring strict mode**: Disabling TypeScript strict checks
-
-### ❌ Performance Anti-Patterns
-- **Premature optimization**: Optimizing without measuring
-- **Missing memoization**: Not memoizing expensive calculations
-- **Excessive memoization**: Memoizing everything unnecessarily
-- **Large bundle sizes**: Including unused libraries
-- **Synchronous operations**: Blocking the main thread unnecessarily
+For detailed implementation patterns, architectural decisions, and comprehensive guidelines, please refer to the linked documentation files above.
