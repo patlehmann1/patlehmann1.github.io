@@ -67,10 +67,11 @@ src/
 │   ├── ui/                # Reusable UI components (Button, ThemeToggle)
 │   ├── sections/          # Page sections (Hero, About, Projects, Blog)
 │   ├── layout/            # Layout components (Navigation, sub-components)
-│   └── blog/              # Blog-specific components (BlogCard, BlogContent)
+│   └── blog/              # Blog-specific components (BlogCard, BlogContent, ReadingProgressBar)
 ├── hooks/                 # Custom React hooks
 │   ├── useScrollToSection.ts # Navigation with smooth scrolling
-│   └── useBlogFiltering.ts   # Blog filtering logic
+│   ├── useBlogFiltering.ts   # Blog filtering logic
+│   └── useReadingProgress.ts # Reading progress tracking
 ├── lib/
 │   ├── types.ts           # TypeScript type definitions and utility types
 │   ├── utils.ts           # Utility functions (cn helper, formatters)
@@ -126,6 +127,14 @@ public/                    # Static assets (includes generated RSS & sitemap)
 - RSS feed linked in HTML head for feed discovery
 - Sitemap includes proper lastmod dates and priority values
 - Theme provider with system preference detection
+
+### Reading Progress System
+- **Performance optimized**: Uses `requestAnimationFrame` for smooth 60fps updates
+- **Accessibility compliant**: ARIA progressbar with screen reader support and reduced motion support
+- **Configurable thresholds**: Shows at 1% progress, hides at 95% completion
+- **Automatic content detection**: Works with any CSS selector (defaults to `article`)
+- **Smooth animations**: Framer Motion spring physics for natural feel
+- **Visibility controls**: Smart show/hide logic based on scroll progress
 
 ### Content Management
 - Static project data can be stored in `src/content/projects/`
@@ -194,13 +203,13 @@ This project prioritizes **readability**, **maintainability**, **YAGNI complianc
 8. **Sitemap Generation** - SEO-optimized sitemap with proper metadata
 9. **Blog Navigation** - Enhanced navigation with active link styling
 10. **Content Management** - JSON-based blog system with filtering and search
+11. **Reading Progress Indicator** - Smooth animated progress bar for blog posts
 
 ### 🚀 Potential Future Enhancements
 - Blog post comments system
 - Newsletter subscription
 - Advanced blog filtering (by date range, multiple tags)
 - Blog post series/categories
-- Reading progress indicator
 - Related posts suggestions
 
 ## Development Guidelines
