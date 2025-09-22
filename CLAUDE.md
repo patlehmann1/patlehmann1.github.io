@@ -66,11 +66,16 @@ src/
 ├── components/
 │   ├── ui/                # Reusable UI components (Button, ThemeToggle)
 │   ├── sections/          # Page sections (Hero, About, Projects, Blog)
-│   ├── layout/            # Layout components (Navigation)
-│   └── blog/              # Blog-specific components
+│   ├── layout/            # Layout components (Navigation, sub-components)
+│   └── blog/              # Blog-specific components (BlogCard, BlogContent)
+├── hooks/                 # Custom React hooks
+│   ├── useScrollToSection.ts # Navigation with smooth scrolling
+│   └── useBlogFiltering.ts   # Blog filtering logic
 ├── lib/
-│   ├── types.ts           # TypeScript type definitions
+│   ├── types.ts           # TypeScript type definitions and utility types
 │   ├── utils.ts           # Utility functions (cn helper, formatters)
+│   ├── ui-utils.ts        # UI-specific utility functions
+│   ├── constants.ts       # Application constants and configuration
 │   ├── blog.ts            # Blog data handling and utilities
 │   └── rss.ts             # RSS feed generation
 ├── content/
@@ -126,6 +131,56 @@ public/                    # Static assets (includes generated RSS & sitemap)
 - Static project data can be stored in `src/content/projects/`
 - Utility functions for date formatting and reading time calculation
 
+## Code Quality Standards
+
+This project prioritizes **readability**, **maintainability**, **YAGNI compliance**, and adherence to **React/Next.js/TypeScript best practices**.
+
+### 📚 Readability Principles
+- **Clear naming**: Use descriptive variable and function names that explain intent
+- **Consistent formatting**: Follow established patterns for imports, exports, and structure
+- **Logical organization**: Group related functionality together
+- **Minimal cognitive load**: Keep functions and components focused on a single responsibility
+- **Self-documenting code**: Write code that explains itself; add JSDoc for complex logic
+
+### 🔧 Maintainability Focus
+- **Small, focused components**: Keep components under 100 lines when possible
+- **Single responsibility**: Each component/function should have one clear purpose
+- **DRY principles**: Extract reusable logic into custom hooks or utility functions
+- **Clear separation of concerns**: UI logic separate from business logic
+- **Consistent patterns**: Follow established architectural patterns throughout the codebase
+- **Proper abstraction**: Create reusable components and utilities, but avoid over-abstraction
+
+### 🎯 YAGNI Compliance (You Aren't Gonna Need It)
+- **Implement only what's needed**: Don't build features "just in case"
+- **Avoid premature optimization**: Optimize when performance issues are identified
+- **Simple solutions first**: Choose the simplest approach that meets current requirements
+- **Resist over-engineering**: Don't add complexity for hypothetical future needs
+- **Delete unused code**: Remove commented code, unused imports, and dead code paths
+
+### ⚛️ React Best Practices
+- **Composition over inheritance**: Use component composition for flexibility
+- **Custom hooks**: Extract stateful logic into reusable custom hooks
+- **Performance optimization**: Use `useCallback`, `useMemo`, and `React.memo` judiciously
+- **Component size**: Break large components into smaller, focused sub-components
+- **State management**: Keep state as local as possible, lift up only when necessary
+- **Error boundaries**: Implement error boundaries for robust error handling
+
+### 🚀 Next.js Best Practices
+- **App Router patterns**: Use proper server/client component separation
+- **SEO optimization**: Implement metadata API and structured data
+- **Performance**: Leverage `next/image`, `next/link`, and built-in optimizations
+- **Static generation**: Use static generation where possible for better performance
+- **API routes**: Keep API routes focused and well-structured
+- **Environment configuration**: Use environment variables for configuration
+
+### 🔷 TypeScript Best Practices
+- **Strict typing**: Enable strict mode and avoid `any` type
+- **Interface definitions**: Create clear, well-documented interfaces
+- **Utility types**: Use TypeScript utility types for common patterns
+- **Branded types**: Use branded types for better type safety (e.g., `BlogSlug`)
+- **Type guards**: Implement type guards for runtime type checking
+- **Generic types**: Use generics for reusable, type-safe functions
+
 ## Key Features
 
 ### ✅ Implemented Features
@@ -150,8 +205,101 @@ public/                    # Static assets (includes generated RSS & sitemap)
 
 ## Development Guidelines
 
-- Follow the established component patterns in `src/components/ui/`
-- Use the `cn()` utility for className merging
-- Implement animations with Framer Motion for enhanced UX
-- Maintain type safety with proper TypeScript interfaces
-- Use semantic HTML and accessibility best practices
+### 🏗️ Component Architecture
+- **Follow established patterns**: Use existing component patterns in `src/components/ui/`
+- **Component hierarchy**: Organize components by domain (ui/, sections/, layout/, blog/)
+- **Props interface**: Define clear, well-typed props interfaces for all components
+- **Forwarded refs**: Use `React.forwardRef` for components that need DOM access
+- **Composition patterns**: Prefer composition over prop drilling for complex components
+
+### 🎨 Styling & UI
+- **Tailwind utilities**: Use Tailwind CSS classes for styling
+- **Conditional classes**: Use `cn()` utility for className merging and conditional styles
+- **Design system**: Follow the established design tokens and color variables
+- **Responsive design**: Implement mobile-first responsive design patterns
+- **Animations**: Use Framer Motion for smooth, meaningful animations
+- **Accessibility**: Ensure WCAG compliance with semantic HTML and ARIA labels
+
+### 🔗 Navigation & Routing
+- **Next.js Link**: Use `next/link` for internal navigation
+- **Smooth scrolling**: Implement smooth scrolling for hash-based navigation
+- **Active states**: Provide clear visual feedback for active navigation items
+- **SEO-friendly**: Ensure all routes are accessible and properly indexed
+
+### 📊 Data Management
+- **Type safety**: Use strict TypeScript types for all data structures
+- **Custom hooks**: Extract data logic into reusable custom hooks
+- **State optimization**: Use `useMemo` and `useCallback` for expensive operations
+- **Error handling**: Implement proper error boundaries and loading states
+
+### 🧪 Testing & Quality
+- **Type checking**: Run `npx tsc --noEmit` before committing
+- **Linting**: Run `npm run lint` to ensure code quality
+- **Performance**: Monitor component re-renders and optimize when necessary
+- **Accessibility**: Test with screen readers and keyboard navigation
+
+## Code Review Checklist
+
+Before submitting code, ensure:
+
+### ✅ Component Quality
+- [ ] Component is under 100 lines (if larger, consider splitting)
+- [ ] Single responsibility principle is followed
+- [ ] Props are properly typed with interfaces
+- [ ] No unused imports or variables
+- [ ] Consistent naming conventions
+
+### ✅ Performance
+- [ ] `useCallback` used for functions passed to children
+- [ ] `useMemo` used for expensive calculations
+- [ ] No unnecessary re-renders
+- [ ] Proper dependency arrays in hooks
+
+### ✅ Type Safety
+- [ ] No `any` types used
+- [ ] All props and state properly typed
+- [ ] Event handlers have correct types
+- [ ] No TypeScript errors or warnings
+
+### ✅ Code Organization
+- [ ] Related code is grouped together
+- [ ] Imports are organized (React, libraries, local)
+- [ ] Files are in appropriate directories
+- [ ] JSDoc comments for complex functions
+
+### ✅ Accessibility & UX
+- [ ] Semantic HTML elements used
+- [ ] ARIA labels where necessary
+- [ ] Keyboard navigation support
+- [ ] Color contrast meets standards
+- [ ] Loading and error states handled
+
+## Anti-Patterns to Avoid
+
+### ❌ Component Anti-Patterns
+- **Monolithic components**: Components over 150 lines
+- **Prop drilling**: Passing props through multiple levels
+- **Mixed concerns**: Mixing UI logic with business logic
+- **Inline styles**: Using style props instead of Tailwind classes
+- **Direct DOM manipulation**: Using refs to manipulate DOM directly
+
+### ❌ React Anti-Patterns
+- **Missing dependency arrays**: useEffect without proper dependencies
+- **Mutating state**: Directly modifying state objects
+- **Using array indices as keys**: Using unstable keys in lists
+- **Unnecessary state**: Creating state for derived values
+- **Class component patterns**: Using legacy patterns in functional components
+
+### ❌ TypeScript Anti-Patterns
+- **Using `any`**: Avoiding proper typing
+- **Type assertions**: Using `as` without proper validation
+- **Optional everything**: Making all props optional
+- **Interface pollution**: Adding unrelated properties to interfaces
+- **Ignoring strict mode**: Disabling TypeScript strict checks
+
+### ❌ Performance Anti-Patterns
+- **Premature optimization**: Optimizing without measuring
+- **Missing memoization**: Not memoizing expensive calculations
+- **Excessive memoization**: Memoizing everything unnecessarily
+- **Large bundle sizes**: Including unused libraries
+- **Synchronous operations**: Blocking the main thread unnecessarily

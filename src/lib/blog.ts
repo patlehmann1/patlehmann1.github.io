@@ -1,9 +1,10 @@
-import { BlogPost } from './types';
+import { BlogPost, BlogSlug } from './types';
 import articlesData from '@/content/blog/articles.json';
 
 export function getAllPosts(): BlogPost[] {
   return articlesData.map(article => ({
     ...article,
+    slug: article.slug as BlogSlug,
     content: article.content || ""
   })).sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }

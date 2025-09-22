@@ -4,24 +4,20 @@ import { motion } from "framer-motion";
 import { Search, Rss } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getAllPosts, getAllTags } from "@/lib/blog";
-import { useState, useMemo } from "react";
 import { BlogCard } from "@/components/blog/blog-card";
+import { useBlogFiltering } from "@/hooks/useBlogFiltering";
+import { tagFilterButtonClasses } from "@/lib/ui-utils";
 
 export function BlogPageClient() {
   const allPosts = getAllPosts();
   const allTags = getAllTags();
-  const [selectedTag, setSelectedTag] = useState<string>("");
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const filteredPosts = useMemo(() => {
-    return allPosts.filter(post => {
-      const matchesTag = !selectedTag || post.tags.includes(selectedTag);
-      const matchesSearch = !searchQuery ||
-        post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        post.description.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesTag && matchesSearch;
-    });
-  }, [allPosts, selectedTag, searchQuery]);
+  const {
+    filteredPosts,
+    selectedTag,
+    searchQuery,
+    setSelectedTag,
+    setSearchQuery,
+  } = useBlogFiltering({ posts: allPosts });
 
   return (
     <div className="min-h-screen bg-background">
@@ -68,11 +64,7 @@ export function BlogPageClient() {
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={() => setSelectedTag("")}
-                className={`px-3 py-1 text-sm rounded-full border transition-colors ${
-                  !selectedTag
-                    ? "bg-primary text-primary-foreground border-primary"
-                    : "bg-background text-muted-foreground border-border hover:border-primary/50"
-                }`}
+                className={tagFilterButtonClasses(!selectedTag)}
               >
                 All
               </button>
@@ -80,11 +72,7 @@ export function BlogPageClient() {
                 <button
                   key={tag}
                   onClick={() => setSelectedTag(tag)}
-                  className={`px-3 py-1 text-sm rounded-full border transition-colors ${
-                    selectedTag === tag
-                      ? "bg-primary text-primary-foreground border-primary"
-                      : "bg-background text-muted-foreground border-border hover:border-primary/50"
-                  }`}
+                  className={tagFilterButtonClasses(selectedTag === tag)}
                 >
                   {tag}
                 </button>

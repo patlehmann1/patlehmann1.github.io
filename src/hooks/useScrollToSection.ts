@@ -1,6 +1,15 @@
 import { useRouter } from "next/navigation";
 import { useCallback } from "react";
 
+/**
+ * Custom hook for handling navigation with smooth scrolling support
+ *
+ * Handles both hash-based navigation (for same-page sections) and
+ * regular page navigation. Provides smooth scrolling for hash links
+ * when already on the target page.
+ *
+ * @returns A function that handles navigation based on href type
+ */
 export function useScrollToSection() {
   const router = useRouter();
 
