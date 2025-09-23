@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, MapPin, Calendar } from "lucide-react";
+import { Mail, Github, Linkedin, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function Contact() {
@@ -137,12 +137,12 @@ export function Contact() {
               <div className="bg-card border rounded-lg p-4 text-center">
                 <MapPin className="h-5 w-5 mx-auto mb-2 text-primary" />
                 <div className="font-medium text-sm">Location</div>
-                <div className="text-xs text-muted-foreground">Remote/Hybrid</div>
+                <div className="text-xs text-muted-foreground">Palm Bay, FL</div>
               </div>
               <div className="bg-card border rounded-lg p-4 text-center">
-                <Calendar className="h-5 w-5 mx-auto mb-2 text-primary" />
-                <div className="font-medium text-sm">Work Style</div>
-                <div className="text-xs text-muted-foreground">Remote-focused</div>
+                <Clock className="h-5 w-5 mx-auto mb-2 text-primary" />
+                <div className="font-medium text-sm">Time Zone</div>
+                <div className="text-xs text-muted-foreground">EST (UTC-5)</div>
               </div>
             </div>
 
