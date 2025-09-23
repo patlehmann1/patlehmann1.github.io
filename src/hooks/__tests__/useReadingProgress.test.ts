@@ -378,4 +378,22 @@ describe('useReadingProgress', () => {
     expect(result.current.progress).toBe(100)
     expect(result.current.isVisible).toBe(true) // 1 >= 0 and 1 <= 1
   })
+
+  it('should handle content completely scrolled past viewport (contentBottom < 0)', () => {
+    // Mock element completely above viewport with bottom below 0
+    mockElement.getBoundingClientRect = jest.fn().mockReturnValue({
+      top: -2500,
+      height: 2000,
+      bottom: -500 // Content bottom is above viewport
+    })
+
+    const { result } = renderHook(() => useReadingProgress())
+
+    act(() => {
+      const scrollEvent = new Event('scroll')
+      window.dispatchEvent(scrollEvent)
+    })
+
+    expect(result.current.progress).toBe(100)
+  })
 })
