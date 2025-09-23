@@ -3,10 +3,17 @@ import { render, screen } from '@testing-library/react'
 import { ReadingProgressBar } from '../reading-progress-bar'
 
 // Mock framer-motion
+interface MotionDivProps {
+  children?: React.ReactNode
+  className?: string
+  style?: React.CSSProperties
+  [key: string]: unknown
+}
+
 jest.mock('framer-motion', () => ({
   motion: {
-    div: function MotionDiv(props: any) {
-      const { children, className, style, role } = props
+    div: function MotionDiv(props: MotionDivProps) {
+      const { children, className, style } = props
       // Extract all aria-* attributes
       const ariaProps: Record<string, unknown> = {}
       Object.keys(props).forEach(key => {

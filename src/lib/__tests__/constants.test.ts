@@ -305,22 +305,22 @@ describe('Environment-dependent values', () => {
     jest.resetModules()
   })
 
-  it('should handle missing NEXT_PUBLIC_SITE_URL gracefully', () => {
+  it('should handle missing NEXT_PUBLIC_SITE_URL gracefully', async () => {
     delete process.env.NEXT_PUBLIC_SITE_URL
 
     // Re-import to get fresh value
     jest.resetModules()
-    const { SITE_CONFIG: freshConfig } = require('../constants')
+    const { SITE_CONFIG: freshConfig } = await import('../constants')
 
     expect(freshConfig.url).toBe('https://patricklehmann.com')
   })
 
-  it('should use environment URL when available', () => {
+  it('should use environment URL when available', async () => {
     const testUrl = 'https://test.example.com'
     process.env.NEXT_PUBLIC_SITE_URL = testUrl
 
     jest.resetModules()
-    const { SITE_CONFIG: freshConfig } = require('../constants')
+    const { SITE_CONFIG: freshConfig } = await import('../constants')
 
     expect(freshConfig.url).toBe(testUrl)
   })

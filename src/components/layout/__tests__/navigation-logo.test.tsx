@@ -3,9 +3,16 @@ import { NavigationLogo } from '../navigation-logo'
 import { SITE_CONFIG } from '@/lib/constants'
 
 // Mock framer-motion to avoid issues with animations in tests
+interface MotionButtonProps {
+  children: React.ReactNode
+  onClick?: () => void
+  className?: string
+  [key: string]: unknown
+}
+
 jest.mock('framer-motion', () => ({
   motion: {
-    button: ({ children, onClick, className, whileHover, whileTap, ...props }: any) => (
+    button: ({ children, onClick, className, ...props }: MotionButtonProps) => (
       <button onClick={onClick} className={className} {...props}>
         {children}
       </button>
@@ -150,7 +157,7 @@ describe('NavigationLogo Component', () => {
       const originalName = SITE_CONFIG.name
 
       // Temporarily modify SITE_CONFIG for this test
-      ;(SITE_CONFIG as any).name = ''
+      ;(SITE_CONFIG as { name: string }).name = ''
 
       render(<NavigationLogo onLogoClick={mockOnLogoClick} />)
 
@@ -159,7 +166,7 @@ describe('NavigationLogo Component', () => {
       expect(logo.textContent).toBe('')
 
       // Restore original value
-      ;(SITE_CONFIG as any).name = originalName
+      ;(SITE_CONFIG as { name: string }).name = originalName
     })
   })
 

@@ -1,11 +1,18 @@
 import React from 'react'
 import { render, screen, fireEvent, act } from '@testing-library/react'
 import { Navigation } from '../navigation'
+import { navigationHeaderClasses } from '@/lib/ui-utils'
 
 // Mock framer-motion
+interface MotionHeaderProps {
+  children: React.ReactNode
+  className?: string
+  [key: string]: unknown
+}
+
 jest.mock('framer-motion', () => ({
   motion: {
-    header: function MotionHeader(props: any) {
+    header: function MotionHeader(props: MotionHeaderProps) {
       const { children, className } = props
       return <header className={className}>{children}</header>
     }
@@ -83,8 +90,17 @@ jest.mock('../mobile-navigation', () => ({
 }))
 
 // Mock Button component
+interface ButtonProps {
+  children: React.ReactNode
+  onClick?: () => void
+  className?: string
+  variant?: string
+  size?: string
+  [key: string]: unknown
+}
+
 jest.mock('@/components/ui/button', () => ({
-  Button: ({ children, onClick, className, variant, size, ...props }: any) => (
+  Button: ({ children, onClick, className, variant, size, ...props }: ButtonProps) => (
     <button
       onClick={onClick}
       className={`button ${variant || ''} ${size || ''} ${className || ''}`}
@@ -154,7 +170,7 @@ describe('Navigation', () => {
   })
 
   it('should handle scroll events and update header styling', () => {
-    const { navigationHeaderClasses } = require('@/lib/ui-utils')
+    // Using imported navigationHeaderClasses
 
     render(<Navigation />)
 
@@ -177,7 +193,7 @@ describe('Navigation', () => {
   })
 
   it('should handle scroll events below threshold', () => {
-    const { navigationHeaderClasses } = require('@/lib/ui-utils')
+    // Using imported navigationHeaderClasses
 
     render(<Navigation />)
 

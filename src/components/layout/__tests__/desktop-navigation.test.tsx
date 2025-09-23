@@ -4,14 +4,27 @@ import { UI } from '@/lib/constants'
 import { navigationButtonClasses } from '@/lib/ui-utils'
 
 // Mock framer-motion to avoid issues with animations in tests
+interface MotionButtonProps {
+  children: React.ReactNode
+  onClick?: () => void
+  className?: string
+  [key: string]: unknown
+}
+
+interface MotionDivProps {
+  children: React.ReactNode
+  className?: string
+  [key: string]: unknown
+}
+
 jest.mock('framer-motion', () => ({
   motion: {
-    button: ({ children, onClick, className, initial, animate, transition, whileHover, ...props }: any) => (
+    button: ({ children, onClick, className, ...props }: MotionButtonProps) => (
       <button onClick={onClick} className={className} {...props}>
         {children}
       </button>
     ),
-    div: ({ children, className, initial, animate, transition, ...props }: any) => (
+    div: ({ children, className, ...props }: MotionDivProps) => (
       <div className={className} {...props}>
         {children}
       </div>
@@ -180,7 +193,7 @@ describe('DesktopNavigation Component', () => {
       const originalNavItems = UI.navItems
 
       // Temporarily modify UI.navItems
-      ;(UI as any).navItems = []
+      ;(UI as { navItems: typeof UI.navItems }).navItems = []
 
       mockIsActiveItem.mockReturnValue(false)
       render(<DesktopNavigation onNavClick={mockOnNavClick} isActiveItem={mockIsActiveItem} />)
@@ -194,7 +207,7 @@ describe('DesktopNavigation Component', () => {
       expect(buttons).toHaveLength(1) // Only theme toggle button
 
       // Restore original navItems
-      ;(UI as any).navItems = originalNavItems
+      ;(UI as { navItems: typeof UI.navItems }).navItems = originalNavItems
     })
 
     it('should render correct number of navigation buttons', () => {

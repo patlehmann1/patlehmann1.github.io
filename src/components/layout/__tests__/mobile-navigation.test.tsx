@@ -4,14 +4,27 @@ import { UI } from '@/lib/constants'
 import { mobileNavigationItemClasses } from '@/lib/ui-utils'
 
 // Mock framer-motion to avoid issues with animations in tests
+interface MotionDivProps {
+  children: React.ReactNode
+  className?: string
+  [key: string]: unknown
+}
+
+interface MotionButtonProps {
+  children: React.ReactNode
+  onClick?: () => void
+  className?: string
+  [key: string]: unknown
+}
+
 jest.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, className, initial, animate, exit, transition, ...props }: any) => (
+    div: ({ children, className, ...props }: MotionDivProps) => (
       <div className={className} {...props}>
         {children}
       </div>
     ),
-    button: ({ children, onClick, className, initial, animate, exit, transition, whileHover, ...props }: any) => (
+    button: ({ children, onClick, className, ...props }: MotionButtonProps) => (
       <button onClick={onClick} className={className} {...props}>
         {children}
       </button>
@@ -387,7 +400,7 @@ describe('MobileNavigation Component', () => {
       const originalNavItems = UI.navItems
 
       // Temporarily modify UI.navItems
-      ;(UI as any).navItems = []
+      ;(UI as { navItems: typeof UI.navItems }).navItems = []
 
       mockIsActiveItem.mockReturnValue(false)
       render(
@@ -407,7 +420,7 @@ describe('MobileNavigation Component', () => {
       expect(buttons).toHaveLength(1) // Only theme toggle button
 
       // Restore original navItems
-      ;(UI as any).navItems = originalNavItems
+      ;(UI as { navItems: typeof UI.navItems }).navItems = originalNavItems
     })
 
     it('should render correct number of navigation buttons when open', () => {

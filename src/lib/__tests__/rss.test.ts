@@ -1,10 +1,10 @@
 import { generateRSSFeed } from '../rss'
-import { BlogPost } from '../types'
+import { BlogPost, BlogSlug } from '../types'
 
 describe('RSS utilities', () => {
   const mockPosts: BlogPost[] = [
     {
-      slug: 'test-post-1' as any,
+      slug: 'test-post-1' as BlogSlug,
       title: 'Test Post 1',
       description: 'This is a test post description',
       content: 'This is the content of the test post',
@@ -14,7 +14,7 @@ describe('RSS utilities', () => {
       featured: true
     },
     {
-      slug: 'test-post-2' as any,
+      slug: 'test-post-2' as BlogSlug,
       title: 'Test Post 2 with <HTML> & "Quotes"',
       description: 'Description with special characters: <>&"\'',
       content: 'Content with special characters',
@@ -152,7 +152,7 @@ describe('RSS utilities', () => {
     it('should handle posts with empty tags', () => {
       const postsWithEmptyTags: BlogPost[] = [
         {
-          slug: 'no-tags-post' as any,
+          slug: 'no-tags-post' as BlogSlug,
           title: 'Post Without Tags',
           description: 'A post with no tags',
           content: 'Content',
@@ -171,7 +171,7 @@ describe('RSS utilities', () => {
     it('should handle posts with special characters in tags', () => {
       const postsWithSpecialTags: BlogPost[] = [
         {
-          slug: 'special-tags-post' as any,
+          slug: 'special-tags-post' as BlogSlug,
           title: 'Post With Special Tags',
           description: 'A post with special character tags',
           content: 'Content',
@@ -191,7 +191,7 @@ describe('RSS utilities', () => {
     it('should properly format dates for different date input formats', () => {
       const postsWithDifferentDates: BlogPost[] = [
         {
-          slug: 'iso-date-post' as any,
+          slug: 'iso-date-post' as BlogSlug,
           title: 'ISO Date Post',
           description: 'Post with ISO date',
           content: 'Content',
@@ -213,7 +213,7 @@ describe('RSS utilities', () => {
       const testString = 'Test & <tag> "quotes" \'apostrophe\' >'
       const rss = generateRSSFeed([
         {
-          slug: 'escape-test' as any,
+          slug: 'escape-test' as BlogSlug,
           title: testString,
           description: testString,
           content: 'Content',
