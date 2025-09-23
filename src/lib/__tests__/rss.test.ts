@@ -50,8 +50,8 @@ describe('RSS utilities', () => {
       expect(rss).toContain('<title>Patrick Lehmann - Articles &amp; Insights</title>')
       expect(rss).toContain('<description>Exploring AI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering</description>')
       expect(rss).toContain('<language>en-US</language>')
-      expect(rss).toContain('<managingEditor>patlehmann1@gmail.com (Patrick Lehmann)</managingEditor>')
-      expect(rss).toContain('<webMaster>patlehmann1@gmail.com (Patrick Lehmann)</webMaster>')
+      expect(rss).toContain('<managingEditor>contact@patricklehmann.io (Patrick Lehmann)</managingEditor>')
+      expect(rss).toContain('<webMaster>contact@patricklehmann.io (Patrick Lehmann)</webMaster>')
       expect(rss).toContain('<generator>Next.js RSS Generator</generator>')
     })
 
@@ -121,7 +121,7 @@ describe('RSS utilities', () => {
     it('should include author information for each post', () => {
       const rss = generateRSSFeed(mockPosts)
 
-      expect(rss).toContain('<author>patlehmann1@gmail.com (Patrick Lehmann)</author>')
+      expect(rss).toContain('<author>contact@patricklehmann.io (Patrick Lehmann)</author>')
     })
 
     it('should include post tags as categories', () => {

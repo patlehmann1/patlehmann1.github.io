@@ -5,10 +5,10 @@
     <description>Exploring AI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering</description>
     <link>http://localhost:3000</link>
     <language>en-US</language>
-    <managingEditor>patlehmann1@gmail.com (Patrick Lehmann)</managingEditor>
-    <webMaster>patlehmann1@gmail.com (Patrick Lehmann)</webMaster>
-    <lastBuildDate>Tue, 23 Sep 2025 15:52:53 GMT</lastBuildDate>
-    <pubDate>Tue, 23 Sep 2025 15:52:53 GMT</pubDate>
+    <managingEditor>contact@patricklehmann.io (Patrick Lehmann)</managingEditor>
+    <webMaster>contact@patricklehmann.io (Patrick Lehmann)</webMaster>
+    <lastBuildDate>Tue, 23 Sep 2025 18:48:01 GMT</lastBuildDate>
+    <pubDate>Tue, 23 Sep 2025 18:48:01 GMT</pubDate>
     <generator>Next.js RSS Generator</generator>
     <image>
       <url>http://localhost:3000/favicon.svg</url>
@@ -23,7 +23,7 @@
       <link>http://localhost:3000/blog/coding-as-worship</link>
       <guid isPermaLink="true">http://localhost:3000/blog/coding-as-worship</guid>
       <pubDate>Sat, 20 Sep 2025 00:00:00 GMT</pubDate>
-      <author>patlehmann1@gmail.com (Patrick Lehmann)</author>
+      <author>contact@patricklehmann.io (Patrick Lehmann)</author>
       <category>Faith</category><category>Programming</category><category>Purpose</category><category>Christianity</category><category>Development</category>
     </item>
     <item>
@@ -32,7 +32,7 @@
       <link>http://localhost:3000/blog/one-phrase-transformed-ai-work</link>
       <guid isPermaLink="true">http://localhost:3000/blog/one-phrase-transformed-ai-work</guid>
       <pubDate>Mon, 08 Sep 2025 00:00:00 GMT</pubDate>
-      <author>patlehmann1@gmail.com (Patrick Lehmann)</author>
+      <author>contact@patricklehmann.io (Patrick Lehmann)</author>
       <category>AI</category><category>Collaboration</category><category>Productivity</category><category>Development</category>
     </item>
     <item>
@@ -41,7 +41,7 @@
       <link>http://localhost:3000/blog/ai-helps-code-smarter-not-harder</link>
       <guid isPermaLink="true">http://localhost:3000/blog/ai-helps-code-smarter-not-harder</guid>
       <pubDate>Thu, 28 Aug 2025 00:00:00 GMT</pubDate>
-      <author>patlehmann1@gmail.com (Patrick Lehmann)</author>
+      <author>contact@patricklehmann.io (Patrick Lehmann)</author>
       <category>AI</category><category>Work-Life Balance</category><category>Productivity</category><category>GitHub Copilot</category><category>Personal Growth</category>
     </item>
   </channel>

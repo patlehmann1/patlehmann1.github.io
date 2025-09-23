@@ -102,28 +102,28 @@ export function About() {
               <div className="space-y-4 text-sm text-muted-foreground">
                 <div className="flex items-start gap-3">
                   <span className="text-primary font-mono text-xs mt-1">01</span>
-                  <span>Solving complex problems with elegant solutions</span>
+                  <span>Living out my Christian faith through work and service</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-primary font-mono text-xs mt-1">02</span>
-                  <span>Mentoring teams through technological transitions</span>
+                  <span>Solving complex problems with elegant solutions</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-primary font-mono text-xs mt-1">03</span>
-                  <span>Building systems that scale and adapt</span>
+                  <span>Mentoring teams through technological transitions</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-primary font-mono text-xs mt-1">04</span>
-                  <span>Championing modern development practices</span>
+                  <span>Building systems that scale and adapt</span>
                 </div>
                 <div className="flex items-start gap-3">
                   <span className="text-primary font-mono text-xs mt-1">05</span>
-                  <span>Living out my Christian faith through work and service</span>
+                  <span>Championing modern development practices</span>
                 </div>
               </div>
             </div>
 
-            <div className="bg-muted/30 border rounded-lg p-6">
+<div className="bg-muted/30 border rounded-lg p-6">
               <h4 className="font-bold text-lg mb-4">Quick Stats</h4>
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div>

@@ -26,7 +26,7 @@ export function generateRSSFeed(posts: BlogPost[]): string {
       <link>${postUrl}</link>
       <guid isPermaLink="true">${postUrl}</guid>
       <pubDate>${pubDate}</pubDate>
-      <author>patlehmann1@gmail.com (Patrick Lehmann)</author>
+      <author>contact@patricklehmann.io (Patrick Lehmann)</author>
       ${post.tags.map(tag => `<category>${escapeXml(tag)}</category>`).join('')}
     </item>`;
   }).join('');
@@ -38,8 +38,8 @@ export function generateRSSFeed(posts: BlogPost[]): string {
     <description>Exploring AI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering</description>
     <link>${siteUrl}</link>
     <language>en-US</language>
-    <managingEditor>patlehmann1@gmail.com (Patrick Lehmann)</managingEditor>
-    <webMaster>patlehmann1@gmail.com (Patrick Lehmann)</webMaster>
+    <managingEditor>contact@patricklehmann.io (Patrick Lehmann)</managingEditor>
+    <webMaster>contact@patricklehmann.io (Patrick Lehmann)</webMaster>
     <lastBuildDate>${buildDate}</lastBuildDate>
     <pubDate>${buildDate}</pubDate>
     <generator>Next.js RSS Generator</generator>

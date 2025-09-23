@@ -50,7 +50,7 @@ export function Hero() {
               className="flex flex-wrap gap-3 sm:gap-4"
             >
               <Button size="lg" className="shadow-warm hover:shadow-lg transition-all duration-300 min-w-0 flex-shrink" asChild>
-                <a href="mailto:patlehmann1@gmail.com">
+                <a href="mailto:contact@patricklehmann.io">
                   <Mail className="mr-2 h-4 w-4" />
                   Let&apos;s Connect
                 </a>

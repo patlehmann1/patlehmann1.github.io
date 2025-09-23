@@ -155,7 +155,7 @@ export function Projects() {
               and deliver meaningful business impact regardless of technical complexity or organizational changes.
             </p>
             <Button variant="outline" asChild>
-              <a href="mailto:patlehmann1@gmail.com">
+              <a href="mailto:contact@patricklehmann.io">
                 <ExternalLink className="mr-2 h-4 w-4" />
                 Discuss Your Next Project
               </a>

@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
   title: "Patrick Lehmann - Full-Stack Software Engineer",
   description: "Full-stack software engineer with 6+ years building scalable applications using C#/.NET, TypeScript, and modern JavaScript frameworks.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://patricklehmann.com",
-  email: "patlehmann1@gmail.com",
+  email: "contact@patricklehmann.io",
   social: {
     github: "https://github.com/patlehmann1",
     linkedin: "https://linkedin.com/in/patlehmann",
