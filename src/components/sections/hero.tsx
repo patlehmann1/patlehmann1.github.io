@@ -2,7 +2,9 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, MapPin, Coffee } from "lucide-react";
+import { Mail, MapPin, Coffee } from "lucide-react";
+import { GitHubIcon } from "@/components/ui/icons/github-icon";
+import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
 import { Typewriter } from "@/components/ui/typewriter";
 
 export function Hero() {
@@ -68,13 +70,13 @@ export function Hero() {
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a href="https://github.com/patlehmann1" target="_blank" rel="noopener noreferrer">
-                  <Github className="mr-2 h-4 w-4" />
+                  <GitHubIcon className="mr-2 h-4 w-4" />
                   GitHub
                 </a>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <a href="https://linkedin.com/in/patlehmann" target="_blank" rel="noopener noreferrer">
-                  <Linkedin className="mr-2 h-4 w-4" />
+                  <LinkedInIcon className="mr-2 h-4 w-4" />
                   LinkedIn
                 </a>
               </Button>

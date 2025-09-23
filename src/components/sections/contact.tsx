@@ -1,7 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Mail, Github, Linkedin, MapPin, Clock } from "lucide-react";
+import { Mail, MapPin, Clock } from "lucide-react";
+import { GitHubIcon } from "@/components/ui/icons/github-icon";
+import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
 import { Button } from "@/components/ui/button";
 
 export function Contact() {
@@ -14,14 +16,14 @@ export function Contact() {
       description: "Best way to reach me"
     },
     {
-      icon: <Linkedin className="h-5 w-5" />,
+      icon: <LinkedInIcon className="h-5 w-5" />,
       label: "LinkedIn",
       value: "linkedin.com/in/patlehmann",
       href: "https://linkedin.com/in/patlehmann",
       description: "Professional network and experience"
     },
     {
-      icon: <Github className="h-5 w-5" />,
+      icon: <GitHubIcon className="h-5 w-5" />,
       label: "GitHub",
       value: "github.com/patlehmann1",
       href: "https://github.com/patlehmann1",
