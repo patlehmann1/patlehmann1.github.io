@@ -9,8 +9,8 @@ export function Contact() {
     {
       icon: <Mail className="h-5 w-5" />,
       label: "Email",
-      value: "patlehmann1@gmail.com",
-      href: "mailto:patlehmann1@gmail.com",
+      value: "contact@patricklehmann.io",
+      href: "mailto:contact@patricklehmann.io",
       description: "Best way to reach me"
     },
     {
