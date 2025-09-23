@@ -20,17 +20,14 @@ const customJestConfig = {
     '!src/app/**', // Exclude Next.js app directory from coverage
     // Exclude remaining large UI components that don't have tests yet
     '!src/components/sections/**',
-    '!src/components/layout/**',
     '!src/components/blog/blog-post-content.tsx', // Complex content renderer
-    '!src/components/blog/reading-progress-bar.tsx', // UI component with simple logic
-    '!src/lib/rss.ts', // RSS generation utility
   ],
   coverageThreshold: {
     global: {
-      branches: 90, // Aggressive but achievable
-      functions: 90, // High standard for tested functions
-      lines: 90,     // Comprehensive line coverage
-      statements: 90, // Strong statement coverage
+      branches: 95, // Reflects current high test coverage
+      functions: 98, // Reflects current excellent function coverage
+      lines: 98,     // Reflects current excellent line coverage
+      statements: 95, // Reflects current high statement coverage
     },
   },
   moduleNameMapper: {
