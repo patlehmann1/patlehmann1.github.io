@@ -31,7 +31,7 @@ export function About() {
               <h3 className="text-3xl font-bold mb-6 gradient-warm">The Art of Adaptation</h3>
               <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
                 <p>
-                  Over 6+ years, I&apos;ve discovered that the best engineers aren&apos;t just masters of code—they&apos;re
+                  Over 6+ years, I&apos;ve discovered that the best engineers aren&apos;t just masters of code, they&apos;re
                   masters of change. Whether it&apos;s a complete tech stack migration or a sudden pivot in business
                   requirements, I thrive in the chaos and deliver results that matter.
                 </p>
@@ -82,7 +82,7 @@ export function About() {
                 for our naturally sedentary profession. Whether it&apos;s meal prepping for sustained energy, using the
                 20-20-20 rule for eye health, or advocating for walking meetings, I believe peak cognitive performance
                 starts with intentional wellness choices. The best developers aren&apos;t just efficient with their
-                code—they&apos;re efficient with their bodies and minds.
+                code. They&apos;re efficient with their bodies and minds.
               </p>
             </div>
           </motion.div>
