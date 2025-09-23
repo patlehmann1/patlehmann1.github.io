@@ -73,6 +73,18 @@ export function About() {
                 with confidence.
               </p>
             </div>
+
+            <div className="bg-gradient-to-r from-green-500/10 to-green-400/5 p-6 rounded-lg border border-green-500/20">
+              <h4 className="font-semibold mb-3 text-green-600 dark:text-green-400">Optimizing the Developer Lifestyle</h4>
+              <p className="text-muted-foreground">
+                The same optimization mindset I apply to code applies to health. I&apos;m passionate about whole foods over
+                processed shortcuts, strategic movement breaks during deep work sessions, and adjusting calorie intake
+                for our naturally sedentary profession. Whether it&apos;s meal prepping for sustained energy, using the
+                20-20-20 rule for eye health, or advocating for walking meetings, I believe peak cognitive performance
+                starts with intentional wellness choices. The best developers aren&apos;t just efficient with their
+                code—they&apos;re efficient with their bodies and minds.
+              </p>
+            </div>
           </motion.div>
 
           <motion.div
