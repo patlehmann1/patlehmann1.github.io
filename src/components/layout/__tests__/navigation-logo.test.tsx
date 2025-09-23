@@ -12,11 +12,16 @@ interface MotionButtonProps {
 
 jest.mock('framer-motion', () => ({
   motion: {
-    button: ({ children, onClick, className, ...props }: MotionButtonProps) => (
-      <button onClick={onClick} className={className} {...props}>
-        {children}
-      </button>
-    )
+    button: ({ children, onClick, className, ...props }: MotionButtonProps) => {
+      // Filter out Framer Motion specific props to avoid React warnings
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { whileHover, whileTap, initial, animate, transition, exit, ...domProps } = props
+      return (
+        <button onClick={onClick} className={className} {...domProps}>
+          {children}
+        </button>
+      )
+    }
   }
 }))
 

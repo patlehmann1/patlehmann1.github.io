@@ -19,16 +19,26 @@ interface MotionButtonProps {
 
 jest.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, className, ...props }: MotionDivProps) => (
-      <div className={className} {...props}>
-        {children}
-      </div>
-    ),
-    button: ({ children, onClick, className, ...props }: MotionButtonProps) => (
-      <button onClick={onClick} className={className} {...props}>
-        {children}
-      </button>
-    )
+    div: ({ children, className, ...props }: MotionDivProps) => {
+      // Filter out Framer Motion specific props to avoid React warnings
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { whileHover, whileTap, initial, animate, transition, exit, ...domProps } = props
+      return (
+        <div className={className} {...domProps}>
+          {children}
+        </div>
+      )
+    },
+    button: ({ children, onClick, className, ...props }: MotionButtonProps) => {
+      // Filter out Framer Motion specific props to avoid React warnings
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { whileHover, whileTap, initial, animate, transition, exit, ...domProps } = props
+      return (
+        <button onClick={onClick} className={className} {...domProps}>
+          {children}
+        </button>
+      )
+    }
   }
 }))
 
@@ -310,7 +320,7 @@ describe('MobileNavigation Component', () => {
     })
 
     it('should apply active styles when isActiveItem returns true', () => {
-      mockIsActiveItem.mockImplementation((href: string) => href === '/projects')
+      mockIsActiveItem.mockImplementation((href: string) => href === '#projects')
       render(
         <MobileNavigation
           isMenuOpen={true}
@@ -321,7 +331,7 @@ describe('MobileNavigation Component', () => {
 
       // Check that mobileNavigationItemClasses was called with correct active states
       UI.navItems.forEach(item => {
-        const isActive = item.href === '/projects'
+        const isActive = item.href === '#projects'
         expect(mobileNavigationItemClasses).toHaveBeenCalledWith(isActive)
       })
     })
@@ -400,7 +410,7 @@ describe('MobileNavigation Component', () => {
       const originalNavItems = UI.navItems
 
       // Temporarily modify UI.navItems
-      ;(UI as { navItems: typeof UI.navItems }).navItems = []
+      ;(UI as unknown as { navItems: never[] }).navItems = []
 
       mockIsActiveItem.mockReturnValue(false)
       render(
@@ -420,7 +430,7 @@ describe('MobileNavigation Component', () => {
       expect(buttons).toHaveLength(1) // Only theme toggle button
 
       // Restore original navItems
-      ;(UI as { navItems: typeof UI.navItems }).navItems = originalNavItems
+      ;(UI as { navItems: typeof originalNavItems }).navItems = originalNavItems
     })
 
     it('should render correct number of navigation buttons when open', () => {
