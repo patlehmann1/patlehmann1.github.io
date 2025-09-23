@@ -76,7 +76,7 @@ export function Contact() {
                     href={link.href}
                     target={link.href.startsWith('mailto:') ? '_self' : '_blank'}
                     rel={link.href.startsWith('mailto:') ? '' : 'noopener noreferrer'}
-                    className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card border rounded-lg hover:shadow-warm hover:border-primary/30 transition-all duration-300"
+                    className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card border rounded-lg hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 hover:scale-105 hover:-translate-y-1 transition-all duration-300 transform"
                   >
                     <div className="p-3 bg-primary/10 rounded-lg text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                       {link.icon}
@@ -148,7 +148,7 @@ export function Contact() {
 
             <div className="text-center">
               <Button size="lg" className="shadow-warm hover:shadow-lg transition-all duration-300" asChild>
-                <a href="mailto:patlehmann1@gmail.com">
+                <a href="mailto:contact@patricklehmann.io">
                   <Mail className="mr-2 h-4 w-4" />
                   Get In Touch
                 </a>

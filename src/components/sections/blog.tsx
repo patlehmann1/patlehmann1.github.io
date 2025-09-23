@@ -1,14 +1,28 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/lib/blog";
 import Link from "next/link";
 import { BlogCard } from "@/components/blog/blog-card";
+import { BlogCardSkeleton } from "@/components/ui/skeleton";
+import { BlogPost } from "@/lib/types";
 
 export function Blog() {
-  const featuredPosts = getFeaturedPosts(3);
+  const [isLoading, setIsLoading] = useState(true);
+  const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
+
+  useEffect(() => {
+    // Simulate loading delay for smooth skeleton transition
+    const timer = setTimeout(() => {
+      setFeaturedPosts(getFeaturedPosts(3));
+      setIsLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <section id="blog" className="py-16 sm:py-20 px-3 sm:px-4 lg:px-6">
@@ -27,9 +41,22 @@ export function Blog() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
-          {featuredPosts.map((post, index) => (
-            <BlogCard key={post.slug} post={post} index={index} isHomePage={true} />
-          ))}
+          {isLoading ? (
+            Array.from({ length: 3 }).map((_, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <BlogCardSkeleton />
+              </motion.div>
+            ))
+          ) : (
+            featuredPosts.map((post, index) => (
+              <BlogCard key={post.slug} post={post} index={index} isHomePage={true} />
+            ))
+          )}
         </div>
 
         <motion.div

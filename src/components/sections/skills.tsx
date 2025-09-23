@@ -60,11 +60,11 @@ export function Skills() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start lg:items-center"
+              className="group grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-start lg:items-center hover:scale-[1.02] transition-all duration-300"
             >
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
-                  <div className="p-3 bg-primary/10 rounded-lg text-primary">
+                  <div className="p-3 bg-primary/10 rounded-lg text-primary group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
                     {category.icon}
                   </div>
                   <h3 className="text-2xl font-bold">{category.title}</h3>
@@ -86,7 +86,7 @@ export function Skills() {
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.4, delay: (index * 0.1) + (skillIndex * 0.05) }}
                       viewport={{ once: true }}
-                      className="group bg-card border rounded-lg p-3 sm:p-4 text-center hover:shadow-warm hover:border-primary/30 transition-all duration-300"
+                      className="group bg-card border rounded-lg p-3 sm:p-4 text-center hover:shadow-warm hover:shadow-primary/20 hover:border-primary/30 hover:scale-105 hover:-translate-y-1 transition-all duration-300 transform"
                     >
                       <div className="font-medium text-xs sm:text-sm group-hover:text-primary transition-colors">
                         {skill}
