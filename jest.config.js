@@ -18,22 +18,19 @@ const customJestConfig = {
     '!src/**/*.d.ts',
     '!src/**/*.stories.{ts,tsx}',
     '!src/app/**', // Exclude Next.js app directory from coverage
-    // Exclude large UI components that don't have tests yet
+    // Exclude remaining large UI components that don't have tests yet
     '!src/components/sections/**',
     '!src/components/layout/**',
-    '!src/components/blog/**',
-    '!src/components/ui/theme-toggle.tsx',
-    '!src/hooks/useBlogFiltering.ts',
-    '!src/hooks/useReadingProgress.ts',
-    '!src/lib/rss.ts',
-    '!src/lib/ui-utils.ts',
+    '!src/components/blog/blog-post-content.tsx', // Complex content renderer
+    '!src/components/blog/reading-progress-bar.tsx', // UI component with simple logic
+    '!src/lib/rss.ts', // RSS generation utility
   ],
   coverageThreshold: {
     global: {
-      branches: 70,
-      functions: 25, // Temporarily lower for current codebase state
-      lines: 70,
-      statements: 70,
+      branches: 90, // Aggressive but achievable
+      functions: 90, // High standard for tested functions
+      lines: 90,     // Comprehensive line coverage
+      statements: 90, // Strong statement coverage
     },
   },
   moduleNameMapper: {

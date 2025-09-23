@@ -10,6 +10,10 @@ export function getAllPosts(): BlogPost[] {
 }
 
 export function getFeaturedPosts(limit: number = 3): BlogPost[] {
+  if (limit <= 0) {
+    return [];
+  }
+
   return getAllPosts()
     .filter(post => post.featured)
     .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime())
@@ -22,6 +26,10 @@ export function getPostBySlug(slug: string): BlogPost | null {
 }
 
 export function getPostsByTag(tag: string): BlogPost[] {
+  if (!tag || typeof tag !== 'string') {
+    return [];
+  }
+
   return getAllPosts().filter(post =>
     post.tags.some(t => t.toLowerCase() === tag.toLowerCase())
   );
