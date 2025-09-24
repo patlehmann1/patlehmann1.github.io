@@ -37,9 +37,10 @@ export function Hero() {
               <div className="text-xl sm:text-2xl md:text-3xl font-light text-muted-foreground">
                 <Typewriter
                   texts={[
+                    "Faith Driven Developer",
                     "Full-Stack Engineer",
                     "Problem Solver",
-                    "AI Development Advocate",
+                    "AI-Enhanced Development Advocate",
                     "Team Collaborator"
                   ]}
                   speed={80}
