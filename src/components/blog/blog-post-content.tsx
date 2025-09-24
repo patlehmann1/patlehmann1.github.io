@@ -23,7 +23,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
     "author": {
       "@type": "Person",
       "name": "Patrick Lehmann",
-      "url": "https://patricklehmann.com"
+      "url": "https://patricklehmann.io"
     },
     "publisher": {
       "@type": "Person",
@@ -38,7 +38,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
     "timeRequired": `PT${post.readingTime}M`,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://patricklehmann.com/blog/${post.slug}`
+      "@id": `https://patricklehmann.io/blog/${post.slug}`
     }
   };
 

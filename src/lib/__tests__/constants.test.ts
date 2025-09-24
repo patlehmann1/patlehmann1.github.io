@@ -312,7 +312,7 @@ describe('Environment-dependent values', () => {
     jest.resetModules()
     const { SITE_CONFIG: freshConfig } = await import('../constants')
 
-    expect(freshConfig.url).toBe('https://patricklehmann.com')
+    expect(freshConfig.url).toBe('https://patricklehmann.io')
   })
 
   it('should use environment URL when available', async () => {
