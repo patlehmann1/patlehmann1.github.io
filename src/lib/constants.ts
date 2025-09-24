@@ -63,3 +63,11 @@ export const READING_PROGRESS = {
   barHeight: 3, // Height in pixels
   contentSelector: "article", // Default content selector
 } as const;
+
+// Open Graph Preview Tech Stack
+export const OG_PREVIEW_TECH_STACK = [
+  { name: "C#/.NET", years: "4+ years" },
+  { name: "TypeScript", years: "6+ years" },
+  { name: "React", years: "6+ years" },
+  { name: "Angular", years: "2+ years" },
+] as const;

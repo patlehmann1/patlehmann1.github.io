@@ -29,11 +29,22 @@ export const metadata: Metadata = {
     description: "Full-stack software engineer specializing in scalable applications and enterprise integrations. Expert in C#/.NET, TypeScript, React, and Angular.",
     type: "website",
     locale: "en_US",
+    url: "https://patricklehmann.io",
+    siteName: "Patrick Lehmann",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Patrick Lehmann - Full-Stack Software Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Patrick Lehmann - Full-Stack Software Engineer",
     description: "Full-stack software engineer with 6+ years building scalable applications. Expert in C#/.NET, TypeScript, React, and Angular.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
