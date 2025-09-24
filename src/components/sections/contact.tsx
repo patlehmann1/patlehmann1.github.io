@@ -57,10 +57,10 @@ export function Contact() {
             className="space-y-6 sm:space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold mb-4 gradient-warm">Let&apos;s Build Something Great</h3>
+              <h3 className="text-2xl font-bold mb-4 gradient-warm">Let&apos;s Talk Code</h3>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Whether you&apos;re working on complex legacy systems, modern architecture challenges,
-                or interesting technical projects, I&apos;m always interested in discussing solutions and sharing insights.
+                Got a tricky legacy system that needs untangling? Working on a modern architecture challenge?
+                I enjoy discussing technical problems and sharing what I&apos;ve learned along the way.
               </p>
             </div>
 

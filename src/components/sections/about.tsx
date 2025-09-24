@@ -31,15 +31,14 @@ export function About() {
               <h3 className="text-3xl font-bold mb-6 gradient-warm">The Art of Adaptation</h3>
               <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
                 <p>
-                  Over 6+ years, I&apos;ve discovered that the best engineers aren&apos;t just masters of code, they&apos;re
-                  masters of change. Whether it&apos;s a complete tech stack migration or a sudden pivot in business
-                  requirements, I thrive in the chaos and deliver results that matter.
+                  Over 6+ years, I&apos;ve learned that the best engineers adapt quickly to change. Tech stack migrations,
+                  shifting business requirements, legacy system overhauls - I&apos;ve handled them all and consistently
+                  delivered working solutions.
                 </p>
                 <p>
-                  At Global Payments, I&apos;ve worn many hats across three teams: from wrestling with legacy
-                  Backbone.js systems to integrating modern Angular microfrontends with Pendo Analytics.
-                  Each transition taught me something new about resilience, problem-solving, and the art of
-                  making complex systems work together.
+                  At Global Payments, I&apos;ve worked across three different teams: wrestling with legacy
+                  Backbone.js systems, integrating modern Angular microfrontends, and implementing Pendo Analytics.
+                  Each move taught me how to quickly understand new codebases and make different technologies work together.
                 </p>
               </div>
             </div>
@@ -58,22 +57,19 @@ export function About() {
             <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 rounded-lg border border-primary/20">
               <h4 className="font-semibold mb-3 text-primary">The Disc Golf Connection</h4>
               <p className="text-muted-foreground">
-                Just like in disc golf, software development is about reading the course, adapting to conditions,
-                and making precise decisions under pressure. Whether I&apos;m debugging a complex integration or
-                throwing a forehand around a guardian tree, it&apos;s all about finding the right line and executing
-                with confidence.
+                Disc golf taught me patience and precision - skills that transfer directly to debugging code.
+                Both require reading the situation, adapting to obstacles, and executing under pressure.
+                Sometimes the best solution isn&apos;t the obvious one.
               </p>
             </div>
 
             <div className="bg-gradient-to-r from-green-500/10 to-green-400/5 p-6 rounded-lg border border-green-500/20">
               <h4 className="font-semibold mb-3 text-green-600 dark:text-green-400">Optimizing the Developer Lifestyle</h4>
               <p className="text-muted-foreground">
-                The same optimization mindset I apply to code applies to health. I&apos;m passionate about whole foods over
-                processed shortcuts, strategic movement breaks during deep work sessions, and adjusting calorie intake
-                for our naturally sedentary profession. Whether it&apos;s meal prepping for sustained energy, using the
-                20-20-20 rule for eye health, or advocating for walking meetings, I believe peak cognitive performance
-                starts with intentional wellness choices. The best developers aren&apos;t just efficient with their
-                code. They&apos;re efficient with their bodies and minds.
+                Sitting at a desk all day takes a toll, so I&apos;ve gotten into optimizing the developer lifestyle:
+                meal prepping for sustained energy, taking movement breaks during long coding sessions, and using the
+                20-20-20 rule for eye health. Same attention to detail I put into code, applied to staying healthy
+                and sharp.
               </p>
             </div>
           </motion.div>

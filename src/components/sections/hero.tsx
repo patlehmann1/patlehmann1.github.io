@@ -49,8 +49,8 @@ export function Hero() {
               </div>
 
               <div className="max-w-2xl mx-auto text-base sm:text-lg leading-relaxed text-muted-foreground">
-                6+ years crafting scalable applications with C#/.NET, TypeScript, and modern frameworks.
-                I thrive in dynamic environments and deliver consistent value through technological shifts.
+                I've spent 6+ years helping teams navigate technical changes and ship reliable software
+                using C#/.NET, TypeScript, and modern frameworks.
               </div>
             </motion.div>
 
