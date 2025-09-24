@@ -241,17 +241,6 @@ export function SkillsEnhanced() {
     );
   };
 
-  const ProgressBar = ({ level, skillName }: { level: number; skillName: string }) => (
-    <div className="w-full bg-muted/30 rounded-full h-2 mt-2">
-      <motion.div
-        className="h-2 bg-gradient-to-r from-primary to-primary/80 rounded-full"
-        initial={{ width: 0 }}
-        whileInView={{ width: `${(level / 5) * 100}%` }}
-        transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-        viewport={{ once: true }}
-      />
-    </div>
-  );
 
   return (
     <section id="skills" className="py-16 sm:py-20 px-3 sm:px-4 lg:px-6">
@@ -324,8 +313,6 @@ export function SkillsEnhanced() {
                         </span>
                       </div>
 
-                      {/* Progress Bar */}
-                      <ProgressBar level={skill.level} skillName={skill.name} />
 
                       {/* Hover Tooltip */}
                       {hoveredSkill === skill.name && (
