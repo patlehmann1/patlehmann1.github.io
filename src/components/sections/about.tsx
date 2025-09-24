@@ -44,24 +44,15 @@ export function About() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-              <div className="bg-primary/5 border-l-4 border-primary p-4 sm:p-6 rounded-r-lg">
-                <h4 className="font-bold text-primary mb-3">🚀 Current Focus</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• International auth for UK/Ireland markets</li>
-                  <li>• Enterprise analytics platform integration</li>
-                  <li>• AI-assisted development advocacy</li>
-                </ul>
-              </div>
-              <div className="bg-muted/50 border-l-4 border-muted-foreground p-4 sm:p-6 rounded-r-lg">
-                <h4 className="font-bold text-muted-foreground mb-3">🎯 Beyond Code</h4>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Disc golf strategy & precision</li>
-                  <li>• Christian study & apologetics</li>
-                  <li>• Cross-team mentoring</li>
-                  <li>• Process optimization</li>
-                </ul>
-              </div>
+            <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 sm:p-6 rounded-r-lg">
+              <h4 className="font-bold text-muted-foreground mb-3">🎯 Beyond Code</h4>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li>• Disc golf strategy & precision</li>
+                <li>• Christian study & apologetics</li>
+                <li>• Family time with Hillary and Adeline</li>
+                <li>• Cross-team mentoring</li>
+                <li>• Process optimization</li>
+              </ul>
             </div>
 
             <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 rounded-lg border border-primary/20">

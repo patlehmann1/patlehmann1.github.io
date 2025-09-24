@@ -74,6 +74,34 @@ export function Experience() {
           </p>
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
+            <h3 className="font-bold text-primary mb-4 flex items-center gap-2">
+              🚀 Currently Working On
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-muted-foreground">
+              <div className="flex items-start gap-3">
+                <span className="text-primary">🔧</span>
+                <span>Pendo Analytics integration at Global Payments</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-primary">🌍</span>
+                <span>International auth solutions for UK/Ireland markets</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-primary">🤖</span>
+                <span>Championing AI-assisted development practices</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         <div className="relative">
           <div className="hidden sm:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent" />
 

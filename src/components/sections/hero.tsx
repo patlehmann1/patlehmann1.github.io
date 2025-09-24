@@ -2,9 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Mail, MapPin, Coffee } from "lucide-react";
-import { GitHubIcon } from "@/components/ui/icons/github-icon";
-import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
+import { Mail } from "lucide-react";
 import { Typewriter } from "@/components/ui/typewriter";
 
 export function Hero() {
@@ -16,16 +14,16 @@ export function Hero() {
       <div className="sm:hidden absolute top-10 right-4 w-32 h-32 bg-primary/3 rounded-full blur-2xl animate-float" />
       <div className="sm:hidden absolute bottom-10 left-4 w-40 h-40 bg-primary/2 rounded-full blur-2xl animate-float-slow" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 py-16 sm:py-20">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-start lg:items-center min-h-[70vh] sm:min-h-[80vh]">
-          <div className="lg:col-span-8 space-y-6 sm:space-y-8 min-w-0">
+      <div className="relative z-10 max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 pt-8 sm:pt-12 pb-16 sm:pb-20">
+        <div className="flex items-center justify-center min-h-[50vh] sm:min-h-[60vh]">
+          <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8 min-w-0">
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <div className="flex items-center gap-3 text-primary font-medium">
+              <div className="flex items-center justify-center gap-3 text-primary font-medium">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 Focused on enterprise analytics & international solutions
               </div>
@@ -50,17 +48,17 @@ export function Hero() {
                 />
               </div>
 
-              <div className="max-w-none sm:max-w-xl text-base sm:text-lg leading-relaxed text-muted-foreground break-words">
+              <div className="max-w-2xl mx-auto text-base sm:text-lg leading-relaxed text-muted-foreground">
                 6+ years crafting scalable applications with C#/.NET, TypeScript, and modern frameworks.
                 I thrive in dynamic environments and deliver consistent value through technological shifts.
               </div>
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-wrap gap-3 sm:gap-4"
+              className="flex justify-center"
             >
               <Button size="lg" className="shadow-warm hover:shadow-lg transition-all duration-300 min-w-0 flex-shrink" asChild>
                 <a href="mailto:contact@patricklehmann.io">
@@ -68,58 +66,9 @@ export function Hero() {
                   Let&apos;s Connect
                 </a>
               </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a href="https://github.com/patlehmann1" target="_blank" rel="noopener noreferrer">
-                  <GitHubIcon className="mr-2 h-4 w-4" />
-                  GitHub
-                </a>
-              </Button>
-              <Button variant="outline" size="lg" asChild>
-                <a href="https://linkedin.com/in/patlehmann" target="_blank" rel="noopener noreferrer">
-                  <LinkedInIcon className="mr-2 h-4 w-4" />
-                  LinkedIn
-                </a>
-              </Button>
             </motion.div>
           </div>
 
-          <div className="lg:col-span-4 space-y-4 sm:space-y-6 mt-8 lg:mt-0 min-w-0">
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="space-y-4 sm:space-y-6"
-            >
-              <div className="bg-card border rounded-lg p-6 shadow-warm">
-                <h3 className="font-semibold mb-4 flex items-center gap-2">
-                  <Coffee className="h-4 w-4" />
-                  Currently Working On
-                </h3>
-                <div className="space-y-3 text-sm text-muted-foreground">
-                  <div>🔧 Pendo Analytics integration at Global Payments</div>
-                  <div>🌍 International auth solutions for UK/Ireland markets</div>
-                  <div>🤖 Championing AI-assisted development practices</div>
-                </div>
-              </div>
-
-              <div className="bg-card border rounded-lg p-6 shadow-warm">
-                <h3 className="font-semibold mb-4 flex items-center gap-2">
-                  <MapPin className="h-4 w-4" />
-                  Based In
-                </h3>
-                <div className="text-sm text-muted-foreground">
-                  Palm Bay, Florida • Remote-focused
-                </div>
-              </div>
-
-              <div className="border-l-4 border-primary pl-4">
-                <div className="text-sm font-medium text-primary">Fun Fact</div>
-                <div className="text-sm text-muted-foreground mt-1">
-                  When I&apos;m not coding, you&apos;ll find me on the disc golf course working on precision and strategy, or at church with my wife Hillary and our daughter Adeline.
-                </div>
-              </div>
-            </motion.div>
-          </div>
         </div>
       </div>
     </section>

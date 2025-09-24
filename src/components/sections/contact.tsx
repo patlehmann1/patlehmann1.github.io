@@ -101,39 +101,6 @@ export function Contact() {
             viewport={{ once: true }}
             className="space-y-4 sm:space-y-6 mt-8 lg:mt-0"
           >
-            <div className="bg-primary/5 border border-primary/20 rounded-lg p-6 sm:p-8">
-              <h3 className="text-xl font-bold mb-6 text-primary">What I Bring to the Table</h3>
-              <div className="space-y-4">
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                  <div>
-                    <div className="font-medium mb-1">Cross-Platform Expertise</div>
-                    <div className="text-sm text-muted-foreground">C#/.NET, TypeScript, Angular, React - I speak your tech stack</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                  <div>
-                    <div className="font-medium mb-1">Enterprise Experience</div>
-                    <div className="text-sm text-muted-foreground">Analytics integrations, international auth, complex migrations</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                  <div>
-                    <div className="font-medium mb-1">AI-Forward Approach</div>
-                    <div className="text-sm text-muted-foreground">Championing modern development with GitHub Copilot & Claude Code</div>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                  <div>
-                    <div className="font-medium mb-1">Adaptability</div>
-                    <div className="text-sm text-muted-foreground">Thrived through 3 team transitions in 3.5 years</div>
-                  </div>
-                </div>
-              </div>
-            </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-card border rounded-lg p-4 text-center">
