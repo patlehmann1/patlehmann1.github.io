@@ -14,8 +14,8 @@ export function Hero() {
       <div className="sm:hidden absolute top-10 right-4 w-32 h-32 bg-primary/3 rounded-full blur-2xl animate-float" />
       <div className="sm:hidden absolute bottom-10 left-4 w-40 h-40 bg-primary/2 rounded-full blur-2xl animate-float-slow" />
 
-      <div className="relative z-10 max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 pt-8 sm:pt-12 pb-16 sm:pb-20">
-        <div className="flex items-center justify-center min-h-[50vh] sm:min-h-[60vh]">
+      <div className="relative z-10 max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 pt-4 sm:pt-12 pb-16 sm:pb-20">
+        <div className="flex items-center justify-center min-h-[70vh] sm:min-h-[60vh]">
           <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8 min-w-0">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
