@@ -36,8 +36,10 @@ export function About() {
                   delivered working solutions.
                 </p>
                 <p>
-                  At Global Payments, I&apos;ve worked across three different teams: wrestling with legacy
-                  Backbone.js systems, integrating modern Angular microfrontends, and implementing Pendo Analytics.
+                  At Global Payments, I&apos;ve worked across three different teams: started on Heartland Retail Online
+                  adding e-commerce capabilities to the POS system, moved to Heartland Retail POS working with the
+                  legacy Backbone.js codebase, and now I&apos;m on Genius Retail POS handling Pendo Analytics,
+                  OneTrust integration, Angular microfrontends, and UK/Ireland market expansion.
                   Each move taught me how to quickly understand new codebases and make different technologies work together.
                 </p>
               </div>
