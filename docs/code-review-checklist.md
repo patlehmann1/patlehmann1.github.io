@@ -213,6 +213,48 @@ Before submitting code for review, ensure:
 - [ ] Migration guide provided for breaking changes
 - [ ] Rollback plan considered for risky changes
 
+## Content Review
+
+When reviewing changes that include user-facing content, ensure:
+
+### 📝 Natural Language Quality
+- [ ] Content sounds conversational and human, not AI-generated
+- [ ] No repetitive sentence structures (especially "Whether it's..." patterns)
+- [ ] Active voice preferred over passive voice where appropriate
+- [ ] Tone is personal and authentic, not corporate or robotic
+
+### 🚫 AI-Generated Patterns Avoided
+- [ ] No "Whether it's X, Y, or Z" repetitive constructions
+- [ ] Corporate buzzwords eliminated ("deliver value", "masters of", "peak performance")
+- [ ] Generic startup language avoided ("Let's Build Something Great", "cutting-edge solutions")
+- [ ] Forced analogies and metaphors feel natural, not contrived
+
+### ✏️ Punctuation and Structure
+- [ ] Simple punctuation used (periods, commas) over complex punctuation (em dashes, semicolons)
+- [ ] Sentences are short and clear rather than complex and verbose
+- [ ] Parenthetical statements are minimal and don't disrupt reading flow
+- [ ] Excessive exclamation points or enthusiastic punctuation avoided
+
+### 👤 Personal Voice Check
+- [ ] Content sounds like it came from a real person, not marketing copy
+- [ ] Technical explanations are clear and jargon-free when possible
+- [ ] Examples and descriptions feel authentic to the person/company
+- [ ] Call-to-actions are direct and conversational
+
+### 📋 Content Red Flags
+Watch for and flag these patterns:
+- [ ] Repetitive "Whether it's..." appearing 2+ times in same section
+- [ ] Corporate speak: "synergy", "paradigm shift", "game-changing", "next-generation"
+- [ ] AI patterns: "The art of...", "Masters of...", generic superlatives
+- [ ] Overly complex sentences that could be simplified
+- [ ] Forced enthusiasm that doesn't feel genuine
+
+### ✅ Content Review Process
+- [ ] Read content aloud - does it sound like natural speech?
+- [ ] Check for repetitive patterns across the entire page/section
+- [ ] Ensure technical terms are explained appropriately for the audience
+- [ ] Verify that personality comes through without being unprofessional
+
 ## Review Process Guidelines
 
 ### 👀 For Reviewers

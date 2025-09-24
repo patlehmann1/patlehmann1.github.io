@@ -378,4 +378,85 @@ This project prioritizes **readability**, **maintainability**, **YAGNI complianc
 - **Solution**: Use tree shaking, dynamic imports, analyze bundle size
 - **Example**: Import only needed functions from utility libraries
 
+## Content Quality Standards
+
+This project prioritizes **natural language**, **authentic voice**, and **human-sounding content** over AI-generated patterns and corporate buzzwords.
+
+### 📝 Natural Language Principles
+
+#### Conversational Tone
+- Write like you're talking to a colleague, not writing marketing copy
+- Use simple, direct sentences instead of complex structures
+- Prefer active voice over passive voice
+- Sound human and personal, not corporate or robotic
+
+#### Avoid AI-Generated Patterns
+- **Never use repetitive structures** like "Whether it's X, Y, or Z"
+- **Eliminate buzzwords**: "deliver consistent value", "masters of change", "peak performance", "synergy"
+- **No generic startup language**: "Let's Build Something Great", "Innovative Solutions"
+- **Avoid forced analogies** that feel contrived or overly metaphorical
+
+#### Simple Punctuation
+- **Prefer periods and commas** over em dashes (—) and semicolons
+- **Use short sentences** instead of complex compound sentences
+- **Limit parenthetical statements** that disrupt reading flow
+- **Avoid excessive exclamation points** or overly enthusiastic punctuation
+
+### ✅ Content Examples
+
+#### Hero/Introduction Text
+```markdown
+❌ "I thrive in dynamic environments and deliver consistent value through technological shifts"
+✅ "I've spent 6+ years helping teams navigate technical changes and ship reliable software"
+
+❌ "Passionate about crafting cutting-edge solutions that drive business transformation"
+✅ "I build web applications with C#/.NET, TypeScript, and modern frameworks"
+```
+
+#### About/Personal Sections
+```markdown
+❌ "Whether it's debugging complex integrations or throwing a forehand around a guardian tree"
+✅ "Disc golf taught me patience and precision - skills that transfer directly to debugging code"
+
+❌ "Masters of code who are masters of change, delivering results that matter"
+✅ "The best engineers adapt quickly to change and consistently deliver working solutions"
+```
+
+#### Contact/CTA Sections
+```markdown
+❌ "Let's Build Something Great - Whether you're working on complex legacy systems..."
+✅ "Let's Talk Code - Got a tricky legacy system that needs untangling?"
+
+❌ "I'm always interested in discussing solutions and sharing insights"
+✅ "I enjoy discussing technical problems and sharing what I've learned along the way"
+```
+
+### 🚫 Red Flags to Avoid
+
+#### Corporate Speak
+- "deliver consistent value", "drive innovation", "optimize synergies"
+- "leverage cutting-edge solutions", "maximize ROI", "streamline efficiency"
+- "paradigm shifts", "game-changing", "next-generation"
+
+#### AI-Generated Patterns
+- Repetitive "Whether it's..." constructions (3+ times is a red flag)
+- "The art of...", "Masters of...", "Peak performance" language
+- Overly formal analogies that feel forced or pretentious
+- Generic superlatives and marketing-speak
+
+#### Complex Punctuation
+- Em dashes for simple pauses (use commas instead)
+- Semicolons in casual content (prefer periods or "and")
+- Excessive parenthetical explanations (rewrite as separate sentences)
+
+### 📋 Content Review Process
+
+When writing or reviewing content:
+
+1. **Read aloud** - Does it sound like something a human would actually say?
+2. **Check for patterns** - Are there repetitive sentence structures?
+3. **Eliminate buzzwords** - Replace corporate language with plain English
+4. **Simplify punctuation** - Can em dashes become commas or periods?
+5. **Personal voice** - Does this sound authentic and conversational?
+
 This comprehensive guide ensures consistent, maintainable, and high-quality code across the entire project.

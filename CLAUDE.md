@@ -145,4 +145,11 @@ For comprehensive information about specific aspects of the project, refer to th
 - **Styling**: Tailwind CSS with design system tokens, `cn()` utility for conditional classes
 - **Testing**: React Testing Library for components, Jest for utilities, comprehensive mocking
 
+### Content & Writing Guidelines
+- **Natural Language**: Write conversationally, avoid AI-generated patterns and corporate buzzwords
+- **Avoid Repetitive Structures**: No "Whether it's X, Y, or Z" patterns or forced analogies
+- **Simple Punctuation**: Prefer periods and commas over em dashes and complex punctuation
+- **Personal Voice**: Sound human and authentic, not like marketing copy or AI-generated content
+- **Direct Communication**: Use short, clear sentences instead of complex, verbose structures
+
 For detailed implementation patterns, architectural decisions, and comprehensive guidelines, please refer to the linked documentation files above.
