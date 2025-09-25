@@ -51,7 +51,7 @@ describe('XIcon', () => {
 
     const icon = screen.getByRole('img', { name: 'X' })
     expect(icon).toBeInTheDocument()
-    expect(icon).toHaveClass('')
+    expect(icon).toHaveAttribute('class', '')
   })
 
   it('should handle multiple CSS classes', () => {

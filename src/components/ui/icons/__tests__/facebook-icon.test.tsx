@@ -51,7 +51,7 @@ describe('FacebookIcon', () => {
 
     const icon = screen.getByRole('img', { name: 'Facebook' })
     expect(icon).toBeInTheDocument()
-    expect(icon).toHaveClass('')
+    expect(icon).toHaveAttribute('class', '')
   })
 
   it('should handle multiple CSS classes', () => {
