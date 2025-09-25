@@ -7,8 +7,8 @@
     <language>en-US</language>
     <managingEditor>contact@patricklehmann.io (Patrick Lehmann)</managingEditor>
     <webMaster>contact@patricklehmann.io (Patrick Lehmann)</webMaster>
-    <lastBuildDate>Tue, 23 Sep 2025 18:48:01 GMT</lastBuildDate>
-    <pubDate>Tue, 23 Sep 2025 18:48:01 GMT</pubDate>
+    <lastBuildDate>Thu, 25 Sep 2025 14:41:09 GMT</lastBuildDate>
+    <pubDate>Thu, 25 Sep 2025 14:41:09 GMT</pubDate>
     <generator>Next.js RSS Generator</generator>
     <image>
       <url>http://localhost:3000/favicon.svg</url>
@@ -17,6 +17,15 @@
     </image>
     <atom:link href="http://localhost:3000/rss.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>From Natural Gas to .NET: What Blue Collar Work Taught Me About Clean Code</title>
+      <description>How six years of transitioning from 70+ hour weeks in natural gas to C# development taught me that blue collar work habits translate directly to writing better, cleaner code.</description>
+      <link>http://localhost:3000/blog/natural-gas-to-dotnet-clean-code</link>
+      <guid isPermaLink="true">http://localhost:3000/blog/natural-gas-to-dotnet-clean-code</guid>
+      <pubDate>Thu, 25 Sep 2025 00:00:00 GMT</pubDate>
+      <author>contact@patricklehmann.io (Patrick Lehmann)</author>
+      <category>Development</category><category>Clean Code</category><category>Personal Growth</category><category>C#</category><category>Blue Collar</category>
+    </item>
     <item>
       <title>Coding as Worship: How Programming Reflects God&#39;s Creative Nature</title>
       <description>Exploring the spiritual parallels between programming and divine creation. How writing code reflects being made in the image of a Creator God who spoke the universe into existence.</description>
