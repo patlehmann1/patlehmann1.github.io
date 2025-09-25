@@ -99,7 +99,7 @@ setupTests.ts              # Global test setup and mocks
 2. **Projects Showcase** - Interactive grid with filtering
 3. **Blog Section** - JSON-powered articles with full blog layout
 4. **Contact Form** - React Hook Form with Zod validation
-5. **Newsletter Subscription** - Kit.com integration with form validation
+5. **Newsletter Subscription** - Kit.com integration with form validation and custom domain (newsletter.patricklehmann.io)
 6. **Dark Mode** - next-themes implementation with system preference
 7. **SEO Optimization** - Metadata API, structured data, RSS feeds, and sitemap
 8. **RSS Feed Generation** - Automated feed generation for blog posts

@@ -32,6 +32,12 @@ function generateSitemap(posts) {
       changefreq: 'weekly',
       priority: '0.8',
       lastmod: buildDate
+    },
+    {
+      url: 'https://newsletter.patricklehmann.io',
+      changefreq: 'monthly',
+      priority: '0.6',
+      lastmod: buildDate
     }
   ];
 
@@ -80,9 +86,10 @@ function generateStaticSitemap() {
     fs.writeFileSync(outputPath, sitemapXml, 'utf8');
 
     console.log(`✅ Sitemap generated successfully at ${outputPath}`);
-    console.log(`📊 Included ${articlesData.length + 2} total URLs:`);
+    console.log(`📊 Included ${articlesData.length + 3} total URLs:`);
     console.log('   • 1 homepage');
     console.log('   • 1 blog listing page');
+    console.log('   • 1 newsletter landing page');
     console.log(`   • ${articlesData.length} blog posts`);
   } catch (error) {
     console.error('❌ Error generating sitemap:', error);
