@@ -8,6 +8,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
+import { SocialShare } from "@/components/blog/social-share";
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -129,6 +130,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
           transition={{ duration: 0.5, delay: 0.15 }}
           className="mt-12"
         >
+          <SocialShare post={post} className="mb-8" />
           <NewsletterSignup />
         </motion.div>
 
