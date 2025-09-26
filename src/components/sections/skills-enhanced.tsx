@@ -99,6 +99,18 @@ export function SkillsEnhanced() {
           level: 4,
           years: "4+ years",
           description: "Modern cross-platform web API framework"
+        },
+        {
+          name: "Bootstrap",
+          level: 5,
+          years: "6+ years",
+          description: "Responsive CSS framework for rapid prototyping"
+        },
+        {
+          name: "Material-UI",
+          level: 3,
+          years: "2+ years",
+          description: "React component library with Material Design"
         }
       ]
     },
@@ -148,6 +160,30 @@ export function SkillsEnhanced() {
           level: 3,
           years: "5+ years",
           description: "Web server and reverse proxy configuration"
+        },
+        {
+          name: "AWS",
+          level: 3,
+          years: "3+ years",
+          description: "Amazon Web Services for scalable cloud solutions"
+        },
+        {
+          name: "AWS Lambda",
+          level: 3,
+          years: "2+ years",
+          description: "Serverless computing for event-driven applications"
+        },
+        {
+          name: "Terraform",
+          level: 2,
+          years: "1+ year",
+          description: "Infrastructure as Code for automated provisioning"
+        },
+        {
+          name: "Datadog",
+          level: 2,
+          years: "1+ year",
+          description: "Application monitoring and observability platform"
         }
       ]
     },
@@ -179,6 +215,30 @@ export function SkillsEnhanced() {
           level: 5,
           years: "6+ years",
           description: "API documentation and specification standards"
+        },
+        {
+          name: "Jest",
+          level: 5,
+          years: "5+ years",
+          description: "JavaScript testing framework for unit and integration tests"
+        },
+        {
+          name: "VS Code",
+          level: 5,
+          years: "6+ years",
+          description: "Primary code editor with extensive extension ecosystem"
+        },
+        {
+          name: "Visual Studio",
+          level: 4,
+          years: "4+ years",
+          description: "Integrated development environment for .NET development"
+        },
+        {
+          name: "Bash",
+          level: 3,
+          years: "4+ years",
+          description: "Shell scripting for automation and server management"
         }
       ]
     },
@@ -210,6 +270,30 @@ export function SkillsEnhanced() {
           level: 5,
           years: "6+ years",
           description: "API design, implementation, and documentation"
+        },
+        {
+          name: "MySQL",
+          level: 4,
+          years: "5+ years",
+          description: "Relational database for high-performance applications"
+        },
+        {
+          name: "Firebase",
+          level: 3,
+          years: "2+ years",
+          description: "Real-time database and backend-as-a-service platform"
+        },
+        {
+          name: "RabbitMQ",
+          level: 3,
+          years: "2+ years",
+          description: "Message broker for asynchronous communication"
+        },
+        {
+          name: "Amazon SQS",
+          level: 3,
+          years: "2+ years",
+          description: "Managed message queuing for distributed systems"
         }
       ]
     }
@@ -221,7 +305,11 @@ export function SkillsEnhanced() {
     "Code Review & Mentoring",
     "AI-Assisted Development (GitHub Copilot, Claude Code)",
     "Legacy System Modernization",
-    "Cross-Team Collaboration"
+    "Cross-Team Collaboration",
+    "Point-of-Sale (POS) System Development",
+    "E-commerce Platform Architecture",
+    "Real Estate Technology Solutions",
+    "Payment Processing Integration"
   ];
 
   const renderStars = (level: number) => {
