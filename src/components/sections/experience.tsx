@@ -68,8 +68,8 @@ export function Experience() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Professional Experience</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <h2 className="text-heading text-shadow-sm mb-4">Professional Experience</h2>
+          <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
             6+ years of adaptability across multiple teams, technologies, and business domains
           </p>
         </motion.div>
@@ -85,7 +85,7 @@ export function Experience() {
             <h3 className="font-bold text-primary mb-4 flex items-center gap-2">
               🚀 Currently Working On
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-muted-foreground">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-caption text-muted-foreground">
               <div className="flex items-start gap-3">
                 <span className="text-primary">🔧</span>
                 <span>Pendo Analytics integration at Global Payments</span>
@@ -124,7 +124,7 @@ export function Experience() {
                         <h3 className="text-3xl font-bold mb-2 gradient-warm">
                           {exp.company}
                         </h3>
-                        <div className="flex items-center gap-4 text-lg text-muted-foreground">
+                        <div className="flex items-center gap-4 text-body-large text-muted-foreground">
                           <span>{exp.position}</span>
                           <span className="hidden md:inline">•</span>
                           <div className="flex items-center gap-2">
@@ -165,7 +165,7 @@ export function Experience() {
                                 className="flex items-start gap-3 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 transition-colors"
                               >
                                 <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
-                                <span className="text-sm leading-relaxed">{highlight}</span>
+                                <span className="text-body leading-relaxed">{highlight}</span>
                               </motion.div>
                             ))}
                           </div>
@@ -187,10 +187,10 @@ export function Experience() {
           className="mt-12 text-center"
         >
           <div className="bg-primary/10 border border-primary/20 rounded-lg p-6">
-            <p className="text-lg font-medium text-primary mb-2">
+            <p className="text-body-large font-medium text-primary mb-2">
               Adaptability in Action
             </p>
-            <p className="text-muted-foreground">
+            <p className="text-body text-muted-foreground">
               Successfully navigated 3 different teams and tech stacks at Global Payments,
               demonstrating consistent ability to deliver value through organizational change.
             </p>

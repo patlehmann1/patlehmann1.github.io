@@ -1,4 +1,4 @@
-import { cn, formatDate, calculateReadingTime } from '../utils'
+import { cn, formatDate, calculateReadingTime, sortSkillsByLevelAndExperience } from '../utils'
 
 describe('cn utility function', () => {
   it('should merge class names correctly', () => {
@@ -213,4 +213,141 @@ describe('calculateReadingTime utility function', () => {
     const longBlogPost = Array(2500).fill('word').join(' ')
     expect(calculateReadingTime(longBlogPost)).toBe(13) // 2500/200 = 12.5, rounds up to 13
   })
+})
+
+describe('sortSkillsByLevelAndExperience utility function', () => {
+  const testSkills = [
+    { name: "Angular", level: 3, years: "2+ years", description: "Frontend framework" },
+    { name: "Bootstrap", level: 5, years: "6+ years", description: "CSS framework" },
+    { name: "Jest", level: 5, years: "5+ years", description: "Testing framework" },
+    { name: ".NET", level: 5, years: "4+ years", description: "Backend framework" },
+    { name: "React", level: 4, years: "6+ years", description: "Frontend library" },
+    { name: "Visual Studio", level: 4, years: "4+ years", description: "IDE" },
+    { name: "Material-UI", level: 3, years: "2+ years", description: "Component library" },
+    { name: "AWS", level: 3, years: "3+ years", description: "Cloud platform" },
+  ];
+
+  it('should sort skills by level first (highest to lowest)', () => {
+    const sorted = sortSkillsByLevelAndExperience(testSkills);
+
+    // Check that level 5 skills come first
+    expect(sorted[0].level).toBe(5);
+    expect(sorted[1].level).toBe(5);
+    expect(sorted[2].level).toBe(5);
+
+    // Check that level 4 skills come next
+    expect(sorted[3].level).toBe(4);
+    expect(sorted[4].level).toBe(4);
+
+    // Check that level 3 skills come last
+    expect(sorted[5].level).toBe(3);
+    expect(sorted[6].level).toBe(3);
+    expect(sorted[7].level).toBe(3);
+  });
+
+  it('should sort by years of experience within same level (higher years first)', () => {
+    const sorted = sortSkillsByLevelAndExperience(testSkills);
+
+    // Among level 5 skills: Bootstrap (6+), Jest (5+), .NET (4+)
+    const level5Skills = sorted.filter(skill => skill.level === 5);
+    expect(level5Skills[0].name).toBe('Bootstrap'); // 6+ years
+    expect(level5Skills[1].name).toBe('Jest'); // 5+ years
+    expect(level5Skills[2].name).toBe('.NET'); // 4+ years
+
+    // Among level 4 skills: React (6+), Visual Studio (4+)
+    const level4Skills = sorted.filter(skill => skill.level === 4);
+    expect(level4Skills[0].name).toBe('React'); // 6+ years
+    expect(level4Skills[1].name).toBe('Visual Studio'); // 4+ years
+  });
+
+  it('should sort alphabetically by name when level and years are the same', () => {
+    const skillsWithSameLevelAndYears = [
+      { name: "Zebra", level: 3, years: "2+ years", description: "Test" },
+      { name: "Alpha", level: 3, years: "2+ years", description: "Test" },
+      { name: "Beta", level: 3, years: "2+ years", description: "Test" },
+    ];
+
+    const sorted = sortSkillsByLevelAndExperience(skillsWithSameLevelAndYears);
+    expect(sorted[0].name).toBe('Alpha');
+    expect(sorted[1].name).toBe('Beta');
+    expect(sorted[2].name).toBe('Zebra');
+  });
+
+  it('should handle years parsing correctly', () => {
+    const skillsWithVariousYears = [
+      { name: "Skill1", level: 3, years: "10+ years", description: "Test" },
+      { name: "Skill2", level: 3, years: "1+ year", description: "Test" },
+      { name: "Skill3", level: 3, years: "5+ years", description: "Test" },
+    ];
+
+    const sorted = sortSkillsByLevelAndExperience(skillsWithVariousYears);
+    expect(sorted[0].name).toBe('Skill1'); // 10+ years
+    expect(sorted[1].name).toBe('Skill3'); // 5+ years
+    expect(sorted[2].name).toBe('Skill2'); // 1+ year
+  });
+
+  it('should not mutate the original array', () => {
+    const originalSkills = [...testSkills];
+    const sorted = sortSkillsByLevelAndExperience(testSkills);
+
+    expect(testSkills).toEqual(originalSkills);
+    expect(sorted).not.toBe(testSkills); // Different reference
+  });
+
+  it('should handle empty array', () => {
+    const sorted = sortSkillsByLevelAndExperience([]);
+    expect(sorted).toEqual([]);
+  });
+
+  it('should handle single skill', () => {
+    const singleSkill = [{ name: "Solo", level: 3, years: "2+ years", description: "Test" }];
+    const sorted = sortSkillsByLevelAndExperience(singleSkill);
+    expect(sorted).toEqual(singleSkill);
+    expect(sorted).not.toBe(singleSkill); // Different reference
+  });
+
+  it('should handle edge cases in years parsing', () => {
+    const skillsWithEdgeCases = [
+      { name: "Normal", level: 3, years: "5+ years", description: "Test" },
+      { name: "NoNumber", level: 3, years: "years", description: "Test" },
+      { name: "Empty", level: 3, years: "", description: "Test" },
+      { name: "DoubleDigit", level: 3, years: "15+ years", description: "Test" },
+    ];
+
+    const sorted = sortSkillsByLevelAndExperience(skillsWithEdgeCases);
+    expect(sorted[0].name).toBe('DoubleDigit'); // 15+ years
+    expect(sorted[1].name).toBe('Normal'); // 5+ years
+    // Empty and NoNumber should fall back to 0 and then sort alphabetically
+    expect(sorted[2].name).toBe('Empty'); // 0 years (alphabetically before NoNumber)
+    expect(sorted[3].name).toBe('NoNumber'); // 0 years
+  });
+
+  it('should handle real-world skills data correctly', () => {
+    // Test with actual skills from the app
+    const realSkills = [
+      { name: "TypeScript", level: 5, years: "6+ years", description: "Type-safe JavaScript" },
+      { name: "JavaScript", level: 5, years: "6+ years", description: "Dynamic web development" },
+      { name: "C#", level: 5, years: "4+ years", description: "Backend language" },
+      { name: "SQL", level: 4, years: "6+ years", description: "Database queries" },
+    ];
+
+    const sorted = sortSkillsByLevelAndExperience(realSkills);
+
+    // Level 5 skills should come first, sorted by years then alphabetically
+    expect(sorted[0].level).toBe(5);
+    expect(sorted[1].level).toBe(5);
+    expect(sorted[2].level).toBe(5);
+
+    // Among level 5 with 6+ years: JavaScript and TypeScript (alphabetical)
+    const level5With6Years = sorted.filter(s => s.level === 5 && s.years === "6+ years");
+    expect(level5With6Years[0].name).toBe('JavaScript'); // J comes before T
+    expect(level5With6Years[1].name).toBe('TypeScript');
+
+    // C# should come after (4+ years)
+    expect(sorted[2].name).toBe('C#');
+
+    // SQL should be last (level 4)
+    expect(sorted[3].name).toBe('SQL');
+    expect(sorted[3].level).toBe(4);
+  });
 })

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Code, Database, Cloud, Wrench, Star, Settings } from "lucide-react";
+import { sortSkillsByLevelAndExperience } from "@/lib/utils";
 
 interface Skill {
   name: string;
@@ -65,18 +66,6 @@ export function SkillsEnhanced() {
           description: "Enterprise-grade backend development"
         },
         {
-          name: "Angular",
-          level: 3,
-          years: "2+ years",
-          description: "Large-scale frontend applications with TypeScript"
-        },
-        {
-          name: "React",
-          level: 4,
-          years: "6+ years",
-          description: "Modern React with hooks and Next.js"
-        },
-        {
           name: "Node.js",
           level: 5,
           years: "6+ years",
@@ -95,16 +84,28 @@ export function SkillsEnhanced() {
           description: "Rich framework for building applications and services"
         },
         {
+          name: "Bootstrap",
+          level: 5,
+          years: "6+ years",
+          description: "Responsive CSS framework for rapid prototyping"
+        },
+        {
+          name: "React",
+          level: 4,
+          years: "6+ years",
+          description: "Modern React with hooks and Next.js"
+        },
+        {
           name: "ASP.NET Core",
           level: 4,
           years: "4+ years",
           description: "Modern cross-platform web API framework"
         },
         {
-          name: "Bootstrap",
-          level: 5,
-          years: "6+ years",
-          description: "Responsive CSS framework for rapid prototyping"
+          name: "Angular",
+          level: 3,
+          years: "2+ years",
+          description: "Large-scale frontend applications with TypeScript"
         },
         {
           name: "Material-UI",
@@ -120,22 +121,10 @@ export function SkillsEnhanced() {
       description: "Infrastructure and deployment expertise",
       skills: [
         {
-          name: "Azure",
-          level: 2,
-          years: "1+ year",
-          description: "Cloud services, deployment, and infrastructure"
-        },
-        {
           name: "Docker",
           level: 4,
           years: "3+ years",
           description: "Containerization and deployment automation"
-        },
-        {
-          name: "Kubernetes",
-          level: 2,
-          years: "6+ years",
-          description: "Container orchestration and scaling"
         },
         {
           name: "CI/CD",
@@ -172,6 +161,18 @@ export function SkillsEnhanced() {
           level: 3,
           years: "2+ years",
           description: "Serverless computing for event-driven applications"
+        },
+        {
+          name: "Azure",
+          level: 2,
+          years: "1+ year",
+          description: "Cloud services, deployment, and infrastructure"
+        },
+        {
+          name: "Kubernetes",
+          level: 2,
+          years: "6+ years",
+          description: "Container orchestration and scaling"
         },
         {
           name: "Terraform",
@@ -248,6 +249,12 @@ export function SkillsEnhanced() {
       description: "Database and API integration technologies",
       skills: [
         {
+          name: "REST APIs",
+          level: 5,
+          years: "6+ years",
+          description: "API design, implementation, and documentation"
+        },
+        {
           name: "SQL Server",
           level: 4,
           years: "6+ years",
@@ -260,22 +267,16 @@ export function SkillsEnhanced() {
           description: "NoSQL document database for flexible data"
         },
         {
-          name: "Redis",
-          level: 3,
-          years: "2+ years",
-          description: "Caching and session storage solutions"
-        },
-        {
-          name: "REST APIs",
-          level: 5,
-          years: "6+ years",
-          description: "API design, implementation, and documentation"
-        },
-        {
           name: "MySQL",
           level: 4,
           years: "5+ years",
           description: "Relational database for high-performance applications"
+        },
+        {
+          name: "Redis",
+          level: 3,
+          years: "2+ years",
+          description: "Caching and session storage solutions"
         },
         {
           name: "Firebase",
@@ -340,14 +341,16 @@ export function SkillsEnhanced() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Technical Skills</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <h2 className="text-heading text-shadow-sm mb-4">Technical Skills</h2>
+          <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
             Modern full-stack technologies with a focus on scalability and maintainability
           </p>
         </motion.div>
 
         <div className="space-y-16">
-          {skillCategories.map((category, categoryIndex) => (
+          {skillCategories.map((category, categoryIndex) => {
+            const sortedSkills = sortSkillsByLevelAndExperience(category.skills);
+            return (
             <motion.div
               key={category.title}
               initial={{ opacity: 0, y: 30 }}
@@ -361,13 +364,13 @@ export function SkillsEnhanced() {
                   {category.icon}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold">{category.title}</h3>
-                  <p className="text-muted-foreground text-sm">{category.description}</p>
+                  <h3 className="text-subheading text-shadow-sm">{category.title}</h3>
+                  <p className="text-muted-foreground text-caption">{category.description}</p>
                 </div>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {category.skills.map((skill, skillIndex) => (
+                {sortedSkills.map((skill, skillIndex) => (
                   <motion.div
                     key={skill.name}
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -392,7 +395,7 @@ export function SkillsEnhanced() {
 
                       <div className="flex items-center gap-2 mb-2">
                         {renderStars(skill.level)}
-                        <span className="text-xs text-muted-foreground">
+                        <span className="text-caption text-muted-foreground">
                           {skill.level}/5
                         </span>
                       </div>
@@ -403,8 +406,7 @@ export function SkillsEnhanced() {
                           initial={{ opacity: 0, y: 10 }}
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 10 }}
-                          className="absolute bottom-full left-0 right-0 mb-2 p-3 bg-black/90 text-white text-xs rounded-lg z-10"
-                        >
+                          className="absolute bottom-full left-0 right-0 mb-2 p-3 bg-black/90 text-white text-caption rounded-lg z-10">
                           {skill.description}
                           <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/90" />
                         </motion.div>
@@ -414,7 +416,8 @@ export function SkillsEnhanced() {
                 ))}
               </div>
             </motion.div>
-          ))}
+          );
+          })}
         </div>
 
         <motion.div
@@ -424,7 +427,7 @@ export function SkillsEnhanced() {
           viewport={{ once: true }}
           className="mt-20 bg-card border rounded-lg p-6 sm:p-8 shadow-warm"
         >
-          <h3 className="text-2xl font-bold mb-6 text-center">Development Practices</h3>
+          <h3 className="text-subheading font-bold mb-6 text-center">Development Practices</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {practices.map((practice, index) => (
               <motion.div
@@ -436,7 +439,7 @@ export function SkillsEnhanced() {
                 className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200"
               >
                 <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
-                <span className="text-sm leading-relaxed">{practice}</span>
+                <span className="text-body leading-relaxed">{practice}</span>
               </motion.div>
             ))}
           </div>
@@ -451,7 +454,7 @@ export function SkillsEnhanced() {
             <p className="text-primary font-medium mb-2">
               🤖 AI-Forward Development
             </p>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-body text-muted-foreground">
               Embracing modern AI tools to enhance productivity, code quality, and team collaboration while maintaining engineering best practices
             </p>
           </motion.div>

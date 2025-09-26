@@ -9,10 +9,6 @@ export function Hero() {
   return (
     <section className="min-h-screen relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20 sm:opacity-30" />
-      <div className="hidden sm:block absolute top-20 right-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl animate-float-slow" />
-      <div className="hidden sm:block absolute bottom-20 left-10 w-96 h-96 bg-primary/3 rounded-full blur-3xl animate-float-slower" />
-      <div className="sm:hidden absolute top-10 right-4 w-32 h-32 bg-primary/3 rounded-full blur-2xl animate-float" />
-      <div className="sm:hidden absolute bottom-10 left-4 w-40 h-40 bg-primary/2 rounded-full blur-2xl animate-float-slow" />
 
       <div className="relative z-10 max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 pt-4 sm:pt-12 pb-16 sm:pb-20">
         <div className="flex items-center justify-center min-h-[70vh] sm:min-h-[60vh]">
@@ -23,18 +19,18 @@ export function Hero() {
               transition={{ duration: 0.6 }}
               className="space-y-6"
             >
-              <div className="flex items-center justify-center gap-3 text-primary font-medium">
+              <div className="flex items-center justify-center gap-3 text-primary font-550 tracking-wide text-caption">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 Focused on enterprise analytics & international solutions
               </div>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-display gradient-warm text-shadow-glow">
                 Patrick
                 <br />
                 <span className="gradient-warm">Lehmann</span>
               </h1>
 
-              <div className="text-xl sm:text-2xl md:text-3xl font-light text-muted-foreground">
+              <div className="text-subheading font-350 text-muted-foreground">
                 <Typewriter
                   texts={[
                     "Faith Driven Developer",
@@ -49,7 +45,7 @@ export function Hero() {
                 />
               </div>
 
-              <div className="max-w-2xl mx-auto text-base sm:text-lg leading-relaxed text-muted-foreground">
+              <div className="max-w-2xl mx-auto text-body-large text-muted-foreground">
                 I&apos;ve spent 6+ years helping teams navigate technical changes and ship reliable software
                 using C#/.NET, TypeScript, and modern frameworks.
               </div>

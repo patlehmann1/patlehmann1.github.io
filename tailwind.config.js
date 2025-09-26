@@ -8,6 +8,25 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontWeight: {
+        '350': '350',
+        '450': '450',
+        '550': '550',
+        '650': '650',
+        '750': '750',
+      },
+      letterSpacing: {
+        'tighter': '-0.02em',
+        'micro': '0.01em',
+        'wide': '0.05em',
+        'ultra-wide': '0.15em',
+      },
+      lineHeight: {
+        'super-tight': '0.9',
+        'tight-plus': '1.1',
+        'relaxed-plus': '1.7',
+        'comfortable': '1.4',
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

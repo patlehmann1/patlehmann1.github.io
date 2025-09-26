@@ -70,8 +70,8 @@ export function Projects() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Key Projects</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <h2 className="text-heading text-shadow-sm mb-4">Key Projects</h2>
+          <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
             Professional achievements showcasing technical leadership and business impact
           </p>
         </motion.div>
@@ -89,32 +89,32 @@ export function Projects() {
               <div className="flex items-start justify-between mb-4">
                 <div>
                   <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                  <div className="flex items-center gap-2 text-caption text-muted-foreground mb-2">
                     <Users className="h-4 w-4" />
                     <span>{project.company}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2 text-caption text-muted-foreground">
                     <Calendar className="h-4 w-4" />
                     <span>{project.period}</span>
                   </div>
                 </div>
               </div>
 
-              <p className="text-muted-foreground mb-4">{project.description}</p>
+              <p className="text-body text-muted-foreground mb-4">{project.description}</p>
 
               <div className="mb-4">
                 <div className="flex items-center gap-2 mb-2">
                   <Target className="h-4 w-4 text-primary" />
                   <span className="font-medium text-primary">Business Impact</span>
                 </div>
-                <p className="text-sm text-muted-foreground pl-6">{project.impact}</p>
+                <p className="text-body text-muted-foreground pl-6">{project.impact}</p>
               </div>
 
               <div className="mb-6">
                 <h4 className="font-medium mb-3">Key Highlights</h4>
                 <ul className="space-y-2">
                   {project.highlights.map((highlight, highlightIndex) => (
-                    <li key={highlightIndex} className="flex items-start gap-2 text-sm text-muted-foreground">
+                    <li key={highlightIndex} className="flex items-start gap-2 text-body text-muted-foreground">
                       <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
                       {highlight}
                     </li>
@@ -128,7 +128,7 @@ export function Projects() {
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-primary/10 text-primary text-xs rounded-full font-medium"
+                      className="px-3 py-1 bg-primary/10 text-primary text-caption rounded-full font-medium"
                     >
                       {tech}
                     </span>
@@ -147,10 +147,10 @@ export function Projects() {
           className="mt-12 text-center"
         >
           <div className="bg-primary/5 border border-primary/20 rounded-lg p-8">
-            <h3 className="text-xl font-semibold text-primary mb-4">
+            <h3 className="text-subheading font-semibold text-primary mb-4">
               Consistent Value Delivery
             </h3>
-            <p className="text-muted-foreground mb-6 max-w-3xl mx-auto">
+            <p className="text-body text-muted-foreground mb-6 max-w-3xl mx-auto">
               Each project demonstrates my ability to adapt to new technologies, collaborate across teams,
               and deliver meaningful business impact regardless of technical complexity or organizational changes.
             </p>

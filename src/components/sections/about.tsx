@@ -13,8 +13,8 @@ export function About() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">About Me</h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <h2 className="text-heading text-shadow-sm mb-4">About Me</h2>
+          <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
             Adaptable full-stack engineer who thrives in dynamic environments
           </p>
         </motion.div>
@@ -28,8 +28,8 @@ export function About() {
             className="lg:col-span-2 space-y-6 sm:space-y-8"
           >
             <div>
-              <h3 className="text-3xl font-bold mb-6 gradient-warm">The Art of Adaptation</h3>
-              <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
+              <h3 className="text-subheading gradient-warm text-shadow-warm mb-6">The Art of Adaptation</h3>
+              <div className="space-y-6 text-body-large text-muted-foreground">
                 <p>
                   Over 6+ years, I&apos;ve learned that the best engineers adapt quickly to change. Tech stack migrations,
                   shifting business requirements, legacy system overhauls - I&apos;ve handled them all and consistently
@@ -47,7 +47,7 @@ export function About() {
 
             <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 sm:p-6 rounded-r-lg">
               <h4 className="font-bold text-muted-foreground mb-3">🎯 Beyond Code</h4>
-              <ul className="space-y-2 text-sm text-muted-foreground">
+              <ul className="space-y-2 text-caption text-muted-foreground">
                 <li>• Disc golf strategy & precision</li>
                 <li>• Christian study & apologetics</li>
                 <li>• Family time with Hillary and Adeline</li>
@@ -58,7 +58,7 @@ export function About() {
 
             <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 rounded-lg border border-primary/20">
               <h4 className="font-semibold mb-3 text-primary">The Disc Golf Connection</h4>
-              <p className="text-muted-foreground">
+              <p className="text-body text-muted-foreground">
                 Disc golf taught me patience and precision - skills that transfer directly to debugging code.
                 Both require reading the situation, adapting to obstacles, and executing under pressure.
                 Sometimes the best solution isn&apos;t the obvious one.
@@ -67,7 +67,7 @@ export function About() {
 
             <div className="bg-gradient-to-r from-green-500/10 to-green-400/5 p-6 rounded-lg border border-green-500/20">
               <h4 className="font-semibold mb-3 text-green-600 dark:text-green-400">Optimizing the Developer Lifestyle</h4>
-              <p className="text-muted-foreground">
+              <p className="text-body text-muted-foreground">
                 Sitting at a desk all day takes a toll, so I&apos;ve gotten into optimizing the developer lifestyle:
                 meal prepping for sustained energy, taking movement breaks during long coding sessions, and using the
                 20-20-20 rule for eye health. Same attention to detail I put into code, applied to staying healthy
@@ -88,7 +88,7 @@ export function About() {
                 <div className="w-3 h-3 bg-primary rounded-full" />
                 What Drives Me
               </h4>
-              <div className="space-y-4 text-sm text-muted-foreground">
+              <div className="space-y-4 text-caption text-muted-foreground">
                 <div className="flex items-start gap-3">
                   <span className="text-primary font-mono text-xs mt-1">01</span>
                   <span>Living out my Christian faith through work and service</span>
@@ -117,19 +117,19 @@ export function About() {
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div>
                   <div className="text-2xl font-bold text-primary">6+</div>
-                  <div className="text-xs text-muted-foreground">Years Experience</div>
+                  <div className="text-caption text-muted-foreground">Years Experience</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-primary">4</div>
-                  <div className="text-xs text-muted-foreground">Team Transitions</div>
+                  <div className="text-caption text-muted-foreground">Team Transitions</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-primary">∞</div>
-                  <div className="text-xs text-muted-foreground">Disc Golf Rounds</div>
+                  <div className="text-caption text-muted-foreground">Disc Golf Rounds</div>
                 </div>
                 <div>
                   <div className="text-2xl font-bold text-primary">100%</div>
-                  <div className="text-xs text-muted-foreground">Remote Ready</div>
+                  <div className="text-caption text-muted-foreground">Remote Ready</div>
                 </div>
               </div>
             </div>
