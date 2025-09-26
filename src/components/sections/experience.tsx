@@ -88,11 +88,11 @@ export function Experience() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-caption text-muted-foreground">
               <div className="flex items-start gap-3">
                 <span className="text-primary">🔧</span>
-                <span>Pendo Analytics integration at Global Payments</span>
+                <span>Pendo Analytics integration</span>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-primary">🌍</span>
-                <span>International auth solutions for UK/Ireland markets</span>
+                <span>International expansion readiness for UK/Ireland markets</span>
               </div>
               <div className="flex items-start gap-3">
                 <span className="text-primary">🤖</span>
