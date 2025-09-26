@@ -65,12 +65,12 @@ describe('RSS utilities', () => {
       expect(rss).toContain('href="https://example.com/rss.xml"')
     })
 
-    it('should fallback to localhost when no environment URL is set', () => {
+    it('should fallback to patricklehmann.io when no environment URL is set', () => {
       const rss = generateRSSFeed(mockPosts)
 
-      expect(rss).toContain('<link>http://localhost:3000</link>')
-      expect(rss).toContain('<url>http://localhost:3000/favicon.svg</url>')
-      expect(rss).toContain('href="http://localhost:3000/rss.xml"')
+      expect(rss).toContain('<link>http://patricklehmann.io</link>')
+      expect(rss).toContain('<url>http://patricklehmann.io/favicon.svg</url>')
+      expect(rss).toContain('href="http://patricklehmann.io/rss.xml"')
     })
 
     it('should include all post items', () => {
