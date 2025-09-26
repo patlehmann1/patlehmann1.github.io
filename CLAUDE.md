@@ -152,4 +152,11 @@ For comprehensive information about specific aspects of the project, refer to th
 - **Personal Voice**: Sound human and authentic, not like marketing copy or AI-generated content
 - **Direct Communication**: Use short, clear sentences instead of complex, verbose structures
 
+### Comment Guidelines
+- **Avoid unnecessary comments**: Write self-documenting code with clear naming and structure
+- **Only comment complex functions**: Add JSDoc comments above functions that require explanation of their purpose, parameters, or complex logic
+- **Remove obvious comments**: Don't comment what the code clearly shows (e.g., `// Set loading state`)
+- **No section headers**: Avoid organizational comments like `// Constants` or `// Helper functions`
+- **Preserve valuable documentation**: Keep comments that explain non-obvious business logic, complex algorithms, or important context
+
 For detailed implementation patterns, architectural decisions, and comprehensive guidelines, please refer to the linked documentation files above.

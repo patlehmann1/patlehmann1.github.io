@@ -1,4 +1,3 @@
-// Site Configuration
 export const SITE_CONFIG = {
   name: "Patrick Lehmann",
   title: "Patrick Lehmann - Full-Stack Software Engineer",
@@ -12,14 +11,12 @@ export const SITE_CONFIG = {
   },
 } as const;
 
-// Blog Configuration
 export const BLOG_CONFIG = {
   postsPerPage: 10,
   featuredPostsLimit: 3,
   wordsPerMinute: 200,
 } as const;
 
-// Animation Constants
 export const ANIMATION = {
   duration: {
     fast: 0.3,
@@ -34,7 +31,6 @@ export const ANIMATION = {
   stagger: 0.1,
 } as const;
 
-// UI Constants
 export const UI = {
   scrollThreshold: 20,
   navItems: [
@@ -47,7 +43,6 @@ export const UI = {
   ],
 } as const;
 
-// SEO Constants
 export const SEO = {
   keywords: ["Patrick Lehmann", "Full-Stack Developer", "Software Engineer", "C#", ".NET", "TypeScript", "React", "Angular", "Node.js"],
   author: "Patrick Lehmann",
@@ -55,16 +50,14 @@ export const SEO = {
   publisher: "Patrick Lehmann",
 } as const;
 
-// Reading Progress Configuration
 export const READING_PROGRESS = {
-  throttleDelay: 16, // ~60fps for smooth updates
-  showThreshold: 0.01, // Start showing at 1% progress
-  hideThreshold: 0.95, // Hide after 95% progress
-  barHeight: 3, // Height in pixels
-  contentSelector: "article", // Default content selector
+  throttleDelay: 16,
+  showThreshold: 0.01,
+  hideThreshold: 0.95,
+  barHeight: 3,
+  contentSelector: "article",
 } as const;
 
-// Open Graph Preview Tech Stack
 export const OG_PREVIEW_TECH_STACK = [
   { name: "C#/.NET", years: "4+ years" },
   { name: "TypeScript", years: "6+ years" },

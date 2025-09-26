@@ -60,24 +60,20 @@ export function useReadingProgress({
     const contentRect = content.getBoundingClientRect();
     const windowHeight = window.innerHeight;
 
-    // Calculate how much of the content is above the viewport
     const contentTop = contentRect.top;
     const contentHeight = contentRect.height;
     const contentBottom = contentTop + contentHeight;
 
-    // Content hasn't started appearing yet
     if (contentBottom < 0) {
       setProgress(100);
       return;
     }
 
-    // Content hasn't appeared yet
     if (contentTop > windowHeight) {
       setProgress(0);
       return;
     }
 
-    // Calculate progress based on how much content has scrolled past the top
     const scrolled = Math.max(0, -contentTop);
     const totalScrollable = Math.max(1, contentHeight - windowHeight);
     const progressPercentage = Math.min(100, (scrolled / totalScrollable) * 100);
@@ -94,17 +90,14 @@ export function useReadingProgress({
   }, [updateProgress]);
 
   useEffect(() => {
-    // Find the content element
     const contentElement = document.querySelector(contentSelector);
 
     if (contentElement) {
       contentRef.current = contentElement;
       setContentFound(true);
 
-      // Initial progress calculation
       updateProgress();
 
-      // Add scroll listener with throttling
       window.addEventListener("scroll", handleScroll, { passive: true });
       window.addEventListener("resize", handleScroll, { passive: true });
 
@@ -122,7 +115,6 @@ export function useReadingProgress({
     }
   }, [contentSelector, handleScroll, updateProgress]);
 
-  // Determine visibility based on progress and thresholds
   const progressDecimal = progress / 100;
   const isVisible = contentFound &&
     progressDecimal >= showThreshold &&

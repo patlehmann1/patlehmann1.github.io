@@ -106,7 +106,6 @@ describe('RSS utilities', () => {
 
       expect(rss).toContain('<pubDate>')
       expect(rss).toContain('</pubDate>')
-      // Should contain properly formatted date strings
       expect(rss).toMatch(/<pubDate>[A-Za-z]{3}, \d{2} [A-Za-z]{3} \d{4} \d{2}:\d{2}:\d{2} GMT<\/pubDate>/)
     })
 

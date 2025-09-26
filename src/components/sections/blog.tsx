@@ -15,7 +15,6 @@ export function Blog() {
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
 
   useEffect(() => {
-    // Simulate loading delay for smooth skeleton transition
     const timer = setTimeout(() => {
       setFeaturedPosts(getFeaturedPosts(3));
       setIsLoading(false);

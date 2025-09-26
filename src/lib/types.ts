@@ -1,14 +1,11 @@
-// Branded types for better type safety
 export type BlogSlug = string & { readonly __brand: unique symbol };
 export type ProjectId = string & { readonly __brand: unique symbol };
 
-// Utility types for common patterns
 export type WithOptional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export type RequireAtLeastOne<T> = {
   [K in keyof T]-?: Required<Pick<T, K>> & Partial<Pick<T, Exclude<keyof T, K>>>;
 }[keyof T];
 
-// Event handler types
 export type NavigationHandler = (href: string) => void;
 export type ClickHandler = () => void;
 
@@ -48,7 +45,6 @@ export interface NewsletterForm {
   firstName: string;
 }
 
-// Component prop types
 export interface BaseComponentProps {
   className?: string;
   children?: React.ReactNode;

@@ -32,7 +32,6 @@ export function NewsletterSignup({ className }: NewsletterSignupProps) {
     setSubmitStatus('idle');
 
     try {
-      // ConvertKit V4 API form subscription
       const response = await fetch('https://api.kit.com/v4/subscribers', {
         method: 'POST',
         headers: {

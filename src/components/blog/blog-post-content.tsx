@@ -15,7 +15,6 @@ interface BlogPostContentProps {
 }
 
 export function BlogPostContent({ post }: BlogPostContentProps) {
-  // JSON-LD structured data for SEO
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -45,7 +44,6 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* JSON-LD structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

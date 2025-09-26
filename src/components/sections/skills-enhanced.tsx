@@ -6,7 +6,7 @@ import { Code, Database, Cloud, Wrench, Star, Settings } from "lucide-react";
 
 interface Skill {
   name: string;
-  level: number; // 1-5
+  level: number;
   years: string;
   description: string;
 }
@@ -268,7 +268,6 @@ export function SkillsEnhanced() {
               viewport={{ once: true }}
               className="space-y-6"
             >
-              {/* Category Header */}
               <div className="flex items-center gap-4 mb-8">
                 <div className="p-3 bg-primary/10 rounded-lg text-primary">
                   {category.icon}
@@ -279,7 +278,6 @@ export function SkillsEnhanced() {
                 </div>
               </div>
 
-              {/* Skills Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {category.skills.map((skill, skillIndex) => (
                   <motion.div
@@ -297,7 +295,6 @@ export function SkillsEnhanced() {
                     onMouseLeave={() => setHoveredSkill(null)}
                   >
                     <div className="bg-card border rounded-lg p-4 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 hover:scale-105 transition-all duration-300 cursor-pointer">
-                      {/* Skill Header */}
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="font-semibold text-lg">{skill.name}</h4>
                         <span className="text-xs text-primary bg-primary/10 px-2 py-1 rounded-full">
@@ -305,7 +302,6 @@ export function SkillsEnhanced() {
                         </span>
                       </div>
 
-                      {/* Star Rating */}
                       <div className="flex items-center gap-2 mb-2">
                         {renderStars(skill.level)}
                         <span className="text-xs text-muted-foreground">
@@ -314,7 +310,6 @@ export function SkillsEnhanced() {
                       </div>
 
 
-                      {/* Hover Tooltip */}
                       {hoveredSkill === skill.name && (
                         <motion.div
                           initial={{ opacity: 0, y: 10 }}
@@ -334,7 +329,6 @@ export function SkillsEnhanced() {
           ))}
         </div>
 
-        {/* Development Practices */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

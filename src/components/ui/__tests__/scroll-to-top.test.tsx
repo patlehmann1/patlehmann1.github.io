@@ -2,7 +2,6 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { ScrollToTop } from '../scroll-to-top';
 import React from 'react';
 
-// Mock framer-motion
 jest.mock('framer-motion', () => ({
   motion: {
     div: ({ children, ...props }: React.ComponentProps<'div'>) => <div {...props}>{children}</div>,
@@ -45,13 +44,11 @@ describe('ScrollToTop', () => {
   it('should render button when scrolled past threshold', async () => {
     render(<ScrollToTop />);
 
-    // Simulate scrolling past 80% of viewport height (800px)
     Object.defineProperty(window, 'scrollY', {
       value: 900,
       writable: true,
     });
 
-    // Trigger scroll event
     fireEvent.scroll(window);
 
     await waitFor(() => {
@@ -63,7 +60,6 @@ describe('ScrollToTop', () => {
   it('should hide button when scrolled back to top', async () => {
     render(<ScrollToTop />);
 
-    // First scroll down
     Object.defineProperty(window, 'scrollY', {
       value: 900,
       writable: true,
@@ -74,7 +70,6 @@ describe('ScrollToTop', () => {
       expect(screen.getByRole('button', { name: /scroll to top/i })).toBeInTheDocument();
     });
 
-    // Then scroll back up
     Object.defineProperty(window, 'scrollY', {
       value: 100,
       writable: true,
@@ -89,7 +84,6 @@ describe('ScrollToTop', () => {
   it('should scroll to top when button is clicked', async () => {
     render(<ScrollToTop />);
 
-    // Scroll down to show button
     Object.defineProperty(window, 'scrollY', {
       value: 900,
       writable: true,
@@ -150,7 +144,6 @@ describe('ScrollToTop', () => {
     });
     fireEvent.scroll(window);
 
-    // Should still work with 0 innerHeight (threshold would be 0)
     await waitFor(() => {
       const button = screen.getByRole('button', { name: /scroll to top/i });
       expect(button).toBeInTheDocument();

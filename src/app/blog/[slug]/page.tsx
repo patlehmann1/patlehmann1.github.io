@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://patricklehmann.io";
   const postUrl = `${siteUrl}/blog/${slug}`;
-  const imageUrl = `${siteUrl}/og-image.jpg`; // You can add a default OG image later
+  const imageUrl = `${siteUrl}/og-image.jpg`;
 
   return {
     title: `${post.title} | Patrick Lehmann`,

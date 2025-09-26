@@ -1,7 +1,6 @@
 import { BlogPost } from './types';
 
 export function generateRSSFeed(posts: BlogPost[]): string {
-  // Fallback to localhost for development if no env var is set
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
   const buildDate = new Date().toUTCString();
 
@@ -9,7 +8,6 @@ export function generateRSSFeed(posts: BlogPost[]): string {
     const postUrl = `${siteUrl}/blog/${post.slug}`;
     const pubDate = new Date(post.publishedAt).toUTCString();
 
-    // Escape HTML entities for XML
     const escapeXml = (str: string) => {
       return str
         .replace(/&/g, '&amp;')

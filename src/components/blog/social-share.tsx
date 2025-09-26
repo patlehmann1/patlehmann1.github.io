@@ -17,11 +17,9 @@ export function SocialShare({ post, className }: SocialShareProps) {
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://patricklehmann.io";
   const postUrl = `${siteUrl}/blog/${post.slug}`;
 
-  // Encode URL components for sharing
   const encodedUrl = encodeURIComponent(postUrl);
   const encodedTitle = encodeURIComponent(post.title);
 
-  // Social sharing URLs
   const shareUrls = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
     x: `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}&via=lehmann_dev2`,

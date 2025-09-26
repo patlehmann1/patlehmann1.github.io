@@ -10,7 +10,6 @@ export function ScrollToTop() {
 
   useEffect(() => {
     const toggleVisibility = () => {
-      // Show button when user scrolls past the hero section (~100vh)
       setIsVisible(window.scrollY > window.innerHeight * 0.8);
     };
 

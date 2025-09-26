@@ -38,7 +38,6 @@ export function ReadingProgressBar({
     hideThreshold: 0.95,
   });
 
-  // Check for reduced motion preference
   const prefersReducedMotion = typeof window !== "undefined" &&
     window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -64,10 +63,8 @@ export function ReadingProgressBar({
           aria-valuemin={0}
           aria-valuemax={100}
         >
-          {/* Background */}
           <div className="absolute inset-0 bg-border/30" />
 
-          {/* Progress fill */}
           <motion.div
             className="absolute inset-y-0 left-0 bg-gradient-to-r from-primary to-primary/80"
             initial={{ width: "0%" }}
@@ -88,7 +85,6 @@ export function ReadingProgressBar({
             }}
           />
 
-          {/* Subtle glow effect */}
           <motion.div
             className="absolute inset-y-0 left-0 bg-primary/20 blur-sm"
             initial={{ width: "0%" }}

@@ -8,7 +8,6 @@ interface MockMotionDivProps extends React.ComponentProps<'div'> {
   transition?: unknown;
 }
 
-// Mock framer-motion
 jest.mock('framer-motion', () => ({
   motion: {
     div: ({ children, animate, transition, ...props }: MockMotionDivProps) => (
@@ -48,7 +47,6 @@ describe('Skeleton', () => {
   it('should render without animation when animate is false', () => {
     const { container } = render(<Skeleton animate={false} />);
 
-    // When animate is false, it should render a regular div
     const element = container.firstChild as HTMLElement;
     expect(element).toHaveClass('bg-muted/70', 'rounded');
     expect(element.tagName).toBe('DIV');
@@ -84,12 +82,6 @@ describe('BlogCardSkeleton', () => {
 
     const skeletonElements = screen.getAllByTestId('motion-div');
 
-    // Should have multiple skeleton elements:
-    // - Date skeleton (h-4 w-20)
-    // - Title skeleton (h-6 w-3/4)
-    // - Description skeleton (h-16 w-full)
-    // - Tag skeletons (h-5 w-16, h-5 w-20, h-5 w-14)
-    // - Footer skeletons (h-4 w-24, h-4 w-16)
     expect(skeletonElements.length).toBeGreaterThanOrEqual(7);
   });
 
@@ -98,20 +90,18 @@ describe('BlogCardSkeleton', () => {
 
     const skeletonElements = screen.getAllByTestId('motion-div');
 
-    // Check specific skeleton classes
-    expect(skeletonElements[0]).toHaveClass('h-4', 'w-20'); // Date
-    expect(skeletonElements[1]).toHaveClass('h-6', 'w-3/4'); // Title
-    expect(skeletonElements[2]).toHaveClass('h-16', 'w-full'); // Description
-    expect(skeletonElements[3]).toHaveClass('h-5', 'w-16'); // Tag 1
-    expect(skeletonElements[4]).toHaveClass('h-5', 'w-20'); // Tag 2
-    expect(skeletonElements[5]).toHaveClass('h-5', 'w-14'); // Tag 3
-    expect(skeletonElements[6]).toHaveClass('h-4', 'w-24'); // Reading time
+    expect(skeletonElements[0]).toHaveClass('h-4', 'w-20');
+    expect(skeletonElements[1]).toHaveClass('h-6', 'w-3/4');
+    expect(skeletonElements[2]).toHaveClass('h-16', 'w-full');
+    expect(skeletonElements[3]).toHaveClass('h-5', 'w-16');
+    expect(skeletonElements[4]).toHaveClass('h-5', 'w-20');
+    expect(skeletonElements[5]).toHaveClass('h-5', 'w-14');
+    expect(skeletonElements[6]).toHaveClass('h-4', 'w-24');
   });
 
   it('should have proper nested structure', () => {
     const { container } = render(<BlogCardSkeleton />);
 
-    // Check for proper nesting
     const spaceY2 = container.querySelector('.space-y-2');
     const spaceY4 = container.querySelector('.space-y-4');
     const flexWrap = container.querySelector('.flex.flex-wrap.gap-2');
@@ -126,7 +116,7 @@ describe('BlogCardSkeleton', () => {
   it('should render tags section with multiple tag skeletons', () => {
     render(<BlogCardSkeleton />);
 
-    const tagSkeletons = screen.getAllByTestId('motion-div').slice(3, 6); // Tags are elements 3-5
+    const tagSkeletons = screen.getAllByTestId('motion-div').slice(3, 6);
 
     expect(tagSkeletons).toHaveLength(3);
     tagSkeletons.forEach(skeleton => {
@@ -137,7 +127,7 @@ describe('BlogCardSkeleton', () => {
   it('should render footer section with reading time and date skeletons', () => {
     render(<BlogCardSkeleton />);
 
-    const footerSkeletons = screen.getAllByTestId('motion-div').slice(-2); // Last 2 elements
+    const footerSkeletons = screen.getAllByTestId('motion-div').slice(-2);
 
     expect(footerSkeletons).toHaveLength(2);
     expect(footerSkeletons[0]).toHaveClass('h-4', 'w-24');
