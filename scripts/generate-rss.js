@@ -8,7 +8,7 @@ const articlesData = JSON.parse(fs.readFileSync(articlesPath, 'utf8'));
 // RSS generation function (adapted from src/lib/rss.ts)
 function generateRSSFeed(posts) {
   // Use environment variable or default to localhost for development
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://patricklehmann.io';
   const buildDate = new Date().toUTCString();
 
   // Sort posts by date (newest first)
