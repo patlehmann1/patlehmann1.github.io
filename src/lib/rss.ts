@@ -1,7 +1,7 @@
 import { BlogPost } from './types';
 
 export function generateRSSFeed(posts: BlogPost[]): string {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://patricklehmann.io';
   const buildDate = new Date().toUTCString();
 
   const rssItems = posts.map(post => {

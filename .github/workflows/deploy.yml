@@ -164,7 +164,7 @@ jobs:
 
       - name: Build with Next.js
         env:
-          NEXT_PUBLIC_SITE_URL: https://patlehmann1.github.io
+          NEXT_PUBLIC_SITE_URL: https://patricklehmann.io
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: Upload artifact
