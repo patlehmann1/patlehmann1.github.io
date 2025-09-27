@@ -35,6 +35,6 @@ This is the professional portfolio of Patrick Lehmann, a software developer spec
 
 ## Optional
 
-- [Project Repository](https://github.com/username/portfolio): Source code and development history
+- [Project Repository](https://github.com/patlehmann1/patlehmann1.github.io): Source code and development history
 - [Newsletter Signup](/newsletter): Subscribe to updates and insights
 - [Professional Network](/#contact): LinkedIn and professional social media links
