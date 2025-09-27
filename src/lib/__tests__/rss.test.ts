@@ -1,5 +1,6 @@
 import { generateRSSFeed } from '../rss'
 import { BlogPost, BlogSlug } from '../types'
+import { SITE_URL } from '../constants'
 
 describe('RSS utilities', () => {
   const mockPosts: BlogPost[] = [
@@ -25,13 +26,6 @@ describe('RSS utilities', () => {
     }
   ]
 
-  beforeEach(() => {
-    delete process.env.NEXT_PUBLIC_SITE_URL
-  })
-
-  afterEach(() => {
-    delete process.env.NEXT_PUBLIC_SITE_URL
-  })
 
   describe('generateRSSFeed', () => {
     it('should generate valid RSS XML structure', () => {
@@ -55,22 +49,21 @@ describe('RSS utilities', () => {
       expect(rss).toContain('<generator>Next.js RSS Generator</generator>')
     })
 
-    it('should use environment site URL when available', () => {
-      process.env.NEXT_PUBLIC_SITE_URL = 'https://example.com'
+    it('should use the configured site URL', () => {
       const rss = generateRSSFeed(mockPosts)
 
-      expect(rss).toContain('<link>https://example.com</link>')
+      expect(rss).toContain(`<link>${SITE_URL}</link>`)
       expect(rss).toContain('<image>')
-      expect(rss).toContain('<url>https://example.com/favicon.svg</url>')
-      expect(rss).toContain('href="https://example.com/rss.xml"')
+      expect(rss).toContain(`<url>${SITE_URL}/favicon.svg</url>`)
+      expect(rss).toContain(`href="${SITE_URL}/rss.xml"`)
     })
 
-    it('should fallback to patricklehmann.io when no environment URL is set', () => {
+    it('should use hardcoded site URL consistently', () => {
       const rss = generateRSSFeed(mockPosts)
 
-      expect(rss).toContain('<link>http://patricklehmann.io</link>')
-      expect(rss).toContain('<url>http://patricklehmann.io/favicon.svg</url>')
-      expect(rss).toContain('href="http://patricklehmann.io/rss.xml"')
+      expect(rss).toContain(`<link>${SITE_URL}</link>`)
+      expect(rss).toContain(`<url>${SITE_URL}/favicon.svg</url>`)
+      expect(rss).toContain(`href="${SITE_URL}/rss.xml"`)
     })
 
     it('should include all post items', () => {
@@ -92,13 +85,12 @@ describe('RSS utilities', () => {
     })
 
     it('should generate correct post URLs', () => {
-      process.env.NEXT_PUBLIC_SITE_URL = 'https://example.com'
       const rss = generateRSSFeed(mockPosts)
 
-      expect(rss).toContain('<link>https://example.com/blog/test-post-1</link>')
-      expect(rss).toContain('<guid isPermaLink="true">https://example.com/blog/test-post-1</guid>')
-      expect(rss).toContain('<link>https://example.com/blog/test-post-2</link>')
-      expect(rss).toContain('<guid isPermaLink="true">https://example.com/blog/test-post-2</guid>')
+      expect(rss).toContain(`<link>${SITE_URL}/blog/test-post-1</link>`)
+      expect(rss).toContain(`<guid isPermaLink="true">${SITE_URL}/blog/test-post-1</guid>`)
+      expect(rss).toContain(`<link>${SITE_URL}/blog/test-post-2</link>`)
+      expect(rss).toContain(`<guid isPermaLink="true">${SITE_URL}/blog/test-post-2</guid>`)
     })
 
     it('should include publication dates in RFC 2822 format', () => {
@@ -133,10 +125,9 @@ describe('RSS utilities', () => {
     })
 
     it('should include atom self-link', () => {
-      process.env.NEXT_PUBLIC_SITE_URL = 'https://example.com'
       const rss = generateRSSFeed(mockPosts)
 
-      expect(rss).toContain('<atom:link href="https://example.com/rss.xml" rel="self" type="application/rss+xml" />')
+      expect(rss).toContain(`<atom:link href="${SITE_URL}/rss.xml" rel="self" type="application/rss+xml" />`)
     })
 
     it('should handle empty posts array', () => {

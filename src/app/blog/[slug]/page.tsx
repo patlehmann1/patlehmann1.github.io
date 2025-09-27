@@ -2,6 +2,7 @@ import { getPostBySlug, getAllPosts } from "@/lib/blog";
 import { notFound } from "next/navigation";
 import { BlogPostContent } from "@/components/blog/blog-post-content";
 import { Metadata } from "next";
+import { SITE_URL } from "@/lib/constants";
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -20,9 +21,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://patricklehmann.io";
-  const postUrl = `${siteUrl}/blog/${slug}`;
-  const imageUrl = `${siteUrl}/og-image.jpg`;
+  const postUrl = `${SITE_URL}/blog/${slug}`;
+  const imageUrl = `${SITE_URL}/og-image.jpg`;
 
   return {
     title: `${post.title} | Patrick Lehmann`,

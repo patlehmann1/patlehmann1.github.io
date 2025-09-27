@@ -288,40 +288,8 @@ describe('Constants Integration', () => {
   })
 })
 
-describe('Environment-dependent values', () => {
-  let originalUrl: string | undefined
-
-  beforeEach(() => {
-    originalUrl = process.env.NEXT_PUBLIC_SITE_URL
-  })
-
-  afterEach(() => {
-    // Restore original value
-    if (originalUrl !== undefined) {
-      process.env.NEXT_PUBLIC_SITE_URL = originalUrl
-    } else {
-      delete process.env.NEXT_PUBLIC_SITE_URL
-    }
-    jest.resetModules()
-  })
-
-  it('should handle missing NEXT_PUBLIC_SITE_URL gracefully', async () => {
-    delete process.env.NEXT_PUBLIC_SITE_URL
-
-    // Re-import to get fresh value
-    jest.resetModules()
-    const { SITE_CONFIG: freshConfig } = await import('../constants')
-
-    expect(freshConfig.url).toBe('https://patricklehmann.io')
-  })
-
-  it('should use environment URL when available', async () => {
-    const testUrl = 'https://test.example.com'
-    process.env.NEXT_PUBLIC_SITE_URL = testUrl
-
-    jest.resetModules()
-    const { SITE_CONFIG: freshConfig } = await import('../constants')
-
-    expect(freshConfig.url).toBe(testUrl)
+describe('Hardcoded site URL', () => {
+  it('should use consistent hardcoded site URL', () => {
+    expect(SITE_CONFIG.url).toBe('https://patricklehmann.io')
   })
 })

@@ -1,14 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 
+// Read site URL from constants
+const constantsPath = path.join(__dirname, '../src/lib/constants.ts');
+const constantsContent = fs.readFileSync(constantsPath, 'utf8');
+const siteUrlMatch = constantsContent.match(/export const SITE_URL = "([^"]+)"/);
+const SITE_URL = siteUrlMatch ? siteUrlMatch[1] : 'https://patricklehmann.io';
+
 // Import blog data
 const articlesPath = path.join(__dirname, '../src/content/blog/articles.json');
 const articlesData = JSON.parse(fs.readFileSync(articlesPath, 'utf8'));
 
 // Sitemap generation function
 function generateSitemap(posts) {
-  // Use environment variable or default to localhost for development
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000';
+  const siteUrl = SITE_URL;
   const buildDate = new Date().toISOString();
 
   // Sort posts by date (newest first)

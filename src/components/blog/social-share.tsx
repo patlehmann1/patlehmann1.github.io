@@ -7,6 +7,7 @@ import { XIcon } from "@/components/ui/icons/x-icon";
 import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
 import { Share2 } from "lucide-react";
 import { BlogPost } from "@/lib/types";
+import { SITE_URL } from "@/lib/constants";
 
 interface SocialShareProps {
   post: BlogPost;
@@ -14,7 +15,7 @@ interface SocialShareProps {
 }
 
 export function SocialShare({ post, className }: SocialShareProps) {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://patricklehmann.io";
+  const siteUrl = SITE_URL;
   const postUrl = `${siteUrl}/blog/${post.slug}`;
 
   const encodedUrl = encodeURIComponent(postUrl);

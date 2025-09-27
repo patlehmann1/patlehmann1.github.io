@@ -168,11 +168,12 @@ This project prioritizes **readability**, **maintainability**, **YAGNI complianc
 - Pre-generate critical pages at build time
 - Use proper data fetching patterns for static content
 
-#### Environment Configuration
-- Use environment variables for configuration
-- Keep sensitive data in server-side environment variables
-- Use proper environment variable validation
-- Document required environment variables
+#### Static Site Configuration
+- Avoid .env files and environment variables for this static site
+- GitHub Pages does not support runtime environment variables
+- Use hardcoded constants in `src/lib/constants.ts` for configuration values
+- Maintain single source of truth for site URL and other configuration
+- Document configuration values in constants file with clear comments
 
 ### 🔷 TypeScript Best Practices
 

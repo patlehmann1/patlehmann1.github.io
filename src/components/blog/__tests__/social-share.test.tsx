@@ -2,6 +2,7 @@ import React from 'react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import { SocialShare } from '../social-share'
 import { BlogPost } from '@/lib/types'
+import { SITE_URL } from '@/lib/constants'
 
 // Mock framer-motion
 jest.mock('framer-motion', () => ({
@@ -68,7 +69,6 @@ Object.defineProperty(window, 'open', {
 describe('SocialShare', () => {
   beforeEach(() => {
     mockWindowOpen.mockClear()
-    delete process.env.NEXT_PUBLIC_SITE_URL
   })
 
   it('should render social share component with all elements', () => {
@@ -98,8 +98,9 @@ describe('SocialShare', () => {
     const facebookButton = screen.getByRole('button', { name: /facebook/i })
     fireEvent.click(facebookButton)
 
+    const expectedUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${SITE_URL}/blog/test-blog-post`)}`
     expect(mockWindowOpen).toHaveBeenCalledWith(
-      'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpatricklehmann.io%2Fblog%2Ftest-blog-post',
+      expectedUrl,
       '_blank',
       'noopener,noreferrer,width=600,height=600'
     )
@@ -111,8 +112,9 @@ describe('SocialShare', () => {
     const xButton = screen.getByRole('button', { name: /x/i })
     fireEvent.click(xButton)
 
+    const expectedUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(`${SITE_URL}/blog/test-blog-post`)}&text=${encodeURIComponent('Test Blog Post Title')}&via=lehmann_dev2`
     expect(mockWindowOpen).toHaveBeenCalledWith(
-      'https://twitter.com/intent/tweet?url=https%3A%2F%2Fpatricklehmann.io%2Fblog%2Ftest-blog-post&text=Test%20Blog%20Post%20Title&via=lehmann_dev2',
+      expectedUrl,
       '_blank',
       'noopener,noreferrer,width=600,height=600'
     )
@@ -124,22 +126,23 @@ describe('SocialShare', () => {
     const linkedinButton = screen.getByRole('button', { name: /linkedin/i })
     fireEvent.click(linkedinButton)
 
+    const expectedUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${SITE_URL}/blog/test-blog-post`)}`
     expect(mockWindowOpen).toHaveBeenCalledWith(
-      'https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fpatricklehmann.io%2Fblog%2Ftest-blog-post',
+      expectedUrl,
       '_blank',
       'noopener,noreferrer,width=600,height=600'
     )
   })
 
-  it('should use environment site URL when available', () => {
-    process.env.NEXT_PUBLIC_SITE_URL = 'https://example.com'
+  it('should use consistent hardcoded site URL', () => {
     render(<SocialShare post={mockPost} />)
 
     const facebookButton = screen.getByRole('button', { name: /facebook/i })
     fireEvent.click(facebookButton)
 
+    const expectedUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${SITE_URL}/blog/test-blog-post`)}`
     expect(mockWindowOpen).toHaveBeenCalledWith(
-      'https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fexample.com%2Fblog%2Ftest-blog-post',
+      expectedUrl,
       '_blank',
       'noopener,noreferrer,width=600,height=600'
     )

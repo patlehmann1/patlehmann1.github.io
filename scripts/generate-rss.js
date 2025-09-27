@@ -1,14 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 
+// Read site URL from constants
+const constantsPath = path.join(__dirname, '../src/lib/constants.ts');
+const constantsContent = fs.readFileSync(constantsPath, 'utf8');
+const siteUrlMatch = constantsContent.match(/export const SITE_URL = "([^"]+)"/);
+const SITE_URL = siteUrlMatch ? siteUrlMatch[1] : 'https://patricklehmann.io';
+
 // Import blog data - we'll need to read the JSON directly since this is Node.js
 const articlesPath = path.join(__dirname, '../src/content/blog/articles.json');
 const articlesData = JSON.parse(fs.readFileSync(articlesPath, 'utf8'));
 
 // RSS generation function (adapted from src/lib/rss.ts)
 function generateRSSFeed(posts) {
-  // Use environment variable or default to localhost for development
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://patricklehmann.io';
+  const siteUrl = SITE_URL;
   const buildDate = new Date().toUTCString();
 
   // Sort posts by date (newest first)

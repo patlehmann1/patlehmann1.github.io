@@ -1,8 +1,10 @@
+export const SITE_URL = "https://patricklehmann.io";
+
 export const SITE_CONFIG = {
   name: "Patrick Lehmann",
   title: "Patrick Lehmann - Full-Stack Software Engineer",
   description: "Full-stack software engineer with 6+ years building scalable applications using C#/.NET, TypeScript, and modern JavaScript frameworks.",
-  url: process.env.NEXT_PUBLIC_SITE_URL || "https://patricklehmann.io",
+  url: SITE_URL,
   email: "contact@patricklehmann.io",
   social: {
     github: "https://github.com/patlehmann1",

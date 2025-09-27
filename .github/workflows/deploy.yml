@@ -163,8 +163,6 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.manager }} ${{ steps.detect-package-manager.outputs.command }}
 
       - name: Build with Next.js
-        env:
-          NEXT_PUBLIC_SITE_URL: https://patricklehmann.io
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: Upload artifact
