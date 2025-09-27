@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { UI } from "@/lib/constants";
 import { NavigationHandler } from "@/lib/types";
-import { mobileNavigationItemClasses } from "@/lib/ui-utils";
+import { mobileNavigationItemClasses, mobileNavContainerClasses } from "@/lib/ui-utils";
 
 interface MobileNavigationProps {
   isMenuOpen: boolean;
@@ -24,7 +24,7 @@ export function MobileNavigation({ isMenuOpen, onNavClick, isActiveItem }: Mobil
       className="md:hidden mt-4 overflow-hidden relative z-10"
     >
       <motion.div
-        className="bg-card/95 backdrop-blur-md rounded-lg border border-border p-4"
+        className={mobileNavContainerClasses()}
         initial={{ y: -10 }}
         animate={{ y: 0 }}
         exit={{ y: -10 }}

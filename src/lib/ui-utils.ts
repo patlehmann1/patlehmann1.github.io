@@ -21,10 +21,11 @@ export function navigationButtonClasses(isActive: boolean) {
  */
 export function mobileNavigationItemClasses(isActive: boolean) {
   return cn(
-    "block w-full text-left py-3 px-2 transition-colors duration-200",
+    "block w-full text-left touch-target mobile-nav-item touch-feedback",
+    "py-3 px-4 transition-all duration-200 rounded-lg",
     isActive
-      ? "text-primary font-medium"
-      : "text-muted-foreground hover:text-foreground"
+      ? "text-primary font-medium bg-primary/5"
+      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
   );
 }
 
@@ -49,5 +50,34 @@ export function tagFilterButtonClasses(isSelected: boolean) {
     isSelected
       ? "bg-primary text-primary-foreground border-primary"
       : "bg-background text-muted-foreground border-border hover:border-primary/50"
+  );
+}
+
+/**
+ * Creates touch-optimized button classes for mobile devices
+ */
+export function touchButtonClasses(variant: 'primary' | 'secondary' | 'ghost' = 'primary') {
+  const baseClasses = "min-h-[44px] min-w-[44px] active:scale-95 transition-transform duration-150";
+
+  switch (variant) {
+    case 'primary':
+      return cn(baseClasses, "bg-primary text-primary-foreground");
+    case 'secondary':
+      return cn(baseClasses, "bg-secondary text-secondary-foreground");
+    case 'ghost':
+      return cn(baseClasses, "hover:bg-muted active:bg-muted/80");
+    default:
+      return baseClasses;
+  }
+}
+
+/**
+ * Creates mobile navigation container classes with enhanced backdrop
+ */
+export function mobileNavContainerClasses() {
+  return cn(
+    "bg-card/95 backdrop-blur-md rounded-lg border border-border",
+    "shadow-lg shadow-black/5 dark:shadow-black/20",
+    "p-4 safe-area-inset"
   );
 }
