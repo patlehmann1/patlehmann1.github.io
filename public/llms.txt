@@ -1,0 +1,40 @@
+# Patrick Lehmann - Software Developer Portfolio
+
+> Personal portfolio website showcasing software development expertise, featuring projects, blog articles, professional experience, and technical insights. Built with Next.js 14, TypeScript, and modern web technologies.
+
+This is the professional portfolio of Patrick Lehmann, a software developer specializing in modern web technologies, AI collaboration, and full-stack development. The site features a comprehensive overview of professional experience, technical skills, featured projects, and thought leadership through blog articles.
+
+## Main Portfolio Sections
+
+- [About](/#about): Professional background and technical philosophy
+- [Experience](/#experience): Career history and professional achievements
+- [Skills](/#skills): Technical expertise and technology stack
+- [Projects](/#projects): Featured development projects and case studies
+- [Blog](/blog): Articles on AI collaboration, development practices, and technical insights
+- [Contact](/#contact): Professional contact information and inquiry form
+
+## Blog and Content
+
+- [Blog Articles](/blog): Technical articles and professional insights
+- [RSS Feed](/rss.xml): Subscribe to latest blog posts and updates
+- [Sitemap](/sitemap.xml): Complete site structure for navigation and indexing
+
+## Technical Documentation
+
+- [Architecture Guide](/docs/architecture.md): System design and component architecture
+- [Development Guidelines](/docs/development-guidelines.md): Code quality standards and best practices
+- [Testing Guide](/docs/testing.md): Testing strategies and coverage requirements
+- [Code Review Checklist](/docs/code-review-checklist.md): Quality assurance and review criteria
+
+## Project Information
+
+- **Technology Stack**: Next.js 14, TypeScript, Tailwind CSS, React, Framer Motion
+- **Features**: Dark mode support, responsive design, SEO optimization, blog system
+- **Content Management**: JSON-based blog system with RSS and sitemap generation
+- **Testing**: Comprehensive Jest test suite with React Testing Library
+
+## Optional
+
+- [Project Repository](https://github.com/username/portfolio): Source code and development history
+- [Newsletter Signup](/newsletter): Subscribe to updates and insights
+- [Professional Network](/#contact): LinkedIn and professional social media links
