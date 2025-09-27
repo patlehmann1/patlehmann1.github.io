@@ -2,7 +2,9 @@ import {
   navigationButtonClasses,
   mobileNavigationItemClasses,
   navigationHeaderClasses,
-  tagFilterButtonClasses
+  tagFilterButtonClasses,
+  touchButtonClasses,
+  mobileNavContainerClasses
 } from '../ui-utils'
 
 describe('UI Utilities', () => {
@@ -60,7 +62,7 @@ describe('UI Utilities', () => {
       expect(result).toContain('w-full')
       expect(result).toContain('text-left')
       expect(result).toContain('py-3')
-      expect(result).toContain('px-2')
+      expect(result).toContain('px-4')
     })
 
     it('should return inactive classes when isActive is false', () => {
@@ -72,7 +74,7 @@ describe('UI Utilities', () => {
       expect(result).toContain('w-full')
       expect(result).toContain('text-left')
       expect(result).toContain('py-3')
-      expect(result).toContain('px-2')
+      expect(result).toContain('px-4')
     })
 
     it('should not contain active-specific classes when inactive', () => {
@@ -93,7 +95,7 @@ describe('UI Utilities', () => {
       const activeResult = mobileNavigationItemClasses(true)
       const inactiveResult = mobileNavigationItemClasses(false)
 
-      ;['block', 'w-full', 'text-left', 'py-3', 'px-2', 'transition-colors', 'duration-200'].forEach(className => {
+      ;['block', 'w-full', 'text-left', 'py-3', 'px-4', 'transition-all', 'duration-200'].forEach(className => {
         expect(activeResult).toContain(className)
         expect(inactiveResult).toContain(className)
       })
@@ -265,6 +267,40 @@ describe('UI Utilities', () => {
       results.forEach(result => {
         expect(result).not.toMatch(/\s{2,}/)
       })
+    })
+  })
+
+  describe('touchButtonClasses', () => {
+    it('should return ghost variant classes by default', () => {
+      const result = touchButtonClasses()
+
+      expect(result).toContain('min-h-[44px]')
+      expect(result).toContain('min-w-[44px]')
+      expect(result).toContain('active:scale-95')
+      expect(result).toContain('bg-primary')
+    })
+
+    it('should return correct classes for different variants', () => {
+      const primaryResult = touchButtonClasses('primary')
+      const secondaryResult = touchButtonClasses('secondary')
+      const ghostResult = touchButtonClasses('ghost')
+
+      expect(primaryResult).toContain('bg-primary')
+      expect(secondaryResult).toContain('bg-secondary')
+      expect(ghostResult).toContain('hover:bg-muted')
+    })
+  })
+
+  describe('mobileNavContainerClasses', () => {
+    it('should return container classes with backdrop blur', () => {
+      const result = mobileNavContainerClasses()
+
+      expect(result).toContain('bg-card/95')
+      expect(result).toContain('backdrop-blur-md')
+      expect(result).toContain('rounded-lg')
+      expect(result).toContain('border')
+      expect(result).toContain('shadow-lg')
+      expect(result).toContain('p-4')
     })
   })
 })

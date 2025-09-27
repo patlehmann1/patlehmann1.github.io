@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { MobileNavigation } from '../mobile-navigation'
 import { UI } from '@/lib/constants'
-import { mobileNavigationItemClasses } from '@/lib/ui-utils'
+import { mobileNavigationItemClasses, mobileNavContainerClasses } from '@/lib/ui-utils'
 
 // Mock framer-motion to avoid issues with animations in tests
 interface MotionDivProps {
@@ -47,11 +47,12 @@ jest.mock('@/components/ui/theme-toggle', () => ({
   ThemeToggle: () => <button data-testid="mobile-theme-toggle">Mobile Theme Toggle</button>
 }))
 
-// Mock mobileNavigationItemClasses utility
+// Mock ui-utils functions
 jest.mock('@/lib/ui-utils', () => ({
   mobileNavigationItemClasses: jest.fn((isActive: boolean) =>
     isActive ? 'mobile-nav-item active' : 'mobile-nav-item'
-  )
+  ),
+  mobileNavContainerClasses: jest.fn(() => 'bg-card/95 backdrop-blur-md rounded-lg border border-border p-4 shadow-lg shadow-black/5 dark:shadow-black/20 safe-area-inset')
 }))
 
 describe('MobileNavigation Component', () => {
