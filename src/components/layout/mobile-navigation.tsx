@@ -44,7 +44,7 @@ export function MobileNavigation({ isMenuOpen, onNavClick, isActiveItem }: Mobil
           </motion.button>
         ))}
         <motion.div
-          className="flex justify-center pt-4 mt-4 border-t border-border"
+          className="flex justify-center pt-6 mt-6 pb-2 mb-4 border-t border-border"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -20 }}

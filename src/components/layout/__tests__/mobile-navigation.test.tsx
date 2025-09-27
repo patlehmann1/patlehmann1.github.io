@@ -385,8 +385,10 @@ describe('MobileNavigation Component', () => {
       expect(themeToggleContainer).toHaveClass(
         'flex',
         'justify-center',
-        'pt-4',
-        'mt-4',
+        'pt-6',
+        'mt-6',
+        'pb-2',
+        'mb-4',
         'border-t',
         'border-border'
       )
