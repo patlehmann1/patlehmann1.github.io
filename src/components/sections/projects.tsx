@@ -36,9 +36,9 @@ export function Projects() {
       title: "Legacy System Modernization",
       company: "CoStar Group / Homes.com",
       description: "Architected and led migration from monolithic ColdFusion system to scalable Node.js microservices architecture, improving system performance and maintainability.",
-      period: "2019-2022",
+      period: "2019-2021",
       impact: "Reduced system complexity and improved scalability",
-      technologies: ["Node.js", "C#/.NET", "MongoDB", "SQL Server", "Kubernetes"],
+      technologies: ["Node.js", "MongoDB", "SQL Server", "Kubernetes"],
       highlights: [
         "Monolithic to microservices transformation",
         "Cross-platform technology transition",
@@ -84,7 +84,7 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-card p-8 rounded-lg border shadow-sm hover:shadow-xl hover:shadow-primary/10 hover:scale-105 hover:-translate-y-2 hover:border-primary/30 transition-all duration-300 cursor-pointer transform"
+              className="bg-card p-8 rounded-lg border shadow-sm project-card cursor-pointer group"
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
@@ -115,7 +115,7 @@ export function Projects() {
                 <ul className="space-y-2">
                   {project.highlights.map((highlight, highlightIndex) => (
                     <li key={highlightIndex} className="flex items-start gap-2 text-body text-muted-foreground">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
+                      <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0 highlight-dot" />
                       {highlight}
                     </li>
                   ))}
@@ -128,7 +128,7 @@ export function Projects() {
                   {project.technologies.map((tech, techIndex) => (
                     <span
                       key={techIndex}
-                      className="px-3 py-1 bg-primary/10 text-primary text-caption rounded-full font-medium"
+                      className="px-3 py-1 bg-primary/10 text-primary text-caption rounded-full font-medium tech-badge"
                     >
                       {tech}
                     </span>

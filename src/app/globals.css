@@ -275,4 +275,63 @@
   .safe-area-bottom {
     padding-bottom: max(16px, env(safe-area-inset-bottom));
   }
+
+  /* Enhanced hover effects for project cards */
+  .project-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: center;
+  }
+
+  .project-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+      0 20px 40px -12px hsl(var(--primary) / 0.15),
+      0 8px 16px -4px hsl(var(--primary) / 0.1),
+      0 0 0 1px hsl(var(--primary) / 0.1);
+  }
+
+  .project-card:hover .tech-badge {
+    background: hsl(var(--primary) / 0.15);
+    transform: scale(1.05);
+  }
+
+  .tech-badge {
+    transition: all 0.2s ease-out;
+  }
+
+  .project-card:hover .highlight-dot {
+    background: hsl(var(--primary));
+    transform: scale(1.2);
+  }
+
+  .highlight-dot {
+    transition: all 0.2s ease-out;
+  }
+
+  /* Section dividers */
+  .section-divider {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--border)) 20%,
+      hsl(var(--border)) 80%,
+      transparent 100%
+    );
+    height: 1px;
+    margin: 4rem 0;
+  }
+
+  .section-divider-gradient {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      hsl(var(--primary) / 0.3) 20%,
+      hsl(var(--primary) / 0.1) 50%,
+      hsl(var(--primary) / 0.3) 80%,
+      transparent 100%
+    );
+    height: 2px;
+    margin: 6rem 0;
+    border-radius: 1px;
+  }
 }
