@@ -41,7 +41,11 @@ describe('Blog utilities', () => {
     it('should provide content fallback for posts', () => {
       // Test that the content fallback logic works
       // Since all current posts have content, we'll test the fallback logic by mocking
-      const mockArticle = { slug: 'test', title: 'Test', description: 'Test' }
+      const mockArticle: { slug: string; title: string; description: string; content?: string } = {
+        slug: 'test',
+        title: 'Test',
+        description: 'Test'
+      }
       const result = { ...mockArticle, slug: mockArticle.slug, content: mockArticle.content || '' }
 
       expect(result.content).toBe('')

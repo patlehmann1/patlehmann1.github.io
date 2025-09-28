@@ -256,18 +256,18 @@ describe('createScaleVariants', () => {
     const fullVariants = createScaleVariants(false)
 
     // Reduced motion should use shorter duration
-    expect(reducedVariants.visible.transition?.duration).toBe(0.2)
+    expect((reducedVariants.visible as any).transition?.duration).toBe(0.2)
 
     // Full motion should use longer duration
-    expect(fullVariants.visible.transition?.duration).toBe(0.4)
+    expect((fullVariants.visible as any).transition?.duration).toBe(0.4)
   })
 
   it('should use appropriate easing functions', () => {
     const fullVariants = createScaleVariants(false)
 
     // Should use consistent easing
-    expect(fullVariants.visible.transition?.ease).toEqual([0.4, 0, 0.2, 1])
-    expect(fullVariants.hover.transition?.ease).toEqual([0.4, 0, 0.2, 1])
+    expect((fullVariants.visible as any).transition?.ease).toEqual([0.4, 0, 0.2, 1])
+    expect((fullVariants.hover as any).transition?.ease).toEqual([0.4, 0, 0.2, 1])
   })
 })
 
@@ -299,8 +299,8 @@ describe('Integration tests', () => {
     const scaleVariants = createScaleVariants(prefersReducedMotion)
 
     // Should both be using reduced motion variants
-    expect(motionVariants.visible.transition?.duration).toBe(0.2)
-    expect(scaleVariants.visible.transition?.duration).toBe(0.2)
+    expect((motionVariants.visible as any).transition?.duration).toBe(0.2)
+    expect((scaleVariants.visible as any).transition?.duration).toBe(0.2)
 
     // Should not have complex animations
     expect(motionVariants.hidden).not.toHaveProperty('y')

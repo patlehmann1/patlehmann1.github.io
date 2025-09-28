@@ -50,7 +50,11 @@ describe('SectionErrorBoundary', () => {
   })
 
   afterEach(() => {
-    process.env.NODE_ENV = originalEnv
+    Object.defineProperty(process.env, 'NODE_ENV', {
+      value: originalEnv,
+      writable: true,
+      configurable: true
+    })
     console.error = originalConsoleError
   })
 
@@ -165,7 +169,11 @@ describe('SectionErrorBoundary', () => {
   })
 
   it('should show error details in development mode', () => {
-    process.env.NODE_ENV = 'development'
+    Object.defineProperty(process.env, 'NODE_ENV', {
+      value: 'development',
+      writable: true,
+      configurable: true
+    })
 
     render(
       <SectionErrorBoundary>
@@ -181,7 +189,11 @@ describe('SectionErrorBoundary', () => {
   })
 
   it('should not show error details in production mode', () => {
-    process.env.NODE_ENV = 'production'
+    Object.defineProperty(process.env, 'NODE_ENV', {
+      value: 'production',
+      writable: true,
+      configurable: true
+    })
 
     render(
       <SectionErrorBoundary>
@@ -276,7 +288,11 @@ describe('SectionErrorBoundary', () => {
   })
 
   it('should handle error details summary interaction', () => {
-    process.env.NODE_ENV = 'development'
+    Object.defineProperty(process.env, 'NODE_ENV', {
+      value: 'development',
+      writable: true,
+      configurable: true
+    })
 
     render(
       <SectionErrorBoundary>
@@ -292,7 +308,11 @@ describe('SectionErrorBoundary', () => {
   })
 
   it('should handle error message and stack trace display', () => {
-    process.env.NODE_ENV = 'development'
+    Object.defineProperty(process.env, 'NODE_ENV', {
+      value: 'development',
+      writable: true,
+      configurable: true
+    })
 
     render(
       <SectionErrorBoundary>
