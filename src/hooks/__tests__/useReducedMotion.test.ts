@@ -273,8 +273,6 @@ describe('createScaleVariants', () => {
 
 describe('Integration tests', () => {
   const mockMatchMedia = jest.fn()
-  const mockAddEventListener = jest.fn()
-  const mockRemoveEventListener = jest.fn()
 
   beforeEach(() => {
     jest.clearAllMocks()

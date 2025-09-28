@@ -306,7 +306,7 @@ describe('BlogCard', () => {
   })
 
   it('should handle reduced motion preference', () => {
-    const { useReducedMotion } = require('@/hooks/useReducedMotion')
+    const { useReducedMotion } = jest.requireMock('@/hooks/useReducedMotion')
 
     // Mock reduced motion preference as true
     useReducedMotion.mockReturnValueOnce(true)

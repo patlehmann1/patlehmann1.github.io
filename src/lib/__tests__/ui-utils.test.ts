@@ -291,7 +291,7 @@ describe('UI Utilities', () => {
     })
 
     it('should return base classes for invalid variant', () => {
-      const result = touchButtonClasses('invalid' as any)
+      const result = touchButtonClasses('invalid' as 'primary' | 'secondary' | 'ghost')
 
       expect(result).toContain('min-h-[44px]')
       expect(result).toContain('min-w-[44px]')

@@ -22,7 +22,8 @@ interface SkillCategory {
 export function SkillsEnhanced() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
-  const skillCategories: SkillCategory[] = [
+  const sortedSkillCategories = useMemo(() => {
+    const skillCategories: SkillCategory[] = [
     {
       title: "Languages",
       icon: <Code className="h-6 w-6" />,
@@ -298,7 +299,13 @@ export function SkillsEnhanced() {
         }
       ]
     }
-  ];
+    ];
+
+    return skillCategories.map(category => ({
+      ...category,
+      skills: sortSkillsByLevelAndExperience(category.skills)
+    }));
+  }, []);
 
   const practices = [
     "Agile/Scrum Development",
@@ -312,13 +319,6 @@ export function SkillsEnhanced() {
     "Real Estate Technology Solutions",
     "Payment Processing Integration"
   ];
-
-  const sortedSkillCategories = useMemo(() => {
-    return skillCategories.map(category => ({
-      ...category,
-      skills: sortSkillsByLevelAndExperience(category.skills)
-    }));
-  }, [skillCategories]);
 
   const renderStars = useCallback((level: number) => {
     return (

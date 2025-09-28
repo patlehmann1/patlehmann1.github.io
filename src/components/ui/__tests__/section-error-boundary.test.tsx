@@ -250,23 +250,14 @@ describe('SectionErrorBoundary', () => {
   })
 
   it('should reset error state when retry is clicked', () => {
-    let errorBoundaryRef: SectionErrorBoundary | null = null
-
-    class TestErrorBoundary extends SectionErrorBoundary {
-      constructor(props: any) {
-        super(props)
-        errorBoundaryRef = this
-      }
-    }
-
     const { rerender } = render(
-      <TestErrorBoundary>
+      <SectionErrorBoundary>
         <ThrowError shouldThrow={true} />
-      </TestErrorBoundary>
+      </SectionErrorBoundary>
     )
 
     // Error state should be active
-    expect(errorBoundaryRef?.state.hasError).toBe(true)
+    expect(screen.getByText('Section Unavailable')).toBeInTheDocument()
 
     // Click retry
     const retryButton = screen.getByRole('button', { name: /try again/i })
@@ -274,9 +265,9 @@ describe('SectionErrorBoundary', () => {
 
     // Re-render with a component that doesn't throw
     rerender(
-      <TestErrorBoundary>
+      <SectionErrorBoundary>
         <ThrowError shouldThrow={false} />
-      </TestErrorBoundary>
+      </SectionErrorBoundary>
     )
 
     // Should show normal content now

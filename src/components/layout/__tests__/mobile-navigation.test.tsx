@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { MobileNavigation } from '../mobile-navigation'
 import { UI } from '@/lib/constants'
-import { mobileNavigationItemClasses, mobileNavContainerClasses } from '@/lib/ui-utils'
+import { mobileNavigationItemClasses } from '@/lib/ui-utils'
 
 // Mock framer-motion to avoid issues with animations in tests
 interface MotionDivProps {
