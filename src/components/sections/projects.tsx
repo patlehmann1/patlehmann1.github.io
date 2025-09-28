@@ -8,7 +8,7 @@ export function Projects() {
   const projects = [
     {
       title: "Enterprise Analytics Integration",
-      company: "Global Payments",
+      company: "Global Payments Inc.",
       description: "Led full-stack implementation of Pendo Analytics and OneTrust Cookie Consent across enterprise portal, integrating with Angular microfrontends and backend systems.",
       period: "2025",
       impact: "Enhanced user experience tracking across entire platform",
@@ -21,7 +21,7 @@ export function Projects() {
     },
     {
       title: "E-commerce POS Integration Platform",
-      company: "Global Payments",
+      company: "Global Payments Inc.",
       description: "Developed comprehensive features integrating e-commerce systems with point-of-sale solutions, enabling seamless omnichannel retail experiences.",
       period: "2022-2024",
       impact: "Streamlined retail operations for thousands of merchants",
@@ -34,7 +34,7 @@ export function Projects() {
     },
     {
       title: "Legacy System Modernization",
-      company: "CoStar Group / Homes.com",
+      company: "Homes.com",
       description: "Architected and led migration from monolithic ColdFusion system to scalable Node.js microservices architecture, improving system performance and maintainability.",
       period: "2019-2021",
       impact: "Reduced system complexity and improved scalability",
@@ -47,7 +47,7 @@ export function Projects() {
     },
     {
       title: "Legacy Codebase Maintenance",
-      company: "Global Payments",
+      company: "Global Payments Inc.",
       description: "Maintained and enhanced complex legacy system with React.js class components within Backbone.js views, delivering critical stability improvements.",
       period: "2024-2025",
       impact: "Ensured system stability while managing technical debt",
