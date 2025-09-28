@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useReadingProgress } from "@/hooks/useReadingProgress";
+import { useReducedMotion, createMotionVariants } from "@/hooks/useReducedMotion";
 
 interface ReadingProgressBarProps {
   /**
@@ -38,23 +39,17 @@ export function ReadingProgressBar({
     hideThreshold: 0.95,
   });
 
-  const prefersReducedMotion = typeof window !== "undefined" &&
-    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReducedMotion = useReducedMotion();
+  const motionVariants = createMotionVariants(prefersReducedMotion);
 
   return (
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          initial={{ opacity: 0, scaleX: 0 }}
-          animate={{ opacity: 1, scaleX: 1 }}
-          exit={{ opacity: 0, scaleX: 0 }}
-          transition={prefersReducedMotion ?
-            { duration: 0 } :
-            {
-              opacity: { duration: 0.3 },
-              scaleX: { duration: 0.3 },
-            }
-          }
+          variants={motionVariants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
           className={`fixed top-0 left-0 right-0 z-50 ${className}`}
           style={{ height: `${height}px` }}
           role="progressbar"

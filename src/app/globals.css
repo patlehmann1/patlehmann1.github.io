@@ -276,6 +276,31 @@
     padding-bottom: max(16px, env(safe-area-inset-bottom));
   }
 
+  /* Respect reduced motion preferences */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .animate-pulse {
+      animation: none;
+    }
+
+    .project-card:hover {
+      transform: none;
+    }
+
+    .tech-badge,
+    .highlight-dot {
+      transition: none;
+    }
+  }
+
   /* Enhanced hover effects for project cards */
   .project-card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

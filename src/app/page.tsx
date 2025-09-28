@@ -8,6 +8,7 @@ import { Blog } from "@/components/sections/blog";
 import { Contact } from "@/components/sections/contact";
 import { ScrollToTop } from "@/components/ui/scroll-to-top";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { SectionErrorBoundary } from "@/components/ui/section-error-boundary";
 
 export default function Home() {
   return (
@@ -15,19 +16,33 @@ export default function Home() {
       <ScrollProgress />
       <Navigation />
       <main className="pt-16 sm:pt-20">
-        <Hero />
+        <SectionErrorBoundary sectionName="Hero">
+          <Hero />
+        </SectionErrorBoundary>
         <div className="section-divider-gradient" />
-        <About />
+        <SectionErrorBoundary sectionName="About">
+          <About />
+        </SectionErrorBoundary>
         <div className="section-divider" />
-        <Experience />
+        <SectionErrorBoundary sectionName="Experience">
+          <Experience />
+        </SectionErrorBoundary>
         <div className="section-divider" />
-        <SkillsEnhanced />
+        <SectionErrorBoundary sectionName="Skills">
+          <SkillsEnhanced />
+        </SectionErrorBoundary>
         <div className="section-divider-gradient" />
-        <Projects />
+        <SectionErrorBoundary sectionName="Projects">
+          <Projects />
+        </SectionErrorBoundary>
         <div className="section-divider" />
-        <Blog />
+        <SectionErrorBoundary sectionName="Blog">
+          <Blog />
+        </SectionErrorBoundary>
         <div className="section-divider-gradient" />
-        <Contact />
+        <SectionErrorBoundary sectionName="Contact">
+          <Contact />
+        </SectionErrorBoundary>
       </main>
       <ScrollToTop />
     </>

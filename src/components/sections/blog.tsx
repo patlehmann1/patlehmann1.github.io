@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,7 +14,7 @@ export function Blog() {
   const [isLoading, setIsLoading] = useState(true);
   const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
 
-  useEffect(() => {
+  const loadFeaturedPosts = useCallback(() => {
     const timer = setTimeout(() => {
       setFeaturedPosts(getFeaturedPosts(3));
       setIsLoading(false);
@@ -22,6 +22,11 @@ export function Blog() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const cleanup = loadFeaturedPosts();
+    return cleanup;
+  }, [loadFeaturedPosts]);
 
   return (
     <section id="blog" className="py-16 sm:py-20 px-3 sm:px-4 lg:px-6">

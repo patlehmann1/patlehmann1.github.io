@@ -4,8 +4,12 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
 import { Typewriter } from "@/components/ui/typewriter";
+import { useReducedMotion, createMotionVariants } from "@/hooks/useReducedMotion";
 
 export function Hero() {
+  const prefersReducedMotion = useReducedMotion();
+  const motionVariants = createMotionVariants(prefersReducedMotion);
+
   return (
     <section className="min-h-screen relative overflow-hidden">
       <div className="absolute inset-0 bg-grid opacity-20 sm:opacity-30" />
@@ -14,9 +18,9 @@ export function Hero() {
         <div className="flex items-center justify-center min-h-[70vh] sm:min-h-[60vh]">
           <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8 min-w-0">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              variants={motionVariants}
+              initial="hidden"
+              animate="visible"
               className="space-y-6"
             >
               <div className="flex items-center justify-center gap-3 text-primary font-550 tracking-wide text-caption">
@@ -52,9 +56,10 @@ export function Hero() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              variants={motionVariants}
+              initial="hidden"
+              animate="visible"
+              transition={{ delay: prefersReducedMotion ? 0 : 0.2 }}
               className="flex justify-center"
             >
               <Button size="lg" className="shadow-warm hover:shadow-lg transition-all duration-300 min-w-0 flex-shrink" asChild>

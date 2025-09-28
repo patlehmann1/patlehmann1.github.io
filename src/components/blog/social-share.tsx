@@ -7,6 +7,7 @@ import { XIcon } from "@/components/ui/icons/x-icon";
 import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
 import { Share2 } from "lucide-react";
 import { BlogPost } from "@/lib/types";
+import { useReducedMotion, createMotionVariants } from "@/hooks/useReducedMotion";
 import { SITE_URL } from "@/lib/constants";
 
 interface SocialShareProps {
@@ -15,6 +16,9 @@ interface SocialShareProps {
 }
 
 export function SocialShare({ post, className }: SocialShareProps) {
+  const prefersReducedMotion = useReducedMotion();
+  const motionVariants = createMotionVariants(prefersReducedMotion);
+
   const siteUrl = SITE_URL;
   const postUrl = `${siteUrl}/blog/${post.slug}`;
 
@@ -34,9 +38,9 @@ export function SocialShare({ post, className }: SocialShareProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
+      variants={motionVariants}
+      initial="hidden"
+      animate="visible"
       className={`bg-primary/5 border border-primary/20 rounded-lg p-6 ${className}`}
     >
       <div className="flex items-start gap-4">

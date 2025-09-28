@@ -4,6 +4,9 @@ import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowLeft, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlogPost } from "@/lib/types";
+import { useReducedMotion, createMotionVariants } from "@/hooks/useReducedMotion";
+import { SectionErrorBoundary } from "@/components/ui/section-error-boundary";
+import { SITE_URL } from "@/lib/constants";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
@@ -15,31 +18,57 @@ interface BlogPostContentProps {
 }
 
 export function BlogPostContent({ post }: BlogPostContentProps) {
+  const prefersReducedMotion = useReducedMotion();
+  const motionVariants = createMotionVariants(prefersReducedMotion);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": post.title,
     "description": post.description,
+    "image": {
+      "@type": "ImageObject",
+      "url": `${SITE_URL}/api/og?title=${encodeURIComponent(post.title)}&description=${encodeURIComponent(post.description)}`,
+      "width": 1200,
+      "height": 630
+    },
     "author": {
       "@type": "Person",
       "name": "Patrick Lehmann",
-      "url": "https://patricklehmann.io"
+      "url": "https://patricklehmann.io",
+      "image": {
+        "@type": "ImageObject",
+        "url": `${SITE_URL}/profile.jpg`,
+        "width": 400,
+        "height": 400
+      }
     },
     "publisher": {
-      "@type": "Person",
-      "name": "Patrick Lehmann"
+      "@type": "Organization",
+      "name": "Patrick Lehmann",
+      "url": "https://patricklehmann.io",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${SITE_URL}/logo.png`,
+        "width": 200,
+        "height": 200
+      }
     },
     "datePublished": post.publishedAt,
     "dateModified": post.publishedAt,
     "keywords": post.tags.join(", "),
     "articleSection": "Technology",
+    "genre": "Technology",
     "inLanguage": "en-US",
     "wordCount": post.content.split(" ").length,
     "timeRequired": `PT${post.readingTime}M`,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `https://patricklehmann.io/blog/${post.slug}`
-    }
+      "@id": `${SITE_URL}/blog/${post.slug}`
+    },
+    "url": `${SITE_URL}/blog/${post.slug}`,
+    "isAccessibleForFree": true,
+    "creativeWorkStatus": "Published"
   };
 
   return (
@@ -50,9 +79,9 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
       />
       <div className="max-w-4xl mx-auto px-3 sm:px-4 lg:px-6 py-8 sm:py-12">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          variants={motionVariants}
+          initial="hidden"
+          animate="visible"
           className="mb-8"
         >
           <Button variant="ghost" size="sm" className="mb-6 -ml-2" asChild>
@@ -99,43 +128,50 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
         </motion.div>
 
         <motion.article
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+          variants={motionVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: prefersReducedMotion ? 0 : 0.1 }}
           className="max-w-none"
         >
-          <ReactMarkdown
-            remarkPlugins={[remarkGfm]}
-            components={{
-              h1: ({children}) => <h1 className="text-2xl font-bold mb-4 mt-8 text-foreground leading-tight">{children}</h1>,
-              h2: ({children}) => <h2 className="text-xl font-bold mb-4 mt-8 text-foreground leading-tight">{children}</h2>,
-              h3: ({children}) => <h3 className="text-lg font-semibold mb-3 mt-6 text-foreground leading-tight">{children}</h3>,
-              p: ({children}) => <p className="mb-4 leading-6 text-foreground">{children}</p>,
-              ul: ({children}) => <ul className="mb-4 pl-6 space-y-1 list-disc">{children}</ul>,
-              ol: ({children}) => <ol className="mb-4 pl-6 space-y-1 list-decimal">{children}</ol>,
-              li: ({children}) => <li className="text-foreground leading-6">{children}</li>,
-              strong: ({children}) => <strong className="font-semibold text-foreground">{children}</strong>,
-              em: ({children}) => <em className="italic text-foreground">{children}</em>,
-            }}
-          >
-            {post.content}
-          </ReactMarkdown>
+          <SectionErrorBoundary sectionName="Blog Content">
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              components={{
+                h1: ({children}) => <h1 className="text-2xl font-bold mb-4 mt-8 text-foreground leading-tight">{children}</h1>,
+                h2: ({children}) => <h2 className="text-xl font-bold mb-4 mt-8 text-foreground leading-tight">{children}</h2>,
+                h3: ({children}) => <h3 className="text-lg font-semibold mb-3 mt-6 text-foreground leading-tight">{children}</h3>,
+                p: ({children}) => <p className="mb-4 leading-6 text-foreground">{children}</p>,
+                ul: ({children}) => <ul className="mb-4 pl-6 space-y-1 list-disc">{children}</ul>,
+                ol: ({children}) => <ol className="mb-4 pl-6 space-y-1 list-decimal">{children}</ol>,
+                li: ({children}) => <li className="text-foreground leading-6">{children}</li>,
+                strong: ({children}) => <strong className="font-semibold text-foreground">{children}</strong>,
+                em: ({children}) => <em className="italic text-foreground">{children}</em>,
+              }}
+            >
+              {post.content}
+            </ReactMarkdown>
+          </SectionErrorBoundary>
         </motion.article>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+          variants={motionVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: prefersReducedMotion ? 0 : 0.15 }}
           className="mt-12"
         >
-          <SocialShare post={post} className="mb-8" />
+          <SectionErrorBoundary sectionName="Social Sharing">
+            <SocialShare post={post} className="mb-8" />
+          </SectionErrorBoundary>
           <NewsletterSignup />
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          variants={motionVariants}
+          initial="hidden"
+          animate="visible"
+          transition={{ delay: prefersReducedMotion ? 0 : 0.2 }}
           className="mt-16 pt-8 border-t border-border"
         >
           <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">

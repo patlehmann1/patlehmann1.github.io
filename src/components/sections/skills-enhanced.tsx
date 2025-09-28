@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Code, Database, Cloud, Wrench, Star, Settings } from "lucide-react";
 import { sortSkillsByLevelAndExperience } from "@/lib/utils";
@@ -313,7 +313,14 @@ export function SkillsEnhanced() {
     "Payment Processing Integration"
   ];
 
-  const renderStars = (level: number) => {
+  const sortedSkillCategories = useMemo(() => {
+    return skillCategories.map(category => ({
+      ...category,
+      skills: sortSkillsByLevelAndExperience(category.skills)
+    }));
+  }, [skillCategories]);
+
+  const renderStars = useCallback((level: number) => {
     return (
       <div className="flex gap-1">
         {[1, 2, 3, 4, 5].map((star) => (
@@ -328,7 +335,11 @@ export function SkillsEnhanced() {
         ))}
       </div>
     );
-  };
+  }, []);
+
+  const handleSkillHover = useCallback((skillName: string | null) => {
+    setHoveredSkill(skillName);
+  }, []);
 
 
   return (
@@ -348,8 +359,7 @@ export function SkillsEnhanced() {
         </motion.div>
 
         <div className="space-y-16">
-          {skillCategories.map((category, categoryIndex) => {
-            const sortedSkills = sortSkillsByLevelAndExperience(category.skills);
+          {sortedSkillCategories.map((category, categoryIndex) => {
             return (
             <motion.div
               key={category.title}
@@ -370,7 +380,7 @@ export function SkillsEnhanced() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {sortedSkills.map((skill, skillIndex) => (
+                {category.skills.map((skill, skillIndex) => (
                   <motion.div
                     key={skill.name}
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -382,8 +392,8 @@ export function SkillsEnhanced() {
                     }}
                     viewport={{ once: true }}
                     className="relative group"
-                    onMouseEnter={() => setHoveredSkill(skill.name)}
-                    onMouseLeave={() => setHoveredSkill(null)}
+                    onMouseEnter={() => handleSkillHover(skill.name)}
+                    onMouseLeave={() => handleSkillHover(null)}
                   >
                     <div className="bg-card border rounded-lg p-4 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 hover:scale-105 transition-all duration-300 cursor-pointer">
                       <div className="flex items-center justify-between mb-3">

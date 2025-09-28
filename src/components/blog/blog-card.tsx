@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BlogPost } from "@/lib/types";
+import { useReducedMotion, createMotionVariants } from "@/hooks/useReducedMotion";
 import Link from "next/link";
 
 interface BlogCardProps {
@@ -14,13 +15,16 @@ interface BlogCardProps {
 
 export function BlogCard({ post, index = 0, isHomePage = false }: BlogCardProps) {
   const HeadingTag = isHomePage ? "h3" : "h2";
+  const prefersReducedMotion = useReducedMotion();
+  const motionVariants = createMotionVariants(prefersReducedMotion);
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      variants={motionVariants}
+      initial="hidden"
+      whileInView="visible"
+      animate="visible"
+      transition={{ delay: prefersReducedMotion ? 0 : index * 0.1 }}
       viewport={{ once: true }}
       className="group bg-card border rounded-lg overflow-hidden shadow-warm hover:shadow-lg transition-all duration-300"
     >
