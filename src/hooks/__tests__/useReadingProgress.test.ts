@@ -396,4 +396,23 @@ describe('useReadingProgress', () => {
 
     expect(result.current.progress).toBe(100)
   })
+
+  it('should handle case when contentRef becomes null during execution', () => {
+    // Mock querySelector to return null after initial render
+    jest.spyOn(document, 'querySelector').mockReturnValueOnce(mockElement).mockReturnValueOnce(null)
+
+    const { result } = renderHook(() => useReadingProgress())
+
+    // Initially should find content
+    expect(result.current.contentFound).toBe(true)
+
+    // Now simulate scroll when content ref is null
+    act(() => {
+      const scrollEvent = new Event('scroll')
+      window.dispatchEvent(scrollEvent)
+    })
+
+    // Should handle gracefully and not crash
+    expect(result.current.progress).toBe(0)
+  })
 })

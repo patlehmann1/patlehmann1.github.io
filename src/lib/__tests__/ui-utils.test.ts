@@ -289,6 +289,20 @@ describe('UI Utilities', () => {
       expect(secondaryResult).toContain('bg-secondary')
       expect(ghostResult).toContain('hover:bg-muted')
     })
+
+    it('should return base classes for invalid variant', () => {
+      const result = touchButtonClasses('invalid' as any)
+
+      expect(result).toContain('min-h-[44px]')
+      expect(result).toContain('min-w-[44px]')
+      expect(result).toContain('active:scale-95')
+      expect(result).toContain('transition-transform')
+      expect(result).toContain('duration-150')
+      // Should not contain variant-specific classes
+      expect(result).not.toContain('bg-primary')
+      expect(result).not.toContain('bg-secondary')
+      expect(result).not.toContain('hover:bg-muted')
+    })
   })
 
   describe('mobileNavContainerClasses', () => {

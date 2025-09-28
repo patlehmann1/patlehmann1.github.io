@@ -44,6 +44,15 @@ jest.mock('next/link', () => {
   return MockLink
 })
 
+// Mock useReducedMotion hook
+jest.mock('@/hooks/useReducedMotion', () => ({
+  useReducedMotion: jest.fn(() => false),
+  createMotionVariants: jest.fn(() => ({
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  }))
+}))
+
 const mockPost: BlogPost = {
   slug: 'test-blog-post' as BlogPost['slug'],
   title: 'Test Blog Post Title',
@@ -294,5 +303,25 @@ describe('BlogCard', () => {
     // Should render the same content regardless of featured status
     expect(screen.getByText('Test Blog Post Title')).toBeInTheDocument()
     expect(screen.getByText('This is a test blog post description that should be displayed in the card.')).toBeInTheDocument()
+  })
+
+  it('should handle reduced motion preference', () => {
+    const { useReducedMotion } = require('@/hooks/useReducedMotion')
+
+    // Mock reduced motion preference as true
+    useReducedMotion.mockReturnValueOnce(true)
+
+    render(<BlogCard post={mockPost} index={2} />)
+
+    // Should render normally even with reduced motion
+    expect(screen.getByText('Test Blog Post Title')).toBeInTheDocument()
+    expect(screen.getByText('This is a test blog post description that should be displayed in the card.')).toBeInTheDocument()
+  })
+
+  it('should handle animation index correctly', () => {
+    render(<BlogCard post={mockPost} index={3} />)
+
+    // Should render with custom index (used for animation delay)
+    expect(screen.getByText('Test Blog Post Title')).toBeInTheDocument()
   })
 })
