@@ -13,6 +13,7 @@ import Link from "next/link";
 import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
 import { SocialShare } from "@/components/blog/social-share";
 import { CodeBlock } from "@/components/blog/code-block";
+import { TextToSpeech } from "@/components/blog/text-to-speech";
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -126,6 +127,8 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
               </span>
             ))}
           </div>
+
+          <TextToSpeech post={post} className="mb-8" />
         </motion.div>
 
         <motion.article

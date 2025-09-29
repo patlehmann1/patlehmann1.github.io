@@ -7,10 +7,23 @@ import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import dynamic from "next/dynamic";
 
+// Fallback component for loading state
+const FallbackPreview = () => (
+  <pre className={cn(
+    "bg-card/50 border rounded-lg p-4 overflow-x-auto text-sm font-mono",
+    "text-foreground whitespace-pre-wrap !mt-0 !rounded-t-none !rounded-b-lg !border-t-0"
+  )}>
+    <code></code>
+  </pre>
+);
+
 // Dynamic import to avoid SSR issues and reduce bundle size
 const SyntaxHighlighter = dynamic(
   () => import('react-syntax-highlighter').then(mod => mod.Prism),
-  { ssr: false }
+  {
+    ssr: false,
+    loading: () => <FallbackPreview />
+  }
 );
 
 // Import themes statically for better TypeScript support
@@ -99,17 +112,6 @@ export function CodeBlock({
     }
   };
 
-  // Fallback for when syntax highlighter is loading or failed
-  const FallbackCode = () => (
-    <pre className={cn(
-      "bg-card/50 border rounded-lg p-4 overflow-x-auto text-sm font-mono",
-      "text-foreground whitespace-pre-wrap",
-      className
-    )}>
-      <code>{codeContent}</code>
-    </pre>
-  );
-
   return (
     <div className="relative group mb-6">
       {/* Header with language badge and filename */}
@@ -129,36 +131,32 @@ export function CodeBlock({
 
       {/* Code content */}
       <div className="relative">
-        {typeof window !== 'undefined' ? (
-          <SyntaxHighlighter
-            language={normalizedLanguage}
-            style={theme === 'dark' ? vscDarkPlus : oneLight}
-            showLineNumbers={showLineNumbers}
-            className={cn(
-              "!mt-0 !rounded-t-none !rounded-b-lg !border-t-0",
-              "!bg-card/80 border border-border",
-              className
-            )}
-            customStyle={{
-              margin: 0,
-              padding: '1rem',
-              fontSize: '0.875rem',
-              lineHeight: '1.5',
-              borderTopLeftRadius: 0,
-              borderTopRightRadius: 0,
-              borderTop: 'none',
-            }}
-            codeTagProps={{
-              style: {
-                fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace',
-              }
-            }}
-          >
-            {codeContent.trim()}
-          </SyntaxHighlighter>
-        ) : (
-          <FallbackCode />
-        )}
+        <SyntaxHighlighter
+          language={normalizedLanguage}
+          style={theme === 'dark' ? vscDarkPlus : oneLight}
+          showLineNumbers={showLineNumbers}
+          className={cn(
+            "!mt-0 !rounded-t-none !rounded-b-lg !border-t-0",
+            "!bg-card/80 border border-border",
+            className
+          )}
+          customStyle={{
+            margin: 0,
+            padding: '1rem',
+            fontSize: '0.875rem',
+            lineHeight: '1.5',
+            borderTopLeftRadius: 0,
+            borderTopRightRadius: 0,
+            borderTop: 'none',
+          }}
+          codeTagProps={{
+            style: {
+              fontFamily: 'ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo, monospace',
+            }
+          }}
+        >
+          {codeContent.trim()}
+        </SyntaxHighlighter>
 
         {/* Copy button */}
         <Button

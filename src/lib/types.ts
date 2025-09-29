@@ -27,6 +27,7 @@ export interface BlogPost {
   title: string;
   description: string;
   content: string;
+  ttsContent?: string;
   publishedAt: string;
   tags: string[];
   readingTime: number;
