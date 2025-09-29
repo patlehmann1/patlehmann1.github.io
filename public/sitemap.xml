@@ -2,21 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://patricklehmann.io/</loc>
-    <lastmod>2025-09-28T00:30:21.424Z</lastmod>
+    <lastmod>2025-09-29T00:19:18.366Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://patricklehmann.io/blog</loc>
-    <lastmod>2025-09-28T00:30:21.424Z</lastmod>
+    <lastmod>2025-09-29T00:19:18.366Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://newsletter.patricklehmann.io</loc>
-    <lastmod>2025-09-28T00:30:21.424Z</lastmod>
+    <lastmod>2025-09-29T00:19:18.366Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://patricklehmann.io/blog/typescript-to-csharp-transition-guide</loc>
+    <lastmod>2025-09-28T16:00:00.000Z</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://patricklehmann.io/blog/natural-gas-to-dotnet-clean-code</loc>

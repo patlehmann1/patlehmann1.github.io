@@ -148,7 +148,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
                 li: ({children}) => <li className="text-foreground leading-6">{children}</li>,
                 strong: ({children}) => <strong className="font-semibold text-foreground">{children}</strong>,
                 em: ({children}) => <em className="italic text-foreground">{children}</em>,
-                code: ({ className, children, ...props }: any) => {
+                code: ({ className, children, ...props }: React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> & { className?: string }) => {
                   const match = /language-(\w+)/.exec(className || '');
                   const isInline = !match;
                   return !isInline ? (

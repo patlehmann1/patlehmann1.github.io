@@ -7,8 +7,8 @@
     <language>en-US</language>
     <managingEditor>contact@patricklehmann.io (Patrick Lehmann)</managingEditor>
     <webMaster>contact@patricklehmann.io (Patrick Lehmann)</webMaster>
-    <lastBuildDate>Sun, 28 Sep 2025 00:30:21 GMT</lastBuildDate>
-    <pubDate>Sun, 28 Sep 2025 00:30:21 GMT</pubDate>
+    <lastBuildDate>Mon, 29 Sep 2025 00:19:18 GMT</lastBuildDate>
+    <pubDate>Mon, 29 Sep 2025 00:19:18 GMT</pubDate>
     <generator>Next.js RSS Generator</generator>
     <image>
       <url>https://patricklehmann.io/favicon.svg</url>
@@ -17,6 +17,15 @@
     </image>
     <atom:link href="https://patricklehmann.io/rss.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>From TypeScript to C# .NET: A Developer&#39;s Transition Guide</title>
+      <description>How CoStar Group&#39;s acquisition of homes.com forced me to transition from TypeScript to C# .NET. The reality check, the learning curve, and what actually worked in making the switch.</description>
+      <link>https://patricklehmann.io/blog/typescript-to-csharp-transition-guide</link>
+      <guid isPermaLink="true">https://patricklehmann.io/blog/typescript-to-csharp-transition-guide</guid>
+      <pubDate>Sun, 28 Sep 2025 16:00:00 GMT</pubDate>
+      <author>contact@patricklehmann.io (Patrick Lehmann)</author>
+      <category>TypeScript</category><category>C#</category><category>.NET</category><category>Career Transition</category><category>CoStar Group</category><category>Development</category>
+    </item>
     <item>
       <title>From Natural Gas to .NET: What Blue Collar Work Taught Me About Clean Code</title>
       <description>How six years of transitioning from 70+ hour weeks in natural gas to C# development taught me that blue collar work habits translate directly to writing better, cleaner code.</description>
