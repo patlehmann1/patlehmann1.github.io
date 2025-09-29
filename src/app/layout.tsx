@@ -70,25 +70,6 @@ export default function RootLayout({
           href="/rss.xml"
         />
 
-        {/* Explicit Open Graph Meta Tags for Better Compatibility */}
-        <meta property="og:title" content="Patrick Lehmann - Full-Stack Software Engineer" />
-        <meta property="og:description" content="Full-stack software engineer specializing in scalable applications and enterprise integrations. Expert in C#/.NET, TypeScript, React, and Angular." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={SITE_CONFIG.url} />
-        <meta property="og:site_name" content="Patrick Lehmann" />
-        <meta property="og:image" content={`${SITE_CONFIG.url}/og-image.png`} />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:image:type" content="image/png" />
-        <meta property="og:image:alt" content="Patrick Lehmann - Full-Stack Software Engineer" />
-        <meta property="og:locale" content="en_US" />
-
-        {/* Twitter Card Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Patrick Lehmann - Full-Stack Software Engineer" />
-        <meta name="twitter:description" content="Full-stack software engineer with 6+ years building scalable applications. Expert in C#/.NET, TypeScript, React, and Angular." />
-        <meta name="twitter:image" content={`${SITE_CONFIG.url}/og-image.png`} />
-        <meta name="twitter:image:alt" content="Patrick Lehmann - Full-Stack Software Engineer" />
 
         {/* Additional Meta Tags for Better Social Media Support */}
         <meta name="theme-color" content="#C4651C" />

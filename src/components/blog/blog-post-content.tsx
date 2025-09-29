@@ -12,6 +12,7 @@ import remarkGfm from "remark-gfm";
 import Link from "next/link";
 import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
 import { SocialShare } from "@/components/blog/social-share";
+import { CodeBlock } from "@/components/blog/code-block";
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -147,6 +148,20 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
                 li: ({children}) => <li className="text-foreground leading-6">{children}</li>,
                 strong: ({children}) => <strong className="font-semibold text-foreground">{children}</strong>,
                 em: ({children}) => <em className="italic text-foreground">{children}</em>,
+                code: ({ className, children, ...props }: any) => {
+                  const match = /language-(\w+)/.exec(className || '');
+                  const isInline = !match;
+                  return !isInline ? (
+                    <CodeBlock language={match[1]} className={className}>
+                      {String(children).replace(/\n$/, '')}
+                    </CodeBlock>
+                  ) : (
+                    <code className="bg-muted px-1.5 py-0.5 rounded text-sm font-mono" {...props}>
+                      {children}
+                    </code>
+                  );
+                },
+                pre: ({ children }) => <>{children}</>,
               }}
             >
               {post.content}
