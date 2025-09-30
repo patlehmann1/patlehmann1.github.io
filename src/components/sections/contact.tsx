@@ -1,12 +1,30 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Clock } from "lucide-react";
+import { Mail, MapPin, Clock, Copy, Check } from "lucide-react";
 import { GitHubIcon } from "@/components/ui/icons/github-icon";
 import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
 import { Button } from "@/components/ui/button";
+import { Toast } from "@/components/ui/toast";
 
 export function Contact() {
+  const [copiedItem, setCopiedItem] = useState<string | null>(null);
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+
+  const handleCopy = async (value: string, label: string) => {
+    try {
+      await navigator.clipboard.writeText(value);
+      setCopiedItem(label);
+      setToastMessage(`${label} copied!`);
+      setShowToast(true);
+      setTimeout(() => setCopiedItem(null), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
+
   const contactLinks = [
     {
       icon: <Mail className="h-5 w-5" />,
@@ -74,21 +92,34 @@ export function Contact() {
                   viewport={{ once: true }}
                   className="group"
                 >
-                  <a
-                    href={link.href}
-                    target={link.href.startsWith('mailto:') ? '_self' : '_blank'}
-                    rel={link.href.startsWith('mailto:') ? '' : 'noopener noreferrer'}
-                    className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card border rounded-lg hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 hover:scale-105 hover:-translate-y-1 transition-all duration-300 transform"
-                  >
-                    <div className="p-3 bg-primary/10 rounded-lg text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
-                      {link.icon}
-                    </div>
-                    <div className="flex-1">
-                      <h4 className="font-semibold mb-1">{link.label}</h4>
-                      <p className="text-mono-code text-primary">{link.value}</p>
-                      <p className="text-caption text-muted-foreground mt-1">{link.description}</p>
-                    </div>
-                  </a>
+                  <div className="flex items-center gap-3 sm:gap-4 p-3 sm:p-4 bg-card border rounded-lg hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 transition-all duration-300">
+                    <a
+                      href={link.href}
+                      target={link.href.startsWith('mailto:') ? '_self' : '_blank'}
+                      rel={link.href.startsWith('mailto:') ? '' : 'noopener noreferrer'}
+                      className="flex items-center gap-3 sm:gap-4 flex-1 group/link"
+                    >
+                      <div className="p-3 bg-primary/10 rounded-lg text-primary group-hover/link:bg-primary group-hover/link:text-primary-foreground transition-all duration-300">
+                        {link.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h4 className="font-semibold mb-1">{link.label}</h4>
+                        <p className="text-mono-code text-primary">{link.value}</p>
+                        <p className="text-caption text-muted-foreground mt-1">{link.description}</p>
+                      </div>
+                    </a>
+                    <button
+                      onClick={() => handleCopy(link.value, link.label)}
+                      className="p-2 hover:bg-primary/10 rounded-lg transition-colors"
+                      aria-label={`Copy ${link.label}`}
+                    >
+                      {copiedItem === link.label ? (
+                        <Check className="h-5 w-5 text-green-600" />
+                      ) : (
+                        <Copy className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
+                      )}
+                    </button>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -139,6 +170,11 @@ export function Contact() {
           </p>
         </motion.div>
       </div>
+      <Toast
+        message={toastMessage}
+        isVisible={showToast}
+        onClose={() => setShowToast(false)}
+      />
     </section>
   );
 }

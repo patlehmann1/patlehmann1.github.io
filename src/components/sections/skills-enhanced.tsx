@@ -2,8 +2,9 @@
 
 import { useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Code, Database, Cloud, Wrench, Star, Settings } from "lucide-react";
+import { Code, Database, Cloud, Wrench, Star, Settings, Search, X } from "lucide-react";
 import { sortSkillsByLevelAndExperience } from "@/lib/utils";
+import { useDebounce } from "@/hooks/useDebounce";
 
 interface Skill {
   name: string;
@@ -21,6 +22,9 @@ interface SkillCategory {
 
 export function SkillsEnhanced() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
+  const debouncedSearch = useDebounce(searchQuery, 300);
 
   const sortedSkillCategories = useMemo(() => {
     const skillCategories: SkillCategory[] = [
@@ -341,6 +345,28 @@ export function SkillsEnhanced() {
     setHoveredSkill(skillName);
   }, []);
 
+  const filteredCategories = useMemo(() => {
+    return sortedSkillCategories.map(category => ({
+      ...category,
+      skills: category.skills.filter(skill => {
+        const matchesSearch = debouncedSearch === "" ||
+          skill.name.toLowerCase().includes(debouncedSearch.toLowerCase());
+        const matchesLevel = selectedLevel === null || skill.level === selectedLevel;
+        return matchesSearch && matchesLevel;
+      })
+    })).filter(category => category.skills.length > 0);
+  }, [sortedSkillCategories, debouncedSearch, selectedLevel]);
+
+  const hasActiveFilters = debouncedSearch !== "" || selectedLevel !== null;
+
+  const totalSkillsCount = sortedSkillCategories.reduce((acc, cat) => acc + cat.skills.length, 0);
+  const filteredSkillsCount = filteredCategories.reduce((acc, cat) => acc + cat.skills.length, 0);
+
+  const handleClearFilters = useCallback(() => {
+    setSearchQuery("");
+    setSelectedLevel(null);
+  }, []);
+
 
   return (
     <section id="skills" className="py-16 sm:py-20 px-3 sm:px-4 lg:px-6">
@@ -358,8 +384,110 @@ export function SkillsEnhanced() {
           </p>
         </motion.div>
 
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="mb-12"
+        >
+          <div className="max-w-3xl mx-auto space-y-4">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search skills..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-10 pr-10 py-3 bg-card border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary transition-all"
+              />
+              {searchQuery && (
+                <button
+                  onClick={() => setSearchQuery("")}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+                  aria-label="Clear search"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              )}
+            </div>
+
+            <div className="flex flex-wrap gap-2 justify-center">
+              <button
+                onClick={() => setSelectedLevel(null)}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  selectedLevel === null
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-card border border-border hover:border-primary'
+                }`}
+              >
+                All Levels
+              </button>
+              <button
+                onClick={() => setSelectedLevel(5)}
+                className={`px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2 ${
+                  selectedLevel === 5
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-card border border-border hover:border-primary'
+                }`}
+              >
+                Expert <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+              </button>
+              <button
+                onClick={() => setSelectedLevel(4)}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  selectedLevel === 4
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-card border border-border hover:border-primary'
+                }`}
+              >
+                Advanced
+              </button>
+              <button
+                onClick={() => setSelectedLevel(3)}
+                className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                  selectedLevel === 3
+                    ? 'bg-primary text-primary-foreground'
+                    : 'bg-card border border-border hover:border-primary'
+                }`}
+              >
+                Intermediate
+              </button>
+            </div>
+
+            {hasActiveFilters && (
+              <div className="flex items-center justify-between bg-primary/10 border border-primary/20 rounded-lg p-3">
+                <span className="text-sm text-primary">
+                  Showing {filteredSkillsCount} of {totalSkillsCount} skills
+                </span>
+                <button
+                  onClick={handleClearFilters}
+                  className="text-sm text-primary hover:text-primary/80 font-medium transition-colors"
+                >
+                  Clear Filters
+                </button>
+              </div>
+            )}
+          </div>
+        </motion.div>
+
+        {filteredCategories.length === 0 ? (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-12"
+          >
+            <p className="text-muted-foreground text-lg mb-4">No skills found matching your criteria</p>
+            <button
+              onClick={handleClearFilters}
+              className="text-primary hover:text-primary/80 font-medium transition-colors"
+            >
+              Clear all filters
+            </button>
+          </motion.div>
+        ) : (
         <div className="space-y-16">
-          {sortedSkillCategories.map((category, categoryIndex) => {
+          {filteredCategories.map((category, categoryIndex) => {
             return (
             <motion.div
               key={category.title}
@@ -429,6 +557,7 @@ export function SkillsEnhanced() {
           );
           })}
         </div>
+        )}
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
