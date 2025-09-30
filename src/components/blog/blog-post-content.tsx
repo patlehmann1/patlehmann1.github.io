@@ -14,6 +14,7 @@ import { NewsletterSignup } from "@/components/newsletter/newsletter-signup";
 import { SocialShare } from "@/components/blog/social-share";
 import { CodeBlock } from "@/components/blog/code-block";
 import { TextToSpeech } from "@/components/blog/text-to-speech";
+import { BackToTop } from "@/components/blog/back-to-top";
 
 interface BlogPostContentProps {
   post: BlogPost;
@@ -75,6 +76,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
 
   return (
     <div className="min-h-screen bg-background">
+      <BackToTop />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

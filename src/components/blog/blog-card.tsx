@@ -26,7 +26,8 @@ export function BlogCard({ post, index = 0, isHomePage = false }: BlogCardProps)
       animate="visible"
       transition={{ delay: prefersReducedMotion ? 0 : index * 0.1 }}
       viewport={{ once: true }}
-      className="group bg-card border rounded-lg overflow-hidden shadow-warm hover:shadow-lg transition-all duration-300"
+      whileHover={prefersReducedMotion ? {} : { scale: 1.02 }}
+      className="group bg-card border rounded-lg overflow-hidden shadow-warm hover:shadow-lg hover:border-primary/50 transition-all duration-300"
     >
       <div className="p-6">
         <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">

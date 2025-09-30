@@ -38,6 +38,11 @@ interface CodeBlockProps {
   filename?: string;
 }
 
+const shouldShowLineNumbers = (code: string): boolean => {
+  const lines = code.trim().split('\n');
+  return lines.length > 10;
+};
+
 // Language display names mapping
 const languageNames: Record<string, string> = {
   typescript: 'TypeScript',
@@ -88,7 +93,7 @@ export function CodeBlock({
   children,
   className,
   language = 'text',
-  showLineNumbers = false,
+  showLineNumbers,
   filename
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
@@ -101,6 +106,7 @@ export function CodeBlock({
   const normalizedLanguage = language.toLowerCase();
   const displayName = languageNames[normalizedLanguage] || language.toUpperCase();
   const languageColor = languageColors[normalizedLanguage] || 'text-gray-400';
+  const displayLineNumbers = showLineNumbers ?? shouldShowLineNumbers(codeContent);
 
   const handleCopy = async () => {
     try {
@@ -134,7 +140,7 @@ export function CodeBlock({
         <SyntaxHighlighter
           language={normalizedLanguage}
           style={theme === 'dark' ? vscDarkPlus : oneLight}
-          showLineNumbers={showLineNumbers}
+          showLineNumbers={displayLineNumbers}
           className={cn(
             "!mt-0 !rounded-t-none !rounded-b-lg !border-t-0",
             "!bg-card/80 border border-border",
@@ -165,9 +171,9 @@ export function CodeBlock({
           onClick={handleCopy}
           className={cn(
             "absolute top-3 right-3 h-8 w-8 p-0",
-            "opacity-0 group-hover:opacity-100 transition-all duration-200",
+            "opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in-out",
             "bg-background/90 hover:bg-background border border-border/50",
-            "shadow-sm hover:shadow-md"
+            "shadow-sm hover:shadow-md hover:scale-110"
           )}
           aria-label={copied ? "Copied!" : "Copy code"}
         >

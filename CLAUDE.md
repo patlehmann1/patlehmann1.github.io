@@ -133,6 +133,19 @@ For comprehensive information about specific aspects of the project, refer to th
 - **Type Safety**: Use strict TypeScript, avoid `any`, implement proper interfaces
 - **Testing**: Write tests for new features, maintain 70% coverage minimum
 
+### Quality Gate Checks
+**IMPORTANT**: Always run quality-gate checks after making any code changes. These checks are mandatory before considering any work complete.
+
+Run all three checks in parallel for efficiency:
+```bash
+npm test && npx tsc --noEmit && npm run lint
+```
+
+Or run individually:
+- `npm test` - Verify all tests pass (630 tests expected)
+- `npx tsc --noEmit` - Ensure no TypeScript errors
+- `npm run lint` - Confirm no linting issues
+
 ### Before Committing
 - [ ] Run `npm test` - All tests pass
 - [ ] Run `npx tsc --noEmit` - No TypeScript errors

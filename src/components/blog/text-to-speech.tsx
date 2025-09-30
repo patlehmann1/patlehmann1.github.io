@@ -3,7 +3,7 @@
 import { useTextToSpeech } from "@/hooks/useTextToSpeech";
 import { Button } from "@/components/ui/button";
 import { Play, Pause, Square, Volume2, Settings } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { BlogPost } from "@/lib/types";
 import { prepareTTSContent } from "@/lib/tts-utils";
 
@@ -36,6 +36,53 @@ export function TextToSpeech({ post, className = "" }: TextToSpeechProps) {
     setTtsText(prepareTTSContent(post.content, post.ttsContent));
   }, [post.content, post.ttsContent]);
 
+  const handlePlayPause = useCallback(() => {
+    if (isSpeaking && !isPaused) {
+      pause();
+    } else if (isPaused) {
+      resume();
+    } else {
+      speak(ttsText);
+    }
+  }, [isSpeaking, isPaused, pause, resume, speak, ttsText]);
+
+  const handleSpeedChange = useCallback(() => {
+    const speeds = [1, 1.25, 1.5, 1.75, 2];
+    const currentIndex = speeds.indexOf(speed);
+    const nextSpeed = speeds[(currentIndex + 1) % speeds.length];
+    setSpeed(nextSpeed);
+  }, [speed, setSpeed]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) {
+        return;
+      }
+
+      if (e.code === 'Space') {
+        e.preventDefault();
+        handlePlayPause();
+      } else if (e.code === 'KeyS') {
+        e.preventDefault();
+        if (isSpeaking) {
+          stop();
+        }
+      } else if (e.code === 'ArrowUp') {
+        e.preventDefault();
+        handleSpeedChange();
+      } else if (e.code === 'ArrowDown') {
+        e.preventDefault();
+        const speeds = [1, 1.25, 1.5, 1.75, 2];
+        const currentIndex = speeds.indexOf(speed);
+        const previousSpeed = speeds[(currentIndex - 1 + speeds.length) % speeds.length];
+        setSpeed(previousSpeed);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isSpeaking, speed, handlePlayPause, handleSpeedChange, stop, setSpeed]);
+
   if (!isSupported) {
     return (
       <div className={`flex items-center gap-2 text-sm text-muted-foreground ${className}`}>
@@ -44,23 +91,6 @@ export function TextToSpeech({ post, className = "" }: TextToSpeechProps) {
       </div>
     );
   }
-
-  const handlePlayPause = () => {
-    if (isSpeaking && !isPaused) {
-      pause();
-    } else if (isPaused) {
-      resume();
-    } else {
-      speak(ttsText);
-    }
-  };
-
-  const handleSpeedChange = () => {
-    const speeds = [1, 1.25, 1.5, 1.75, 2];
-    const currentIndex = speeds.indexOf(speed);
-    const nextSpeed = speeds[(currentIndex + 1) % speeds.length];
-    setSpeed(nextSpeed);
-  };
 
   const handlePitchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPitch(parseFloat(e.target.value));
@@ -125,7 +155,13 @@ export function TextToSpeech({ post, className = "" }: TextToSpeechProps) {
         </div>
       </div>
 
-      {showSettings && (
+      <div
+        className="overflow-hidden transition-all duration-300 ease-in-out"
+        style={{
+          maxHeight: showSettings ? '500px' : '0',
+          opacity: showSettings ? 1 : 0,
+        }}
+      >
         <div className="flex flex-col gap-3 p-4 border border-border rounded-lg bg-background">
           <div className="flex flex-col gap-2">
             <label htmlFor="voice-select" className="text-sm font-medium">
@@ -162,7 +198,7 @@ export function TextToSpeech({ post, className = "" }: TextToSpeechProps) {
             />
           </div>
         </div>
-      )}
+      </div>
     </div>
   );
 }
