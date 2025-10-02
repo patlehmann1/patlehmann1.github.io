@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { screen } from '@testing-library/dom';
 import { LinkedInIcon } from '../linkedin-icon';
 import React from 'react';
 

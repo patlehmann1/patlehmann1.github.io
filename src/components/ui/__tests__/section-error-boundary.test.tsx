@@ -1,5 +1,6 @@
 import React from 'react'
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
+import { screen, fireEvent } from '@testing-library/dom'
 import { SectionErrorBoundary } from '../section-error-boundary'
 
 // Mock framer-motion
@@ -183,7 +184,7 @@ describe('SectionErrorBoundary', () => {
 
     expect(screen.getByText('Error Details (Development Only)')).toBeInTheDocument()
     // Look for the error message in the pre element specifically
-    const preElement = screen.getByText((content, element) => {
+    const preElement = screen.getByText((content: unknown, element: Element | null) => {
       return element?.tagName === 'PRE' && element?.textContent?.includes('Test error message') || false
     })
     expect(preElement).toBeInTheDocument()

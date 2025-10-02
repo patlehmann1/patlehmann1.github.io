@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/dom';
 import { TextToSpeech } from '../text-to-speech';
 import { useTextToSpeech } from '@/hooks/useTextToSpeech';
 import { BlogPost } from '@/lib/types';

@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { screen } from '@testing-library/dom';
 import { Skeleton, BlogCardSkeleton } from '../skeleton';
 import React from 'react';
 
@@ -119,7 +120,7 @@ describe('BlogCardSkeleton', () => {
     const tagSkeletons = screen.getAllByTestId('motion-div').slice(3, 6);
 
     expect(tagSkeletons).toHaveLength(3);
-    tagSkeletons.forEach(skeleton => {
+    tagSkeletons.forEach((skeleton: HTMLElement) => {
       expect(skeleton).toHaveClass('h-5');
     });
   });

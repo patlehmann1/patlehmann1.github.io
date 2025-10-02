@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
+import { screen, fireEvent } from '@testing-library/dom'
 import { DesktopNavigation } from '../desktop-navigation'
 import { UI } from '@/lib/constants'
 import { navigationButtonClasses } from '@/lib/ui-utils'
@@ -70,7 +71,7 @@ describe('DesktopNavigation Component', () => {
       render(<DesktopNavigation onNavClick={mockOnNavClick} isActiveItem={mockIsActiveItem} />)
 
       const containers = screen.getAllByRole('generic', { hidden: true })
-      const mainContainer = containers.find(el => el.className.includes('hidden md:flex'))
+      const mainContainer = containers.find((el: Element) => el.className.includes('hidden md:flex'))
       expect(mainContainer).toHaveClass('hidden', 'md:flex', 'items-center', 'space-x-8')
     })
 
@@ -224,7 +225,7 @@ describe('DesktopNavigation Component', () => {
       mockIsActiveItem.mockReturnValue(false)
       render(<DesktopNavigation onNavClick={mockOnNavClick} isActiveItem={mockIsActiveItem} />)
 
-      const navButtons = screen.getAllByRole('button').filter(button =>
+      const navButtons = screen.getAllByRole('button').filter((button: HTMLElement) =>
         !button.hasAttribute('data-testid')
       )
       expect(navButtons).toHaveLength(UI.navItems.length)
