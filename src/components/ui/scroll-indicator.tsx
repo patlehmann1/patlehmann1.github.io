@@ -51,7 +51,7 @@ export function ScrollIndicator() {
           }}
           exit={{ opacity: 0, y: -20 }}
           onClick={handleClick}
-          className="fixed bottom-8 left-1/2 -translate-x-1/2 text-primary hover:text-primary/80 transition-colors cursor-pointer z-20"
+          className="fixed bottom-8 inset-x-0 mx-auto w-fit text-primary hover:text-primary/80 transition-colors cursor-pointer z-20"
           aria-label="Scroll to next section"
         >
           <motion.div
