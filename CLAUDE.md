@@ -43,6 +43,60 @@ npm run test:ci            # Run tests for CI/CD pipeline
 npm run generate-rss       # Generate RSS feed
 npm run generate-sitemap   # Generate sitemap
 npm run generate-seo       # Generate both RSS and sitemap
+
+# Version Management
+npm run version:patch      # Bug fixes (1.0.0 → 1.0.1)
+npm run version:minor      # New features (1.0.0 → 1.1.0)
+npm run version:major      # Breaking changes (1.0.0 → 2.0.0)
+```
+
+## Version Management
+
+This project uses **Semantic Versioning (SemVer)** with the format: `MAJOR.MINOR.PATCH`
+
+### When to Update Versions
+
+**IMPORTANT**: Always analyze changes and update the version number before committing significant work.
+
+- **PATCH** (1.0.x) - Bug fixes, typos, small tweaks
+  - Fixing broken functionality
+  - Correcting typos in content or code
+  - Minor style adjustments
+  - Performance improvements without API changes
+
+- **MINOR** (1.x.0) - New features, backwards compatible
+  - Adding new components or pages
+  - New blog posts or content
+  - Enhanced functionality that doesn't break existing features
+  - New configuration options
+
+- **MAJOR** (x.0.0) - Breaking changes
+  - Removing or significantly changing public APIs
+  - Major architectural changes
+  - Dependency updates that change behavior
+  - Changes requiring user intervention
+
+### Version Bump Workflow
+
+```bash
+# Analyze your changes first, then run the appropriate command:
+npm run version:patch      # Creates commit, tag, and pushes automatically
+npm run version:minor      # Creates commit, tag, and pushes automatically
+npm run version:major      # Creates commit, tag, and pushes automatically
+```
+
+These commands automatically:
+1. Update package.json version
+2. Create a git commit with the version bump
+3. Create an annotated git tag
+4. Push changes and tags to remote
+
+### Manual Version Management
+
+If you need more control:
+```bash
+npm version patch -m "Fix: description"     # Update version and commit
+git push && git push --tags                 # Push changes and tags
 ```
 
 ## Project Structure
@@ -150,6 +204,7 @@ Or run individually:
 - [ ] Run `npm test` - All tests pass
 - [ ] Run `npx tsc --noEmit` - No TypeScript errors
 - [ ] Run `npm run lint` - No linting issues
+- [ ] Analyze changes and update version if needed (`npm run version:patch/minor/major`)
 - [ ] Review relevant checklist items in [Code Review Checklist](docs/code-review-checklist.md)
 
 ### Architecture Patterns

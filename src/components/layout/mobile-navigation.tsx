@@ -10,25 +10,39 @@ interface MobileNavigationProps {
   isMenuOpen: boolean;
   onNavClick: NavigationHandler;
   isActiveItem: (href: string) => boolean;
+  onClose: () => void;
 }
 
-export function MobileNavigation({ isMenuOpen, onNavClick, isActiveItem }: MobileNavigationProps) {
+export function MobileNavigation({ isMenuOpen, onNavClick, isActiveItem, onClose }: MobileNavigationProps) {
   if (!isMenuOpen) return null;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, height: 0 }}
-      animate={{ opacity: 1, height: "auto" }}
-      exit={{ opacity: 0, height: 0 }}
-      transition={{ duration: 0.3 }}
-      className="md:hidden mt-4 overflow-hidden relative z-10"
-    >
+    <>
+      {/* Backdrop overlay */}
       <motion.div
-        className={mobileNavContainerClasses()}
-        initial={{ y: -10 }}
-        animate={{ y: 0 }}
-        exit={{ y: -10 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+        onClick={onClose}
+        aria-label="Close menu"
+      />
+
+      {/* Menu content */}
+      <motion.div
+        initial={{ opacity: 0, height: 0 }}
+        animate={{ opacity: 1, height: "auto" }}
+        exit={{ opacity: 0, height: 0 }}
+        transition={{ duration: 0.3 }}
+        className="md:hidden mt-4 overflow-hidden relative z-50"
       >
+        <motion.div
+          className={mobileNavContainerClasses()}
+          initial={{ y: -10 }}
+          animate={{ y: 0 }}
+          exit={{ y: -10 }}
+        >
         {UI.navItems.map((item, index) => (
           <motion.button
             key={item.name}
@@ -52,7 +66,8 @@ export function MobileNavigation({ isMenuOpen, onNavClick, isActiveItem }: Mobil
         >
           <ThemeToggle />
         </motion.div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </>
   );
 }
