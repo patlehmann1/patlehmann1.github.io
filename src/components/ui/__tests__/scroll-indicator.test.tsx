@@ -1,4 +1,5 @@
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { screen, fireEvent, waitFor } from '@testing-library/dom';
 import { ScrollIndicator } from '../scroll-indicator';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 

@@ -1,4 +1,6 @@
-import { render, screen, act } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { screen } from '@testing-library/dom';
+import { act } from 'react';
 import { Typewriter } from '../typewriter';
 
 // Mock timers

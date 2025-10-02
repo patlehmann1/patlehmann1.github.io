@@ -1,5 +1,7 @@
 import React from 'react'
-import { render, screen, fireEvent, act } from '@testing-library/react'
+import { render } from '@testing-library/react'
+import { screen, fireEvent } from '@testing-library/dom'
+import { act } from 'react'
 import { Navigation } from '../navigation'
 import { navigationHeaderClasses } from '@/lib/ui-utils'
 

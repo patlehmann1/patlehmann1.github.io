@@ -1,4 +1,5 @@
-import { render, screen, fireEvent } from '@testing-library/react'
+import { render } from '@testing-library/react'
+import { screen, fireEvent } from '@testing-library/dom'
 import { MobileNavigation } from '../mobile-navigation'
 import { UI } from '@/lib/constants'
 import { mobileNavigationItemClasses } from '@/lib/ui-utils'
@@ -92,7 +93,7 @@ describe('MobileNavigation Component', () => {
       )
 
       // Should render navigation elements
-      const navButtons = screen.getAllByRole('button').filter(button =>
+      const navButtons = screen.getAllByRole('button').filter((button: HTMLElement) =>
         !button.hasAttribute('data-testid')
       )
       expect(navButtons).toHaveLength(UI.navItems.length)
@@ -141,7 +142,7 @@ describe('MobileNavigation Component', () => {
       )
 
       const containers = screen.getAllByRole('generic')
-      const outerContainer = containers.find(el => el.className.includes('md:hidden'))
+      const outerContainer = containers.find((el: Element) => el.className.includes('md:hidden'))
       expect(outerContainer).toHaveClass('md:hidden', 'mt-4', 'overflow-hidden', 'relative', 'z-10')
     })
 
@@ -184,7 +185,7 @@ describe('MobileNavigation Component', () => {
       )
 
       const containers = screen.getAllByRole('generic')
-      const innerContainer = containers.find(el => el.className.includes('bg-card'))
+      const innerContainer = containers.find((el: Element) => el.className.includes('bg-card'))
       expect(innerContainer).toHaveClass(
         'bg-card/95',
         'backdrop-blur-md',
@@ -446,7 +447,7 @@ describe('MobileNavigation Component', () => {
         />
       )
 
-      const navButtons = screen.getAllByRole('button').filter(button =>
+      const navButtons = screen.getAllByRole('button').filter((button: HTMLElement) =>
         !button.hasAttribute('data-testid')
       )
       expect(navButtons).toHaveLength(UI.navItems.length)
