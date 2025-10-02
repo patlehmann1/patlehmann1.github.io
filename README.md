@@ -94,6 +94,11 @@ yarn test:ci               # Run tests for CI/CD
 yarn generate-rss          # Generate RSS feed
 yarn generate-sitemap      # Generate sitemap
 yarn generate-seo          # Generate both RSS and sitemap
+
+# Version Management
+yarn version:patch         # Bug fixes (1.0.0 → 1.0.1)
+yarn version:minor         # New features (1.0.0 → 1.1.0)
+yarn version:major         # Breaking changes (1.0.0 → 2.0.0)
 ```
 
 ### Quality Gates
