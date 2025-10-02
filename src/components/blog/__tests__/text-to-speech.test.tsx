@@ -318,4 +318,82 @@ describe('TextToSpeech', () => {
 
     expect(screen.getByText(/Pitch: 1\.7/)).toBeInTheDocument();
   });
+
+  describe('Keyboard Shortcuts', () => {
+    it('should toggle play/pause when Space key is pressed', () => {
+      render(<TextToSpeech post={mockPost} />);
+
+      fireEvent.keyDown(document, { code: 'Space' });
+
+      expect(mockSpeak).toHaveBeenCalled();
+    });
+
+    it('should stop speaking when S key is pressed while speaking', () => {
+      mockUseTextToSpeech.mockReturnValue({
+        ...defaultMockReturn,
+        isSpeaking: true,
+      });
+
+      render(<TextToSpeech post={mockPost} />);
+
+      fireEvent.keyDown(document, { code: 'KeyS' });
+
+      expect(mockStop).toHaveBeenCalledTimes(1);
+    });
+
+    it('should not stop when S key is pressed while not speaking', () => {
+      render(<TextToSpeech post={mockPost} />);
+
+      fireEvent.keyDown(document, { code: 'KeyS' });
+
+      expect(mockStop).not.toHaveBeenCalled();
+    });
+
+    it('should increase speed when ArrowUp key is pressed', () => {
+      render(<TextToSpeech post={mockPost} />);
+
+      fireEvent.keyDown(document, { code: 'ArrowUp' });
+
+      expect(mockSetSpeed).toHaveBeenCalledWith(1.25);
+    });
+
+    it('should decrease speed when ArrowDown key is pressed', () => {
+      mockUseTextToSpeech.mockReturnValue({
+        ...defaultMockReturn,
+        speed: 1.5,
+      });
+
+      render(<TextToSpeech post={mockPost} />);
+
+      fireEvent.keyDown(document, { code: 'ArrowDown' });
+
+      expect(mockSetSpeed).toHaveBeenCalledWith(1.25);
+    });
+
+    it('should not trigger shortcuts when typing in input field', () => {
+      render(<TextToSpeech post={mockPost} />);
+
+      const input = document.createElement('input');
+      document.body.appendChild(input);
+
+      fireEvent.keyDown(input, { code: 'Space' });
+
+      expect(mockSpeak).not.toHaveBeenCalled();
+
+      document.body.removeChild(input);
+    });
+
+    it('should not trigger shortcuts when typing in textarea', () => {
+      render(<TextToSpeech post={mockPost} />);
+
+      const textarea = document.createElement('textarea');
+      document.body.appendChild(textarea);
+
+      fireEvent.keyDown(textarea, { code: 'Space' });
+
+      expect(mockSpeak).not.toHaveBeenCalled();
+
+      document.body.removeChild(textarea);
+    });
+  });
 });

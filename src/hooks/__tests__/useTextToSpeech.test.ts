@@ -208,6 +208,22 @@ describe('useTextToSpeech', () => {
     expect(localStorage.getItem('tts-pitch-preference')).toBe('1.5');
   });
 
+  it('should update pitch on active utterance', () => {
+    const { result } = renderHook(() => useTextToSpeech());
+
+    act(() => {
+      result.current.speak('Test text');
+    });
+
+    const utterance = (SpeechSynthesisUtterance as jest.Mock).mock.results[0].value;
+
+    act(() => {
+      result.current.setPitch(1.8);
+    });
+
+    expect(utterance.pitch).toBe(1.8);
+  });
+
   it('should set voice and save to localStorage', () => {
     const { result } = renderHook(() => useTextToSpeech());
 
@@ -217,6 +233,23 @@ describe('useTextToSpeech', () => {
 
     expect(result.current.selectedVoice).toEqual(mockVoices[0]);
     expect(localStorage.getItem('tts-voice-preference')).toBe('voice1');
+  });
+
+  it('should clear voice preference when setting null', () => {
+    const { result } = renderHook(() => useTextToSpeech());
+
+    act(() => {
+      result.current.setVoice(mockVoices[0]);
+    });
+
+    expect(localStorage.getItem('tts-voice-preference')).toBe('voice1');
+
+    act(() => {
+      result.current.setVoice(null);
+    });
+
+    expect(result.current.selectedVoice).toBeNull();
+    expect(localStorage.getItem('tts-voice-preference')).toBeNull();
   });
 
   it('should restore voice preference from localStorage', () => {
