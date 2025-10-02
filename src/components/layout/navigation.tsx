@@ -82,6 +82,7 @@ export function Navigation() {
             isMenuOpen={isMenuOpen}
             onNavClick={handleNavClick}
             isActiveItem={isActiveItem}
+            onClose={() => setIsMenuOpen(false)}
           />
         </AnimatePresence>
       </nav>

@@ -108,6 +108,117 @@ This project prioritizes **readability**, **maintainability**, **YAGNI complianc
 - Remove unused dependencies and utilities
 - Regularly audit and clean up the codebase
 
+## Version Management
+
+This project follows **Semantic Versioning (SemVer)** to communicate the nature of changes clearly.
+
+### Semantic Versioning Format
+
+Version format: `MAJOR.MINOR.PATCH` (e.g., 1.2.3)
+
+### When to Bump Each Version Component
+
+#### PATCH Version (x.x.PATCH)
+Increment for backwards-compatible bug fixes and minor updates:
+- **Bug fixes** - Correcting broken functionality
+- **Typos** - Content or code typo corrections
+- **Style adjustments** - Minor CSS/UI tweaks
+- **Performance** - Improvements without API changes
+- **Dependencies** - Patch updates to dependencies
+- **Documentation** - Fixes to documentation only
+- **Tests** - Adding/fixing tests without code changes
+
+**Examples:**
+- Fixed mobile navigation backdrop not closing
+- Corrected typo in blog post content
+- Improved scroll performance
+- Updated test coverage
+
+#### MINOR Version (x.MINOR.x)
+Increment for backwards-compatible new features:
+- **New features** - Adding new functionality
+- **Components** - New reusable components
+- **Pages** - New pages or sections
+- **Enhancements** - Significant improvements to existing features
+- **Content** - New blog posts or major content additions
+- **Dependencies** - Minor version updates with new features
+- **Configuration** - New optional configuration options
+
+**Examples:**
+- Added mobile menu backdrop overlay
+- Implemented text-to-speech for blog posts
+- Added newsletter subscription component
+- New blog post published
+
+#### MAJOR Version (MAJOR.x.x)
+Increment for breaking changes that may require user action:
+- **Breaking changes** - Removing or significantly changing public APIs
+- **Architecture** - Major structural changes
+- **Dependencies** - Major version updates with breaking changes
+- **Removal** - Removing features or functionality
+- **Incompatibility** - Changes requiring user intervention
+
+**Examples:**
+- Migrated from Pages Router to App Router
+- Removed deprecated theme API
+- Changed blog data structure format
+- Upgraded to Next.js 15 (breaking changes)
+
+### Version Decision Flowchart
+
+```
+Does the change break existing functionality?
+├─ YES → MAJOR version
+└─ NO
+    └─ Does it add new features or functionality?
+        ├─ YES → MINOR version
+        └─ NO
+            └─ Is it a bug fix or minor improvement?
+                ├─ YES → PATCH version
+                └─ NO → No version change needed
+```
+
+### Versioning Workflow
+
+#### Using Automated Scripts (Recommended)
+```bash
+# Analyze your changes, then run:
+npm run version:patch      # For bug fixes and minor updates
+npm run version:minor      # For new features
+npm run version:major      # For breaking changes
+```
+
+These scripts automatically:
+1. Update `package.json` version
+2. Create a git commit
+3. Create an annotated git tag
+4. Push changes and tags to remote
+
+#### Manual Versioning
+```bash
+# Update version and create commit
+npm version [patch|minor|major] -m "Release v%s: [description]"
+
+# Push changes and tags
+git push && git push --tags
+```
+
+### Best Practices
+
+1. **Analyze Before Committing** - Always evaluate change impact before versioning
+2. **Bundle Related Changes** - Group related changes into single version bumps
+3. **Descriptive Messages** - Use clear, descriptive commit messages for versions
+4. **Test Before Tagging** - Ensure all quality gates pass before version bump
+5. **Document Changes** - Consider maintaining a CHANGELOG for major releases
+6. **Consistent Timing** - Version at logical completion points, not mid-feature
+
+### Important Notes
+
+- **Development work** - Not all commits need version bumps; version when completing features/fixes
+- **Content updates** - New blog posts typically warrant MINOR version bumps
+- **Dependency updates** - Match SemVer of the dependency (major → major, minor → minor, patch → patch)
+- **Git tags** - Always create annotated tags (`-a`) with descriptive messages
+
 ## Framework-Specific Best Practices
 
 ### ⚛️ React Best Practices

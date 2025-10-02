@@ -1,6 +1,6 @@
 {
   "name": "lehmann_dev_site",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,7 +14,10 @@
     "test:ci": "jest --ci --coverage --watchAll=false",
     "generate-rss": "node scripts/generate-rss.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
-    "generate-seo": "node scripts/generate-rss.js && node scripts/generate-sitemap.js"
+    "generate-seo": "node scripts/generate-rss.js && node scripts/generate-sitemap.js",
+    "version:patch": "npm version patch && git push && git push --tags",
+    "version:minor": "npm version minor && git push && git push --tags",
+    "version:major": "npm version major && git push && git push --tags"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

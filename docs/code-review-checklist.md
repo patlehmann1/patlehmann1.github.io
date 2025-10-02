@@ -13,6 +13,16 @@ Before submitting code for review, ensure:
 - [ ] Linting passes (`npm run lint`)
 - [ ] Test coverage meets minimum thresholds (70%)
 
+### 📦 Version Management
+- [ ] Change impact analyzed (breaking/feature/fix)
+- [ ] Version number updated appropriately in package.json
+  - PATCH (x.x.X) for bug fixes and minor updates
+  - MINOR (x.X.x) for new features (backwards compatible)
+  - MAJOR (X.x.x) for breaking changes
+- [ ] Version bump uses appropriate command (`npm run version:patch/minor/major`)
+- [ ] Git tag created for version release
+- [ ] Changes align with SemVer guidelines in development-guidelines.md
+
 ### 📝 Documentation
 - [ ] Code changes are reflected in relevant documentation
 - [ ] Complex functions have JSDoc comments

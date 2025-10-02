@@ -59,10 +59,12 @@ jest.mock('@/lib/ui-utils', () => ({
 describe('MobileNavigation Component', () => {
   const mockOnNavClick = jest.fn()
   const mockIsActiveItem = jest.fn()
+  const mockOnClose = jest.fn()
 
   beforeEach(() => {
     mockOnNavClick.mockClear()
     mockIsActiveItem.mockClear()
+    mockOnClose.mockClear()
     ;(mobileNavigationItemClasses as jest.Mock).mockClear()
   })
 
@@ -74,6 +76,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={false}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -89,6 +92,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -107,6 +111,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={false}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -119,6 +124,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -138,12 +144,13 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
       const containers = screen.getAllByRole('generic')
-      const outerContainer = containers.find((el: Element) => el.className.includes('md:hidden'))
-      expect(outerContainer).toHaveClass('md:hidden', 'mt-4', 'overflow-hidden', 'relative', 'z-10')
+      const outerContainer = containers.find((el: Element) => el.className.includes('z-50'))
+      expect(outerContainer).toHaveClass('md:hidden', 'mt-4', 'overflow-hidden', 'relative', 'z-50')
     })
 
     it('should render all navigation items from UI.navItems', () => {
@@ -152,6 +159,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -168,6 +176,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -181,6 +190,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -203,6 +213,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -227,6 +238,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -245,6 +257,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -263,6 +276,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -283,6 +297,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={false}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -300,6 +315,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -315,6 +331,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={false}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -328,6 +345,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -345,6 +363,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -358,6 +377,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -374,6 +394,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -402,6 +423,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={false}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -422,6 +444,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -444,6 +467,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -465,6 +489,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -484,6 +509,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -502,6 +528,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={false}
           onNavClick={mockOnNavClick}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -521,6 +548,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={typedHandler}
           isActiveItem={mockIsActiveItem}
+          onClose={mockOnClose}
         />
       )
 
@@ -542,6 +570,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={alwaysActive}
+          onClose={mockOnClose}
         />
       )
       expect(alwaysActive).toHaveBeenCalledTimes(UI.navItems.length)
@@ -552,6 +581,7 @@ describe('MobileNavigation Component', () => {
           isMenuOpen={true}
           onNavClick={mockOnNavClick}
           isActiveItem={neverActive}
+          onClose={mockOnClose}
         />
       )
       expect(neverActive).toHaveBeenCalledTimes(UI.navItems.length)
