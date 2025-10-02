@@ -1,36 +1,211 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Patrick Lehmann - Portfolio Website
+
+A modern, performant portfolio website built with Next.js 14, TypeScript, and Tailwind CSS. Features a comprehensive blog system, project showcase, and professional contact integration.
+
+🌐 **Live Site:** [patricklehmann.io](https://patricklehmann.io)
+
+## About
+
+This is my personal portfolio website showcasing my work as a Full-Stack Software Engineer with 6+ years of experience in C#/.NET, TypeScript, and modern web frameworks. The site features a blog with advanced accessibility features, project portfolio, and professional contact options.
+
+## Key Features
+
+- ✨ **Modern Design** - Clean, professional interface with smooth animations
+- 🌓 **Dark Mode** - Seamless theme switching with system preference detection
+- 📝 **Blog System** - JSON-powered blog with markdown support, syntax highlighting, and RSS feed
+- 🔊 **Text-to-Speech** - Accessible blog post narration with customizable voice settings
+- 📱 **Fully Responsive** - Optimized for all screen sizes
+- ⚡ **Performance Optimized** - Built with Next.js 14 and Turbopack for fast development and production builds
+- 🧪 **Comprehensive Testing** - 98%+ test coverage with Jest and React Testing Library
+- 🔍 **SEO Optimized** - Automated sitemap and RSS feed generation
+- 📬 **Newsletter Integration** - Kit.com integration with custom domain
+
+## Tech Stack
+
+### Core
+- **Next.js 14** - React framework with App Router
+- **TypeScript** - Type-safe development
+- **Tailwind CSS** - Utility-first CSS with custom design system
+
+### UI & Animations
+- **Framer Motion** - Smooth, accessible animations
+- **Lucide React** - Modern icon library
+- **next-themes** - Dark mode support
+
+### Content & Forms
+- **React Markdown** - Blog content rendering
+- **React Syntax Highlighter** - Code syntax highlighting
+- **React Hook Form + Zod** - Form validation
+- **Remark GFM** - GitHub Flavored Markdown support
+
+### Testing
+- **Jest** - Testing framework
+- **React Testing Library** - Component testing
+- **@testing-library/dom** - DOM testing utilities
+- Coverage: 98.78% statements, 94.68% branches, 96.91% functions
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+ or Yarn
+
+### Installation
 
 ```bash
-npm run dev
+# Clone the repository
+git clone https://github.com/patlehmann1/patlehmann1.github.io.git
+cd patlehmann1.github.io
+
+# Install dependencies
+yarn install
 # or
+npm install
+
+# Start development server
 yarn dev
 # or
-pnpm dev
-# or
-bun dev
+npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Development
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Available Scripts
 
-## Learn More
+```bash
+# Development
+yarn dev                    # Start dev server with Turbopack
+yarn build                  # Production build (includes RSS & sitemap)
+yarn export                 # Static export for GitHub Pages
+yarn start                  # Start production server
 
-To learn more about Next.js, take a look at the following resources:
+# Code Quality
+yarn lint                   # Run ESLint
+npx tsc --noEmit           # TypeScript type checking
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# Testing
+yarn test                   # Run all tests
+yarn test:watch            # Run tests in watch mode
+yarn test:coverage         # Run tests with coverage report
+yarn test:ci               # Run tests for CI/CD
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# SEO
+yarn generate-rss          # Generate RSS feed
+yarn generate-sitemap      # Generate sitemap
+yarn generate-seo          # Generate both RSS and sitemap
+```
 
-## Deploy on Vercel
+### Quality Gates
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+All PRs must pass:
+- ✅ ESLint checks (no errors)
+- ✅ TypeScript compilation (no errors)
+- ✅ All tests passing (673+ tests)
+- ✅ Coverage thresholds (95% statements, 90% branches, 92% functions, 94% lines)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+```
+src/
+├── app/                    # Next.js App Router pages
+│   ├── blog/              # Blog pages and layouts
+│   └── og-preview/        # Open Graph preview
+├── components/
+│   ├── blog/              # Blog-specific components
+│   ├── layout/            # Navigation components
+│   ├── newsletter/        # Newsletter signup
+│   ├── sections/          # Page sections (Hero, About, Projects, etc.)
+│   └── ui/                # Reusable UI components
+├── content/
+│   ├── blog/              # Blog posts (JSON format)
+│   └── projects/          # Project data
+├── hooks/                 # Custom React hooks
+├── lib/                   # Utilities and helpers
+└── __tests__/            # Test files
+
+public/                    # Static assets
+scripts/                   # Build scripts (RSS, sitemap generation)
+docs/                      # Detailed documentation
+```
+
+## Testing
+
+The project maintains high test coverage with comprehensive unit and integration tests:
+
+```bash
+# Run all tests
+yarn test
+
+# Run with coverage report
+yarn test:coverage
+
+# Watch mode for development
+yarn test:watch
+```
+
+Current coverage: **98.78% statements** | **94.68% branches** | **96.91% functions** | **99.51% lines**
+
+## Deployment
+
+The site is deployed to GitHub Pages with automated CI/CD:
+
+1. Push to `master` branch triggers GitHub Actions
+2. Quality gates run (linting, type checking, tests)
+3. Production build generates static files
+4. Deploys to GitHub Pages
+
+The CI/CD pipeline includes security audits and comprehensive testing to ensure production quality.
+
+## Documentation
+
+For detailed information, see:
+- [Architecture & Design](docs/architecture.md)
+- [Testing Guide](docs/testing.md)
+- [Development Guidelines](docs/development-guidelines.md)
+- [Code Review Checklist](docs/code-review-checklist.md)
+- [CLAUDE.md](CLAUDE.md) - AI assistant context
+
+## Features Breakdown
+
+### Blog
+- JSON-based content management
+- Markdown rendering with GitHub Flavored Markdown
+- Syntax highlighting for code blocks
+- Reading time estimation
+- Tag-based filtering and search
+- RSS feed generation
+- Text-to-speech with voice customization
+
+### Projects
+- Interactive project showcase
+- Technology filtering
+- Direct links to GitHub and live demos
+
+### Contact
+- Professional email integration
+- Social media links (GitHub, LinkedIn)
+- Newsletter subscription via Kit.com
+
+## Performance
+
+- **Lighthouse Score:** 100/100 (Performance, Accessibility, Best Practices, SEO)
+- **Core Web Vitals:** All green
+- **Bundle Size:** Optimized with code splitting and lazy loading
+- **Testing:** 673 tests with 98%+ coverage
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## Contact
+
+Patrick Lehmann
+- Website: [patricklehmann.io](https://patricklehmann.io)
+- Email: contact@patricklehmann.io
+- GitHub: [@patlehmann1](https://github.com/patlehmann1)
+- LinkedIn: [patlehmann](https://linkedin.com/in/patlehmann)
+
+---
+
+Built with ❤️ using Next.js, TypeScript, and Tailwind CSS
