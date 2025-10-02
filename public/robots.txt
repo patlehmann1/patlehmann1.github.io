@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://patlehmann1.github.io/sitemap.xml
+Sitemap: https://patlehmann1.github.io/rss.xml
+
+# Optional: Block any admin or private paths in the future
+# Disallow: /admin/
+# Disallow: /private/
