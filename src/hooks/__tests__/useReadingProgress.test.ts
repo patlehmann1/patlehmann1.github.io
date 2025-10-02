@@ -258,6 +258,21 @@ describe('useReadingProgress', () => {
     expect(mockRequestAnimationFrame).toHaveBeenCalled()
   })
 
+  it('should handle case when content element is not found', () => {
+    jest.spyOn(document, 'querySelector').mockReturnValue(null)
+
+    const { result } = renderHook(() => useReadingProgress())
+
+    act(() => {
+      const scrollEvent = new Event('scroll')
+      window.dispatchEvent(scrollEvent)
+    })
+
+    expect(result.current.progress).toBe(0)
+    expect(result.current.isVisible).toBe(false)
+    expect(result.current.contentFound).toBe(false)
+  })
+
   it('should handle edge case where content height equals window height', () => {
     // Mock element same height as window
     mockElement.getBoundingClientRect = jest.fn().mockReturnValue({
