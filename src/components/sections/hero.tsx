@@ -8,6 +8,12 @@ import { useReducedMotion, createMotionVariants } from "@/hooks/useReducedMotion
 import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 import { GitHubIcon } from "@/components/ui/icons/github-icon";
 import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
+import dynamic from "next/dynamic";
+
+const ParticleBackground = dynamic(
+  () => import("@/components/ui/particle-background").then((mod) => ({ default: mod.ParticleBackground })),
+  { ssr: false }
+);
 
 export function Hero() {
   const prefersReducedMotion = useReducedMotion();
@@ -15,6 +21,7 @@ export function Hero() {
 
   return (
     <section className="min-h-screen relative overflow-hidden">
+      <ParticleBackground />
       <div className="absolute inset-0 bg-grid opacity-20 sm:opacity-30" />
 
       <div className="relative max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 pt-4 sm:pt-12 pb-16 sm:pb-20">
