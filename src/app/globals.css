@@ -49,6 +49,98 @@
     --input: 25 15% 18%;
     --ring: 23 65% 55%;
   }
+
+  .ocean {
+    /* Cool, serene ocean blues and teals */
+    --background: 200 25% 96%;
+    --foreground: 210 40% 15%;
+    --card: 200 20% 98%;
+    --card-foreground: 210 40% 15%;
+    --popover: 200 20% 98%;
+    --popover-foreground: 210 40% 15%;
+    --primary: 195 85% 45%;
+    --primary-foreground: 200 25% 96%;
+    --secondary: 200 15% 88%;
+    --secondary-foreground: 210 40% 15%;
+    --muted: 200 15% 90%;
+    --muted-foreground: 210 20% 50%;
+    --accent: 195 60% 80%;
+    --accent-foreground: 210 40% 15%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 200 25% 96%;
+    --border: 200 15% 82%;
+    --input: 200 15% 82%;
+    --ring: 195 85% 45%;
+  }
+
+  .forest {
+    /* Natural, earthy greens and browns */
+    --background: 120 15% 96%;
+    --foreground: 140 30% 20%;
+    --card: 120 12% 98%;
+    --card-foreground: 140 30% 20%;
+    --popover: 120 12% 98%;
+    --popover-foreground: 140 30% 20%;
+    --primary: 145 65% 40%;
+    --primary-foreground: 120 15% 96%;
+    --secondary: 120 12% 88%;
+    --secondary-foreground: 140 30% 20%;
+    --muted: 120 10% 90%;
+    --muted-foreground: 140 15% 45%;
+    --accent: 145 45% 75%;
+    --accent-foreground: 140 30% 20%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 120 15% 96%;
+    --border: 120 12% 82%;
+    --input: 120 12% 82%;
+    --ring: 145 65% 40%;
+  }
+
+  .sunset {
+    /* Vibrant sunset purples and oranges */
+    --background: 280 20% 96%;
+    --foreground: 280 40% 20%;
+    --card: 280 18% 98%;
+    --card-foreground: 280 40% 20%;
+    --popover: 280 18% 98%;
+    --popover-foreground: 280 40% 20%;
+    --primary: 285 70% 55%;
+    --primary-foreground: 280 20% 96%;
+    --secondary: 280 15% 88%;
+    --secondary-foreground: 280 40% 20%;
+    --muted: 280 12% 90%;
+    --muted-foreground: 280 20% 48%;
+    --accent: 285 50% 80%;
+    --accent-foreground: 280 40% 20%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 280 20% 96%;
+    --border: 280 15% 82%;
+    --input: 280 15% 82%;
+    --ring: 285 70% 55%;
+  }
+
+  .minimal {
+    /* High contrast black and white */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+    --primary: 0 0% 20%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 92%;
+    --secondary-foreground: 0 0% 10%;
+    --muted: 0 0% 94%;
+    --muted-foreground: 0 0% 45%;
+    --accent: 0 0% 88%;
+    --accent-foreground: 0 0% 10%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 85%;
+    --input: 0 0% 85%;
+    --ring: 0 0% 20%;
+  }
 }
 
 @layer base {
