@@ -133,10 +133,10 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
         <bufferGeometry>
           <bufferAttribute
             attach="attributes-position"
-            count={0}
-            array={new Float32Array(0)}
+            count={1}
+            array={new Float32Array([0, 0, 0])}
             itemSize={3}
-            args={[new Float32Array(0), 3]}
+            args={[new Float32Array([0, 0, 0]), 3]}
           />
         </bufferGeometry>
         <lineBasicMaterial

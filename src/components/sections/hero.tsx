@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
@@ -18,9 +19,14 @@ const ParticleBackground = dynamic(
 );
 
 export function Hero() {
+  const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
   const prefersReducedMotion = useReducedMotion();
   const motionVariants = createMotionVariants(prefersReducedMotion);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <section className="min-h-screen relative overflow-hidden">
@@ -43,7 +49,7 @@ export function Hero() {
 
               <h1 className="text-display">
                 <span className={cn(
-                  theme === "synthwave"
+                  mounted && theme === "synthwave"
                     ? "gradient-synthwave text-neon-glow"
                     : "gradient-warm text-shadow-glow"
                 )}>
@@ -51,7 +57,7 @@ export function Hero() {
                 </span>
                 <br />
                 <span className={cn(
-                  theme === "synthwave"
+                  mounted && theme === "synthwave"
                     ? "gradient-synthwave text-neon-glow"
                     : "gradient-warm text-shadow-glow"
                 )}>Lehmann</span>
