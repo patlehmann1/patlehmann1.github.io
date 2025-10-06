@@ -11,7 +11,7 @@ const themes = [
   { value: "dark", label: "Dark", color: "hsl(23, 65%, 55%)" },
   { value: "ocean", label: "Ocean", color: "hsl(195, 85%, 45%)" },
   { value: "forest", label: "Forest", color: "hsl(145, 65%, 40%)" },
-  { value: "sunset", label: "Sunset", color: "hsl(285, 70%, 55%)" },
+  { value: "synthwave", label: "Synthwave", color: "hsl(320, 100%, 60%)" },
   { value: "minimal", label: "Minimal", color: "hsl(0, 0%, 20%)" },
 ] as const;
 
@@ -71,7 +71,8 @@ export function ThemeToggle() {
         {themes.map((t) => (
           <button
             key={t.value}
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation();
               setTheme(t.value);
               setIsOpen(false);
             }}

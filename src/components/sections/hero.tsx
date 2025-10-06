@@ -8,6 +8,8 @@ import { useReducedMotion, createMotionVariants } from "@/hooks/useReducedMotion
 import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 import { GitHubIcon } from "@/components/ui/icons/github-icon";
 import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 import dynamic from "next/dynamic";
 
 const ParticleBackground = dynamic(
@@ -16,6 +18,7 @@ const ParticleBackground = dynamic(
 );
 
 export function Hero() {
+  const { theme } = useTheme();
   const prefersReducedMotion = useReducedMotion();
   const motionVariants = createMotionVariants(prefersReducedMotion);
 
@@ -38,10 +41,20 @@ export function Hero() {
                 Focused on enterprise analytics & international solutions
               </div>
 
-              <h1 className="text-display gradient-warm text-shadow-glow">
-                Patrick
+              <h1 className="text-display">
+                <span className={cn(
+                  theme === "synthwave"
+                    ? "gradient-synthwave text-neon-glow"
+                    : "gradient-warm text-shadow-glow"
+                )}>
+                  Patrick
+                </span>
                 <br />
-                <span className="gradient-warm">Lehmann</span>
+                <span className={cn(
+                  theme === "synthwave"
+                    ? "gradient-synthwave text-neon-glow"
+                    : "gradient-warm text-shadow-glow"
+                )}>Lehmann</span>
               </h1>
 
               <div className="text-subheading font-350 text-muted-foreground">
