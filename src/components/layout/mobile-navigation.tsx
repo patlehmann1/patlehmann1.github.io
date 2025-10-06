@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { createPortal } from "react-dom";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { UI } from "@/lib/constants";
 import { NavigationHandler } from "@/lib/types";
@@ -16,18 +17,22 @@ interface MobileNavigationProps {
 export function MobileNavigation({ isMenuOpen, onNavClick, isActiveItem, onClose }: MobileNavigationProps) {
   if (!isMenuOpen) return null;
 
+  const backdrop = (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
+      onClick={onClose}
+      aria-label="Close menu"
+    />
+  );
+
   return (
     <>
-      {/* Backdrop overlay */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden"
-        onClick={onClose}
-        aria-label="Close menu"
-      />
+      {/* Backdrop overlay - rendered in document.body via portal */}
+      {typeof document !== 'undefined' && createPortal(backdrop, document.body)}
 
       {/* Menu content */}
       <motion.div
