@@ -4,21 +4,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Personal software developer portfolio website built with Next.js 14, TypeScript, and Tailwind CSS. Features a modern design with animations, dark mode support, and optimized performance for showcasing projects and technical expertise.
+Personal software developer portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. Features a modern design with multi-theme system (including synthwave/retrowave), interactive Three.js particle animations, Apple Music integration, and optimized performance for showcasing projects and technical expertise.
 
 ## Tech Stack
 
-- **Next.js 14** with App Router and Turbopack
+- **Next.js 15** with App Router and Turbopack
 - **TypeScript** for type safety
 - **Tailwind CSS** with custom design system
 - **Framer Motion** for animations
+- **Three.js + @react-three/fiber** for 3D particle animations
+- **@react-three/drei** for Three.js utilities
 - **React Hook Form + Zod** for form validation
 - **Lucide React** for icons
-- **next-themes** for dark/light mode (implemented)
+- **next-themes** for multi-theme system (6 themes: light, dark, ocean, forest, synthwave, minimal)
+- **Geist & Geist Mono fonts** for modern typography
 - **React Markdown + Remark GFM** for content rendering
 - **JSON-based content management** for blog posts
 - **RSS & Sitemap generation** for SEO optimization
-- **Jest + React Testing Library** for comprehensive testing
+- **Jest + React Testing Library** for comprehensive testing (708 tests, 93%+ coverage)
 
 ## Development Commands
 
@@ -149,19 +152,24 @@ setupTests.ts              # Global test setup and mocks
 ## Key Features
 
 ### ✅ Implemented Features
-1. **Hero Section** - Animated introduction with social links
-2. **Projects Showcase** - Interactive grid with filtering
-3. **Blog Section** - JSON-powered articles with full blog layout
-4. **Contact Form** - React Hook Form with Zod validation
-5. **Newsletter Subscription** - Kit.com integration with form validation and custom domain (newsletter.patricklehmann.io)
-6. **Dark Mode** - next-themes implementation with system preference
-7. **SEO Optimization** - Metadata API, structured data, RSS feeds, and sitemap
-8. **RSS Feed Generation** - Automated feed generation for blog posts
-9. **Sitemap Generation** - SEO-optimized sitemap with proper metadata
-10. **Blog Navigation** - Enhanced navigation with active link styling
-11. **Content Management** - JSON-based blog system with filtering and search
-12. **Reading Progress Indicator** - Smooth animated progress bar for blog posts
-13. **Comprehensive Jest Testing Suite** - 96% test success rate with full coverage
+1. **Hero Section** - Animated introduction with social links and typewriter effect
+2. **Multi-Theme System** - 6 themes (light, dark, ocean, forest, synthwave, minimal) with system preference detection
+3. **Synthwave/Retrowave Theme** - Electric neon color palette with custom gradients and glow effects
+4. **Three.js Particle Background** - Interactive particle system with 60 animated particles and mouse tracking
+5. **Apple Music Integration** - Embedded "Lehmann Dev Mix" playlist in About section
+6. **Typewriter Effect** - Rotating developer titles with Geist Mono monospace font
+7. **Projects Showcase** - Interactive grid with filtering
+8. **Blog Section** - JSON-powered articles with full blog layout
+9. **Contact Form** - React Hook Form with Zod validation
+10. **Newsletter Subscription** - Kit.com integration with form validation and custom domain (newsletter.patricklehmann.io)
+11. **SEO Optimization** - Metadata API, structured data, RSS feeds, and sitemap
+12. **RSS Feed Generation** - Automated feed generation for blog posts
+13. **Sitemap Generation** - SEO-optimized sitemap with proper metadata
+14. **Blog Navigation** - Enhanced navigation with active link styling
+15. **Content Management** - JSON-based blog system with filtering and search
+16. **Reading Progress Indicator** - Smooth animated progress bar for blog posts
+17. **Hydration-Safe Theme Rendering** - Mounted state pattern prevents SSR/client mismatches
+18. **Comprehensive Jest Testing Suite** - 708 tests with 93%+ coverage
 
 ### 🚀 Potential Future Enhancements
 - Blog post comments system
@@ -196,7 +204,7 @@ npm test && npx tsc --noEmit && npm run lint
 ```
 
 Or run individually:
-- `npm test` - Verify all tests pass (630 tests expected)
+- `npm test` - Verify all tests pass (708 tests expected)
 - `npx tsc --noEmit` - Ensure no TypeScript errors
 - `npm run lint` - Confirm no linting issues
 
