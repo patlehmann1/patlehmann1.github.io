@@ -1,6 +1,6 @@
 # Patrick Lehmann - Portfolio Website
 
-A modern, performant portfolio website built with Next.js 14, TypeScript, and Tailwind CSS. Features a comprehensive blog system, project showcase, and professional contact integration.
+A modern, performant portfolio website built with Next.js 15, TypeScript, and Tailwind CSS. Features a comprehensive blog system, multi-theme design with synthwave aesthetics, interactive particle effects, and professional contact integration.
 
 🌐 **Live Site:** [patricklehmann.io](https://patricklehmann.io)
 
@@ -10,27 +10,32 @@ This is my personal portfolio website showcasing my work as a Full-Stack Softwar
 
 ## Key Features
 
-- ✨ **Modern Design** - Clean, professional interface with smooth animations
-- 🌓 **Dark Mode** - Seamless theme switching with system preference detection
+- ✨ **Modern Design** - Clean, professional interface with smooth animations and particle effects
+- 🎨 **Multi-Theme System** - 6 distinct themes including synthwave/retrowave with neon effects (light, dark, ocean, forest, synthwave, minimal)
+- 🎵 **Music Integration** - Embedded Apple Music player with curated developer playlist
+- 💫 **Interactive Particle Background** - Three.js powered particle system with mouse interaction
 - 📝 **Blog System** - JSON-powered blog with markdown support, syntax highlighting, and RSS feed
 - 🔊 **Text-to-Speech** - Accessible blog post narration with customizable voice settings
 - 📱 **Fully Responsive** - Optimized for all screen sizes
-- ⚡ **Performance Optimized** - Built with Next.js 14 and Turbopack for fast development and production builds
-- 🧪 **Comprehensive Testing** - 98%+ test coverage with Jest and React Testing Library
+- ⚡ **Performance Optimized** - Built with Next.js 15 and Turbopack for fast development and production builds
+- 🧪 **Comprehensive Testing** - 93%+ test coverage with Jest and React Testing Library (708 tests)
 - 🔍 **SEO Optimized** - Automated sitemap and RSS feed generation
 - 📬 **Newsletter Integration** - Kit.com integration with custom domain
 
 ## Tech Stack
 
 ### Core
-- **Next.js 14** - React framework with App Router
+- **Next.js 15** - React framework with App Router
 - **TypeScript** - Type-safe development
 - **Tailwind CSS** - Utility-first CSS with custom design system
 
 ### UI & Animations
 - **Framer Motion** - Smooth, accessible animations
+- **Three.js + @react-three/fiber** - 3D particle animations and visual effects
+- **@react-three/drei** - Three.js utilities
 - **Lucide React** - Modern icon library
-- **next-themes** - Dark mode support
+- **next-themes** - Multi-theme support (6 themes)
+- **Geist & Geist Mono** - Modern font system
 
 ### Content & Forms
 - **React Markdown** - Blog content rendering
@@ -42,7 +47,7 @@ This is my personal portfolio website showcasing my work as a Full-Stack Softwar
 - **Jest** - Testing framework
 - **React Testing Library** - Component testing
 - **@testing-library/dom** - DOM testing utilities
-- Coverage: 98.78% statements, 94.68% branches, 96.91% functions
+- Coverage: 93.08% statements, 88.72% branches, 96.13% functions (708 tests)
 
 ## Getting Started
 
@@ -106,8 +111,8 @@ yarn version:major         # Breaking changes (1.0.0 → 2.0.0)
 All PRs must pass:
 - ✅ ESLint checks (no errors)
 - ✅ TypeScript compilation (no errors)
-- ✅ All tests passing (673+ tests)
-- ✅ Coverage thresholds (95% statements, 90% branches, 92% functions, 94% lines)
+- ✅ All tests passing (708 tests)
+- ✅ Coverage thresholds (70%+ minimum, currently 93%+)
 
 ## Project Structure
 
@@ -149,7 +154,7 @@ yarn test:coverage
 yarn test:watch
 ```
 
-Current coverage: **98.78% statements** | **94.68% branches** | **96.91% functions** | **99.51% lines**
+Current coverage: **93.08% statements** | **88.72% branches** | **96.13% functions** | **94.39% lines** (708 tests)
 
 ## Deployment
 
@@ -173,6 +178,27 @@ For detailed information, see:
 
 ## Features Breakdown
 
+### Multi-Theme System
+- 6 distinct themes: light, dark, ocean, forest, synthwave, minimal
+- Synthwave/retrowave theme with electric neon colors and glow effects
+- System preference detection
+- Smooth theme transitions
+- Theme persistence across sessions
+
+### Visual Effects
+- Three.js particle background with 60 animated particles
+- Mouse interaction with particle movement
+- Connection lines between nearby particles
+- Reduced motion support for accessibility
+- Optimized rendering with frame-based updates
+
+### Music Integration
+- Embedded Apple Music player in About section
+- "Lehmann Dev Mix" curated playlist
+- 30-second previews for all users
+- Full playback for Apple Music subscribers
+- Responsive iframe with lazy loading
+
 ### Blog
 - JSON-based content management
 - Markdown rendering with GitHub Flavored Markdown
@@ -181,6 +207,7 @@ For detailed information, see:
 - Tag-based filtering and search
 - RSS feed generation
 - Text-to-speech with voice customization
+- Reading progress indicator
 
 ### Projects
 - Interactive project showcase
@@ -197,7 +224,9 @@ For detailed information, see:
 - **Lighthouse Score:** 100/100 (Performance, Accessibility, Best Practices, SEO)
 - **Core Web Vitals:** All green
 - **Bundle Size:** Optimized with code splitting and lazy loading
-- **Testing:** 673 tests with 98%+ coverage
+- **Testing:** 708 tests with 93%+ coverage
+- **Animations:** Hardware-accelerated with Framer Motion and Three.js
+- **Accessibility:** Reduced motion support, ARIA labels, keyboard navigation
 
 ## License
 
