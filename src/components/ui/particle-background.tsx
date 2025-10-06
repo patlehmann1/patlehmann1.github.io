@@ -100,10 +100,12 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
         }
       }
 
-      linesRef.current.geometry.setAttribute(
-        "position",
-        new THREE.BufferAttribute(new Float32Array(linePositions), 3)
-      );
+      if (linePositions.length > 0) {
+        linesRef.current.geometry.setAttribute(
+          "position",
+          new THREE.BufferAttribute(new Float32Array(linePositions), 3)
+        );
+      }
     }
   });
 
