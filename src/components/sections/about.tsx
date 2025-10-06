@@ -65,8 +65,8 @@ export function About() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-green-500/10 to-green-400/5 p-6 rounded-lg border border-green-500/20">
-              <h4 className="font-semibold mb-3 text-green-600 dark:text-green-400">Optimizing the Developer Lifestyle</h4>
+            <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 rounded-lg border border-primary/20">
+              <h4 className="font-semibold mb-3 text-primary">Optimizing the Developer Lifestyle</h4>
               <p className="text-body text-muted-foreground">
                 Sitting at a desk all day takes a toll, so I&apos;ve gotten into optimizing the developer lifestyle:
                 meal prepping for sustained energy, taking movement breaks during long coding sessions, and using the

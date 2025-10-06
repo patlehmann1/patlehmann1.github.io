@@ -78,7 +78,7 @@ describe('ThemeToggle', () => {
     expect(screen.getByText('Dark')).toBeInTheDocument()
     expect(screen.getByText('Ocean')).toBeInTheDocument()
     expect(screen.getByText('Forest')).toBeInTheDocument()
-    expect(screen.getByText('Sunset')).toBeInTheDocument()
+    expect(screen.getByText('Synthwave')).toBeInTheDocument()
     expect(screen.getByText('Minimal')).toBeInTheDocument()
   })
 
@@ -149,7 +149,7 @@ describe('ThemeToggle', () => {
   })
 
   it('should allow selecting each theme option', () => {
-    const themes = ['light', 'dark', 'ocean', 'forest', 'sunset', 'minimal']
+    const themes = ['light', 'dark', 'ocean', 'forest', 'synthwave', 'minimal']
 
     themes.forEach(themeValue => {
       mockTheme.mockReturnValue('light')
