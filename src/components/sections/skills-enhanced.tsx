@@ -3,7 +3,7 @@
 import { useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { Code, Database, Cloud, Wrench, Star, Settings, Search, X } from "lucide-react";
-import { sortSkillsByLevelAndExperience } from "@/lib/utils";
+import { sortSkillsByLevelAndExperience } from "@/lib/skill-utils";
 import { useDebounce } from "@/hooks/useDebounce";
 
 interface Skill {

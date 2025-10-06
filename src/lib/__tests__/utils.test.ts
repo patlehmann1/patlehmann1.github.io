@@ -1,4 +1,5 @@
-import { cn, formatDate, calculateReadingTime, sortSkillsByLevelAndExperience } from '../utils'
+import { cn, formatDate, calculateReadingTime } from '../utils'
+import { sortSkillsByLevelAndExperience } from '../skill-utils'
 
 describe('cn utility function', () => {
   it('should merge class names correctly', () => {
