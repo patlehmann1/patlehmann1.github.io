@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { createPortal } from "react-dom";
 import { Palette, Check } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
@@ -18,6 +19,8 @@ export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
+  const [dropdownPosition, setDropdownPosition] = React.useState<{ top: number; right: number } | null>(null);
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
 
   React.useEffect(() => {
     setMounted(true);
@@ -37,6 +40,16 @@ export function ThemeToggle() {
     }
   }, [isOpen]);
 
+  React.useEffect(() => {
+    if (isOpen && buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setDropdownPosition({
+        top: rect.bottom + 8,
+        right: window.innerWidth - rect.right
+      });
+    }
+  }, [isOpen]);
+
   if (!mounted) {
     return (
       <Button variant="outline" size="sm" className="w-9 h-9 border-primary/20 hover:border-primary/40 hover:bg-primary/10">
@@ -45,46 +58,58 @@ export function ThemeToggle() {
     );
   }
 
-  return (
-    <div className="relative" data-theme-selector>
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-9 h-9 border-primary/20 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300"
-        aria-label="Select theme"
-        aria-expanded={isOpen}
-      >
-        <Palette className="h-4 w-4 text-primary" />
-      </Button>
-
-      {isOpen && (
-        <div className="absolute right-0 mt-2 w-48 rounded-lg border border-border bg-popover shadow-lg z-50 overflow-hidden">
-          <div className="p-2 space-y-1">
-            {themes.map((t) => (
-              <button
-                key={t.value}
-                onClick={() => {
-                  setTheme(t.value);
-                  setIsOpen(false);
-                }}
-                className="w-full flex items-center gap-3 px-3 py-2 rounded-md hover:bg-accent/50 transition-colors text-left"
-              >
-                <div
-                  className="w-4 h-4 rounded-full border border-border/50"
-                  style={{ backgroundColor: t.color }}
-                />
-                <span className="flex-1 text-sm font-450 text-foreground">
-                  {t.label}
-                </span>
-                {theme === t.value && (
-                  <Check className="h-4 w-4 text-primary" />
-                )}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+  const dropdown = isOpen && dropdownPosition && (
+    <div
+      className="fixed w-48 rounded-lg border border-border bg-popover shadow-lg z-[60] overflow-hidden"
+      style={{
+        top: `${dropdownPosition.top}px`,
+        right: `${dropdownPosition.right}px`
+      }}
+      data-theme-selector
+    >
+      <div className="p-2 space-y-1">
+        {themes.map((t) => (
+          <button
+            key={t.value}
+            onClick={() => {
+              setTheme(t.value);
+              setIsOpen(false);
+            }}
+            className="w-full flex items-center gap-3 px-3 py-2 rounded-md hover:bg-accent/50 transition-colors text-left"
+          >
+            <div
+              className="w-4 h-4 rounded-full border border-border/50"
+              style={{ backgroundColor: t.color }}
+            />
+            <span className="flex-1 text-sm font-450 text-foreground">
+              {t.label}
+            </span>
+            {theme === t.value && (
+              <Check className="h-4 w-4 text-primary" />
+            )}
+          </button>
+        ))}
+      </div>
     </div>
+  );
+
+  return (
+    <>
+      <div className="relative" data-theme-selector>
+        <Button
+          ref={buttonRef}
+          variant="outline"
+          size="sm"
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-9 h-9 border-primary/20 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300"
+          aria-label="Select theme"
+          aria-expanded={isOpen}
+        >
+          <Palette className="h-4 w-4 text-primary" />
+        </Button>
+      </div>
+
+      {mounted && dropdown && createPortal(dropdown, document.body)}
+    </>
   );
 }
