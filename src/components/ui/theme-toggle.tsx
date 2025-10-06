@@ -109,7 +109,7 @@ export function ThemeToggle() {
         </Button>
       </div>
 
-      {mounted && dropdown && createPortal(dropdown, document.body)}
+      {mounted && isOpen && dropdownPosition && createPortal(dropdown, document.body)}
     </>
   );
 }
