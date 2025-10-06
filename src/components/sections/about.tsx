@@ -66,7 +66,7 @@ export function About() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 rounded-xl border border-primary/20">
+            <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 rounded-lg border border-primary/20">
               <h4 className="font-semibold mb-3 text-primary">Optimizing the Developer Lifestyle</h4>
               <p className="text-body text-muted-foreground">
                 Sitting at a desk all day takes a toll, so I&apos;ve gotten into optimizing the developer lifestyle:
@@ -76,7 +76,7 @@ export function About() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 rounded-xl border border-primary/20">
+            <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 rounded-lg border border-primary/20">
               <MusicPlayer
                 embedUrl="https://embed.music.apple.com/us/playlist/lehmann-dev-mix/pl.u-55D66Z7F6mAbkmp"
                 title="Lehmann Dev Mix"
