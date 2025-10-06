@@ -65,6 +65,7 @@ export function Hero() {
 
               <div className="text-subheading font-350 text-muted-foreground">
                 <Typewriter
+                  className="font-mono"
                   texts={[
                     "Faith Driven Developer",
                     "Full-Stack Engineer",
