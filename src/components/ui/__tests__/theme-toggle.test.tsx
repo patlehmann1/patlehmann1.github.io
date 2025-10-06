@@ -1,9 +1,8 @@
 import React from 'react'
 import { render } from '@testing-library/react'
-import { screen, fireEvent } from '@testing-library/dom'
+import { screen, fireEvent, waitFor } from '@testing-library/dom'
 import { ThemeToggle } from '../theme-toggle'
 
-// Mock next-themes
 const mockSetTheme = jest.fn()
 const mockTheme = jest.fn()
 
@@ -14,16 +13,15 @@ jest.mock('next-themes', () => ({
   })
 }))
 
-// Mock lucide-react icons
 jest.mock('lucide-react', () => ({
-  Moon: ({ className }: { className?: string }) => (
-    <div data-testid="moon-icon" className={className}>
-      Moon
+  Palette: ({ className }: { className?: string }) => (
+    <div data-testid="palette-icon" className={className}>
+      Palette
     </div>
   ),
-  Sun: ({ className }: { className?: string }) => (
-    <div data-testid="sun-icon" className={className}>
-      Sun
+  Check: ({ className }: { className?: string }) => (
+    <div data-testid="check-icon" className={className}>
+      Check
     </div>
   )
 }))
@@ -36,15 +34,14 @@ describe('ThemeToggle', () => {
   it('should render correctly when not mounted', () => {
     mockTheme.mockReturnValue('light')
 
-    // Create a component that simulates the mounted: false state
     const TestComponent = () => {
       const [mounted] = React.useState(false)
 
       if (!mounted) {
         return (
           <button className="w-9 h-9 border-primary/20 hover:border-primary/40 hover:bg-primary/10">
-            <div data-testid="sun-icon" className="h-4 w-4">
-              Sun
+            <div data-testid="palette-icon" className="h-4 w-4">
+              Palette
             </div>
           </button>
         )
@@ -56,98 +53,166 @@ describe('ThemeToggle', () => {
 
     render(<TestComponent />)
 
-    expect(screen.getByTestId('sun-icon')).toBeInTheDocument()
+    expect(screen.getByTestId('palette-icon')).toBeInTheDocument()
     expect(screen.getByRole('button')).toBeInTheDocument()
   })
 
-  it('should render with light theme when mounted', () => {
+  it('should render with palette icon when mounted', () => {
     mockTheme.mockReturnValue('light')
 
     render(<ThemeToggle />)
 
-    expect(screen.getByRole('button')).toBeInTheDocument()
-    expect(screen.getAllByTestId('sun-icon')).toHaveLength(1)
-    expect(screen.getAllByTestId('moon-icon')).toHaveLength(1)
-    expect(screen.getByText('Toggle theme')).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Select theme' })).toBeInTheDocument()
+    expect(screen.getByTestId('palette-icon')).toBeInTheDocument()
   })
 
-  it('should render with dark theme when mounted', () => {
-    mockTheme.mockReturnValue('dark')
-
-    render(<ThemeToggle />)
-
-    expect(screen.getByRole('button')).toBeInTheDocument()
-    expect(screen.getAllByTestId('sun-icon')).toHaveLength(1)
-    expect(screen.getAllByTestId('moon-icon')).toHaveLength(1)
-    expect(screen.getByText('Toggle theme')).toBeInTheDocument()
-  })
-
-  it('should call setTheme with "dark" when current theme is "light"', () => {
+  it('should open theme dropdown on click', () => {
     mockTheme.mockReturnValue('light')
 
     render(<ThemeToggle />)
 
-    const button = screen.getByRole('button')
+    const button = screen.getByRole('button', { name: 'Select theme' })
     fireEvent.click(button)
+
+    expect(screen.getByText('Light')).toBeInTheDocument()
+    expect(screen.getByText('Dark')).toBeInTheDocument()
+    expect(screen.getByText('Ocean')).toBeInTheDocument()
+    expect(screen.getByText('Forest')).toBeInTheDocument()
+    expect(screen.getByText('Sunset')).toBeInTheDocument()
+    expect(screen.getByText('Minimal')).toBeInTheDocument()
+  })
+
+  it('should show check icon for current theme', () => {
+    mockTheme.mockReturnValue('ocean')
+
+    render(<ThemeToggle />)
+
+    const button = screen.getByRole('button', { name: 'Select theme' })
+    fireEvent.click(button)
+
+    const checkIcons = screen.getAllByTestId('check-icon')
+    expect(checkIcons.length).toBeGreaterThan(0)
+  })
+
+  it('should call setTheme when selecting a different theme', () => {
+    mockTheme.mockReturnValue('light')
+
+    render(<ThemeToggle />)
+
+    const button = screen.getByRole('button', { name: 'Select theme' })
+    fireEvent.click(button)
+
+    const darkThemeButton = screen.getByText('Dark').closest('button')
+    if (darkThemeButton) {
+      fireEvent.click(darkThemeButton)
+    }
 
     expect(mockSetTheme).toHaveBeenCalledWith('dark')
     expect(mockSetTheme).toHaveBeenCalledTimes(1)
   })
 
-  it('should call setTheme with "light" when current theme is "dark"', () => {
-    mockTheme.mockReturnValue('dark')
-
-    render(<ThemeToggle />)
-
-    const button = screen.getByRole('button')
-    fireEvent.click(button)
-
-    expect(mockSetTheme).toHaveBeenCalledWith('light')
-    expect(mockSetTheme).toHaveBeenCalledTimes(1)
-  })
-
-  it('should default to "light" when current theme is neither "light" nor "dark"', () => {
-    mockTheme.mockReturnValue('system')
-
-    render(<ThemeToggle />)
-
-    const button = screen.getByRole('button')
-    fireEvent.click(button)
-
-    expect(mockSetTheme).toHaveBeenCalledWith('light')
-    expect(mockSetTheme).toHaveBeenCalledTimes(1)
-  })
-
-  it('should handle undefined theme', () => {
-    mockTheme.mockReturnValue(undefined)
-
-    render(<ThemeToggle />)
-
-    const button = screen.getByRole('button')
-    fireEvent.click(button)
-
-    expect(mockSetTheme).toHaveBeenCalledWith('light')
-    expect(mockSetTheme).toHaveBeenCalledTimes(1)
-  })
-
-  it('should handle null theme', () => {
-    mockTheme.mockReturnValue(null)
-
-    render(<ThemeToggle />)
-
-    const button = screen.getByRole('button')
-    fireEvent.click(button)
-
-    expect(mockSetTheme).toHaveBeenCalledWith('light')
-    expect(mockSetTheme).toHaveBeenCalledTimes(1)
-  })
-
-  it('should have correct CSS classes', () => {
+  it('should close dropdown after selecting a theme', async () => {
     mockTheme.mockReturnValue('light')
 
     render(<ThemeToggle />)
 
-    const button = screen.getByRole('button')
+    const button = screen.getByRole('button', { name: 'Select theme' })
+    fireEvent.click(button)
+
+    expect(screen.getByText('Dark')).toBeInTheDocument()
+
+    const darkThemeButton = screen.getByText('Dark').closest('button')
+    if (darkThemeButton) {
+      fireEvent.click(darkThemeButton)
+    }
+
+    await waitFor(() => {
+      expect(screen.queryByText('Dark')).not.toBeInTheDocument()
+    })
+  })
+
+  it('should close dropdown when clicking outside', async () => {
+    mockTheme.mockReturnValue('light')
+
+    render(<ThemeToggle />)
+
+    const button = screen.getByRole('button', { name: 'Select theme' })
+    fireEvent.click(button)
+
+    expect(screen.getByText('Dark')).toBeInTheDocument()
+
+    fireEvent.click(document.body)
+
+    await waitFor(() => {
+      expect(screen.queryByText('Dark')).not.toBeInTheDocument()
+    })
+  })
+
+  it('should allow selecting each theme option', () => {
+    const themes = ['light', 'dark', 'ocean', 'forest', 'sunset', 'minimal']
+
+    themes.forEach(themeValue => {
+      mockTheme.mockReturnValue('light')
+      jest.clearAllMocks()
+
+      const { unmount } = render(<ThemeToggle />)
+
+      const button = screen.getByRole('button', { name: 'Select theme' })
+      fireEvent.click(button)
+
+      const themeLabel = themeValue.charAt(0).toUpperCase() + themeValue.slice(1)
+      const themeButton = screen.getByText(themeLabel).closest('button')
+
+      if (themeButton) {
+        fireEvent.click(themeButton)
+      }
+
+      expect(mockSetTheme).toHaveBeenCalledWith(themeValue)
+
+      unmount()
+    })
+  })
+
+  it('should have correct accessibility attributes', () => {
+    mockTheme.mockReturnValue('light')
+
+    render(<ThemeToggle />)
+
+    const button = screen.getByRole('button', { name: 'Select theme' })
+
+    expect(button).toHaveAttribute('aria-label', 'Select theme')
+    expect(button).toHaveAttribute('aria-expanded', 'false')
+  })
+
+  it('should update aria-expanded when dropdown is open', () => {
+    mockTheme.mockReturnValue('light')
+
+    render(<ThemeToggle />)
+
+    const button = screen.getByRole('button', { name: 'Select theme' })
+    fireEvent.click(button)
+
+    expect(button).toHaveAttribute('aria-expanded', 'true')
+  })
+
+  it('should display color preview dots for each theme', () => {
+    mockTheme.mockReturnValue('light')
+
+    render(<ThemeToggle />)
+
+    const button = screen.getByRole('button', { name: 'Select theme' })
+    fireEvent.click(button)
+
+    const colorDots = document.querySelectorAll('.w-4.h-4.rounded-full')
+    expect(colorDots.length).toBe(6)
+  })
+
+  it('should have correct CSS classes on main button', () => {
+    mockTheme.mockReturnValue('light')
+
+    render(<ThemeToggle />)
+
+    const button = screen.getByRole('button', { name: 'Select theme' })
 
     expect(button).toHaveClass('w-9')
     expect(button).toHaveClass('h-9')
@@ -158,95 +223,33 @@ describe('ThemeToggle', () => {
     expect(button).toHaveClass('duration-300')
   })
 
-  it('should have correct accessibility attributes', () => {
+  it('should toggle dropdown open/closed on multiple clicks', () => {
     mockTheme.mockReturnValue('light')
 
     render(<ThemeToggle />)
 
-    const button = screen.getByRole('button')
-    const srText = screen.getByText('Toggle theme')
-
-    expect(button).toBeInTheDocument()
-    expect(srText).toHaveClass('sr-only')
-  })
-
-  it('should have proper icon styling classes', () => {
-    mockTheme.mockReturnValue('light')
-
-    render(<ThemeToggle />)
-
-    const sunIcons = screen.getAllByTestId('sun-icon')
-    const moonIcons = screen.getAllByTestId('moon-icon')
-
-    expect(sunIcons[0]).toHaveClass('h-4')
-    expect(sunIcons[0]).toHaveClass('w-4')
-    expect(sunIcons[0]).toHaveClass('text-primary')
-
-    expect(moonIcons[0]).toHaveClass('absolute')
-    expect(moonIcons[0]).toHaveClass('h-4')
-    expect(moonIcons[0]).toHaveClass('w-4')
-    expect(moonIcons[0]).toHaveClass('text-primary')
-  })
-
-  it('should handle multiple rapid clicks', () => {
-    mockTheme.mockReturnValue('light')
-
-    render(<ThemeToggle />)
-
-    const button = screen.getByRole('button')
+    const button = screen.getByRole('button', { name: 'Select theme' })
 
     fireEvent.click(button)
-    fireEvent.click(button)
-    fireEvent.click(button)
+    expect(screen.getByText('Dark')).toBeInTheDocument()
 
-    expect(mockSetTheme).toHaveBeenCalledTimes(3)
-    expect(mockSetTheme).toHaveBeenNthCalledWith(1, 'dark')
-    expect(mockSetTheme).toHaveBeenNthCalledWith(2, 'dark')
-    expect(mockSetTheme).toHaveBeenNthCalledWith(3, 'dark')
+    fireEvent.click(button)
+    expect(screen.queryByText('Dark')).not.toBeInTheDocument()
+
+    fireEvent.click(button)
+    expect(screen.getByText('Dark')).toBeInTheDocument()
   })
 
-  it('should be keyboard accessible', () => {
+  it('should handle keyboard accessibility', () => {
     mockTheme.mockReturnValue('light')
 
     render(<ThemeToggle />)
 
-    const button = screen.getByRole('button')
+    const button = screen.getByRole('button', { name: 'Select theme' })
 
-    // Simulate keyboard interaction
     fireEvent.keyDown(button, { key: 'Enter', code: 'Enter' })
     fireEvent.keyUp(button, { key: 'Enter', code: 'Enter' })
 
-    // The click event should still be triggered
     expect(button).toBeInTheDocument()
-  })
-
-  it('should maintain button type and behavior', () => {
-    mockTheme.mockReturnValue('light')
-
-    render(<ThemeToggle />)
-
-    const button = screen.getByRole('button')
-
-    expect(button.tagName).toBe('BUTTON')
-    // Button component doesn't explicitly set type, so it defaults to null
-    expect(button.getAttribute('type')).toBeNull()
-  })
-
-  it('should handle theme changes correctly in sequence', () => {
-    mockTheme.mockReturnValue('light')
-
-    const { rerender } = render(<ThemeToggle />)
-
-    const button = screen.getByRole('button')
-    fireEvent.click(button)
-
-    expect(mockSetTheme).toHaveBeenCalledWith('dark')
-
-    // Simulate theme change
-    mockTheme.mockReturnValue('dark')
-    rerender(<ThemeToggle />)
-
-    fireEvent.click(button)
-    expect(mockSetTheme).toHaveBeenCalledWith('light')
   })
 })
