@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { MusicPlayer } from "@/components/ui/music-player";
 
 export function About() {
   return (
@@ -65,7 +66,7 @@ export function About() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 rounded-lg border border-primary/20">
+            <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 rounded-xl border border-primary/20">
               <h4 className="font-semibold mb-3 text-primary">Optimizing the Developer Lifestyle</h4>
               <p className="text-body text-muted-foreground">
                 Sitting at a desk all day takes a toll, so I&apos;ve gotten into optimizing the developer lifestyle:
@@ -73,6 +74,14 @@ export function About() {
                 20-20-20 rule for eye health. Same attention to detail I put into code, applied to staying healthy
                 and sharp.
               </p>
+            </div>
+
+            <div className="bg-gradient-to-r from-primary/10 to-primary/5 p-6 rounded-xl border border-primary/20">
+              <MusicPlayer
+                embedUrl="https://embed.music.apple.com/us/playlist/lehmann-dev-mix/pl.u-55D66Z7F6mAbkmp"
+                title="Lehmann Dev Mix"
+                description="My curated playlist for deep focus coding sessions. The right soundtrack makes all the difference when debugging complex problems or architecting new features."
+              />
             </div>
           </motion.div>
 
