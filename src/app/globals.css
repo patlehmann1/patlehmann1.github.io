@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  .light {
     /* Warm, professional palette inspired by natural tones */
     --background: 38 15% 97%;
     --foreground: 25 25% 15%;

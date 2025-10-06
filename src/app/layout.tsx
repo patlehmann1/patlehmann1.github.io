@@ -80,9 +80,10 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange={false}
+          themes={['light', 'dark', 'ocean', 'forest', 'sunset', 'minimal']}
         >
           {children}
         </ThemeProvider>
