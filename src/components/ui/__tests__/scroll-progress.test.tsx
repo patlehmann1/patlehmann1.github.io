@@ -110,11 +110,10 @@ describe('ScrollProgress', () => {
     mockInnerHeight.mockReturnValue(800)
     mockScrollHeight.mockReturnValue(2000)
 
-    render(<ScrollProgress />)
+    const { container } = render(<ScrollProgress />)
 
     // Progress should be 0% at top of page
     // (0 / (2000 - 800)) * 100 = 0%
-    const { container } = render(<ScrollProgress />)
     const progressFill = container.querySelector('.h-full.bg-gradient-to-r')
     expect(progressFill).toBeInTheDocument()
   })
@@ -124,11 +123,10 @@ describe('ScrollProgress', () => {
     mockInnerHeight.mockReturnValue(800)
     mockScrollHeight.mockReturnValue(2000)
 
-    render(<ScrollProgress />)
+    const { container } = render(<ScrollProgress />)
 
     // Progress should be 50%
     // (600 / (2000 - 800)) * 100 = 50%
-    const { container } = render(<ScrollProgress />)
     const progressFill = container.querySelector('.h-full.bg-gradient-to-r')
     expect(progressFill).toBeInTheDocument()
   })
@@ -138,11 +136,10 @@ describe('ScrollProgress', () => {
     mockInnerHeight.mockReturnValue(800)
     mockScrollHeight.mockReturnValue(2000)
 
-    render(<ScrollProgress />)
+    const { container } = render(<ScrollProgress />)
 
     // Progress should be 100%
     // (1200 / (2000 - 800)) * 100 = 100%
-    const { container } = render(<ScrollProgress />)
     const progressFill = container.querySelector('.h-full.bg-gradient-to-r')
     expect(progressFill).toBeInTheDocument()
   })
@@ -152,10 +149,9 @@ describe('ScrollProgress', () => {
     mockInnerHeight.mockReturnValue(800)
     mockScrollHeight.mockReturnValue(800) // No scrollable content
 
-    render(<ScrollProgress />)
+    const { container } = render(<ScrollProgress />)
 
     // Should handle division by zero gracefully
-    const { container } = render(<ScrollProgress />)
     const progressFill = container.querySelector('.h-full.bg-gradient-to-r')
     expect(progressFill).toBeInTheDocument()
   })
@@ -165,7 +161,7 @@ describe('ScrollProgress', () => {
     mockInnerHeight.mockReturnValue(800)
     mockScrollHeight.mockReturnValue(2000)
 
-    render(<ScrollProgress />)
+    const { container } = render(<ScrollProgress />)
 
     // Get the scroll event handler that was registered
     const scrollHandler = mockAddEventListener.mock.calls.find(
@@ -180,7 +176,6 @@ describe('ScrollProgress', () => {
 
     // Progress should update to 25%
     // (300 / (2000 - 800)) * 100 = 25%
-    const { container } = render(<ScrollProgress />)
     const progressFill = container.querySelector('.h-full.bg-gradient-to-r')
     expect(progressFill).toBeInTheDocument()
   })
@@ -190,11 +185,10 @@ describe('ScrollProgress', () => {
     mockInnerHeight.mockReturnValue(800)
     mockScrollHeight.mockReturnValue(2000)
 
-    render(<ScrollProgress />)
+    const { container } = render(<ScrollProgress />)
 
     // Should calculate initial progress on mount
     // (400 / (2000 - 800)) * 100 = 33.33%
-    const { container } = render(<ScrollProgress />)
     const progressFill = container.querySelector('.h-full.bg-gradient-to-r')
     expect(progressFill).toBeInTheDocument()
   })
@@ -204,10 +198,9 @@ describe('ScrollProgress', () => {
     mockInnerHeight.mockReturnValue(800)
     mockScrollHeight.mockReturnValue(2000)
 
-    render(<ScrollProgress />)
+    const { container } = render(<ScrollProgress />)
 
     // Progress should not go below 0
-    const { container } = render(<ScrollProgress />)
     const progressFill = container.querySelector('.h-full.bg-gradient-to-r')
     expect(progressFill).toBeInTheDocument()
   })
@@ -217,11 +210,10 @@ describe('ScrollProgress', () => {
     mockInnerHeight.mockReturnValue(800)
     mockScrollHeight.mockReturnValue(2000)
 
-    render(<ScrollProgress />)
+    const { container } = render(<ScrollProgress />)
 
     // Progress should not exceed 100%
     // (1500 / (2000 - 800)) * 100 = 125%, but should be capped
-    const { container } = render(<ScrollProgress />)
     const progressFill = container.querySelector('.h-full.bg-gradient-to-r')
     expect(progressFill).toBeInTheDocument()
   })
@@ -268,11 +260,10 @@ describe('ScrollProgress', () => {
     mockInnerHeight.mockReturnValue(600) // Different window height
     mockScrollHeight.mockReturnValue(1800)
 
-    render(<ScrollProgress />)
+    const { container } = render(<ScrollProgress />)
 
     // Should recalculate with new dimensions
     // (300 / (1800 - 600)) * 100 = 25%
-    const { container } = render(<ScrollProgress />)
     const progressFill = container.querySelector('.h-full.bg-gradient-to-r')
     expect(progressFill).toBeInTheDocument()
   })
