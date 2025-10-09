@@ -70,7 +70,7 @@ export function Hero() {
                     "Faith Driven Developer",
                     "Full-Stack Engineer",
                     "Problem Solver",
-                    "AI-Enhanced Development Advocate",
+                    "AI-Enhanced Programmer",
                     "Team Collaborator"
                   ]}
                   speed={80}
