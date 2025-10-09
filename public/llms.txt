@@ -1,8 +1,8 @@
 # Patrick Lehmann - Software Developer Portfolio
 
-> Personal portfolio website showcasing software development expertise, featuring projects, blog articles, professional experience, and technical insights. Built with Next.js 14, TypeScript, and modern web technologies.
+> Personal portfolio website showcasing software development expertise, featuring projects, blog articles, professional experience, and technical insights. Built with Next.js 15, TypeScript, and modern web technologies.
 
-This is the professional portfolio of Patrick Lehmann, a software developer specializing in modern web technologies, AI collaboration, and full-stack development. The site features a comprehensive overview of professional experience, technical skills, featured projects, and thought leadership through blog articles.
+This is the professional portfolio of Patrick Lehmann (v1.6.1), a software developer specializing in modern web technologies, AI collaboration, and full-stack development. The site features a comprehensive overview of professional experience, technical skills with 26 development practices, featured projects, and thought leadership through blog articles.
 
 ## Main Portfolio Sections
 
@@ -28,10 +28,12 @@ This is the professional portfolio of Patrick Lehmann, a software developer spec
 
 ## Project Information
 
-- **Technology Stack**: Next.js 14, TypeScript, Tailwind CSS, React, Framer Motion
-- **Features**: Dark mode support, responsive design, SEO optimization, blog system
+- **Version**: 1.6.1
+- **Technology Stack**: Next.js 15, TypeScript, Tailwind CSS, React, Framer Motion, Three.js
+- **Features**: Multi-theme system (6 themes including synthwave), Three.js particle animations, Apple Music integration, responsive design, SEO optimization, blog system
+- **Development Practices**: 26 comprehensive practices covering Agile/Scrum, TDD, CI/CD, Performance Optimization, Accessibility, Security-First Development, SEO, API Design, Cloud Deployment, and more
 - **Content Management**: JSON-based blog system with RSS and sitemap generation
-- **Testing**: Comprehensive Jest test suite with React Testing Library
+- **Testing**: Comprehensive Jest test suite with React Testing Library (811 tests, 93%+ coverage)
 
 ## Optional
 
