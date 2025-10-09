@@ -84,7 +84,7 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-card p-8 rounded-lg border shadow-sm project-card cursor-pointer group"
+              className="bg-card p-8 rounded-lg border shadow-sm project-card group"
             >
               <div className="flex items-start justify-between mb-4">
                 <div>

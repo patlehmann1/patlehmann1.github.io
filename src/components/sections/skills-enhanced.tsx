@@ -569,7 +569,7 @@ export function SkillsEnhanced() {
                     onMouseEnter={() => handleSkillHover(skill.name)}
                     onMouseLeave={() => handleSkillHover(null)}
                   >
-                    <div className="bg-card border rounded-lg p-4 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 hover:scale-105 transition-all duration-300 cursor-pointer">
+                    <div className="bg-card border rounded-lg p-4 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 hover:scale-105 transition-all duration-300">
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="font-semibold text-lg">{skill.name}</h4>
                         <span className="text-xs text-primary bg-primary/10 px-2 py-1 rounded-full">
