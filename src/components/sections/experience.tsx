@@ -50,7 +50,7 @@ export function Experience() {
           period: "January 2019 - April 2022",
           highlights: [
             "Transitioned from Node.js microservices to C#/.NET full-stack development following CoStar Group acquisition",
-            "Built RESTful APIs and led migration from monolithic ColdFusion to scalable Node.js architecture",
+            "Built RESTful APIs, worked to migrate from monolithic ColdFusion to scalable Node.js architecture",
             "Implemented Kubernetes logging systems and database integrations (MongoDB, SQL Server, Solr)"
           ]
         }
