@@ -176,7 +176,7 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
 export function ParticleBackground() {
   const { theme } = useTheme();
   const prefersReducedMotion = useReducedMotion();
-  const mousePosition = useRef({ x: 0, y: 0 });
+  const mousePosition = useRef({ x: 999, y: 999 });
   const isMobileRef = useRef(false);
 
   useEffect(() => {
