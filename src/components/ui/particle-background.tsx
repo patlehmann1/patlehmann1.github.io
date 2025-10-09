@@ -19,16 +19,27 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
   const velocitiesRef = useRef<Float32Array>(new Float32Array(0));
   const mousePosRef = useRef({ x: 0, y: 0 });
   const [linesReady, setLinesReady] = useState(false);
+  const [particleOpacity, setParticleOpacity] = useState(0);
 
   const { positions, initialVelocities } = useMemo(() => {
     const pos = new Float32Array(count * 3);
     const vel = new Float32Array(count * 3);
 
+    const gridSize = Math.ceil(Math.cbrt(count));
+    const spacingX = 18 / gridSize;
+    const spacingY = 13 / gridSize;
+    const spacingZ = 4 / gridSize;
+
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
-      pos[i3] = (Math.random() - 0.5) * 20;
-      pos[i3 + 1] = (Math.random() - 0.5) * 15;
-      pos[i3 + 2] = (Math.random() - 0.5) * 5;
+
+      const gridX = (i % gridSize) * spacingX - 9;
+      const gridY = (Math.floor(i / gridSize) % gridSize) * spacingY - 6.5;
+      const gridZ = (Math.floor(i / (gridSize * gridSize))) * spacingZ - 2;
+
+      pos[i3] = gridX + (Math.random() - 0.5) * spacingX * 0.6;
+      pos[i3 + 1] = gridY + (Math.random() - 0.5) * spacingY * 0.6;
+      pos[i3 + 2] = gridZ + (Math.random() - 0.5) * spacingZ * 0.6;
 
       vel[i3] = (Math.random() - 0.5) * 0.01;
       vel[i3 + 1] = (Math.random() - 0.5) * 0.01;
@@ -50,6 +61,10 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
 
   useFrame(() => {
     if (!pointsRef.current || !velocitiesRef.current || reducedMotion) return;
+
+    if (particleOpacity < 0.6) {
+      setParticleOpacity((prev) => Math.min(0.6, prev + 0.02));
+    }
 
     const positions = pointsRef.current.geometry.attributes.position.array as Float32Array;
     const velocities = velocitiesRef.current;
@@ -130,7 +145,7 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
           color={particleColor}
           sizeAttenuation
           transparent
-          opacity={0.6}
+          opacity={particleOpacity}
           blending={THREE.AdditiveBlending}
         />
       </points>
