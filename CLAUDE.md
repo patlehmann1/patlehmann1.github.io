@@ -21,7 +21,7 @@ Personal software developer portfolio website built with Next.js 15, TypeScript,
 - **React Markdown + Remark GFM** for content rendering
 - **JSON-based content management** for blog posts
 - **RSS & Sitemap generation** for SEO optimization
-- **Jest + React Testing Library** for comprehensive testing (708 tests, 93%+ coverage)
+- **Jest + React Testing Library** for comprehensive testing (814 tests, 93%+ coverage)
 
 ## Development Commands
 

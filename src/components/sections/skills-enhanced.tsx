@@ -425,6 +425,8 @@ export function SkillsEnhanced() {
                 <button
                   key={tab}
                   onClick={() => setSelectedCategory(tab)}
+                  aria-label={tab === "all" ? "Show all skills" : `Filter by ${tab} category`}
+                  aria-pressed={selectedCategory === tab}
                   className={`px-4 py-2 rounded-lg font-medium transition-all ${
                     selectedCategory === tab
                       ? 'bg-primary text-primary-foreground shadow-lg'
@@ -633,6 +635,7 @@ export function SkillsEnhanced() {
             <div className="text-center mt-6">
               <button
                 onClick={() => setShowAllPractices(true)}
+                aria-label={`Expand to show all ${practices.length} development practices`}
                 className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl"
               >
                 Show All {practices.length} Practices
