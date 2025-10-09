@@ -78,7 +78,7 @@ describe("Experience", () => {
 
     expect(screen.getByText("Full-Stack Development")).toBeInTheDocument();
     expect(screen.getByText(/Transitioned from Node.js microservices to C#\/.NET/i)).toBeInTheDocument();
-    expect(screen.getByText(/Built RESTful APIs and led migration from monolithic ColdFusion/i)).toBeInTheDocument();
+    expect(screen.getByText(/Built RESTful APIs, worked to migrate from monolithic ColdFusion/i)).toBeInTheDocument();
   });
 
   it("displays adaptability summary at the bottom", () => {

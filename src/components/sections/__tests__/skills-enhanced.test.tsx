@@ -136,4 +136,45 @@ describe("SkillsEnhanced", () => {
     const gridContainer = container.querySelector(".grid");
     expect(gridContainer).toBeInTheDocument();
   });
+
+  it("displays Development Practices section", () => {
+    render(<SkillsEnhanced />);
+    expect(screen.getByText("Development Practices")).toBeInTheDocument();
+  });
+
+  it("displays all 26 development practices", () => {
+    render(<SkillsEnhanced />);
+
+    const practicesSection = screen.getByText("Development Practices").closest("div");
+    expect(practicesSection).toBeInTheDocument();
+
+    const practiceElements = screen.getAllByText(/Agile|Test-Driven|Code Review|AI-Assisted|Legacy|Cross-Team|Point-of-Sale|E-commerce|Real Estate|Payment|CI\/CD|Performance|Accessibility|Security|Documentation|Pair Programming|Refactoring|Design Systems|Responsive|SEO|API Design|Database|Cloud|Stakeholder|Requirements|Open Source/i);
+    expect(practiceElements.length).toBeGreaterThanOrEqual(26);
+  });
+
+  it("displays key development practices", () => {
+    render(<SkillsEnhanced />);
+
+    expect(screen.getByText("Agile/Scrum Development")).toBeInTheDocument();
+    expect(screen.getByText("Test-Driven Development")).toBeInTheDocument();
+    expect(screen.getByText("Code Review & Mentoring")).toBeInTheDocument();
+    expect(screen.getByText(/AI-Assisted Development/i)).toBeInTheDocument();
+  });
+
+  it("displays newly added development practices", () => {
+    render(<SkillsEnhanced />);
+
+    expect(screen.getByText("Continuous Integration/Continuous Deployment (CI/CD)")).toBeInTheDocument();
+    expect(screen.getByText("Performance Optimization & Monitoring")).toBeInTheDocument();
+    expect(screen.getByText("Accessibility (a11y) Best Practices")).toBeInTheDocument();
+    expect(screen.getByText("Security-First Development")).toBeInTheDocument();
+    expect(screen.getByText("SEO Optimization & Web Vitals")).toBeInTheDocument();
+  });
+
+  it("displays AI-Forward Development callout", () => {
+    render(<SkillsEnhanced />);
+
+    expect(screen.getByText("🤖 AI-Forward Development")).toBeInTheDocument();
+    expect(screen.getByText(/Embracing modern AI tools to enhance productivity/i)).toBeInTheDocument();
+  });
 });
