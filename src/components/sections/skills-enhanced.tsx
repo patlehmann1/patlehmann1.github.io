@@ -24,6 +24,8 @@ export function SkillsEnhanced() {
   const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLevel, setSelectedLevel] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [showAllPractices, setShowAllPractices] = useState(false);
   const debouncedSearch = useDebounce(searchQuery, 300);
 
   const sortedSkillCategories = useMemo(() => {
@@ -362,7 +364,13 @@ export function SkillsEnhanced() {
   }, []);
 
   const filteredCategories = useMemo(() => {
-    return sortedSkillCategories.map(category => ({
+    let categoriesToFilter = sortedSkillCategories;
+
+    if (selectedCategory !== "all") {
+      categoriesToFilter = sortedSkillCategories.filter(cat => cat.title === selectedCategory);
+    }
+
+    return categoriesToFilter.map(category => ({
       ...category,
       skills: category.skills.filter(skill => {
         const matchesSearch = debouncedSearch === "" ||
@@ -371,7 +379,7 @@ export function SkillsEnhanced() {
         return matchesSearch && matchesLevel;
       })
     })).filter(category => category.skills.length > 0);
-  }, [sortedSkillCategories, debouncedSearch, selectedLevel]);
+  }, [sortedSkillCategories, debouncedSearch, selectedLevel, selectedCategory]);
 
   const hasActiveFilters = debouncedSearch !== "" || selectedLevel !== null;
 
@@ -381,7 +389,11 @@ export function SkillsEnhanced() {
   const handleClearFilters = useCallback(() => {
     setSearchQuery("");
     setSelectedLevel(null);
+    setSelectedCategory("all");
   }, []);
+
+  const visiblePractices = showAllPractices ? practices : practices.slice(0, 12);
+  const categoryTabs = ["all", ...sortedSkillCategories.map(cat => cat.title)];
 
 
   return (
@@ -407,7 +419,24 @@ export function SkillsEnhanced() {
           viewport={{ once: true }}
           className="mb-12"
         >
-          <div className="max-w-3xl mx-auto space-y-4">
+          <div className="max-w-5xl mx-auto space-y-6">
+            <div className="flex flex-wrap gap-2 justify-center">
+              {categoryTabs.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setSelectedCategory(tab)}
+                  className={`px-4 py-2 rounded-lg font-medium transition-all ${
+                    selectedCategory === tab
+                      ? 'bg-primary text-primary-foreground shadow-lg'
+                      : 'bg-card border border-border hover:border-primary hover:shadow-md'
+                  }`}
+                >
+                  {tab === "all" ? "All Skills" : tab}
+                </button>
+              ))}
+            </div>
+
+            <div className="max-w-3xl mx-auto space-y-4">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
               <input
@@ -484,6 +513,7 @@ export function SkillsEnhanced() {
                 </button>
               </div>
             )}
+            </div>
           </div>
         </motion.div>
 
@@ -584,7 +614,7 @@ export function SkillsEnhanced() {
         >
           <h3 className="text-subheading font-bold mb-6 text-center">Development Practices</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {practices.map((practice, index) => (
+            {visiblePractices.map((practice, index) => (
               <motion.div
                 key={practice}
                 initial={{ opacity: 0, x: -20 }}
@@ -598,6 +628,17 @@ export function SkillsEnhanced() {
               </motion.div>
             ))}
           </div>
+
+          {!showAllPractices && practices.length > 12 && (
+            <div className="text-center mt-6">
+              <button
+                onClick={() => setShowAllPractices(true)}
+                className="px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium hover:bg-primary/90 transition-all shadow-lg hover:shadow-xl"
+              >
+                Show All {practices.length} Practices
+              </button>
+            </div>
+          )}
 
           <motion.div
             initial={{ opacity: 0, y: 10 }}

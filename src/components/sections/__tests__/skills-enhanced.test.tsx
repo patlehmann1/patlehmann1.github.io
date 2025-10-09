@@ -19,13 +19,14 @@ describe("SkillsEnhanced", () => {
     expect(screen.getByRole("heading", { name: /Technical Skills/i })).toBeInTheDocument();
   });
 
-  it("displays all skill categories", () => {
+  it("displays all skill category tabs", () => {
     render(<SkillsEnhanced />);
 
-    expect(screen.getByText("Languages")).toBeInTheDocument();
-    expect(screen.getByText("Frameworks")).toBeInTheDocument();
-    expect(screen.getByText("Infrastructure & DevOps")).toBeInTheDocument();
-    expect(screen.getByText("Development Tools")).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "All Skills" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Languages" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Frameworks" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Infrastructure & DevOps" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Development Tools" })).toBeInTheDocument();
   });
 
   it("displays search input", () => {
@@ -142,14 +143,16 @@ describe("SkillsEnhanced", () => {
     expect(screen.getByText("Development Practices")).toBeInTheDocument();
   });
 
-  it("displays all 26 development practices", () => {
+  it("displays 12 development practices initially with Show More button", () => {
     render(<SkillsEnhanced />);
 
     const practicesSection = screen.getByText("Development Practices").closest("div");
     expect(practicesSection).toBeInTheDocument();
 
-    const practiceElements = screen.getAllByText(/Agile|Test-Driven|Code Review|AI-Assisted|Legacy|Cross-Team|Point-of-Sale|E-commerce|Real Estate|Payment|CI\/CD|Performance|Accessibility|Security|Documentation|Pair Programming|Refactoring|Design Systems|Responsive|SEO|API Design|Database|Cloud|Stakeholder|Requirements|Open Source/i);
-    expect(practiceElements.length).toBeGreaterThanOrEqual(26);
+    const practiceElements = screen.getAllByText(/Agile|Test-Driven|Code Review|AI-Assisted|Legacy|Cross-Team|Point-of-Sale|E-commerce|Real Estate|Payment|CI\/CD|Performance/i);
+    expect(practiceElements.length).toBeGreaterThanOrEqual(12);
+
+    expect(screen.getByText(/Show All 26 Practices/i)).toBeInTheDocument();
   });
 
   it("displays key development practices", () => {
@@ -161,8 +164,11 @@ describe("SkillsEnhanced", () => {
     expect(screen.getByText(/AI-Assisted Development/i)).toBeInTheDocument();
   });
 
-  it("displays newly added development practices", () => {
+  it("displays newly added development practices after clicking Show More", () => {
     render(<SkillsEnhanced />);
+
+    const showMoreButton = screen.getByText(/Show All 26 Practices/i);
+    fireEvent.click(showMoreButton);
 
     expect(screen.getByText("Continuous Integration/Continuous Deployment (CI/CD)")).toBeInTheDocument();
     expect(screen.getByText("Performance Optimization & Monitoring")).toBeInTheDocument();
@@ -176,5 +182,36 @@ describe("SkillsEnhanced", () => {
 
     expect(screen.getByText("🤖 AI-Forward Development")).toBeInTheDocument();
     expect(screen.getByText(/Embracing modern AI tools to enhance productivity/i)).toBeInTheDocument();
+  });
+
+  it("filters categories when clicking category tabs", () => {
+    render(<SkillsEnhanced />);
+
+    const languagesTab = screen.getByRole("button", { name: "Languages" });
+    fireEvent.click(languagesTab);
+
+    expect(screen.getByText("C#")).toBeInTheDocument();
+    expect(screen.getByText("TypeScript")).toBeInTheDocument();
+  });
+
+  it("shows all categories when All Skills tab is active", () => {
+    render(<SkillsEnhanced />);
+
+    const allSkillsTab = screen.getByText("All Skills");
+    expect(allSkillsTab).toBeInTheDocument();
+
+    expect(screen.getByText("C#")).toBeInTheDocument();
+    expect(screen.getByText(".NET")).toBeInTheDocument();
+    expect(screen.getByText("Docker")).toBeInTheDocument();
+  });
+
+  it("clicking Show More button displays all 26 practices", () => {
+    render(<SkillsEnhanced />);
+
+    const showMoreButton = screen.getByText(/Show All 26 Practices/i);
+    fireEvent.click(showMoreButton);
+
+    expect(screen.queryByText(/Show All 26 Practices/i)).not.toBeInTheDocument();
+    expect(screen.getByText("Open Source Contribution")).toBeInTheDocument();
   });
 });
