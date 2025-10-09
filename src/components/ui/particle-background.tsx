@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo, useEffect } from "react";
+import { useRef, useMemo, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useTheme } from "next-themes";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -18,6 +18,7 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
   const linesRef = useRef<THREE.LineSegments>(null);
   const velocitiesRef = useRef<Float32Array>(new Float32Array(0));
   const mousePosRef = useRef({ x: 0, y: 0 });
+  const [linesReady, setLinesReady] = useState(false);
 
   const { positions, initialVelocities } = useMemo(() => {
     const pos = new Float32Array(count * 3);
@@ -105,6 +106,9 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
           "position",
           new THREE.BufferAttribute(new Float32Array(linePositions), 3)
         );
+        if (!linesReady) {
+          setLinesReady(true);
+        }
       }
     }
   });
@@ -131,23 +135,25 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
         />
       </points>
 
-      <lineSegments ref={linesRef}>
-        <bufferGeometry>
-          <bufferAttribute
-            attach="attributes-position"
-            count={1}
-            array={new Float32Array([0, 0, 0])}
-            itemSize={3}
-            args={[new Float32Array([0, 0, 0]), 3]}
+      {linesReady && (
+        <lineSegments ref={linesRef}>
+          <bufferGeometry>
+            <bufferAttribute
+              attach="attributes-position"
+              count={0}
+              array={new Float32Array([])}
+              itemSize={3}
+              args={[new Float32Array([]), 3]}
+            />
+          </bufferGeometry>
+          <lineBasicMaterial
+            color={particleColor}
+            transparent
+            opacity={0.15}
+            blending={THREE.AdditiveBlending}
           />
-        </bufferGeometry>
-        <lineBasicMaterial
-          color={particleColor}
-          transparent
-          opacity={0.15}
-          blending={THREE.AdditiveBlending}
-        />
-      </lineSegments>
+        </lineSegments>
+      )}
     </>
   );
 }
