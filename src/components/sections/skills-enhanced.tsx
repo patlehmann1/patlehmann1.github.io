@@ -321,7 +321,23 @@ export function SkillsEnhanced() {
     "Point-of-Sale (POS) System Development",
     "E-commerce Platform Architecture",
     "Real Estate Technology Solutions",
-    "Payment Processing Integration"
+    "Payment Processing Integration",
+    "Continuous Integration/Continuous Deployment (CI/CD)",
+    "Performance Optimization & Monitoring",
+    "Accessibility (a11y) Best Practices",
+    "Security-First Development",
+    "Documentation & Technical Writing",
+    "Pair Programming",
+    "Refactoring & Technical Debt Management",
+    "Design Systems & Component Libraries",
+    "Responsive & Mobile-First Design",
+    "SEO Optimization & Web Vitals",
+    "API Design & Integration",
+    "Database Design & Optimization",
+    "Cloud Deployment & Infrastructure",
+    "Stakeholder Communication",
+    "Technical Requirements Gathering",
+    "Open Source Contribution"
   ];
 
   const renderStars = useCallback((level: number) => {
