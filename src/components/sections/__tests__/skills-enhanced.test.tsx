@@ -22,11 +22,11 @@ describe("SkillsEnhanced", () => {
   it("displays all skill category tabs", () => {
     render(<SkillsEnhanced />);
 
-    expect(screen.getByRole("button", { name: "All Skills" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Languages" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Frameworks" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Infrastructure & DevOps" })).toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Development Tools" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Show all skills" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Filter by Languages category" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Filter by Frameworks category" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Filter by Infrastructure & DevOps category" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Filter by Development Tools category" })).toBeInTheDocument();
   });
 
   it("displays search input", () => {
@@ -187,7 +187,7 @@ describe("SkillsEnhanced", () => {
   it("filters categories when clicking category tabs", () => {
     render(<SkillsEnhanced />);
 
-    const languagesTab = screen.getByRole("button", { name: "Languages" });
+    const languagesTab = screen.getByRole("button", { name: "Filter by Languages category" });
     fireEvent.click(languagesTab);
 
     expect(screen.getByText("C#")).toBeInTheDocument();

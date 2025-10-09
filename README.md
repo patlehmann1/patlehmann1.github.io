@@ -18,7 +18,7 @@ This is my personal portfolio website showcasing my work as a Full-Stack Softwar
 - 🔊 **Text-to-Speech** - Accessible blog post narration with customizable voice settings
 - 📱 **Fully Responsive** - Optimized for all screen sizes
 - ⚡ **Performance Optimized** - Built with Next.js 15 and Turbopack for fast development and production builds
-- 🧪 **Comprehensive Testing** - 93%+ test coverage with Jest and React Testing Library (708 tests)
+- 🧪 **Comprehensive Testing** - 93%+ test coverage with Jest and React Testing Library (814 tests)
 - 🔍 **SEO Optimized** - Automated sitemap and RSS feed generation
 - 📬 **Newsletter Integration** - Kit.com integration with custom domain
 
@@ -47,7 +47,7 @@ This is my personal portfolio website showcasing my work as a Full-Stack Softwar
 - **Jest** - Testing framework
 - **React Testing Library** - Component testing
 - **@testing-library/dom** - DOM testing utilities
-- Coverage: 93.08% statements, 88.72% branches, 96.13% functions (708 tests)
+- Coverage: 93.08% statements, 88.72% branches, 96.13% functions (814 tests)
 
 ## Getting Started
 
@@ -111,7 +111,7 @@ yarn version:major         # Breaking changes (1.0.0 → 2.0.0)
 All PRs must pass:
 - ✅ ESLint checks (no errors)
 - ✅ TypeScript compilation (no errors)
-- ✅ All tests passing (708 tests)
+- ✅ All tests passing (814 tests)
 - ✅ Coverage thresholds (70%+ minimum, currently 93%+)
 
 ## Project Structure
@@ -154,7 +154,7 @@ yarn test:coverage
 yarn test:watch
 ```
 
-Current coverage: **93.08% statements** | **88.72% branches** | **96.13% functions** | **94.39% lines** (708 tests)
+Current coverage: **93.08% statements** | **88.72% branches** | **96.13% functions** | **94.39% lines** (814 tests)
 
 ## Deployment
 
@@ -224,7 +224,7 @@ For detailed information, see:
 - **Lighthouse Score:** 100/100 (Performance, Accessibility, Best Practices, SEO)
 - **Core Web Vitals:** All green
 - **Bundle Size:** Optimized with code splitting and lazy loading
-- **Testing:** 708 tests with 93%+ coverage
+- **Testing:** 814 tests with 93%+ coverage
 - **Animations:** Hardware-accelerated with Framer Motion and Three.js
 - **Accessibility:** Reduced motion support, ARIA labels, keyboard navigation
 
