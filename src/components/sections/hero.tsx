@@ -12,6 +12,7 @@ import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 
 const ParticleBackground = dynamic(
   () => import("@/components/ui/particle-background").then((mod) => ({ default: mod.ParticleBackground })),
@@ -42,6 +43,26 @@ export function Hero() {
               animate="visible"
               className="space-y-6"
             >
+              <div className="flex justify-center mb-8">
+                <div className="relative">
+                  <Image
+                    src="/images/headshot.webp"
+                    alt="Patrick Lehmann headshot"
+                    width={200}
+                    height={200}
+                    priority
+                    className={cn(
+                      "rounded-full",
+                      "border-4",
+                      "transition-all duration-300",
+                      mounted && theme === "synthwave"
+                        ? "border-[#00d9ff] shadow-[0_0_20px_rgba(0,217,255,0.5),0_0_40px_rgba(255,0,255,0.3)]"
+                        : "border-primary/30 shadow-warm"
+                    )}
+                  />
+                </div>
+              </div>
+
               <div className="flex items-center justify-center gap-3 text-primary font-550 tracking-wide text-caption">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 Focused on enterprise analytics & international solutions
