@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Mail } from "lucide-react";
 import { Typewriter } from "@/components/ui/typewriter";
 import { useReducedMotion, createMotionVariants } from "@/hooks/useReducedMotion";
-import { ScrollIndicator } from "@/components/ui/scroll-indicator";
 import { GitHubIcon } from "@/components/ui/icons/github-icon";
 import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
 import { useTheme } from "next-themes";
@@ -145,7 +144,6 @@ export function Hero() {
 
         </div>
       </div>
-      <ScrollIndicator />
     </section>
   );
 }

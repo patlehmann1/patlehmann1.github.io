@@ -7,8 +7,8 @@
     <language>en-US</language>
     <managingEditor>contact@patricklehmann.io (Patrick Lehmann)</managingEditor>
     <webMaster>contact@patricklehmann.io (Patrick Lehmann)</webMaster>
-    <lastBuildDate>Tue, 07 Oct 2025 22:38:53 GMT</lastBuildDate>
-    <pubDate>Tue, 07 Oct 2025 22:38:53 GMT</pubDate>
+    <lastBuildDate>Tue, 14 Oct 2025 17:16:08 GMT</lastBuildDate>
+    <pubDate>Tue, 14 Oct 2025 17:16:08 GMT</pubDate>
     <generator>Next.js RSS Generator</generator>
     <image>
       <url>https://patricklehmann.io/favicon.svg</url>
@@ -17,6 +17,15 @@
     </image>
     <atom:link href="https://patricklehmann.io/rss.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>You Can Love the Craft Without Loving the Culture</title>
+      <description>Six and a half years of writing code taught me this: you can love software engineering while having zero patience for the &#39;ackshually&#39; crowd. And the same principle applies to theology. A reflection on loving your craft without the pretension.</description>
+      <link>https://patricklehmann.io/blog/love-craft-not-culture</link>
+      <guid isPermaLink="true">https://patricklehmann.io/blog/love-craft-not-culture</guid>
+      <pubDate>Tue, 14 Oct 2025 16:00:00 GMT</pubDate>
+      <author>contact@patricklehmann.io (Patrick Lehmann)</author>
+      <category>Career</category><category>Tech Culture</category><category>Faith</category><category>Personal Growth</category>
+    </item>
     <item>
       <title>I Get Why People Are Leaving Tech</title>
       <description>Six and a half years ago, tech changed my life. Now I&#39;m watching talented people walk away from the industry, and honestly? I understand why. A reflection on the current state of the American tech job market and what it means for those still fighting to break in or stay in.</description>

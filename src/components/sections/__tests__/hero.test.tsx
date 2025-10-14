@@ -19,10 +19,6 @@ jest.mock("@/components/ui/particle-background", () => ({
   ParticleBackground: () => <div data-testid="particle-background" />,
 }));
 
-jest.mock("@/components/ui/scroll-indicator", () => ({
-  ScrollIndicator: () => <div data-testid="scroll-indicator" />,
-}));
-
 jest.mock("@/components/ui/typewriter", () => ({
   Typewriter: ({ texts }: { texts: string[] }) => (
     <span data-testid="typewriter">{texts[0]}</span>
@@ -83,12 +79,6 @@ describe("Hero", () => {
     render(<Hero />);
 
     expect(screen.getByTestId("particle-background")).toBeInTheDocument();
-  });
-
-  it("renders scroll indicator component", () => {
-    render(<Hero />);
-
-    expect(screen.getByTestId("scroll-indicator")).toBeInTheDocument();
   });
 
   it("has proper section structure", () => {
