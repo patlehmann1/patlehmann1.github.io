@@ -34,27 +34,27 @@ export function Hero() {
       <ParticleBackground />
       <div className="absolute inset-0 bg-grid opacity-20 sm:opacity-30" />
 
-      <div className="relative max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 pt-4 sm:pt-12 pb-16 sm:pb-20">
-        <div className="flex items-center justify-center min-h-[70vh] sm:min-h-[60vh]">
-          <div className="max-w-4xl mx-auto text-center space-y-6 sm:space-y-8 min-w-0">
+      <div className="relative max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 pt-4 sm:pt-6 md:pt-4 lg:pt-6 pb-16 sm:pb-20">
+        <div className="flex justify-center pt-8 sm:pt-10 md:pt-8 lg:pt-10">
+          <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-5 md:space-y-6 min-w-0">
             <motion.div
               variants={motionVariants}
               initial="hidden"
               animate="visible"
               className="space-y-6"
             >
-              <div className="flex justify-center mb-8">
-                <div className="relative">
+              <div className="flex justify-center mb-4 sm:mb-5 md:mb-6">
+                <div className="relative w-40 h-40 sm:w-44 sm:h-44 md:w-48 md:h-48 lg:w-52 lg:h-52">
                   <Image
                     src="/images/headshot.webp"
                     alt="Patrick Lehmann headshot"
-                    width={200}
-                    height={200}
+                    fill
                     priority
                     className={cn(
                       "rounded-full",
                       "border-4",
                       "transition-all duration-300",
+                      "object-cover",
                       mounted && theme === "synthwave"
                         ? "border-[#00d9ff] shadow-[0_0_20px_rgba(0,217,255,0.5),0_0_40px_rgba(255,0,255,0.3)]"
                         : "border-primary/30 shadow-warm"
@@ -111,7 +111,7 @@ export function Hero() {
               initial="hidden"
               animate="visible"
               transition={{ delay: prefersReducedMotion ? 0 : 0.2 }}
-              className="flex flex-col items-center gap-6"
+              className="flex flex-col items-center gap-4 sm:gap-5"
             >
               <div className="flex items-center gap-4">
                 <a
