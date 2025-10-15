@@ -34,7 +34,7 @@ export function Hero() {
       <div className="absolute inset-0 bg-grid opacity-20 sm:opacity-30" />
 
       <div className="relative max-w-6xl mx-auto px-3 sm:px-4 lg:px-6 pt-4 sm:pt-6 md:pt-4 lg:pt-6 pb-16 sm:pb-20">
-        <div className="flex justify-center pt-8 sm:pt-10 md:pt-8 lg:pt-10 lg:grid lg:grid-cols-[2fr_3fr] lg:gap-12 lg:items-center">
+        <div className="flex flex-col items-center pt-8 sm:pt-10 md:pt-8 lg:pt-10 lg:grid lg:grid-cols-[2fr_3fr] lg:gap-12 lg:items-center">
 
           {/* Headshot - Left column on desktop, top on mobile */}
           <motion.div
