@@ -67,6 +67,10 @@ jest.mock('next-themes', () => ({
 // WHY: Fetch is not available in Jest's jsdom environment
 global.fetch = jest.fn()
 
+// Setup environment variables for tests
+// WHY: Tests need API URLs configured
+process.env.NEXT_PUBLIC_NEWSLETTER_API_URL = 'https://newsletter-api.patrick-lehmann-dev.workers.dev'
+
 // Setup window.matchMedia for responsive tests
 // WHY: matchMedia is not implemented in jsdom
 Object.defineProperty(window, 'matchMedia', {
