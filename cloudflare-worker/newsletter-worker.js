@@ -22,16 +22,19 @@ export default {
     const origin = request.headers.get('Origin');
     const allowOrigin = allowedOrigins.includes(origin) ? origin : allowedOrigins[0];
 
+    const corsHeaders = {
+      'Access-Control-Allow-Origin': allowOrigin,
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Max-Age': '86400',
+      'Vary': 'Origin',
+    };
+
     // Handle CORS preflight requests
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         status: 204,
-        headers: {
-          'Access-Control-Allow-Origin': allowOrigin,
-          'Access-Control-Allow-Methods': 'POST, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type',
-          'Access-Control-Max-Age': '86400',
-        },
+        headers: corsHeaders,
       });
     }
 
@@ -43,7 +46,7 @@ export default {
           status: 405,
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': allowOrigin,
+            ...corsHeaders,
           },
         }
       );
@@ -61,7 +64,7 @@ export default {
             status: 400,
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': allowOrigin,
+              ...corsHeaders,
             },
           }
         );
@@ -76,7 +79,7 @@ export default {
             status: 400,
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': allowOrigin,
+              ...corsHeaders,
             },
           }
         );
@@ -91,7 +94,7 @@ export default {
             status: 500,
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': allowOrigin,
+              ...corsHeaders,
             },
           }
         );
@@ -118,7 +121,7 @@ export default {
         status: kitResponse.status,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': allowOrigin,
+          ...corsHeaders,
         },
       });
 
@@ -131,7 +134,7 @@ export default {
           status: 500,
           headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': allowOrigin,
+            ...corsHeaders,
           },
         }
       );
