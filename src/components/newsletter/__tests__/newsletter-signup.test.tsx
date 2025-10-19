@@ -229,6 +229,58 @@ describe('NewsletterSignup Component', () => {
 
       expect(mockFetch).toHaveBeenCalledTimes(1)
     })
+
+    it('should not submit when API URL is missing', async () => {
+      const originalEnv = process.env.NEXT_PUBLIC_NEWSLETTER_API_URL
+      delete process.env.NEXT_PUBLIC_NEWSLETTER_API_URL
+      const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation()
+
+      const user = userEvent.setup()
+      render(<NewsletterSignup />)
+
+      const firstNameInput = screen.getByPlaceholderText('First name')
+      const emailInput = screen.getByPlaceholderText('Email address')
+
+      await user.type(firstNameInput, 'John')
+      await user.type(emailInput, 'john@example.com')
+      await user.click(screen.getByRole('button', { name: /subscribe/i }))
+
+      await waitFor(() => {
+        expect(screen.getByText('Something went wrong. Please try again.')).toBeInTheDocument()
+      })
+
+      expect(mockFetch).not.toHaveBeenCalled()
+      expect(consoleErrorSpy).toHaveBeenCalledWith('Newsletter API URL not configured')
+
+      process.env.NEXT_PUBLIC_NEWSLETTER_API_URL = originalEnv
+      consoleErrorSpy.mockRestore()
+    })
+
+    it('should not submit when API URL contains PLACEHOLDER', async () => {
+      const originalEnv = process.env.NEXT_PUBLIC_NEWSLETTER_API_URL
+      process.env.NEXT_PUBLIC_NEWSLETTER_API_URL = 'CLOUDFLARE_WORKER_URL_PLACEHOLDER'
+      const consoleErrorSpy = jest.spyOn(console, 'error').mockImplementation()
+
+      const user = userEvent.setup()
+      render(<NewsletterSignup />)
+
+      const firstNameInput = screen.getByPlaceholderText('First name')
+      const emailInput = screen.getByPlaceholderText('Email address')
+
+      await user.type(firstNameInput, 'John')
+      await user.type(emailInput, 'john@example.com')
+      await user.click(screen.getByRole('button', { name: /subscribe/i }))
+
+      await waitFor(() => {
+        expect(screen.getByText('Something went wrong. Please try again.')).toBeInTheDocument()
+      })
+
+      expect(mockFetch).not.toHaveBeenCalled()
+      expect(consoleErrorSpy).toHaveBeenCalledWith('Newsletter API URL not configured')
+
+      process.env.NEXT_PUBLIC_NEWSLETTER_API_URL = originalEnv
+      consoleErrorSpy.mockRestore()
+    })
   })
 
   describe('Accessibility', () => {

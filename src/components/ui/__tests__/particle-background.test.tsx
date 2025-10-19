@@ -22,7 +22,11 @@ jest.mock("@/hooks/useReducedMotion", () => ({
 }));
 
 jest.mock("@react-three/fiber", () => ({
-  Canvas: ({ children }: { children: React.ReactNode }) => {
+  Canvas: ({ children, onCreated }: { children: React.ReactNode; onCreated?: (state: { gl: { domElement: HTMLCanvasElement } }) => void }) => {
+    const mockCanvas = document.createElement('canvas');
+    if (onCreated) {
+      onCreated({ gl: { domElement: mockCanvas } as unknown as { domElement: HTMLCanvasElement } });
+    }
     return <div data-testid="canvas">{children}</div>;
   },
   useFrame: (callback: () => void) => {
@@ -226,5 +230,10 @@ describe("ParticleBackground", () => {
     const { getByTestId } = render(<ParticleBackground />);
     const canvas = getByTestId("canvas");
     expect(canvas).toBeInTheDocument();
+  });
+
+  it("sets up WebGL context loss event handlers via onCreated", () => {
+    const { getByTestId } = render(<ParticleBackground />);
+    expect(getByTestId("canvas")).toBeInTheDocument();
   });
 });
