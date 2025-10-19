@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Calendar } from "lucide-react";
+import { ResumeDownloadButton } from "../ui/resume-download-button";
 
 export function Experience() {
   const experiences = [
@@ -195,6 +196,15 @@ export function Experience() {
               demonstrating consistent ability to deliver value through organizational change.
             </p>
           </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <ResumeDownloadButton />
         </motion.div>
       </div>
     </section>
