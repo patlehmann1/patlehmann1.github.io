@@ -3,7 +3,6 @@ import { screen, waitFor } from '@testing-library/dom'
 import userEvent from '@testing-library/user-event'
 import { NewsletterSignup } from '../newsletter-signup'
 
-// Mock fetch
 const mockFetch = global.fetch as jest.MockedFunction<typeof fetch>
 
 describe('NewsletterSignup Component', () => {
@@ -29,7 +28,6 @@ describe('NewsletterSignup Component', () => {
     it('should apply custom className when provided', () => {
       render(<NewsletterSignup className="custom-newsletter" />)
 
-      // The className is applied to the outermost motion.div
       const container = screen.getByText('Stay Updated').closest('[class*="custom-newsletter"]')
       expect(container).toHaveClass('custom-newsletter')
     })
@@ -58,15 +56,12 @@ describe('NewsletterSignup Component', () => {
       })
     })
 
-    // Note: Email validation test removed due to complexity with Zod email validation in test environment
-    // The other validation tests (first name required, long first name) provide sufficient coverage
-
     it('should show validation error for long first name', async () => {
       const user = userEvent.setup()
       render(<NewsletterSignup />)
 
       const firstNameInput = screen.getByPlaceholderText('First name')
-      const longName = 'a'.repeat(51) // 51 characters
+      const longName = 'a'.repeat(51)
 
       await user.type(firstNameInput, longName)
       await user.click(screen.getByRole('button', { name: /subscribe/i }))
@@ -95,7 +90,7 @@ describe('NewsletterSignup Component', () => {
   })
 
   describe('Form Submission', () => {
-    it('should call Kit API with correct data on successful submission', async () => {
+    it('should call Cloudflare Worker API with correct data on successful submission', async () => {
       const user = userEvent.setup()
       render(<NewsletterSignup />)
 
@@ -109,16 +104,15 @@ describe('NewsletterSignup Component', () => {
 
       await waitFor(() => {
         expect(mockFetch).toHaveBeenCalledWith(
-          'https://api.kit.com/v4/subscribers',
+          expect.stringContaining('CLOUDFLARE_WORKER_URL_PLACEHOLDER'),
           expect.objectContaining({
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'X-Kit-Api-Key': 'kit_b2fd0c187a0e1a34f4af47b881a7f53c',
             },
             body: JSON.stringify({
-              email_address: 'john@example.com',
-              first_name: 'John',
+              email: 'john@example.com',
+              firstName: 'John',
             }),
           })
         )
@@ -128,7 +122,6 @@ describe('NewsletterSignup Component', () => {
     it('should show loading state during submission', async () => {
       const user = userEvent.setup()
 
-      // Mock a delayed response
       mockFetch.mockImplementation(() =>
         new Promise(resolve =>
           setTimeout(() => resolve({
@@ -171,7 +164,6 @@ describe('NewsletterSignup Component', () => {
         expect(screen.getByText("You'll hear from me when I publish something new.")).toBeInTheDocument()
       })
 
-      // Form should be replaced with success message
       expect(screen.queryByPlaceholderText('First name')).not.toBeInTheDocument()
       expect(screen.queryByPlaceholderText('Email address')).not.toBeInTheDocument()
     })
@@ -197,7 +189,6 @@ describe('NewsletterSignup Component', () => {
         expect(screen.getByText('Something went wrong. Please try again.')).toBeInTheDocument()
       })
 
-      // Form should still be visible for retry
       expect(screen.getByPlaceholderText('First name')).toBeInTheDocument()
       expect(screen.getByPlaceholderText('Email address')).toBeInTheDocument()
     })
@@ -236,7 +227,6 @@ describe('NewsletterSignup Component', () => {
         expect(screen.getByText('Thanks for subscribing!')).toBeInTheDocument()
       })
 
-      // Success state should show the reset form would be cleared
       expect(mockFetch).toHaveBeenCalledTimes(1)
     })
   })

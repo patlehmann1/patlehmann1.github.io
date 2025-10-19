@@ -32,15 +32,18 @@ export function NewsletterSignup({ className }: NewsletterSignupProps) {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://api.kit.com/v4/subscribers', {
+      // TODO: Replace with your Cloudflare Worker URL after deployment
+      // Example: https://newsletter-api.your-subdomain.workers.dev/subscribe
+      const WORKER_URL = process.env.NEXT_PUBLIC_NEWSLETTER_API_URL || 'CLOUDFLARE_WORKER_URL_PLACEHOLDER';
+
+      const response = await fetch(WORKER_URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'X-Kit-Api-Key': 'kit_b2fd0c187a0e1a34f4af47b881a7f53c'
         },
         body: JSON.stringify({
-          email_address: data.email,
-          first_name: data.firstName,
+          email: data.email,
+          firstName: data.firstName,
         }),
       });
 
