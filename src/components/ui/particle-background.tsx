@@ -178,6 +178,8 @@ export function ParticleBackground() {
   const prefersReducedMotion = useReducedMotion();
   const mousePosition = useRef({ x: 999, y: 999 });
   const isMobileRef = useRef(false);
+  const [contextLost, setContextLost] = useState(false);
+  const canvasRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     isMobileRef.current = window.innerWidth < 768;
@@ -195,19 +197,54 @@ export function ParticleBackground() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [prefersReducedMotion]);
 
+  useEffect(() => {
+    const handleContextLost = (event: Event) => {
+      event.preventDefault();
+      console.warn("WebGL context lost - disabling particle background");
+      setContextLost(true);
+    };
+
+    const handleContextRestored = () => {
+      console.log("WebGL context restored - re-enabling particle background");
+      setContextLost(false);
+    };
+
+    const canvas = canvasRef.current?.querySelector('canvas');
+    if (canvas) {
+      canvas.addEventListener('webglcontextlost', handleContextLost);
+      canvas.addEventListener('webglcontextrestored', handleContextRestored);
+
+      return () => {
+        canvas.removeEventListener('webglcontextlost', handleContextLost);
+        canvas.removeEventListener('webglcontextrestored', handleContextRestored);
+      };
+    }
+  }, []);
+
   const primaryColor = theme === "dark" ? "#d2804d" : "#c86428";
   const particleCount = isMobileRef.current ? 30 : 60;
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || contextLost) {
     return null;
   }
 
   return (
-    <div className="absolute inset-0 w-full h-full -z-10 opacity-40">
+    <div ref={canvasRef} className="absolute inset-0 w-full h-full -z-10 opacity-40">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 50 }}
         dpr={[1, 2]}
         gl={{ alpha: true, antialias: false }}
+        onCreated={({ gl }) => {
+          gl.domElement.addEventListener('webglcontextlost', (event) => {
+            event.preventDefault();
+            console.warn("WebGL context lost - disabling particle background");
+            setContextLost(true);
+          });
+          gl.domElement.addEventListener('webglcontextrestored', () => {
+            console.log("WebGL context restored - re-enabling particle background");
+            setContextLost(false);
+          });
+        }}
       >
         <ParticleSystem
           count={particleCount}

@@ -104,7 +104,7 @@ describe('NewsletterSignup Component', () => {
 
       await waitFor(() => {
         expect(mockFetch).toHaveBeenCalledWith(
-          expect.stringContaining('CLOUDFLARE_WORKER_URL_PLACEHOLDER'),
+          'https://newsletter-api.patrick-lehmann-dev.workers.dev',
           expect.objectContaining({
             method: 'POST',
             headers: {

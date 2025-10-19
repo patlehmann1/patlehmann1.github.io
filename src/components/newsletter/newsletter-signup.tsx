@@ -32,9 +32,14 @@ export function NewsletterSignup({ className }: NewsletterSignupProps) {
     setSubmitStatus('idle');
 
     try {
-      // TODO: Replace with your Cloudflare Worker URL after deployment
-      // Example: https://newsletter-api.your-subdomain.workers.dev/subscribe
-      const WORKER_URL = process.env.NEXT_PUBLIC_NEWSLETTER_API_URL || 'CLOUDFLARE_WORKER_URL_PLACEHOLDER';
+      const WORKER_URL = process.env.NEXT_PUBLIC_NEWSLETTER_API_URL;
+
+      if (!WORKER_URL || WORKER_URL.includes('PLACEHOLDER')) {
+        console.error('Newsletter API URL not configured');
+        setSubmitStatus('error');
+        setIsSubmitting(false);
+        return;
+      }
 
       const response = await fetch(WORKER_URL, {
         method: 'POST',
