@@ -1,0 +1,35 @@
+# Cloudflare Worker Configuration
+# Documentation: https://developers.cloudflare.com/workers/wrangler/configuration/
+
+name = "newsletter-api"
+main = "newsletter-worker.js"
+compatibility_date = "2024-01-01"
+
+# Workers Sites configuration
+# For a simple worker without static assets, this section is not needed
+
+# Environment variables (secrets)
+# IMPORTANT: Do not put your actual API key here!
+# Set secrets using: wrangler secret put KIT_API_KEY
+# Then enter your Kit.com API key when prompted
+
+# Example of setting a secret:
+# $ wrangler secret put KIT_API_KEY
+# Enter a secret value: ********
+
+# Route configuration (optional)
+# If you want to use a custom domain, configure routes here
+# routes = [
+#   { pattern = "newsletter-api.patricklehmann.io/*", zone_name = "patricklehmann.io" }
+# ]
+
+# Limits (free tier)
+# - 100,000 requests/day
+# - 10ms CPU time per request
+# - 128 MB memory
+
+[env.production]
+name = "newsletter-api"
+
+[env.development]
+name = "newsletter-api-dev"
