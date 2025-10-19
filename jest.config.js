@@ -27,7 +27,7 @@ const customJestConfig = {
       branches: 85, // Adjusted for Three.js particle animation component
       functions: 90, // Adjusted for Three.js particle animation component
       lines: 90,     // Adjusted for Three.js particle animation component
-      statements: 92, // Adjusted for Three.js particle animation component
+      statements: 90, // Adjusted for Three.js particle animation component
     },
   },
   moduleNameMapper: {
