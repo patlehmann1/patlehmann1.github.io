@@ -92,7 +92,7 @@ export function SkillsEnhanced() {
         },
         {
           name: "Bootstrap",
-          level: 5,
+          level: 3,
           years: "6+ years",
           description: "Responsive CSS framework for rapid prototyping"
         },
@@ -178,8 +178,8 @@ export function SkillsEnhanced() {
         {
           name: "Kubernetes",
           level: 2,
-          years: "6+ years",
-          description: "Container orchestration and scaling"
+          years: "2+ years",
+          description: "Container orchestration and scaling (exposure-level)"
         },
         {
           name: "Terraform",

@@ -15,10 +15,10 @@ export function Experience() {
           name: "Genius Retail POS",
           period: "January 2025 - Present",
           highlights: [
-            "Lead implementation of Pendo Analytics and OneTrust Cookie Consent across entire portal",
+            "Implemented Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000+ merchants, integrating via postMessage-based iframe micro-frontend architecture",
             "Integrated analytics into Angular microfrontends, leveraging cross-team expertise",
             "Implementing international authentication solutions for UK/Ireland market entry using Azure AD B2C",
-            "Champion AI-assisted development practices, streamlining code review processes",
+            "Serve as team GitHub Copilot SME, introducing AI-assisted development workflows that reduced PR cycle time by 40%+",
             "Collaborate with stakeholders to ensure first-time-right delivery"
           ]
         },
@@ -51,7 +51,7 @@ export function Experience() {
           period: "January 2019 - April 2022",
           highlights: [
             "Transitioned from Node.js microservices to C#/.NET full-stack development following CoStar Group acquisition",
-            "Built RESTful APIs, worked to migrate from monolithic ColdFusion to scalable Node.js architecture",
+            "Built RESTful APIs, contributed to migration from monolithic ColdFusion to scalable Node.js microservices architecture",
             "Implemented Kubernetes logging systems and database integrations (MongoDB, SQL Server, Solr)"
           ]
         }
@@ -71,7 +71,7 @@ export function Experience() {
         >
           <h2 className="text-heading text-shadow-sm mb-4">Professional Experience</h2>
           <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
-            6+ years of adaptability across multiple teams, technologies, and business domains
+            7+ years building fintech and enterprise systems across payments, real estate, and e-commerce
           </p>
         </motion.div>
 
@@ -189,11 +189,11 @@ export function Experience() {
         >
           <div className="bg-primary/10 border border-primary/20 rounded-lg p-6">
             <p className="text-body-large font-medium text-primary mb-2">
-              Adaptability in Action
+              Consistent Impact Across Teams
             </p>
             <p className="text-body text-muted-foreground">
-              Successfully navigated 3 different teams and tech stacks at Global Payments,
-              demonstrating consistent ability to deliver value through organizational change.
+              Across 3 teams at Global Payments, I shipped features used by 22,000+ merchants, contributed to
+              international market expansion, and introduced GitHub Copilot workflows that cut PR cycle time by 40%+.
             </p>
           </div>
         </motion.div>

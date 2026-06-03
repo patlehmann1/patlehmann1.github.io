@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Patrick Lehmann - Full-Stack Software Engineer",
-    description: "Full-stack software engineer with 6+ years building scalable applications. Expert in C#/.NET, TypeScript, React, and Angular.",
+    description: "Senior full-stack engineer in fintech and payments. 7+ years building production systems in C#/.NET, TypeScript, and Go.",
     images: [`${SITE_CONFIG.url}/og-image.png`],
   },
   robots: {

@@ -36,13 +36,13 @@ describe("Hero", () => {
   it("displays the tagline text", () => {
     render(<Hero />);
 
-    expect(screen.getByText(/Focused on enterprise analytics & international solutions/i)).toBeInTheDocument();
+    expect(screen.getByText(/Senior full-stack engineer in fintech & payments/i)).toBeInTheDocument();
   });
 
   it("displays the introduction text", () => {
     render(<Hero />);
 
-    expect(screen.getByText(/I've spent 6\+ years helping teams navigate technical changes/i)).toBeInTheDocument();
+    expect(screen.getByText(/I build payment and retail systems in C#\/.NET and TypeScript/i)).toBeInTheDocument();
   });
 
   it("renders typewriter component with texts", () => {

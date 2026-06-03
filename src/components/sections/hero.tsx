@@ -72,7 +72,7 @@ export function Hero() {
             >
               <div className="flex items-center justify-center lg:justify-start gap-3 text-primary font-550 tracking-wide text-caption">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Focused on enterprise analytics & international solutions
+                Senior full-stack engineer in fintech &amp; payments
               </div>
 
               <h1 className="text-display">
@@ -108,8 +108,11 @@ export function Hero() {
               </div>
 
               <div className="max-w-2xl mx-auto text-body-large text-muted-foreground">
-                I&apos;ve spent 6+ years helping teams navigate technical changes and ship reliable software
-                using C#/.NET, TypeScript, and modern frameworks.
+                I build payment and retail systems in C#/.NET and TypeScript that serve real businesses at scale.
+                At Global Payments I&apos;ve shipped analytics and compliance integrations across a portal used by
+                22,000+ merchants, contributed to UK/Ireland market expansion readiness, and reduced PR cycle time
+                by 40%+ as the team&apos;s GitHub Copilot SME. Outside work, I&apos;m the founder of Lehmann
+                Digital &mdash; built in Go, PostgreSQL, and Next.js.
               </div>
             </motion.div>
 

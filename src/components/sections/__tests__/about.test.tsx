@@ -3,15 +3,6 @@ import { render, screen } from "@testing-library/react";
 import { About } from "../about";
 import "@testing-library/jest-dom";
 
-jest.mock("@/components/ui/music-player", () => ({
-  MusicPlayer: ({ title, description }: { title: string; description: string }) => (
-    <div data-testid="music-player">
-      <span>{title}</span>
-      <span>{description}</span>
-    </div>
-  ),
-}));
-
 describe("About", () => {
   it("renders the about section with proper id", () => {
     const { container } = render(<About />);
@@ -26,17 +17,17 @@ describe("About", () => {
 
   it("displays subtitle text", () => {
     render(<About />);
-    expect(screen.getByText(/Adaptable full-stack engineer who thrives in dynamic environments/i)).toBeInTheDocument();
+    expect(screen.getByText(/Senior full-stack engineer with 7\+ years building fintech and enterprise systems/i)).toBeInTheDocument();
   });
 
-  it("renders 'The Art of Adaptation' section", () => {
+  it("renders 'Impact at Scale' section", () => {
     render(<About />);
-    expect(screen.getByText("The Art of Adaptation")).toBeInTheDocument();
+    expect(screen.getByText("Impact at Scale")).toBeInTheDocument();
   });
 
   it("displays experience description", () => {
     render(<About />);
-    expect(screen.getByText(/Over 6\+ years, I've learned that the best engineers adapt quickly to change/i)).toBeInTheDocument();
+    expect(screen.getByText(/I build production systems in C#\/.NET and TypeScript/i)).toBeInTheDocument();
   });
 
   it("mentions work at Global Payments", () => {
@@ -55,25 +46,6 @@ describe("About", () => {
     expect(screen.getByText(/Process optimization/i)).toBeInTheDocument();
   });
 
-  it("displays disc golf connection section", () => {
-    render(<About />);
-    expect(screen.getByText("The Disc Golf Connection")).toBeInTheDocument();
-    expect(screen.getByText(/Disc golf taught me patience and precision/i)).toBeInTheDocument();
-  });
-
-  it("displays developer lifestyle section", () => {
-    render(<About />);
-    expect(screen.getByText("Optimizing the Developer Lifestyle")).toBeInTheDocument();
-    expect(screen.getByText(/meal prepping for sustained energy/i)).toBeInTheDocument();
-  });
-
-  it("renders music player component", () => {
-    render(<About />);
-    const musicPlayer = screen.getByTestId("music-player");
-    expect(musicPlayer).toBeInTheDocument();
-    expect(musicPlayer).toHaveTextContent("Lehmann Dev Mix");
-  });
-
   it("displays 'What Drives Me' section with all items", () => {
     render(<About />);
 
@@ -81,7 +53,7 @@ describe("About", () => {
     expect(screen.getByText(/Living out my Christian faith through work and service/i)).toBeInTheDocument();
     expect(screen.getByText(/Solving complex problems with elegant solutions/i)).toBeInTheDocument();
     expect(screen.getByText(/Mentoring teams through technological transitions/i)).toBeInTheDocument();
-    expect(screen.getByText(/Building systems that scale and adapt/i)).toBeInTheDocument();
+    expect(screen.getByText(/Shipping production systems that serve real businesses/i)).toBeInTheDocument();
     expect(screen.getByText(/Championing modern development practices/i)).toBeInTheDocument();
   });
 
@@ -91,10 +63,10 @@ describe("About", () => {
     expect(screen.getByText("Quick Stats")).toBeInTheDocument();
     expect(screen.getByText("6+")).toBeInTheDocument();
     expect(screen.getByText("Years Experience")).toBeInTheDocument();
-    expect(screen.getByText("4")).toBeInTheDocument();
-    expect(screen.getByText("Team Transitions")).toBeInTheDocument();
-    expect(screen.getByText("∞")).toBeInTheDocument();
-    expect(screen.getByText("Disc Golf Rounds")).toBeInTheDocument();
+    expect(screen.getByText("22K+")).toBeInTheDocument();
+    expect(screen.getByText("Merchants Served")).toBeInTheDocument();
+    expect(screen.getByText("40%")).toBeInTheDocument();
+    expect(screen.getByText("Faster PR Cycles")).toBeInTheDocument();
     expect(screen.getByText("100%")).toBeInTheDocument();
     expect(screen.getByText("Remote Ready")).toBeInTheDocument();
   });
