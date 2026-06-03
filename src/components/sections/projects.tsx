@@ -4,17 +4,28 @@ import { motion } from "framer-motion";
 import { ExternalLink, Calendar, Users, Target } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+interface Project {
+  title: string;
+  company: string;
+  description: string;
+  period: string;
+  impact: string;
+  technologies: string[];
+  highlights: string[];
+  link?: string;
+}
+
 export function Projects() {
-  const projects = [
+  const projects: Project[] = [
     {
       title: "Enterprise Analytics Integration",
       company: "Global Payments Inc.",
-      description: "Led full-stack implementation of Pendo Analytics and OneTrust Cookie Consent across enterprise portal, integrating with Angular microfrontends and backend systems.",
+      description: "Full-stack implementation of Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000+ merchants, integrated via postMessage-based iframe micro-frontend architecture.",
       period: "2025",
-      impact: "Enhanced user experience tracking across entire platform",
+      impact: "Analytics and cookie compliance deployed across 22,000+ merchant portal with zero platform downtime",
       technologies: ["Angular", "TypeScript", "C#/.NET", "Pendo", "OneTrust Cookie Consent"],
       highlights: [
-        "Full-stack implementation from UI to database",
+        "postMessage iframe micro-frontend integration",
         "Cross-team collaboration and expertise leveraging",
         "First-time-right delivery methodology"
       ]
@@ -35,28 +46,29 @@ export function Projects() {
     {
       title: "Legacy System Modernization",
       company: "Homes.com",
-      description: "Architected and led migration from monolithic ColdFusion system to scalable Node.js microservices architecture, improving system performance and maintainability.",
+      description: "Contributed to migration from monolithic ColdFusion system to scalable Node.js microservices architecture, improving system performance and maintainability.",
       period: "2019-2021",
       impact: "Reduced system complexity and improved scalability",
       technologies: ["Node.js", "MongoDB", "SQL Server", "Kubernetes"],
       highlights: [
-        "Monolithic to microservices transformation",
+        "Contributed to monolithic-to-microservices migration",
         "Cross-platform technology transition",
         "Database integration and optimization"
       ]
     },
     {
-      title: "Legacy Codebase Maintenance",
-      company: "Global Payments Inc.",
-      description: "Maintained and enhanced complex legacy system with React.js class components within Backbone.js views, delivering critical stability improvements.",
-      period: "2024-2025",
-      impact: "Ensured system stability while managing technical debt",
-      technologies: ["React.js", "Backbone.js", "JavaScript", "Legacy Systems"],
+      title: "Lehmann Digital — Multi-Tenant Client Portal",
+      company: "Lehmann Digital (Founder)",
+      description: "Founder-built SaaS client portal from scratch. Multi-tenancy via shared database with tenant-scoped rows, JWT authentication, REST API in Go/Gin, Next.js frontend.",
+      period: "2024–Present",
+      impact: "Serves freelance clients with a branded, secure portal — built and deployed entirely by one engineer.",
+      technologies: ["Go", "Gin", "PostgreSQL", "Next.js", "Railway", "Vercel", "Cloudflare"],
       highlights: [
-        "Technical debt management",
-        "Critical bug resolution",
-        "System stability improvements"
-      ]
+        "Multi-tenancy via shared database with tenant-scoped rows",
+        "JWT authentication with Go/Gin REST API",
+        "Full-stack solo build: Railway backend, Vercel frontend, Cloudflare DNS"
+      ],
+      link: "https://lehmanndigital.com"
     }
   ];
 
@@ -135,6 +147,15 @@ export function Projects() {
                   ))}
                 </div>
               </div>
+
+              {project.link && (
+                <Button variant="outline" size="sm" asChild>
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    <ExternalLink className="mr-2 h-4 w-4" />
+                    View Live
+                  </a>
+                </Button>
+              )}
             </motion.div>
           ))}
         </div>
@@ -151,8 +172,8 @@ export function Projects() {
               Consistent Value Delivery
             </h3>
             <p className="text-body text-muted-foreground mb-6 max-w-3xl mx-auto">
-              Each project demonstrates my ability to adapt to new technologies, collaborate across teams,
-              and deliver meaningful business impact regardless of technical complexity or organizational changes.
+              Each project reflects real business impact: shipping to 22,000+ merchants, building production
+              systems as a solo founder, and improving developer workflows at scale.
             </p>
             <Button variant="outline" asChild>
               <a href="mailto:contact@patricklehmann.io">

@@ -30,9 +30,9 @@ describe("Projects", () => {
     render(<Projects />);
 
     expect(screen.getByText("Enterprise Analytics Integration")).toBeInTheDocument();
-    expect(screen.getByText(/Led full-stack implementation of Pendo Analytics/i)).toBeInTheDocument();
+    expect(screen.getByText(/Full-stack implementation of Pendo Analytics and OneTrust Cookie Consent/i)).toBeInTheDocument();
     expect(screen.getByText("2025")).toBeInTheDocument();
-    expect(screen.getByText(/Enhanced user experience tracking across entire platform/i)).toBeInTheDocument();
+    expect(screen.getByText(/Analytics and cookie compliance deployed across 22,000\+ merchant portal/i)).toBeInTheDocument();
   });
 
   it("displays E-commerce POS Integration Platform project", () => {
@@ -48,18 +48,17 @@ describe("Projects", () => {
     render(<Projects />);
 
     expect(screen.getByText("Legacy System Modernization")).toBeInTheDocument();
-    expect(screen.getByText(/Architected and led migration from monolithic ColdFusion system/i)).toBeInTheDocument();
+    expect(screen.getByText(/Contributed to migration from monolithic ColdFusion system/i)).toBeInTheDocument();
     expect(screen.getByText("2019-2021")).toBeInTheDocument();
     expect(screen.getByText(/Reduced system complexity and improved scalability/i)).toBeInTheDocument();
   });
 
-  it("displays Legacy Codebase Maintenance project", () => {
+  it("displays Lehmann Digital project", () => {
     render(<Projects />);
 
-    expect(screen.getByText("Legacy Codebase Maintenance")).toBeInTheDocument();
-    expect(screen.getByText(/Maintained and enhanced complex legacy system with React.js class components/i)).toBeInTheDocument();
-    expect(screen.getByText("2024-2025")).toBeInTheDocument();
-    expect(screen.getByText(/Ensured system stability while managing technical debt/i)).toBeInTheDocument();
+    expect(screen.getByText("Lehmann Digital — Multi-Tenant Client Portal")).toBeInTheDocument();
+    expect(screen.getByText(/Founder-built SaaS client portal from scratch/i)).toBeInTheDocument();
+    expect(screen.getByText(/Serves freelance clients with a branded, secure portal/i)).toBeInTheDocument();
   });
 
   it("displays company names with Users icon", () => {
@@ -91,9 +90,9 @@ describe("Projects", () => {
     const highlightDots = container.querySelectorAll(".highlight-dot");
     expect(highlightDots.length).toBeGreaterThan(0);
 
-    expect(screen.getByText(/Full-stack implementation from UI to database/i)).toBeInTheDocument();
+    expect(screen.getByText(/postMessage iframe micro-frontend integration/i)).toBeInTheDocument();
     expect(screen.getByText(/Backend to full-stack role evolution/i)).toBeInTheDocument();
-    expect(screen.getByText(/Monolithic to microservices transformation/i)).toBeInTheDocument();
+    expect(screen.getByText(/Contributed to monolithic-to-microservices migration/i)).toBeInTheDocument();
   });
 
   it("displays Business Impact sections", () => {
@@ -107,7 +106,7 @@ describe("Projects", () => {
     render(<Projects />);
 
     expect(screen.getByText("Consistent Value Delivery")).toBeInTheDocument();
-    expect(screen.getByText(/Each project demonstrates my ability to adapt to new technologies/i)).toBeInTheDocument();
+    expect(screen.getByText(/Each project reflects real business impact/i)).toBeInTheDocument();
   });
 
   it("renders contact button with email link", () => {

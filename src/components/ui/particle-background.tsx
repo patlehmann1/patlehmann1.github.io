@@ -151,7 +151,7 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
       </points>
 
       {linesReady && (
-        <lineSegments ref={linesRef}>
+        <lineSegments ref={linesRef} frustumCulled={false}>
           <bufferGeometry>
             <bufferAttribute
               attach="attributes-position"

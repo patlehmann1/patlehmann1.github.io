@@ -17,7 +17,7 @@ describe("Experience", () => {
 
   it("displays subtitle text", () => {
     render(<Experience />);
-    expect(screen.getByText(/6\+ years of adaptability across multiple teams, technologies, and business domains/i)).toBeInTheDocument();
+    expect(screen.getByText(/7\+ years building fintech and enterprise systems across payments, real estate, and e-commerce/i)).toBeInTheDocument();
   });
 
   it("displays 'Currently Working On' section", () => {
@@ -53,7 +53,7 @@ describe("Experience", () => {
 
     expect(screen.getByText("Genius Retail POS")).toBeInTheDocument();
     expect(screen.getByText("January 2025 - Present")).toBeInTheDocument();
-    expect(screen.getByText(/Lead implementation of Pendo Analytics and OneTrust Cookie Consent/i)).toBeInTheDocument();
+    expect(screen.getByText(/Implemented Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000\+ merchants/i)).toBeInTheDocument();
     expect(screen.getByText(/Integrated analytics into Angular microfrontends/i)).toBeInTheDocument();
   });
 
@@ -78,14 +78,14 @@ describe("Experience", () => {
 
     expect(screen.getByText("Full-Stack Development")).toBeInTheDocument();
     expect(screen.getByText(/Transitioned from Node.js microservices to C#\/.NET/i)).toBeInTheDocument();
-    expect(screen.getByText(/Built RESTful APIs, worked to migrate from monolithic ColdFusion/i)).toBeInTheDocument();
+    expect(screen.getByText(/Built RESTful APIs, contributed to migration from monolithic ColdFusion/i)).toBeInTheDocument();
   });
 
-  it("displays adaptability summary at the bottom", () => {
+  it("displays impact summary at the bottom", () => {
     render(<Experience />);
 
-    expect(screen.getByText("Adaptability in Action")).toBeInTheDocument();
-    expect(screen.getByText(/Successfully navigated 3 different teams and tech stacks at Global Payments/i)).toBeInTheDocument();
+    expect(screen.getByText("Consistent Impact Across Teams")).toBeInTheDocument();
+    expect(screen.getByText(/Across 3 teams at Global Payments, I shipped features used by 22,000\+ merchants/i)).toBeInTheDocument();
   });
 
   it("renders timeline visual elements on desktop", () => {
