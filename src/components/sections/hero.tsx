@@ -72,7 +72,7 @@ export function Hero() {
             >
               <div className="flex items-center justify-center lg:justify-start gap-3 text-primary font-550 tracking-wide text-caption">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Senior full-stack engineer in fintech &amp; payments
+                Full-stack engineer &middot; Joining OPM / US Tech Force &middot; September 2026
               </div>
 
               <h1 className="text-display">
@@ -112,7 +112,9 @@ export function Hero() {
                 At Global Payments I&apos;ve shipped analytics and compliance integrations across a portal used by
                 22,000+ merchants, contributed to UK/Ireland market expansion readiness, and reduced PR cycle time
                 by 40%+ as the team&apos;s GitHub Copilot SME. Outside work, I&apos;m the founder of Lehmann
-                Digital &mdash; built in Go, PostgreSQL, and Next.js.
+                Digital &mdash; built in Go, PostgreSQL, and Next.js. Starting September 2026, I&apos;m joining
+                the US Office of Personnel Management through the US Tech Force initiative &mdash; a 2-year program
+                bringing technologists into government to modernize federal IT systems.
               </div>
             </motion.div>
 

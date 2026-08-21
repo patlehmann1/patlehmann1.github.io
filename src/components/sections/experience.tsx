@@ -7,9 +7,26 @@ import { ResumeDownloadButton } from "../ui/resume-download-button";
 export function Experience() {
   const experiences = [
     {
+      company: "US Office of Personnel Management",
+      position: "Software Engineer",
+      period: "Starting September 2026",
+      upcoming: true,
+      teams: [
+        {
+          name: "US Tech Force",
+          period: "September 2026",
+          highlights: [
+            "Joining a 2-year federal initiative bringing private-sector technologists into government to modernize legacy IT systems",
+            "Placed at OPM as part of US Tech Force, working to address capability gaps and drive technical modernization across federal systems"
+          ]
+        }
+      ]
+    },
+    {
       company: "Global Payments Inc.",
       position: "Software Developer",
       period: "April 2022 - Present",
+      upcoming: false,
       teams: [
         {
           name: "Genius Retail POS",
@@ -45,6 +62,7 @@ export function Experience() {
       company: "Homes.com",
       position: "Software Developer",
       period: "January 2019 - April 2022",
+      upcoming: false,
       teams: [
         {
           name: "Full-Stack Development",
@@ -84,20 +102,20 @@ export function Experience() {
         >
           <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
             <h3 className="font-bold text-primary mb-4 flex items-center gap-2">
-              🚀 Currently Working On
+              🚀 Next Chapter
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-caption text-muted-foreground">
               <div className="flex items-start gap-3">
+                <span className="text-primary">🏛️</span>
+                <span>Joining OPM as a Software Engineer through US Tech Force</span>
+              </div>
+              <div className="flex items-start gap-3">
                 <span className="text-primary">🔧</span>
-                <span>Pendo Analytics integration</span>
+                <span>Two-year federal initiative modernizing legacy IT systems</span>
               </div>
               <div className="flex items-start gap-3">
-                <span className="text-primary">🌍</span>
-                <span>International expansion readiness for UK/Ireland markets</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-primary">🤖</span>
-                <span>Championing AI-assisted development practices</span>
+                <span className="text-primary">🤝</span>
+                <span>Bringing private-sector engineering practices into government</span>
               </div>
             </div>
           </div>
@@ -116,7 +134,7 @@ export function Experience() {
                 viewport={{ once: true }}
                 className="relative"
               >
-                <div className="hidden sm:block absolute left-6 top-8 w-4 h-4 bg-primary rounded-full border-4 border-background shadow-warm" />
+                <div className={`hidden sm:block absolute left-6 top-8 w-4 h-4 rounded-full border-4 border-background shadow-warm ${exp.upcoming ? "bg-blue-500" : "bg-primary"}`} />
 
                 <div className="ml-0 sm:ml-20">
                   <div className="mb-8">
@@ -131,6 +149,11 @@ export function Experience() {
                           <div className="flex items-center gap-2">
                             <Calendar className="h-4 w-4" />
                             {exp.period}
+                            {exp.upcoming && (
+                              <span className="text-xs bg-blue-500/10 text-blue-500 px-2 py-0.5 rounded-full font-medium">
+                                Upcoming
+                              </span>
+                            )}
                           </div>
                         </div>
                       </div>
@@ -147,7 +170,7 @@ export function Experience() {
                         viewport={{ once: true }}
                         className="relative"
                       >
-                        <div className="bg-card border rounded-lg p-6 shadow-warm hover:shadow-lg transition-all duration-300">
+                        <div className={`bg-card border rounded-lg p-6 shadow-warm hover:shadow-lg transition-all duration-300${exp.upcoming ? " border-dashed" : ""}`}>
                           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
                             <h4 className="text-xl font-semibold">{team.name}</h4>
                             <span className="text-sm text-primary font-medium bg-primary/10 px-3 py-1 rounded-full mt-2 md:mt-0">
@@ -192,8 +215,8 @@ export function Experience() {
               Consistent Impact Across Teams
             </p>
             <p className="text-body text-muted-foreground">
-              Across 3 teams at Global Payments, I shipped features used by 22,000+ merchants, contributed to
-              international market expansion, and introduced GitHub Copilot workflows that cut PR cycle time by 40%+.
+              7+ years shipping production systems at Global Payments and Homes.com — and starting September 2026,
+              joining OPM&apos;s US Tech Force to modernize federal systems.
             </p>
           </div>
         </motion.div>
