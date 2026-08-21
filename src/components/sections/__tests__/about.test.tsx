@@ -17,7 +17,7 @@ describe("About", () => {
 
   it("displays subtitle text", () => {
     render(<About />);
-    expect(screen.getByText(/Senior full-stack engineer with 7\+ years building fintech and enterprise systems/i)).toBeInTheDocument();
+    expect(screen.getByText(/Full-stack engineer with 7\+ years across fintech, enterprise, and federal government systems/i)).toBeInTheDocument();
   });
 
   it("renders 'Impact at Scale' section", () => {

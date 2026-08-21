@@ -20,13 +20,22 @@ describe("Experience", () => {
     expect(screen.getByText(/7\+ years building fintech and enterprise systems across payments, real estate, and e-commerce/i)).toBeInTheDocument();
   });
 
-  it("displays 'Currently Working On' section", () => {
+  it("displays 'Next Chapter' section for upcoming OPM role", () => {
     render(<Experience />);
 
-    expect(screen.getByText("🚀 Currently Working On")).toBeInTheDocument();
-    expect(screen.getByText(/Pendo Analytics integration/i)).toBeInTheDocument();
-    expect(screen.getByText(/International expansion readiness for UK\/Ireland markets/i)).toBeInTheDocument();
-    expect(screen.getByText(/Championing AI-assisted development practices/i)).toBeInTheDocument();
+    expect(screen.getByText("🚀 Next Chapter")).toBeInTheDocument();
+    expect(screen.getByText(/Joining OPM as a Software Engineer through US Tech Force/i)).toBeInTheDocument();
+    expect(screen.getByText(/Two-year federal initiative modernizing legacy IT systems/i)).toBeInTheDocument();
+    expect(screen.getByText(/Bringing private-sector engineering practices into government/i)).toBeInTheDocument();
+  });
+
+  it("displays US Office of Personnel Management as upcoming", () => {
+    render(<Experience />);
+
+    expect(screen.getByText("US Office of Personnel Management")).toBeInTheDocument();
+    expect(screen.getByText("Starting September 2026")).toBeInTheDocument();
+    expect(screen.getByText("Upcoming")).toBeInTheDocument();
+    expect(screen.getByText("US Tech Force")).toBeInTheDocument();
   });
 
   it("displays Global Payments Inc. experience", () => {
@@ -85,7 +94,8 @@ describe("Experience", () => {
     render(<Experience />);
 
     expect(screen.getByText("Consistent Impact Across Teams")).toBeInTheDocument();
-    expect(screen.getByText(/Across 3 teams at Global Payments, I shipped features used by 22,000\+ merchants/i)).toBeInTheDocument();
+    expect(screen.getByText(/7\+ years shipping production systems at Global Payments and Homes\.com/i)).toBeInTheDocument();
+    expect(screen.getByText(/joining OPM's US Tech Force to modernize federal systems/i)).toBeInTheDocument();
   });
 
   it("renders timeline visual elements on desktop", () => {

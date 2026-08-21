@@ -15,7 +15,7 @@ export function About() {
         >
           <h2 className="text-heading text-shadow-sm mb-4">About Me</h2>
           <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
-            Senior full-stack engineer with 7+ years building fintech and enterprise systems
+            Full-stack engineer with 7+ years across fintech, enterprise, and federal government systems
           </p>
         </motion.div>
 
@@ -40,7 +40,9 @@ export function About() {
                 <p>
                   Beyond Global Payments, I founded Lehmann Digital, a multi-tenant client portal built from scratch
                   in Go, PostgreSQL, and Next.js. I&apos;ve also served as my team&apos;s GitHub Copilot SME,
-                  introducing AI-assisted workflows that cut PR cycle time by 40%+.
+                  introducing AI-assisted workflows that cut PR cycle time by 40%+. Starting September 2026,
+                  I&apos;m joining the US Office of Personnel Management through the US Tech Force initiative to
+                  modernize legacy federal systems.
                 </p>
               </div>
             </div>
