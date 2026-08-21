@@ -41,7 +41,7 @@ describe("About", () => {
     expect(screen.getByText("🎯 Beyond Code")).toBeInTheDocument();
     expect(screen.getByText(/Disc golf strategy & precision/i)).toBeInTheDocument();
     expect(screen.getByText(/Christian study & apologetics/i)).toBeInTheDocument();
-    expect(screen.getByText(/Family time with Hillary and Adeline/i)).toBeInTheDocument();
+    expect(screen.getByText(/Family time with Hillary, Adeline and Eloise/i)).toBeInTheDocument();
     expect(screen.getByText(/Cross-team mentoring/i)).toBeInTheDocument();
     expect(screen.getByText(/Process optimization/i)).toBeInTheDocument();
   });
