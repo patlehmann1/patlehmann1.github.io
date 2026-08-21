@@ -52,7 +52,7 @@ export function About() {
               <ul className="space-y-2 text-caption text-muted-foreground">
                 <li>• Disc golf strategy & precision</li>
                 <li>• Christian study & apologetics</li>
-                <li>• Family time with Hillary and Adeline</li>
+                <li>• Family time with Hillary, Adeline and Eloise</li>
                 <li>• Cross-team mentoring</li>
                 <li>• Process optimization</li>
               </ul>
