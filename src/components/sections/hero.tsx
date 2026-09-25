@@ -45,7 +45,7 @@ export function Hero() {
           >
             <div className="relative w-40 h-40 sm:w-44 sm:h-44 md:w-48 md:h-48 lg:w-60 lg:h-60 xl:w-64 xl:h-64">
                   <Image
-                    src="/images/headshot.webp"
+                    src="/images/headshot-og.png"
                     alt="Patrick Lehmann headshot"
                     fill
                     priority
