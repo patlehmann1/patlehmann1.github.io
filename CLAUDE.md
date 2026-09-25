@@ -198,20 +198,22 @@ For comprehensive information about specific aspects of the project, refer to th
 ### Quality Gate Checks
 **IMPORTANT**: Always run quality-gate checks after making any code changes. These checks are mandatory before considering any work complete.
 
-Run all three checks in parallel for efficiency:
+Run all checks in parallel for efficiency:
 ```bash
-npm test && npx tsc --noEmit && npm run lint
+npm test && npx tsc --noEmit && npm run lint && npm audit
 ```
 
 Or run individually:
 - `npm test` - Verify all tests pass (708 tests expected)
 - `npx tsc --noEmit` - Ensure no TypeScript errors
 - `npm run lint` - Confirm no linting issues
+- `npm audit` - Check for security vulnerabilities
 
 ### Before Committing
 - [ ] Run `npm test` - All tests pass
 - [ ] Run `npx tsc --noEmit` - No TypeScript errors
 - [ ] Run `npm run lint` - No linting issues
+- [ ] Run `npm audit` - No new security vulnerabilities
 - [ ] Analyze changes and update version if needed (`npm run version:patch/minor/major`)
 - [ ] Review relevant checklist items in [Code Review Checklist](docs/code-review-checklist.md)
 

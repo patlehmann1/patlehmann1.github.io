@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Patrick Lehmann - Full-Stack Software Engineer",
-    description: "Full-stack software engineer with 7+ years across fintech and enterprise systems. Joining OPM's US Tech Force in September 2026. Expert in C#/.NET, TypeScript, React, and Angular.",
+    description: "Full-stack software engineer with 7+ years across fintech and enterprise systems. Federal Software Engineer at the US Office of Personnel Management, Retirement Services Division. Expert in C#/.NET, TypeScript, React, and Angular.",
     type: "website",
     locale: "en_US",
     url: SITE_CONFIG.url,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Patrick Lehmann - Full-Stack Software Engineer",
-    description: "Full-stack engineer with 7+ years across fintech and enterprise. Joining OPM's US Tech Force in September 2026. Building production systems in C#/.NET, TypeScript, and Go.",
+    description: "Full-stack engineer with 7+ years across fintech and enterprise. Federal Software Engineer at OPM's Retirement Services Division. Building production systems in C#/.NET, TypeScript, and Go.",
     images: [`${SITE_CONFIG.url}/og-image.png`],
   },
   robots: {

@@ -20,22 +20,13 @@ describe("Experience", () => {
     expect(screen.getByText(/7\+ years building fintech and enterprise systems across payments, real estate, and e-commerce/i)).toBeInTheDocument();
   });
 
-  it("displays 'Next Chapter' section for upcoming OPM role", () => {
-    render(<Experience />);
-
-    expect(screen.getByText("🚀 Next Chapter")).toBeInTheDocument();
-    expect(screen.getByText(/Joining OPM as a Software Engineer through US Tech Force/i)).toBeInTheDocument();
-    expect(screen.getByText(/Two-year federal initiative modernizing legacy IT systems/i)).toBeInTheDocument();
-    expect(screen.getByText(/Bringing private-sector engineering practices into government/i)).toBeInTheDocument();
-  });
-
-  it("displays US Office of Personnel Management as upcoming", () => {
+  it("displays US Office of Personnel Management as current role", () => {
     render(<Experience />);
 
     expect(screen.getByText("US Office of Personnel Management")).toBeInTheDocument();
-    expect(screen.getByText("Starting September 2026")).toBeInTheDocument();
-    expect(screen.getByText("Upcoming")).toBeInTheDocument();
-    expect(screen.getByText("US Tech Force")).toBeInTheDocument();
+    expect(screen.getAllByText("September 2026 - Present").length).toBeGreaterThan(0);
+    expect(screen.getByText("Retirement Services Division")).toBeInTheDocument();
+    expect(screen.queryByText("Upcoming")).not.toBeInTheDocument();
   });
 
   it("displays Global Payments Inc. experience", () => {
@@ -44,7 +35,7 @@ describe("Experience", () => {
     expect(screen.getByText("Global Payments Inc.")).toBeInTheDocument();
     const developers = screen.getAllByText("Software Developer");
     expect(developers.length).toBeGreaterThan(0);
-    expect(screen.getByText("April 2022 - Present")).toBeInTheDocument();
+    expect(screen.getByText("April 2022 - August 2026")).toBeInTheDocument();
   });
 
   it("displays Homes.com experience", () => {
@@ -61,7 +52,7 @@ describe("Experience", () => {
     render(<Experience />);
 
     expect(screen.getByText("Genius Retail POS")).toBeInTheDocument();
-    expect(screen.getByText("January 2025 - Present")).toBeInTheDocument();
+    expect(screen.getByText("January 2025 - August 2026")).toBeInTheDocument();
     expect(screen.getByText(/Implemented Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000\+ merchants/i)).toBeInTheDocument();
     expect(screen.getByText(/Integrated analytics into Angular microfrontends/i)).toBeInTheDocument();
   });
@@ -95,7 +86,7 @@ describe("Experience", () => {
 
     expect(screen.getByText("Consistent Impact Across Teams")).toBeInTheDocument();
     expect(screen.getByText(/7\+ years shipping production systems at Global Payments and Homes\.com/i)).toBeInTheDocument();
-    expect(screen.getByText(/joining OPM's US Tech Force to modernize federal systems/i)).toBeInTheDocument();
+    expect(screen.getByText(/federal software engineer at OPM modernizing retirement services systems/i)).toBeInTheDocument();
   });
 
   it("renders timeline visual elements on desktop", () => {
