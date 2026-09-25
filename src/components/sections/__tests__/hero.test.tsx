@@ -36,7 +36,7 @@ describe("Hero", () => {
   it("displays the tagline text", () => {
     render(<Hero />);
 
-    expect(screen.getByText(/Full-stack engineer · Joining OPM \/ US Tech Force · September 2026/i)).toBeInTheDocument();
+    expect(screen.getByText(/Full-stack engineer · Federal Software Engineer at OPM · Retirement Services/i)).toBeInTheDocument();
   });
 
   it("displays the introduction text", () => {

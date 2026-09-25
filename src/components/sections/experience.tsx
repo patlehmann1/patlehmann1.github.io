@@ -9,15 +9,15 @@ export function Experience() {
     {
       company: "US Office of Personnel Management",
       position: "Software Engineer",
-      period: "Starting September 2026",
-      upcoming: true,
+      period: "September 2026 - Present",
+      upcoming: false,
       teams: [
         {
-          name: "US Tech Force",
-          period: "September 2026",
+          name: "Retirement Services Division",
+          period: "September 2026 - Present",
           highlights: [
-            "Joining a 2-year federal initiative bringing private-sector technologists into government to modernize legacy IT systems",
-            "Placed at OPM as part of US Tech Force, working to address capability gaps and drive technical modernization across federal systems"
+            "Federal software engineer placed at OPM through the US Tech Force initiative, a 2-year program bringing private-sector technologists into government",
+            "Working within the Retirement Services Division to modernize legacy IT systems and improve services for federal retirees"
           ]
         }
       ]
@@ -25,12 +25,12 @@ export function Experience() {
     {
       company: "Global Payments Inc.",
       position: "Software Developer",
-      period: "April 2022 - Present",
+      period: "April 2022 - August 2026",
       upcoming: false,
       teams: [
         {
           name: "Genius Retail POS",
-          period: "January 2025 - Present",
+          period: "January 2025 - August 2026",
           highlights: [
             "Implemented Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000+ merchants, integrating via postMessage-based iframe micro-frontend architecture",
             "Integrated analytics into Angular microfrontends, leveraging cross-team expertise",
@@ -91,34 +91,6 @@ export function Experience() {
           <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
             7+ years building fintech and enterprise systems across payments, real estate, and e-commerce
           </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="mb-12"
-        >
-          <div className="bg-primary/5 border-l-4 border-primary p-6 rounded-r-lg">
-            <h3 className="font-bold text-primary mb-4 flex items-center gap-2">
-              🚀 Next Chapter
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-caption text-muted-foreground">
-              <div className="flex items-start gap-3">
-                <span className="text-primary">🏛️</span>
-                <span>Joining OPM as a Software Engineer through US Tech Force</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-primary">🔧</span>
-                <span>Two-year federal initiative modernizing legacy IT systems</span>
-              </div>
-              <div className="flex items-start gap-3">
-                <span className="text-primary">🤝</span>
-                <span>Bringing private-sector engineering practices into government</span>
-              </div>
-            </div>
-          </div>
         </motion.div>
 
         <div className="relative">
@@ -215,8 +187,7 @@ export function Experience() {
               Consistent Impact Across Teams
             </p>
             <p className="text-body text-muted-foreground">
-              7+ years shipping production systems at Global Payments and Homes.com — and starting September 2026,
-              joining OPM&apos;s US Tech Force to modernize federal systems.
+              7+ years shipping production systems at Global Payments and Homes.com, now serving as a federal software engineer at OPM modernizing retirement services systems.
             </p>
           </div>
         </motion.div>

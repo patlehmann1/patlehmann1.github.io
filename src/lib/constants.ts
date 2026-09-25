@@ -3,7 +3,7 @@ export const SITE_URL = "https://patricklehmann.io";
 export const SITE_CONFIG = {
   name: "Patrick Lehmann",
   title: "Patrick Lehmann - Full-Stack Software Engineer",
-  description: "Full-stack software engineer with 7+ years across fintech, enterprise, and federal government systems. Joining OPM's US Tech Force in September 2026. Specializing in C#/.NET, TypeScript, and enterprise-scale systems.",
+  description: "Full-stack software engineer with 7+ years across fintech, enterprise, and federal government systems. Federal Software Engineer at the US Office of Personnel Management, Retirement Services Division. Specializing in C#/.NET, TypeScript, and enterprise-scale systems.",
   url: SITE_URL,
   email: "contact@patricklehmann.io",
   social: {
