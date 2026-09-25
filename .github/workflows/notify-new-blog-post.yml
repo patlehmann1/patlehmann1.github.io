@@ -18,14 +18,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout current commit
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 2
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: '20'
+          node-version: 'lts/*'
 
       - name: Detect new blog posts
         id: detect
@@ -252,7 +252,7 @@ jobs:
 
       - name: Upload email previews (dry run only)
         if: steps.detect.outputs.new_post_count > 0 && (github.event.inputs.dry_run == 'true' || github.event.inputs.dry_run == true)
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: email-previews
           path: email-preview-*.html
