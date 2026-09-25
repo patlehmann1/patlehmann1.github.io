@@ -56,20 +56,6 @@ export function Projects() {
         "Database integration and optimization"
       ]
     },
-    {
-      title: "Lehmann Digital — Multi-Tenant Client Portal",
-      company: "Lehmann Digital (Founder)",
-      description: "Founder-built SaaS client portal from scratch. Multi-tenancy via shared database with tenant-scoped rows, JWT authentication, REST API in Go/Gin, Next.js frontend.",
-      period: "2024–Present",
-      impact: "Serves freelance clients with a branded, secure portal — built and deployed entirely by one engineer.",
-      technologies: ["Go", "Gin", "PostgreSQL", "Next.js", "Railway", "Vercel", "Cloudflare"],
-      highlights: [
-        "Multi-tenancy via shared database with tenant-scoped rows",
-        "JWT authentication with Go/Gin REST API",
-        "Full-stack solo build: Railway backend, Vercel frontend, Cloudflare DNS"
-      ],
-      link: "https://lehmanndigital.com"
-    }
   ];
 
   return (

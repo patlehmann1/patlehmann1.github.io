@@ -111,8 +111,7 @@ export function Hero() {
                 I build payment and retail systems in C#/.NET and TypeScript that serve real businesses at scale.
                 At Global Payments I&apos;ve shipped analytics and compliance integrations across a portal used by
                 22,000+ merchants, contributed to UK/Ireland market expansion readiness, and reduced PR cycle time
-                by 40%+ as the team&apos;s GitHub Copilot SME. Outside work, I&apos;m the founder of Lehmann
-                Digital &mdash; built in Go, PostgreSQL, and Next.js. I now serve as a federal software engineer
+                by 40%+ as the team&apos;s GitHub Copilot SME. I now serve as a federal software engineer
                 at the US Office of Personnel Management&apos;s Retirement Services Division, modernizing systems
                 that serve federal retirees.
               </div>

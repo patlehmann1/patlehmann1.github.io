@@ -20,10 +20,10 @@ describe("Projects", () => {
     expect(screen.getByText(/Professional achievements showcasing technical leadership and business impact/i)).toBeInTheDocument();
   });
 
-  it("renders all 4 project cards", () => {
+  it("renders all 3 project cards", () => {
     const { container } = render(<Projects />);
     const projectCards = container.querySelectorAll(".project-card");
-    expect(projectCards).toHaveLength(4);
+    expect(projectCards).toHaveLength(3);
   });
 
   it("displays Enterprise Analytics Integration project", () => {
@@ -53,13 +53,6 @@ describe("Projects", () => {
     expect(screen.getByText(/Reduced system complexity and improved scalability/i)).toBeInTheDocument();
   });
 
-  it("displays Lehmann Digital project", () => {
-    render(<Projects />);
-
-    expect(screen.getByText("Lehmann Digital — Multi-Tenant Client Portal")).toBeInTheDocument();
-    expect(screen.getByText(/Founder-built SaaS client portal from scratch/i)).toBeInTheDocument();
-    expect(screen.getByText(/Serves freelance clients with a branded, secure portal/i)).toBeInTheDocument();
-  });
 
   it("displays company names with Users icon", () => {
     render(<Projects />);
@@ -99,7 +92,7 @@ describe("Projects", () => {
     render(<Projects />);
 
     const businessImpactLabels = screen.getAllByText("Business Impact");
-    expect(businessImpactLabels.length).toBe(4);
+    expect(businessImpactLabels.length).toBe(3);
   });
 
   it("renders call-to-action section at the bottom", () => {
