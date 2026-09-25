@@ -38,11 +38,10 @@ export function About() {
                   authentication.
                 </p>
                 <p>
-                  Beyond Global Payments, I founded Lehmann Digital, a multi-tenant client portal built from scratch
-                  in Go, PostgreSQL, and Next.js. I&apos;ve also served as my team&apos;s GitHub Copilot SME,
-                  introducing AI-assisted workflows that cut PR cycle time by 40%+. I now serve as a federal
-                  software engineer at the US Office of Personnel Management, working in the Retirement Services
-                  Division to modernize legacy federal systems.
+                  I&apos;ve also served as my team&apos;s GitHub Copilot SME, introducing AI-assisted workflows
+                  that cut PR cycle time by 40%+. I now serve as a federal software engineer at the US Office of
+                  Personnel Management, working in the Retirement Services Division to modernize legacy federal
+                  systems.
                 </p>
               </div>
             </div>
