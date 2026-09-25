@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/generate-rss.js && node scripts/generate-sitemap.js && next build",
-    "export": "node scripts/generate-rss.js && node scripts/generate-sitemap.js && next build",
+    "build": "node scripts/generate-og-image.js && node scripts/generate-rss.js && node scripts/generate-sitemap.js && next build",
+    "export": "node scripts/generate-og-image.js && node scripts/generate-rss.js && node scripts/generate-sitemap.js && next build",
     "start": "next start",
     "lint": "eslint",
     "test": "jest",
@@ -15,7 +15,7 @@
     "generate-rss": "node scripts/generate-rss.js",
     "generate-sitemap": "node scripts/generate-sitemap.js",
     "generate-og": "node scripts/generate-og-image.js",
-    "generate-seo": "node scripts/generate-rss.js && node scripts/generate-sitemap.js",
+    "generate-seo": "node scripts/generate-og-image.js && node scripts/generate-rss.js && node scripts/generate-sitemap.js",
     "version:patch": "npm version patch && git push && git push --tags",
     "version:minor": "npm version minor && git push && git push --tags",
     "version:major": "npm version major && git push && git push --tags"
