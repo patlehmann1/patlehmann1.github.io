@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar, Clock, ArrowLeft, Tag } from "lucide-react";
+import { Calendar, Clock, ArrowLeft, Tag } from "@/components/ui/icons/pixel";
 import { Button } from "@/components/ui/button";
 import { BlogPost } from "@/lib/types";
 import { useReducedMotion, createMotionVariants } from "@/hooks/useReducedMotion";
@@ -145,7 +145,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
               remarkPlugins={[remarkGfm]}
               components={{
                 h1: ({children}) => <h1 className="text-2xl font-bold mb-4 mt-8 text-foreground leading-tight">{children}</h1>,
-                h2: ({children}) => <h2 className="text-xl font-bold mb-4 mt-8 text-foreground leading-tight">{children}</h2>,
+                h2: ({children}) => <h2 className="font-pixel text-2xl mb-4 mt-8 text-foreground leading-tight">{children}</h2>,
                 h3: ({children}) => <h3 className="text-lg font-semibold mb-3 mt-6 text-foreground leading-tight">{children}</h3>,
                 p: ({children}) => <p className="mb-4 leading-6 text-foreground">{children}</p>,
                 ul: ({children}) => <ul className="mb-4 pl-6 space-y-1 list-disc">{children}</ul>,

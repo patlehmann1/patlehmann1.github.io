@@ -62,13 +62,9 @@ git clone https://github.com/patlehmann1/patlehmann1.github.io.git
 cd patlehmann1.github.io
 
 # Install dependencies
-yarn install
-# or
 npm install
 
 # Start development server
-yarn dev
-# or
 npm run dev
 ```
 
@@ -80,30 +76,30 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ```bash
 # Development
-yarn dev                    # Start dev server with Turbopack
-yarn build                  # Production build (includes RSS & sitemap)
-yarn export                 # Static export for GitHub Pages
-yarn start                  # Start production server
+npm run dev                 # Start dev server
+npm run build               # Production build (includes RSS & sitemap)
+npm run export              # Static export for GitHub Pages
+npm start                   # Serve the static export in out/
 
 # Code Quality
-yarn lint                   # Run ESLint
-npx tsc --noEmit           # TypeScript type checking
+npm run lint                # Run ESLint
+npx tsc --noEmit            # TypeScript type checking
 
 # Testing
-yarn test                   # Run all tests
-yarn test:watch            # Run tests in watch mode
-yarn test:coverage         # Run tests with coverage report
-yarn test:ci               # Run tests for CI/CD
+npm test                    # Run all tests
+npm run test:watch          # Run tests in watch mode
+npm run test:coverage       # Run tests with coverage report
+npm run test:ci             # Run tests for CI/CD
 
 # SEO
-yarn generate-rss          # Generate RSS feed
-yarn generate-sitemap      # Generate sitemap
-yarn generate-seo          # Generate both RSS and sitemap
+npm run generate-rss        # Generate RSS feed
+npm run generate-sitemap    # Generate sitemap
+npm run generate-seo        # Generate both RSS and sitemap
 
 # Version Management
-yarn version:patch         # Bug fixes (1.0.0 → 1.0.1)
-yarn version:minor         # New features (1.0.0 → 1.1.0)
-yarn version:major         # Breaking changes (1.0.0 → 2.0.0)
+npm run version:patch       # Bug fixes (1.0.0 → 1.0.1)
+npm run version:minor       # New features (1.0.0 → 1.1.0)
+npm run version:major       # Breaking changes (1.0.0 → 2.0.0)
 ```
 
 ### Quality Gates
@@ -145,13 +141,13 @@ The project maintains high test coverage with comprehensive unit and integration
 
 ```bash
 # Run all tests
-yarn test
+npm run test
 
 # Run with coverage report
-yarn test:coverage
+npm run test:coverage
 
 # Watch mode for development
-yarn test:watch
+npm run test:watch
 ```
 
 Current coverage: **93.08% statements** | **88.72% branches** | **96.13% functions** | **94.39% lines** (814 tests)

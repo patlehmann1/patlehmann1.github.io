@@ -15,8 +15,8 @@ jest.mock('framer-motion', () => ({
   }
 }))
 
-// Mock lucide-react icons
-jest.mock('lucide-react', () => ({
+// Mock pixel icons
+jest.mock('@/components/ui/icons/pixel', () => ({
   Calendar: ({ className }: { className?: string }) => (
     <div data-testid="calendar-icon" className={className}>
       Calendar
@@ -215,10 +215,9 @@ describe('BlogCard', () => {
     const article = container.querySelector('article')
     expect(article).toHaveClass('group')
     expect(article).toHaveClass('bg-card')
-    expect(article).toHaveClass('border')
-    expect(article).toHaveClass('rounded-lg')
     expect(article).toHaveClass('overflow-hidden')
-    expect(article).toHaveClass('shadow-warm')
+    expect(article).toHaveClass('pixel-box')
+    expect(article).toHaveClass('pixel-box-raised')
   })
 
   it('should handle posts with special characters in slug', () => {

@@ -61,7 +61,7 @@ export function Typewriter({
   return (
     <span className={className}>
       {currentText}
-      <span className="animate-pulse">|</span>
+      <span className="animate-blink" aria-hidden="true">█</span>
     </span>
   );
 }

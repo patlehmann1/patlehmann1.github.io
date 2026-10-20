@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Search, Rss } from "lucide-react";
+import { Search, Rss } from "@/components/ui/icons/pixel";
 import { Button } from "@/components/ui/button";
 import { getAllPosts, getAllTags } from "@/lib/blog";
 import { BlogCard } from "@/components/blog/blog-card";

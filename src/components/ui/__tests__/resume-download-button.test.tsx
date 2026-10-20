@@ -52,7 +52,7 @@ describe('ResumeDownloadButton', () => {
   it('renders download icon', () => {
     const { container } = render(<ResumeDownloadButton />)
 
-    // lucide-react icons render as SVG
+    // pixel icons render as SVG
     const svg = container.querySelector('svg')
     expect(svg).toBeInTheDocument()
   })

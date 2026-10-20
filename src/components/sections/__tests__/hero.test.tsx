@@ -42,7 +42,7 @@ describe("Hero", () => {
   it("displays the introduction text", () => {
     render(<Hero />);
 
-    expect(screen.getByText(/I build payment and retail systems in C#\/.NET and TypeScript/i)).toBeInTheDocument();
+    expect(screen.getByText(/I like building software that people depend on every day/i)).toBeInTheDocument();
   });
 
   it("renders typewriter component with texts", () => {

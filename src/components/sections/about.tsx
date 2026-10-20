@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { TuiBox } from "@/components/ui/tui-box";
 
 export function About() {
   return (
@@ -46,16 +47,15 @@ export function About() {
               </div>
             </div>
 
-            <div className="bg-muted/30 border-l-4 border-muted-foreground p-4 sm:p-6 rounded-r-lg">
-              <h4 className="font-bold text-muted-foreground mb-3">🎯 Beyond Code</h4>
+            <TuiBox title="Beyond Code" className="bg-muted/30">
               <ul className="space-y-2 text-caption text-muted-foreground">
-                <li>• Disc golf strategy & precision</li>
-                <li>• Christian study & apologetics</li>
-                <li>• Family time with Hillary, Adeline and Eloise</li>
-                <li>• Cross-team mentoring</li>
-                <li>• Process optimization</li>
+                <li>* Disc golf strategy & precision</li>
+                <li>* Christian study & apologetics</li>
+                <li>* Family time with Hillary, Adeline and Eloise</li>
+                <li>* Cross-team mentoring</li>
+                <li>* Process optimization</li>
               </ul>
-            </div>
+            </TuiBox>
 
           </motion.div>
 
@@ -66,11 +66,7 @@ export function About() {
             viewport={{ once: true }}
             className="space-y-4 sm:space-y-6 mt-8 lg:mt-0"
           >
-            <div className="bg-card border rounded-lg p-6 shadow-warm">
-              <h4 className="font-bold text-lg mb-4 flex items-center gap-2">
-                <div className="w-3 h-3 bg-primary rounded-full" />
-                What Drives Me
-              </h4>
+            <TuiBox title="What Drives Me" className="bg-card shadow-warm">
               <div className="space-y-4 text-caption text-muted-foreground">
                 <div className="flex items-start gap-3">
                   <span className="text-primary font-mono text-xs mt-1">01</span>
@@ -93,29 +89,28 @@ export function About() {
                   <span>Championing modern development practices</span>
                 </div>
               </div>
-            </div>
+            </TuiBox>
 
-<div className="bg-muted/30 border rounded-lg p-6">
-              <h4 className="font-bold text-lg mb-4">Quick Stats</h4>
+            <TuiBox title="Quick Stats" className="bg-muted/30">
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div>
-                  <div className="text-2xl font-bold text-primary">6+</div>
+                  <div className="font-display text-lg text-primary">6+</div>
                   <div className="text-caption text-muted-foreground">Years Experience</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-primary">22K+</div>
+                  <div className="font-display text-lg text-primary">22K+</div>
                   <div className="text-caption text-muted-foreground">Merchants Served</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-primary">40%</div>
+                  <div className="font-display text-lg text-primary">40%</div>
                   <div className="text-caption text-muted-foreground">Faster PR Cycles</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-bold text-primary">100%</div>
+                  <div className="font-display text-lg text-primary">100%</div>
                   <div className="text-caption text-muted-foreground">Remote Ready</div>
                 </div>
               </div>
-            </div>
+            </TuiBox>
           </motion.div>
         </div>
       </div>

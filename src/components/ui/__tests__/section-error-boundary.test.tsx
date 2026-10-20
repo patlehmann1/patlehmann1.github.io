@@ -22,8 +22,8 @@ jest.mock('framer-motion', () => ({
   }
 }))
 
-// Mock lucide-react icons
-jest.mock('lucide-react', () => ({
+// Mock pixel icons
+jest.mock('@/components/ui/icons/pixel', () => ({
   AlertTriangle: function AlertTriangle({ className }: { className?: string }) {
     return <div className={className} data-testid="alert-triangle-icon">AlertTriangle</div>
   },

@@ -2,7 +2,7 @@
 
 import { useTextToSpeech } from "@/hooks/useTextToSpeech";
 import { Button } from "@/components/ui/button";
-import { Play, Pause, Square, Volume2, Settings } from "lucide-react";
+import { Play, Pause, Square, Volume2, Settings } from "@/components/ui/icons/pixel";
 import { useEffect, useState, useCallback } from "react";
 import { BlogPost } from "@/lib/types";
 import { prepareTTSContent } from "@/lib/tts-utils";

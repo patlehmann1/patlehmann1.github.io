@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Clock, Copy, Check } from "lucide-react";
+import { Mail, MapPin, Clock, Copy, Check } from "@/components/ui/icons/pixel";
 import { GitHubIcon } from "@/components/ui/icons/github-icon";
 import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
 import { Button } from "@/components/ui/button";
@@ -148,7 +148,7 @@ export function Contact() {
             </div>
 
             <div className="text-center">
-              <Button size="lg" className="shadow-warm hover:shadow-lg transition-all duration-300" asChild>
+              <Button size="lg" asChild>
                 <a href="mailto:contact@patricklehmann.io">
                   <Mail className="mr-2 h-4 w-4" />
                   Get In Touch

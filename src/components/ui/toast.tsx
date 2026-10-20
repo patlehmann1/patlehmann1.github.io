@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Check } from "lucide-react";
+import { Check } from "@/components/ui/icons/pixel";
 
 interface ToastProps {
   message: string;

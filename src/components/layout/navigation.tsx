@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X } from "@/components/ui/icons/pixel";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import { useScrollToSection } from "@/hooks/useScrollToSection";

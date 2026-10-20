@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { FacebookIcon } from "@/components/ui/icons/facebook-icon";
 import { XIcon } from "@/components/ui/icons/x-icon";
 import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
-import { Share2 } from "lucide-react";
+import { Share2 } from "@/components/ui/icons/pixel";
 import { BlogPost } from "@/lib/types";
 import { useReducedMotion, createMotionVariants } from "@/hooks/useReducedMotion";
 import { SITE_URL } from "@/lib/constants";

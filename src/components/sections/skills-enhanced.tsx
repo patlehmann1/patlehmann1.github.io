@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
-import { Code, Database, Cloud, Wrench, Star, Settings, Search, X } from "lucide-react";
+import { Code, Database, Cloud, Wrench, Star, Settings, Search, X } from "@/components/ui/icons/pixel";
 import { sortSkillsByLevelAndExperience } from "@/lib/skill-utils";
 import { useDebounce } from "@/hooks/useDebounce";
 
@@ -571,7 +571,7 @@ export function SkillsEnhanced() {
                     onMouseEnter={() => handleSkillHover(skill.name)}
                     onMouseLeave={() => handleSkillHover(null)}
                   >
-                    <div className="bg-card border rounded-lg p-4 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 hover:scale-105 transition-all duration-300">
+                    <div className="bg-card border rounded-lg p-4 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 hover:-translate-y-1 transition-all duration-300">
                       <div className="flex items-center justify-between mb-3">
                         <h4 className="font-semibold text-lg">{skill.name}</h4>
                         <span className="text-xs text-primary bg-primary/10 px-2 py-1 rounded-full">
@@ -623,7 +623,7 @@ export function SkillsEnhanced() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.3, delay: 0.7 + (index * 0.05) }}
                 viewport={{ once: true }}
-                className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 hover:scale-105 transition-all duration-200"
+                className="flex items-center gap-3 p-3 bg-muted/30 rounded-lg hover:bg-muted/50 hover:-translate-y-1 transition-all duration-200"
               >
                 <div className="w-2 h-2 bg-primary rounded-full flex-shrink-0" />
                 <span className="text-body leading-relaxed">{practice}</span>

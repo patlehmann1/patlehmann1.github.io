@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Calendar } from "lucide-react";
+import { Calendar } from "@/components/ui/icons/pixel";
 import { ResumeDownloadButton } from "../ui/resume-download-button";
 
 export function Experience() {
@@ -94,7 +94,7 @@ export function Experience() {
         </motion.div>
 
         <div className="relative">
-          <div className="hidden sm:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary/50 to-transparent" />
+          <div className="hidden sm:block absolute left-8 top-0 bottom-0 w-1 bg-[repeating-linear-gradient(to_bottom,hsl(var(--primary))_0_8px,transparent_8px_16px)]" />
 
           <div className="space-y-12 sm:space-y-16">
             {experiences.map((exp, expIndex) => (

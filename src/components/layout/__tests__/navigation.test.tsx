@@ -24,8 +24,8 @@ jest.mock('framer-motion', () => ({
   }
 }))
 
-// Mock lucide-react icons
-jest.mock('lucide-react', () => ({
+// Mock pixel icons
+jest.mock('@/components/ui/icons/pixel', () => ({
   Menu: ({ className }: { className?: string }) => (
     <div data-testid="menu-icon" className={className}>Menu</div>
   ),

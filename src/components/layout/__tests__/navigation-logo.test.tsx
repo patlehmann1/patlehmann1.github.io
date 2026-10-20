@@ -46,7 +46,7 @@ describe('NavigationLogo Component', () => {
       render(<NavigationLogo onLogoClick={mockOnLogoClick} />)
 
       const logo = screen.getByRole('button')
-      expect(logo).toHaveClass('text-xl', 'font-bold', 'gradient-warm')
+      expect(logo).toHaveClass('font-display', 'gradient-warm')
     })
 
     it('should have proper accessibility attributes', () => {

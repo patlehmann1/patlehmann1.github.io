@@ -7,7 +7,34 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    borderRadius: {
+      none: "0",
+      sm: "0",
+      DEFAULT: "0",
+      md: "0",
+      lg: "0",
+      xl: "0",
+      "2xl": "0",
+      "3xl": "0",
+      full: "0",
+    },
     extend: {
+      fontFamily: {
+        display: ["var(--font-display)", "monospace"],
+        pixel: ["var(--font-pixel)", "monospace"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
+      },
+      borderWidth: {
+        DEFAULT: "2px",
+      },
+      boxShadow: {
+        sm: "2px 2px 0 0 hsl(var(--foreground) / 0.2)",
+        DEFAULT: "3px 3px 0 0 hsl(var(--foreground) / 0.2)",
+        md: "4px 4px 0 0 hsl(var(--foreground) / 0.2)",
+        lg: "6px 6px 0 0 hsl(var(--foreground) / 0.25)",
+        xl: "8px 8px 0 0 hsl(var(--foreground) / 0.25)",
+        "2xl": "12px 12px 0 0 hsl(var(--foreground) / 0.25)",
+      },
       fontWeight: {
         '350': '350',
         '450': '450',
@@ -61,11 +88,6 @@ module.exports = {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
       },
     },
   },
