@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
+import { Mail } from "@/components/ui/icons/pixel";
 import { Typewriter } from "@/components/ui/typewriter";
 import { useReducedMotion, createMotionVariants } from "@/hooks/useReducedMotion";
 import { GitHubIcon } from "@/components/ui/icons/github-icon";
@@ -108,12 +108,9 @@ export function Hero() {
               </div>
 
               <div className="max-w-2xl mx-auto text-body-large text-muted-foreground">
-                I build payment and retail systems in C#/.NET and TypeScript that serve real businesses at scale.
-                At Global Payments I&apos;ve shipped analytics and compliance integrations across a portal used by
-                22,000+ merchants, contributed to UK/Ireland market expansion readiness, and reduced PR cycle time
-                by 40%+ as the team&apos;s GitHub Copilot SME. I now serve as a federal software engineer
-                at the US Office of Personnel Management&apos;s Retirement Services Division, modernizing systems
-                that serve federal retirees.
+                I like building software that people depend on every day. I work mostly in C#/.NET and
+                TypeScript, and I care about clean handoffs, readable code, and shipping things that don&apos;t
+                break. These days I&apos;m helping modernize the systems behind federal retirement.
               </div>
             </motion.div>
 
@@ -129,7 +126,7 @@ export function Hero() {
                   href="https://github.com/patlehmann1"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-300"
+                  className="p-2 text-muted-foreground hover:text-primary transition-colors"
                   aria-label="GitHub Profile"
                 >
                   <GitHubIcon className="h-6 w-6" />
@@ -138,14 +135,14 @@ export function Hero() {
                   href="https://linkedin.com/in/patlehmann"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-300"
+                  className="p-2 text-muted-foreground hover:text-primary transition-colors"
                   aria-label="LinkedIn Profile"
                 >
                   <LinkedInIcon className="h-6 w-6" />
                 </a>
               </div>
 
-              <Button size="lg" className="shadow-warm hover:shadow-lg transition-all duration-300 min-w-0 flex-shrink" asChild>
+              <Button size="lg" className="min-w-0 flex-shrink" asChild>
                 <a href="mailto:contact@patricklehmann.io">
                   <Mail className="mr-2 h-4 w-4" />
                   Let&apos;s Connect

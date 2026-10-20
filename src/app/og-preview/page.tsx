@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Code2, Code, Globe2, Settings } from "lucide-react";
+import { Code2, Code, Globe2, Settings } from "@/components/ui/icons/pixel";
 import { OG_PREVIEW_TECH_STACK } from "@/lib/constants";
 
 export const metadata: Metadata = {

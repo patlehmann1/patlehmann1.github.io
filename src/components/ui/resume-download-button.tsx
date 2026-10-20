@@ -1,6 +1,6 @@
 'use client'
 
-import { Download } from 'lucide-react'
+import { Download } from '@/components/ui/icons/pixel'
 import { Button } from './button'
 
 export function ResumeDownloadButton() {

@@ -51,7 +51,7 @@ describe('Button Component', () => {
       render(<Button variant="outline">Outline</Button>)
 
       const button = screen.getByRole('button')
-      expect(button).toHaveClass('border', 'border-input', 'bg-background')
+      expect(button).toHaveClass('pixel-box', 'bg-background')
     })
 
     it('should apply ghost variant styles', () => {
@@ -179,7 +179,7 @@ describe('Button Component', () => {
       render(<Button>Focus me</Button>)
 
       const button = screen.getByRole('button')
-      expect(button).toHaveClass('focus-visible:outline-none', 'focus-visible:ring-2')
+      expect(button).toHaveClass('focus-visible:outline-dashed', 'focus-visible:outline-2')
     })
 
     it('should not be focusable when disabled', () => {

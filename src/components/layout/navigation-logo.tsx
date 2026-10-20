@@ -26,7 +26,7 @@ export function NavigationLogo({ onLogoClick }: NavigationLogoProps) {
     <motion.button
       onClick={onLogoClick}
       className={cn(
-        "text-xl font-bold",
+        "font-display text-xs sm:text-sm",
         mounted && theme === "synthwave" ? "gradient-synthwave" : "gradient-warm"
       )}
       whileHover={{ scale: 1.05 }}

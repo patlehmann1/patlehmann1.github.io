@@ -141,7 +141,7 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
           />
         </bufferGeometry>
         <pointsMaterial
-          size={0.08}
+          size={0.1}
           color={particleColor}
           sizeAttenuation
           transparent
@@ -229,10 +229,10 @@ export function ParticleBackground() {
   }
 
   return (
-    <div ref={canvasRef} className="absolute inset-0 w-full h-full -z-10 opacity-40">
+    <div ref={canvasRef} className="absolute inset-0 w-full h-full -z-10 opacity-40 [image-rendering:pixelated]">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 50 }}
-        dpr={[1, 2]}
+        dpr={0.25}
         gl={{ alpha: true, antialias: false }}
         onCreated={({ gl }) => {
           gl.domElement.addEventListener('webglcontextlost', (event) => {

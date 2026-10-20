@@ -1,16 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { JetBrains_Mono, Pixelify_Sans, Press_Start_2P } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import { SITE_CONFIG } from "@/lib/constants";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const pressStart = Press_Start_2P({
+  variable: "--font-display",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const pixelify = Pixelify_Sans({
+  variable: "--font-pixel",
+  subsets: ["latin"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
 });
 
@@ -76,7 +82,7 @@ export default function RootLayout({
         <link rel="canonical" href={SITE_CONFIG.url} />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${pressStart.variable} ${pixelify.variable} ${jetbrainsMono.variable} font-mono antialiased`}
       >
         <ThemeProvider
           attribute="class"

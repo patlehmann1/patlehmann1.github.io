@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { createPortal } from "react-dom";
-import { Palette, Check } from "lucide-react";
+import { Palette, Check } from "@/components/ui/icons/pixel";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 
@@ -52,7 +52,7 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <Button variant="outline" size="sm" className="w-9 h-9 border-primary/20 hover:border-primary/40 hover:bg-primary/10">
+      <Button variant="outline" size="sm" className="w-9 h-9 p-0 border-primary/20 hover:border-primary/40 hover:bg-primary/10">
         <Palette className="h-4 w-4" />
       </Button>
     );
@@ -102,7 +102,7 @@ export function ThemeToggle() {
           variant="outline"
           size="sm"
           onClick={() => setIsOpen(!isOpen)}
-          className="w-9 h-9 border-primary/20 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300"
+          className="w-9 h-9 p-0 border-primary/20 hover:border-primary/40 hover:bg-primary/10 transition-all duration-300"
           aria-label="Select theme"
           aria-expanded={isOpen}
         >

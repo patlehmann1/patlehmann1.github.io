@@ -13,7 +13,7 @@ jest.mock('next-themes', () => ({
   })
 }))
 
-jest.mock('lucide-react', () => ({
+jest.mock('@/components/ui/icons/pixel', () => ({
   Palette: ({ className }: { className?: string }) => (
     <div data-testid="palette-icon" className={className}>
       Palette

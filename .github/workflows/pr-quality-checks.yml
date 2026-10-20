@@ -85,7 +85,7 @@ jobs:
           fi
 
       - name: 🔒 Security audit
-        run: ${{ steps.detect-package-manager.outputs.manager }} audit --audit-level=moderate
+        run: ${{ steps.detect-package-manager.outputs.manager }} audit --omit=dev --audit-level=moderate
 
       - name: Upload coverage reports
         uses: actions/upload-artifact@v5

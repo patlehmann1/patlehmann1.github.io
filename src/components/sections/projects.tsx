@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Calendar, Users, Target } from "lucide-react";
+import { ExternalLink, Calendar, Users, Target } from "@/components/ui/icons/pixel";
 import { Button } from "@/components/ui/button";
 
 interface Project {
@@ -82,7 +82,7 @@ export function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-card p-8 rounded-lg border shadow-sm project-card group"
+              className="bg-card p-8 pixel-box pixel-box-raised project-card group"
             >
               <div className="flex items-start justify-between mb-4">
                 <div>
