@@ -1,212 +1,140 @@
-const { createCanvas, loadImage } = require("canvas");
+const { createCanvas, loadImage, registerFont } = require("canvas");
 const fs = require("fs");
 const path = require("path");
+
+const fontDir = path.join(__dirname, "fonts");
+registerFont(path.join(fontDir, "PressStart2P-Regular.ttf"), { family: "Press Start 2P" });
+registerFont(path.join(fontDir, "PixelifySans.ttf"), { family: "Pixelify Sans" });
+registerFont(path.join(fontDir, "JetBrainsMono.ttf"), { family: "JetBrains Mono" });
 
 const W = 1200;
 const H = 630;
 
+const BG = "#15100c";
+const AMBER = "#d47a3f";
+const AMBER_DARK = "#6e3512";
+const TEXT = "#efe9e0";
+const MUTED = "#a89c8c";
+
+const PHOTO_PIXELS = 48;
+const PHOTO_SCALE = 6;
+const POSTERIZE_STEP = 32;
+
 async function generate() {
   const canvas = createCanvas(W, H);
   const ctx = canvas.getContext("2d");
+  ctx.imageSmoothingEnabled = false;
 
-  // Background: deep navy
-  const bg = ctx.createLinearGradient(0, 0, W, H);
-  bg.addColorStop(0, "#0a0e1a");
-  bg.addColorStop(0.5, "#0d1220");
-  bg.addColorStop(1, "#080b14");
-  ctx.fillStyle = bg;
+  ctx.fillStyle = BG;
   ctx.fillRect(0, 0, W, H);
 
-  // Warm amber glow behind photo
-  const glow1 = ctx.createRadialGradient(215, 315, 0, 215, 315, 420);
-  glow1.addColorStop(0, "rgba(194, 97, 35, 0.18)");
-  glow1.addColorStop(1, "rgba(194, 97, 35, 0)");
-  ctx.fillStyle = glow1;
-  ctx.fillRect(0, 0, W, H);
+  ctx.fillStyle = "rgba(255, 255, 255, 0.035)";
+  for (let x = 0; x < W; x += 24) ctx.fillRect(x, 0, 1, H);
+  for (let y = 0; y < H; y += 24) ctx.fillRect(0, y, W, 1);
 
-  // Cool blue accent glow top-right
-  const glow2 = ctx.createRadialGradient(1050, 180, 0, 1050, 180, 320);
-  glow2.addColorStop(0, "rgba(56, 120, 220, 0.10)");
-  glow2.addColorStop(1, "rgba(56, 120, 220, 0)");
-  ctx.fillStyle = glow2;
-  ctx.fillRect(0, 0, W, H);
-
-  // Subtle horizontal scan-line texture
-  for (let y = 0; y < H; y += 3) {
-    ctx.fillStyle = "rgba(255,255,255,0.012)";
-    ctx.fillRect(0, y, W, 1);
-  }
-
-  // Vertical divider with amber gradient fade
-  const dividerX = 430;
-  const divider = ctx.createLinearGradient(0, 60, 0, H - 60);
-  divider.addColorStop(0, "rgba(194, 97, 35, 0)");
-  divider.addColorStop(0.3, "rgba(194, 97, 35, 0.6)");
-  divider.addColorStop(0.7, "rgba(194, 97, 35, 0.6)");
-  divider.addColorStop(1, "rgba(194, 97, 35, 0)");
-  ctx.strokeStyle = divider;
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(dividerX, 60);
-  ctx.lineTo(dividerX, H - 60);
-  ctx.stroke();
-
-  // --- Headshot: circular crop, centred in left panel ---
-  const photoSize = 300;
-  const photoX = (dividerX - photoSize) / 2;
+  const photoSize = PHOTO_PIXELS * PHOTO_SCALE;
+  const photoX = 72;
   const photoY = (H - photoSize) / 2;
-  const cx = photoX + photoSize / 2;
-  const cy = photoY + photoSize / 2;
-  const r = photoSize / 2;
+
+  ctx.fillStyle = AMBER;
+  ctx.fillRect(photoX + 12, photoY + 12, photoSize, photoSize);
+  pixelBorder(ctx, photoX, photoY, photoSize, photoSize, 6, TEXT);
 
   try {
-    const img = await loadImage(
-      path.join(__dirname, "../public/images/headshot-og.png")
-    );
-
-    // Outer amber ring
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(cx, cy, r + 4, 0, Math.PI * 2);
-    ctx.strokeStyle = "rgba(194, 97, 35, 0.8)";
-    ctx.lineWidth = 2;
-    ctx.stroke();
-    ctx.restore();
-
-    // Clip circle and draw photo — crop to square from centre
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.clip();
-
-    const aspect = img.width / img.height;
-    let drawW, drawH, drawX, drawY;
-    if (aspect >= 1) {
-      drawH = photoSize;
-      drawW = photoSize * aspect;
-      drawX = photoX - (drawW - photoSize) / 2;
-      drawY = photoY;
-    } else {
-      drawW = photoSize;
-      drawH = photoSize / aspect;
-      drawX = photoX;
-      drawY = photoY - (drawH - photoSize) / 2;
-    }
-    ctx.drawImage(img, drawX, drawY, drawW, drawH);
-
-    // Subtle vignette inside circle
-    const vignette = ctx.createRadialGradient(cx, cy, r * 0.55, cx, cy, r);
-    vignette.addColorStop(0, "rgba(0,0,0,0)");
-    vignette.addColorStop(1, "rgba(0,0,0,0.35)");
-    ctx.fillStyle = vignette;
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.restore();
+    const img = await loadImage(path.join(__dirname, "../public/images/headshot-og.png"));
+    ctx.drawImage(pixelate(img), photoX, photoY, photoSize, photoSize);
   } catch (e) {
-    // Fallback placeholder
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.fillStyle = "#1a2035";
-    ctx.fill();
-    ctx.restore();
+    ctx.fillStyle = "#2a211a";
+    ctx.fillRect(photoX, photoY, photoSize, photoSize);
     console.warn("Could not load headshot:", e.message);
   }
 
-  // --- Right panel text ---
-  const textX = dividerX + 54;
-  let textY = 148;
+  const textX = 456;
+  let textY = 150;
 
-  // Domain label
-  ctx.font = "500 17px monospace";
-  ctx.fillStyle = "rgba(194, 97, 35, 0.85)";
-  ctx.fillText("patricklehmann.io", textX, textY);
-  textY += 60;
+  ctx.font = "20px 'JetBrains Mono'";
+  ctx.fillStyle = AMBER;
+  ctx.fillText("> patricklehmann.io", textX, textY);
+  textY += 100;
 
-  // Name — large serif
-  ctx.font = "bold 76px Georgia, serif";
-  ctx.fillStyle = "#f0ece4";
-  ctx.fillText("Patrick", textX, textY);
-  textY += 82;
-  ctx.fillText("Lehmann", textX, textY);
-  textY += 52;
+  ctx.font = "64px 'Press Start 2P'";
+  shadowText(ctx, "Patrick", textX, textY);
+  textY += 92;
+  shadowText(ctx, "Lehmann", textX, textY);
+  const cursorX = textX + ctx.measureText("Lehmann").width + 20;
+  ctx.fillStyle = AMBER;
+  ctx.fillRect(cursorX, textY - 60, 36, 64);
+  textY += 76;
 
-  // Amber underline
-  const underlineGrad = ctx.createLinearGradient(textX, 0, textX + 280, 0);
-  underlineGrad.addColorStop(0, "rgba(194, 97, 35, 0.9)");
-  underlineGrad.addColorStop(1, "rgba(194, 97, 35, 0)");
-  ctx.fillStyle = underlineGrad;
-  ctx.fillRect(textX, textY, 280, 2);
-  textY += 36;
-
-  // Title
-  ctx.font = "400 25px sans-serif";
-  ctx.fillStyle = "rgba(240, 236, 228, 0.80)";
+  ctx.font = "36px 'Pixelify Sans'";
+  ctx.fillStyle = TEXT;
   ctx.fillText("Federal Software Engineer", textX, textY);
-  textY += 34;
+  textY += 40;
 
-  // Division lines
-  ctx.font = "400 19px sans-serif";
-  ctx.fillStyle = "rgba(240, 236, 228, 0.45)";
+  ctx.font = "18px 'JetBrains Mono'";
+  ctx.fillStyle = MUTED;
   ctx.fillText("US Office of Personnel Management", textX, textY);
-  textY += 28;
+  textY += 26;
   ctx.fillText("Retirement Services Division", textX, textY);
   textY += 52;
 
-  // Tech stack pills
-  const tags = ["C#/.NET", "TypeScript", "React", "Go"];
-  const pillH = 30;
-  const pillPad = 14;
-  let pillX = textX;
-
-  ctx.font = "500 13px monospace";
-  for (const tag of tags) {
-    const tw = ctx.measureText(tag).width;
-    const pillW = tw + pillPad * 2;
-
-    ctx.save();
-    ctx.beginPath();
-    roundRect(ctx, pillX, textY - 20, pillW, pillH, 6);
-    ctx.fillStyle = "rgba(194, 97, 35, 0.12)";
-    ctx.fill();
-    ctx.strokeStyle = "rgba(194, 97, 35, 0.40)";
-    ctx.lineWidth = 1;
-    ctx.stroke();
-    ctx.restore();
-
-    ctx.fillStyle = "rgba(194, 97, 35, 0.95)";
-    ctx.fillText(tag, pillX + pillPad, textY + 3);
-
-    pillX += pillW + 10;
+  ctx.font = "16px 'JetBrains Mono'";
+  let tagX = textX + 4;
+  for (const tag of ["C#/.NET", "TypeScript", "React", "Go"]) {
+    const tagW = ctx.measureText(tag).width + 28;
+    const tagH = 34;
+    ctx.fillStyle = "rgba(212, 122, 63, 0.14)";
+    ctx.fillRect(tagX, textY - 23, tagW, tagH);
+    pixelBorder(ctx, tagX, textY - 23, tagW, tagH, 3, AMBER);
+    ctx.fillStyle = AMBER;
+    ctx.fillText(tag, tagX + 14, textY);
+    tagX += tagW + 18;
   }
 
-  // Bottom-right watermark
-  ctx.font = "400 14px monospace";
-  ctx.fillStyle = "rgba(255,255,255,0.15)";
-  const urlText = "patricklehmann.io";
-  const urlW = ctx.measureText(urlText).width;
-  ctx.fillText(urlText, W - urlW - 40, H - 28);
+  ctx.fillStyle = "rgba(0, 0, 0, 0.18)";
+  for (let y = 0; y < H; y += 3) ctx.fillRect(0, y, W, 1);
 
-  // Write PNG
   const out = path.join(__dirname, "../public/og-image.png");
   fs.writeFileSync(out, canvas.toBuffer("image/png"));
   console.log("Generated og-image.png (" + W + "x" + H + ")");
 }
 
-function roundRect(ctx, x, y, w, h, r) {
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.lineTo(x + w - r, y);
-  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-  ctx.lineTo(x + w, y + h - r);
-  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-  ctx.lineTo(x + r, y + h);
-  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-  ctx.lineTo(x, y + r);
-  ctx.quadraticCurveTo(x, y, x + r, y);
-  ctx.closePath();
+/**
+ * Center-crops the photo to a square, shrinks it to a tiny grid, and posterizes the colors.
+ * Drawing the result back at full size with smoothing off produces chunky pixel-art blocks.
+ */
+function pixelate(img) {
+  const small = createCanvas(PHOTO_PIXELS, PHOTO_PIXELS);
+  const sctx = small.getContext("2d");
+  const side = Math.min(img.width, img.height);
+  sctx.drawImage(img, (img.width - side) / 2, (img.height - side) / 2, side, side, 0, 0, PHOTO_PIXELS, PHOTO_PIXELS);
+
+  const data = sctx.getImageData(0, 0, PHOTO_PIXELS, PHOTO_PIXELS);
+  for (let i = 0; i < data.data.length; i += 4) {
+    for (let c = 0; c < 3; c++) {
+      data.data[i + c] = Math.min(255, Math.round(data.data[i + c] / POSTERIZE_STEP) * POSTERIZE_STEP);
+    }
+  }
+  sctx.putImageData(data, 0, 0);
+  return small;
+}
+
+/**
+ * Draws the four edges of a box but leaves the corners empty, giving NES-style stepped corners.
+ */
+function pixelBorder(ctx, x, y, w, h, size, color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, y - size, w, size);
+  ctx.fillRect(x, y + h, w, size);
+  ctx.fillRect(x - size, y, size, h);
+  ctx.fillRect(x + w, y, size, h);
+}
+
+function shadowText(ctx, text, x, y) {
+  ctx.fillStyle = AMBER_DARK;
+  ctx.fillText(text, x + 6, y + 6);
+  ctx.fillStyle = AMBER;
+  ctx.fillText(text, x, y);
 }
 
 generate().catch((e) => {
