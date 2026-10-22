@@ -31,7 +31,9 @@ jest.mock('@/components/ui/icons/pixel', () => ({
   ),
   X: ({ className }: { className?: string }) => (
     <div data-testid="x-icon" className={className}>X</div>
-  )
+  ),
+  Music: () => <div data-testid="music-icon" />,
+  VolumeX: () => <div data-testid="volume-x-icon" />
 }))
 
 // Mock Next.js hooks
