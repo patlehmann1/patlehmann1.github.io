@@ -28,13 +28,13 @@ describe("Contact", () => {
 
   it("displays introduction text", () => {
     render(<Contact />);
-    expect(screen.getByText(/Currently exploring senior full-stack and lead engineering roles/i)).toBeInTheDocument();
+    expect(screen.getByText(/I enjoy connecting with other developers/i)).toBeInTheDocument();
   });
 
   it("displays 'Let's Talk Code' section", () => {
     render(<Contact />);
     expect(screen.getByText("Let's Talk Code")).toBeInTheDocument();
-    expect(screen.getByText(/Working on a fintech product or enterprise system/i)).toBeInTheDocument();
+    expect(screen.getByText(/always up for talking about C#\/.NET and TypeScript/i)).toBeInTheDocument();
   });
 
   it("displays all contact links", () => {
@@ -86,7 +86,7 @@ describe("Contact", () => {
     render(<Contact />);
 
     expect(screen.getByText("Time Zone")).toBeInTheDocument();
-    expect(screen.getByText("EDT (UTC-4)")).toBeInTheDocument();
+    expect(screen.getByText("Eastern Time (ET)")).toBeInTheDocument();
   });
 
   it("renders 'Get In Touch' button with email link", () => {

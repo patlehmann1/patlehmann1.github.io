@@ -17,7 +17,7 @@ describe("Projects", () => {
 
   it("displays subtitle text", () => {
     render(<Projects />);
-    expect(screen.getByText(/Professional achievements showcasing technical leadership and business impact/i)).toBeInTheDocument();
+    expect(screen.getByText(/A few projects from my time in payments and real estate tech/i)).toBeInTheDocument();
   });
 
   it("renders all 3 project cards", () => {
@@ -52,7 +52,6 @@ describe("Projects", () => {
     expect(screen.getByText("2019-2021")).toBeInTheDocument();
     expect(screen.getByText(/Reduced system complexity and improved scalability/i)).toBeInTheDocument();
   });
-
 
   it("displays company names with Users icon", () => {
     render(<Projects />);
@@ -100,13 +99,6 @@ describe("Projects", () => {
 
     expect(screen.getByText("Consistent Value Delivery")).toBeInTheDocument();
     expect(screen.getByText(/Each project reflects real business impact/i)).toBeInTheDocument();
-  });
-
-  it("renders contact button with email link", () => {
-    render(<Projects />);
-
-    const contactButton = screen.getByRole("link", { name: /Discuss Your Next Project/i });
-    expect(contactButton).toHaveAttribute("href", "mailto:contact@patricklehmann.io");
   });
 
   it("has proper grid layout for projects", () => {

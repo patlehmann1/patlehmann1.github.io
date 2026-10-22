@@ -26,8 +26,8 @@ export function Projects() {
       technologies: ["Angular", "TypeScript", "C#/.NET", "Pendo", "OneTrust Cookie Consent"],
       highlights: [
         "postMessage iframe micro-frontend integration",
-        "Cross-team collaboration and expertise leveraging",
-        "First-time-right delivery methodology"
+        "Coordinated across the teams that own each microfrontend",
+        "Shipped right the first time on a high-visibility compliance initiative"
       ]
     },
     {
@@ -70,7 +70,7 @@ export function Projects() {
         >
           <h2 className="text-heading text-shadow-sm mb-4">Key Projects</h2>
           <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
-            Professional achievements showcasing technical leadership and business impact
+            A few projects from my time in payments and real estate tech
           </p>
         </motion.div>
 
@@ -157,16 +157,10 @@ export function Projects() {
             <h3 className="text-subheading font-semibold text-primary mb-4">
               Consistent Value Delivery
             </h3>
-            <p className="text-body text-muted-foreground mb-6 max-w-3xl mx-auto">
-              Each project reflects real business impact: shipping to 22,000+ merchants, building production
-              systems as a solo founder, and improving developer workflows at scale.
+            <p className="text-body text-muted-foreground max-w-3xl mx-auto">
+              Each project reflects real business impact: shipping to 22,000+ merchants, moving a monolith to
+              microservices, and improving developer workflows at scale.
             </p>
-            <Button variant="outline" asChild>
-              <a href="mailto:contact@patricklehmann.io">
-                <ExternalLink className="mr-2 h-4 w-4" />
-                Discuss Your Next Project
-              </a>
-            </Button>
           </div>
         </motion.div>
       </div>

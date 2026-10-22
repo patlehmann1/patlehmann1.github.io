@@ -34,7 +34,7 @@ export function generateRSSFeed(posts: BlogPost[]): string {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Patrick Lehmann - Articles &amp; Insights</title>
-    <description>Exploring AI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering</description>
+    <description>Exploring SI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering</description>
     <link>${siteUrl}</link>
     <language>en-US</language>
     <managingEditor>contact@patricklehmann.io (Patrick Lehmann)</managingEditor>

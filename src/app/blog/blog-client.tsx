@@ -30,7 +30,7 @@ export function BlogPageClient() {
         >
           <h1 className="text-4xl md:text-5xl font-bold mb-4">Articles & Insights</h1>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mb-6">
-            Exploring AI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering
+            Exploring SI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering
           </p>
           <Button variant="outline" size="sm" asChild>
             <a href="/rss.xml" target="_blank" rel="noopener noreferrer">

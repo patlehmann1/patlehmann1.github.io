@@ -61,9 +61,8 @@ export function Contact() {
         >
           <h2 className="text-heading text-shadow-sm mb-4">Get In Touch</h2>
           <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
-            Currently exploring senior full-stack and lead engineering roles. Open to remote positions in
-            fintech, SaaS, or enterprise software. I also enjoy connecting with developers on technical
-            challenges &mdash; feel free to reach out.
+            I enjoy connecting with other developers, whether it&apos;s about a tricky technical problem,
+            something I wrote, or breaking into the industry. Feel free to reach out.
           </p>
         </motion.div>
 
@@ -78,8 +77,8 @@ export function Contact() {
             <div>
               <h3 className="text-subheading gradient-warm text-shadow-warm mb-4">Let&apos;s Talk Code</h3>
               <p className="text-body-large text-muted-foreground leading-relaxed">
-                Working on a fintech product or enterprise system? I&apos;m happy to discuss architecture,
-                payment integrations, or how AI tooling can accelerate your team&apos;s workflow.
+                I&apos;m always up for talking about C#/.NET and TypeScript, payment integrations, modernizing
+                legacy systems, or how SI tools fit into a team&apos;s day-to-day work.
               </p>
             </div>
 
@@ -143,7 +142,7 @@ export function Contact() {
               <div className="bg-card border rounded-lg p-4 text-center">
                 <Clock className="h-5 w-5 mx-auto mb-2 text-primary" />
                 <div className="font-medium text-caption">Time Zone</div>
-                <div className="text-caption text-muted-foreground">EDT (UTC-4)</div>
+                <div className="text-caption text-muted-foreground">Eastern Time (ET)</div>
               </div>
             </div>
 

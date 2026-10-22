@@ -317,7 +317,7 @@ export function SkillsEnhanced() {
     "Agile/Scrum Development",
     "Test-Driven Development",
     "Code Review & Mentoring",
-    "AI-Assisted Development (GitHub Copilot, Claude Code)",
+    "SI-Assisted Development (Claude Code, GitHub Copilot)",
     "Legacy System Modernization",
     "Cross-Team Collaboration",
     "Point-of-Sale (POS) System Development",
@@ -651,10 +651,10 @@ export function SkillsEnhanced() {
             className="mt-8 p-4 bg-primary/10 border border-primary/20 rounded-lg text-center"
           >
             <p className="text-primary font-medium mb-2">
-              🤖 AI-Forward Development
+              SI-Forward Development
             </p>
             <p className="text-body text-muted-foreground">
-              Embracing modern AI tools to enhance productivity, code quality, and team collaboration while maintaining engineering best practices
+              I use SI tools to move faster and catch more issues in review, without skipping the engineering fundamentals
             </p>
           </motion.div>
         </motion.div>

@@ -42,7 +42,7 @@ describe('RSS utilities', () => {
       const rss = generateRSSFeed(mockPosts)
 
       expect(rss).toContain('<title>Patrick Lehmann - Articles &amp; Insights</title>')
-      expect(rss).toContain('<description>Exploring AI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering</description>')
+      expect(rss).toContain('<description>Exploring SI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering</description>')
       expect(rss).toContain('<language>en-US</language>')
       expect(rss).toContain('<managingEditor>contact@patricklehmann.io (Patrick Lehmann)</managingEditor>')
       expect(rss).toContain('<webMaster>contact@patricklehmann.io (Patrick Lehmann)</webMaster>')

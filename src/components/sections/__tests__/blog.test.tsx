@@ -71,7 +71,7 @@ describe("Blog", () => {
 
   it("displays subtitle text", () => {
     render(<Blog />);
-    expect(screen.getByText(/Exploring AI collaboration, work-life balance, faith-driven development/i)).toBeInTheDocument();
+    expect(screen.getByText(/Exploring SI collaboration, work-life balance, faith-driven development/i)).toBeInTheDocument();
   });
 
   it("shows loading skeletons initially", () => {

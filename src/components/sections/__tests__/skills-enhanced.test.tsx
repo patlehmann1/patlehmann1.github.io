@@ -161,7 +161,7 @@ describe("SkillsEnhanced", () => {
     expect(screen.getByText("Agile/Scrum Development")).toBeInTheDocument();
     expect(screen.getByText("Test-Driven Development")).toBeInTheDocument();
     expect(screen.getByText("Code Review & Mentoring")).toBeInTheDocument();
-    expect(screen.getByText(/AI-Assisted Development/i)).toBeInTheDocument();
+    expect(screen.getByText(/SI-Assisted Development/i)).toBeInTheDocument();
   });
 
   it("displays newly added development practices after clicking Show More", () => {
@@ -177,11 +177,11 @@ describe("SkillsEnhanced", () => {
     expect(screen.getByText("SEO Optimization & Web Vitals")).toBeInTheDocument();
   });
 
-  it("displays AI-Forward Development callout", () => {
+  it("displays SI-Forward Development callout", () => {
     render(<SkillsEnhanced />);
 
-    expect(screen.getByText("🤖 AI-Forward Development")).toBeInTheDocument();
-    expect(screen.getByText(/Embracing modern AI tools to enhance productivity/i)).toBeInTheDocument();
+    expect(screen.getByText("SI-Forward Development")).toBeInTheDocument();
+    expect(screen.getByText(/I use SI tools to move faster/i)).toBeInTheDocument();
   });
 
   it("filters categories when clicking category tabs", () => {

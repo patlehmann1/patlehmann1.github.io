@@ -13,11 +13,11 @@ export function Experience() {
       upcoming: false,
       teams: [
         {
-          name: "Retirement Services Division",
+          name: "Janus Team, Retirement Services Division",
           period: "September 2026 - Present",
           highlights: [
             "Federal software engineer placed at OPM through the US Tech Force initiative, a 2-year program bringing private-sector technologists into government",
-            "Working within the Retirement Services Division to modernize legacy IT systems and improve services for federal retirees"
+            "Building Janus, an internal-facing claim annuity calculator, with a React and Redux UI, a JavaScript/TypeScript API, and an all-TypeScript calculation service on MSSQL"
           ]
         }
       ]
@@ -33,10 +33,9 @@ export function Experience() {
           period: "January 2025 - August 2026",
           highlights: [
             "Implemented Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000+ merchants, integrating via postMessage-based iframe micro-frontend architecture",
-            "Integrated analytics into Angular microfrontends, leveraging cross-team expertise",
-            "Implementing international authentication solutions for UK/Ireland market entry using Azure AD B2C",
-            "Serve as team GitHub Copilot SME, introducing AI-assisted development workflows that reduced PR cycle time by 40%+",
-            "Collaborate with stakeholders to ensure first-time-right delivery"
+            "Contributed to international authentication for UK/Ireland market entry using Azure AD B2C",
+            "Served as team GitHub Copilot SME, introducing SI-assisted development workflows that reduced PR cycle time by 40%+",
+            "Collaborated with stakeholders to define acceptance criteria and get it right the first time"
           ]
         },
         {
