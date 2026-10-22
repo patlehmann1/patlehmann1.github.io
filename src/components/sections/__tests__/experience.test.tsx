@@ -25,7 +25,7 @@ describe("Experience", () => {
 
     expect(screen.getByText("US Office of Personnel Management")).toBeInTheDocument();
     expect(screen.getAllByText("September 2026 - Present").length).toBeGreaterThan(0);
-    expect(screen.getByText("Retirement Services Division")).toBeInTheDocument();
+    expect(screen.getByText("Janus Team, Retirement Services Division")).toBeInTheDocument();
     expect(screen.queryByText("Upcoming")).not.toBeInTheDocument();
   });
 
@@ -54,7 +54,7 @@ describe("Experience", () => {
     expect(screen.getByText("Genius Retail POS")).toBeInTheDocument();
     expect(screen.getByText("January 2025 - August 2026")).toBeInTheDocument();
     expect(screen.getByText(/Implemented Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000\+ merchants/i)).toBeInTheDocument();
-    expect(screen.getByText(/Integrated analytics into Angular microfrontends/i)).toBeInTheDocument();
+    expect(screen.getByText(/Served as team GitHub Copilot SME/i)).toBeInTheDocument();
   });
 
   it("displays Heartland Retail POS team details", () => {

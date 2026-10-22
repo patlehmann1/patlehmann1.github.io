@@ -39,7 +39,7 @@ export function About() {
                   authentication.
                 </p>
                 <p>
-                  I&apos;ve also served as my team&apos;s GitHub Copilot SME, introducing AI-assisted workflows
+                  I&apos;ve also served as my team&apos;s GitHub Copilot SME, introducing SI-assisted workflows
                   that cut PR cycle time by 40%+. I now serve as a federal software engineer at the US Office of
                   Personnel Management, working in the Retirement Services Division to modernize legacy federal
                   systems.
@@ -52,8 +52,6 @@ export function About() {
                 <li>* Disc golf strategy & precision</li>
                 <li>* Christian study & apologetics</li>
                 <li>* Family time with Hillary, Adeline and Eloise</li>
-                <li>* Cross-team mentoring</li>
-                <li>* Process optimization</li>
               </ul>
             </TuiBox>
 
@@ -94,7 +92,7 @@ export function About() {
             <TuiBox title="Quick Stats" className="bg-muted/30">
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div>
-                  <div className="font-display text-lg text-primary">6+</div>
+                  <div className="font-display text-lg text-primary">7+</div>
                   <div className="text-caption text-muted-foreground">Years Experience</div>
                 </div>
                 <div>
@@ -106,8 +104,8 @@ export function About() {
                   <div className="text-caption text-muted-foreground">Faster PR Cycles</div>
                 </div>
                 <div>
-                  <div className="font-display text-lg text-primary">100%</div>
-                  <div className="text-caption text-muted-foreground">Remote Ready</div>
+                  <div className="font-display text-lg text-primary">3</div>
+                  <div className="text-caption text-muted-foreground">Organizations</div>
                 </div>
               </div>
             </TuiBox>

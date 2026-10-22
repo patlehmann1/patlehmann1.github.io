@@ -40,7 +40,7 @@ export function Blog() {
         >
           <h2 className="text-heading text-shadow-sm mb-4">Articles & Insights</h2>
           <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
-            Exploring AI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering
+            Exploring SI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering
           </p>
         </motion.div>
 

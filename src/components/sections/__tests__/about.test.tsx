@@ -42,8 +42,6 @@ describe("About", () => {
     expect(screen.getByText(/Disc golf strategy & precision/i)).toBeInTheDocument();
     expect(screen.getByText(/Christian study & apologetics/i)).toBeInTheDocument();
     expect(screen.getByText(/Family time with Hillary, Adeline and Eloise/i)).toBeInTheDocument();
-    expect(screen.getByText(/Cross-team mentoring/i)).toBeInTheDocument();
-    expect(screen.getByText(/Process optimization/i)).toBeInTheDocument();
   });
 
   it("displays 'What Drives Me' section with all items", () => {
@@ -61,14 +59,14 @@ describe("About", () => {
     render(<About />);
 
     expect(screen.getByText("Quick Stats")).toBeInTheDocument();
-    expect(screen.getByText("6+")).toBeInTheDocument();
+    expect(screen.getByText("7+")).toBeInTheDocument();
     expect(screen.getByText("Years Experience")).toBeInTheDocument();
     expect(screen.getByText("22K+")).toBeInTheDocument();
     expect(screen.getByText("Merchants Served")).toBeInTheDocument();
     expect(screen.getByText("40%")).toBeInTheDocument();
     expect(screen.getByText("Faster PR Cycles")).toBeInTheDocument();
-    expect(screen.getByText("100%")).toBeInTheDocument();
-    expect(screen.getByText("Remote Ready")).toBeInTheDocument();
+    expect(screen.getByText("3")).toBeInTheDocument();
+    expect(screen.getByText("Organizations")).toBeInTheDocument();
   });
 
   it("has proper grid layout structure", () => {
