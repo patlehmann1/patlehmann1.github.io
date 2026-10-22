@@ -4,6 +4,7 @@ import * as React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "@/components/ui/icons/pixel";
 import { Button } from "@/components/ui/button";
+import { MusicToggle } from "@/components/ui/music-toggle";
 import { usePathname } from "next/navigation";
 import { useScrollToSection } from "@/hooks/useScrollToSection";
 import { UI } from "@/lib/constants";
@@ -64,17 +65,20 @@ export function Navigation() {
         <div className="flex items-center justify-between">
           <NavigationLogo onLogoClick={handleLogoClick} />
 
-          <DesktopNavigation onNavClick={handleNavClick} isActiveItem={isActiveItem} />
+          <div className="flex items-center gap-4 md:gap-8">
+            <DesktopNavigation onNavClick={handleNavClick} isActiveItem={isActiveItem} />
+            <MusicToggle />
 
-          <Button
-            variant="ghost"
-            size="sm"
-            className="md:hidden touch-target touch-feedback"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-          >
-            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-          </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="md:hidden touch-target touch-feedback"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+            >
+              {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </Button>
+          </div>
         </div>
 
         <AnimatePresence>
