@@ -60,7 +60,7 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
   const particleColor = useMemo(() => new THREE.Color(primaryColor), [primaryColor]);
 
   useFrame(() => {
-    if (!pointsRef.current || !velocitiesRef.current || reducedMotion) return;
+    if (!pointsRef.current || velocitiesRef.current.length === 0 || reducedMotion) return;
 
     if (particleOpacity < 0.6) {
       setParticleOpacity((prev) => Math.min(0.6, prev + 0.02));
@@ -141,7 +141,7 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
           />
         </bufferGeometry>
         <pointsMaterial
-          size={0.1}
+          size={0.08}
           color={particleColor}
           sizeAttenuation
           transparent
@@ -229,10 +229,10 @@ export function ParticleBackground() {
   }
 
   return (
-    <div ref={canvasRef} className="absolute inset-0 w-full h-full -z-10 opacity-40 [image-rendering:pixelated]">
+    <div ref={canvasRef} className="absolute inset-0 w-full h-full -z-10 opacity-40">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 50 }}
-        dpr={0.25}
+        dpr={[1, 2]}
         gl={{ alpha: true, antialias: false }}
         onCreated={({ gl }) => {
           gl.domElement.addEventListener('webglcontextlost', (event) => {
