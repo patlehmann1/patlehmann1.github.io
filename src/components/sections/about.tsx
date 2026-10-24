@@ -32,11 +32,11 @@ export function About() {
               <h3 className="text-subheading gradient-warm text-shadow-warm mb-6">Impact at Scale</h3>
               <div className="space-y-6 text-body-large text-muted-foreground">
                 <p>
-                  I build production systems in C#/.NET and TypeScript that process payments and serve merchants at
-                  scale. At Global Payments, I shipped Pendo Analytics and OneTrust Cookie Consent across a portal
-                  used by 22,000+ merchants &mdash; integrating across Angular microfrontends via postMessage-based
-                  iframe architecture &mdash; and contributed to UK and Ireland market expansion using Azure AD B2C
-                  authentication.
+                  At Global Payments, I built production systems in C#/.NET and TypeScript that processed payments
+                  and served merchants at scale. I shipped Pendo Analytics and OneTrust Cookie Consent across a
+                  portal used by 22,000+ merchants, integrating across Angular microfrontends with a
+                  postMessage-based iframe architecture, and contributed to UK and Ireland market expansion using
+                  Azure AD B2C authentication.
                 </p>
                 <p>
                   I&apos;ve also served as my team&apos;s GitHub Copilot SME, introducing SI-assisted workflows

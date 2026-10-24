@@ -27,7 +27,7 @@ describe("About", () => {
 
   it("displays experience description", () => {
     render(<About />);
-    expect(screen.getByText(/I build production systems in C#\/.NET and TypeScript/i)).toBeInTheDocument();
+    expect(screen.getByText(/I built production systems in C#\/.NET and TypeScript/i)).toBeInTheDocument();
   });
 
   it("mentions work at Global Payments", () => {

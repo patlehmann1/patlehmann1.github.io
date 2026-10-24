@@ -115,8 +115,7 @@ All PRs must pass:
 ```
 src/
 ├── app/                    # Next.js App Router pages
-│   ├── blog/              # Blog pages and layouts
-│   └── og-preview/        # Open Graph preview
+│   └── blog/              # Blog pages and layouts
 ├── components/
 │   ├── blog/              # Blog-specific components
 │   ├── layout/            # Navigation components

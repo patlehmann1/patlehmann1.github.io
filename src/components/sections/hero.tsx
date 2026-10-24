@@ -45,7 +45,7 @@ export function Hero() {
           >
             <div className="relative w-40 h-40 sm:w-44 sm:h-44 md:w-48 md:h-48 lg:w-60 lg:h-60 xl:w-64 xl:h-64">
                   <Image
-                    src="/images/headshot-og.png"
+                    src="/images/headshot.jpg"
                     alt="Patrick Lehmann headshot"
                     fill
                     priority
@@ -82,7 +82,7 @@ export function Hero() {
                     : "gradient-warm text-shadow-glow"
                 )}>
                   Patrick
-                </span>
+                </span>{" "}
                 <br />
                 <span className={cn(
                   mounted && theme === "synthwave"
@@ -108,9 +108,9 @@ export function Hero() {
               </div>
 
               <div className="max-w-2xl mx-auto text-body-large text-muted-foreground">
-                I like building software that people depend on every day. I work mostly in C#/.NET and
-                TypeScript, and I care about clean handoffs, readable code, and shipping things that don&apos;t
-                break. These days I&apos;m helping modernize the systems behind federal retirement.
+                I like building software that people depend on every day. These days I work mostly in
+                TypeScript, React, and MSSQL, and I care about clean handoffs, readable code, and shipping
+                things that don&apos;t break. These days I&apos;m helping modernize the systems behind federal retirement.
               </div>
             </motion.div>
 
