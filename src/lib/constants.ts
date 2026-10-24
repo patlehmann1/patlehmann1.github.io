@@ -3,7 +3,7 @@ export const SITE_URL = "https://patricklehmann.io";
 export const SITE_CONFIG = {
   name: "Patrick Lehmann",
   title: "Patrick Lehmann - Full-Stack Software Engineer",
-  description: "Full-stack software engineer with 7+ years across fintech, enterprise, and federal government systems. Federal Software Engineer at the US Office of Personnel Management, Retirement Services Division. Specializing in C#/.NET, TypeScript, and enterprise-scale systems.",
+  description: "Full-stack software engineer with 7+ years in fintech, enterprise, and federal systems. Now at OPM, building with TypeScript, React, and MSSQL.",
   url: SITE_URL,
   email: "contact@patricklehmann.io",
   social: {
@@ -59,10 +59,3 @@ export const READING_PROGRESS = {
   barHeight: 3,
   contentSelector: "article",
 } as const;
-
-export const OG_PREVIEW_TECH_STACK = [
-  { name: "C#/.NET", years: "4+ years" },
-  { name: "TypeScript", years: "6+ years" },
-  { name: "React", years: "6+ years" },
-  { name: "Angular", years: "2+ years" },
-] as const;

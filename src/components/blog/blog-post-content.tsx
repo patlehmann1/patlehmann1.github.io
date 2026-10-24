@@ -24,6 +24,14 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
   const prefersReducedMotion = useReducedMotion();
   const motionVariants = createMotionVariants(prefersReducedMotion);
 
+  const postUrl = `${SITE_URL}/blog/${post.slug}/`;
+  const author = {
+    "@type": "Person",
+    "name": "Patrick Lehmann",
+    "url": `${SITE_URL}/`,
+    "image": `${SITE_URL}/images/headshot.jpg`
+  };
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Article",
@@ -31,32 +39,12 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
     "description": post.description,
     "image": {
       "@type": "ImageObject",
-      "url": `${SITE_URL}/api/og?title=${encodeURIComponent(post.title)}&description=${encodeURIComponent(post.description)}`,
+      "url": `${SITE_URL}/og-image.png`,
       "width": 1200,
       "height": 630
     },
-    "author": {
-      "@type": "Person",
-      "name": "Patrick Lehmann",
-      "url": "https://patricklehmann.io",
-      "image": {
-        "@type": "ImageObject",
-        "url": `${SITE_URL}/profile.jpg`,
-        "width": 400,
-        "height": 400
-      }
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "Patrick Lehmann",
-      "url": "https://patricklehmann.io",
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${SITE_URL}/logo.png`,
-        "width": 200,
-        "height": 200
-      }
-    },
+    "author": author,
+    "publisher": author,
     "datePublished": post.publishedAt,
     "dateModified": post.publishedAt,
     "keywords": post.tags.join(", "),
@@ -67,9 +55,9 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
     "timeRequired": `PT${post.readingTime}M`,
     "mainEntityOfPage": {
       "@type": "WebPage",
-      "@id": `${SITE_URL}/blog/${post.slug}`
+      "@id": postUrl
     },
-    "url": `${SITE_URL}/blog/${post.slug}`,
+    "url": postUrl,
     "isAccessibleForFree": true,
     "creativeWorkStatus": "Published"
   };

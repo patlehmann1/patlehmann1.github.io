@@ -21,8 +21,8 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     };
   }
 
-  const postUrl = `${SITE_URL}/blog/${slug}`;
-  const imageUrl = `${SITE_URL}/og-image.jpg`;
+  const postUrl = `${SITE_URL}/blog/${slug}/`;
+  const imageUrl = `${SITE_URL}/og-image.png`;
 
   return {
     title: `${post.title} | Patrick Lehmann`,
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
       title: post.title,
       description: post.description,
       url: postUrl,
-      siteName: "Patrick Lehmann - Software Developer",
+      siteName: "Patrick Lehmann",
       type: "article",
       images: [
         {

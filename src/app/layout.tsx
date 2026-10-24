@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Pixelify_Sans, Press_Start_2P } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { SITE_CONFIG } from "@/lib/constants";
+import { SITE_CONFIG, SITE_URL } from "@/lib/constants";
 import "./globals.css";
 
 const pressStart = Press_Start_2P({
@@ -21,6 +21,7 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: SITE_CONFIG.title,
   description: SITE_CONFIG.description,
   keywords: ["Patrick Lehmann", "Full-Stack Developer", "Software Engineer", "C#", ".NET", "TypeScript", "React", "Angular", "Node.js"],
@@ -33,10 +34,10 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Patrick Lehmann - Full-Stack Software Engineer",
-    description: "Full-stack software engineer with 7+ years across fintech and enterprise systems. Federal Software Engineer at the US Office of Personnel Management, Retirement Services Division. Expert in C#/.NET, TypeScript, React, and Angular.",
+    description: SITE_CONFIG.description,
     type: "website",
     locale: "en_US",
-    url: SITE_CONFIG.url,
+    url: "/",
     siteName: "Patrick Lehmann",
     images: [
       {
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Patrick Lehmann - Full-Stack Software Engineer",
-    description: "Full-stack engineer with 7+ years across fintech and enterprise. Federal Software Engineer at OPM's Retirement Services Division. Building production systems in C#/.NET, TypeScript, and Go.",
+    description: SITE_CONFIG.description,
     images: [`${SITE_CONFIG.url}/og-image.png`],
   },
   robots: {
@@ -79,7 +80,6 @@ export default function RootLayout({
 
         {/* Additional Meta Tags for Better Social Media Support */}
         <meta name="theme-color" content="#C4651C" />
-        <link rel="canonical" href={SITE_CONFIG.url} />
       </head>
       <body
         className={`${pressStart.variable} ${pixelify.variable} ${jetbrainsMono.variable} font-mono antialiased`}
