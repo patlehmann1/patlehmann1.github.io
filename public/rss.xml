@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Patrick Lehmann - Articles &amp; Insights</title>
-    <description>Exploring AI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering</description>
+    <description>Exploring SI collaboration, work-life balance, faith-driven development, and lessons learned from modern software engineering</description>
     <link>https://patricklehmann.io</link>
     <language>en-US</language>
     <managingEditor>contact@patricklehmann.io (Patrick Lehmann)</managingEditor>
     <webMaster>contact@patricklehmann.io (Patrick Lehmann)</webMaster>
-    <lastBuildDate>Tue, 14 Oct 2025 17:16:08 GMT</lastBuildDate>
-    <pubDate>Tue, 14 Oct 2025 17:16:08 GMT</pubDate>
+    <lastBuildDate>Sat, 24 Oct 2026 22:16:14 GMT</lastBuildDate>
+    <pubDate>Sat, 24 Oct 2026 22:16:14 GMT</pubDate>
     <generator>Next.js RSS Generator</generator>
     <image>
       <url>https://patricklehmann.io/favicon.svg</url>
@@ -17,6 +17,33 @@
     </image>
     <atom:link href="https://patricklehmann.io/rss.xml" rel="self" type="application/rss+xml" />
     
+    <item>
+      <title>Eight Years Later: From a Bootcamp Certificate to the Federal Government</title>
+      <description>The job search is over. After eight years of betting on myself — from a coding bootcamp at 30 to a federal software developer role — here&#39;s the honest version of what it took and what&#39;s next.</description>
+      <link>https://patricklehmann.io/blog/eight-years-later-bootcamp-to-federal-government</link>
+      <guid isPermaLink="true">https://patricklehmann.io/blog/eight-years-later-bootcamp-to-federal-government</guid>
+      <pubDate>Thu, 20 Aug 2026 16:00:00 GMT</pubDate>
+      <author>contact@patricklehmann.io (Patrick Lehmann)</author>
+      <category>Career</category><category>Personal Growth</category><category>Federal Government</category><category>Tech Journey</category>
+    </item>
+    <item>
+      <title>Integrating Pendo Analytics with OneTrust Cookie Consent in a .NET Razor Pages Portal</title>
+      <description>Real enterprise integration work: retrofitting Pendo analytics and OneTrust cookie consent into a production portal with 40+ domains, Angular microfrontends, and testing constraints. The technical patterns that worked and the challenges the documentation didn&#39;t mention.</description>
+      <link>https://patricklehmann.io/blog/pendo-onetrust-integration-dotnet</link>
+      <guid isPermaLink="true">https://patricklehmann.io/blog/pendo-onetrust-integration-dotnet</guid>
+      <pubDate>Wed, 29 Oct 2025 16:00:00 GMT</pubDate>
+      <author>contact@patricklehmann.io (Patrick Lehmann)</author>
+      <category>Development</category><category>.NET</category><category>Analytics</category><category>OneTrust</category>
+    </item>
+    <item>
+      <title>Health and Wellness Tips for Developers: The Stuff Nobody Wants to Hear (But Needs To)</title>
+      <description>Practical health advice for developers from someone who&#39;s been through the grind. No preachy wellness content, just real tips that actually work when you&#39;re balancing career, family, and staying human.</description>
+      <link>https://patricklehmann.io/blog/developer-health-wellness-tips</link>
+      <guid isPermaLink="true">https://patricklehmann.io/blog/developer-health-wellness-tips</guid>
+      <pubDate>Sun, 19 Oct 2025 16:00:00 GMT</pubDate>
+      <author>contact@patricklehmann.io (Patrick Lehmann)</author>
+      <category>Health</category><category>Personal Growth</category><category>Work-Life Balance</category><category>Career</category>
+    </item>
     <item>
       <title>You Can Love the Craft Without Loving the Culture</title>
       <description>Six and a half years of writing code taught me this: you can love software engineering while having zero patience for the &#39;ackshually&#39; crowd. And the same principle applies to theology. A reflection on loving your craft without the pretension.</description>

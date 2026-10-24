@@ -33,7 +33,7 @@ function generateSitemap(posts) {
       lastmod: buildDate
     },
     {
-      url: `${siteUrl}/blog`,
+      url: `${siteUrl}/blog/`,
       changefreq: 'weekly',
       priority: '0.8',
       lastmod: buildDate
@@ -50,7 +50,7 @@ function generateSitemap(posts) {
   const blogPages = sortedPosts.map(post => {
     const postDate = new Date(post.publishedAt).toISOString();
     return {
-      url: `${siteUrl}/blog/${post.slug}`,
+      url: `${siteUrl}/blog/${post.slug}/`,
       changefreq: 'monthly',
       priority: '0.7',
       lastmod: postDate
