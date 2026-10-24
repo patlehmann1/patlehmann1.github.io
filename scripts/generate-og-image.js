@@ -10,11 +10,11 @@ registerFont(path.join(fontDir, "JetBrainsMono.ttf"), { family: "JetBrains Mono"
 const W = 1200;
 const H = 630;
 
-const BG = "#15100c";
-const AMBER = "#d47a3f";
-const AMBER_DARK = "#6e3512";
-const TEXT = "#efe9e0";
-const MUTED = "#a89c8c";
+const BG = "#f3f6f3";
+const ACCENT = "#24a85b";
+const ACCENT_DARK = "#156537";
+const TEXT = "#24422e";
+const MUTED = "#62846d";
 
 const PHOTO_PIXELS = 48;
 const PHOTO_SCALE = 6;
@@ -28,7 +28,7 @@ async function generate() {
   ctx.fillStyle = BG;
   ctx.fillRect(0, 0, W, H);
 
-  ctx.fillStyle = "rgba(255, 255, 255, 0.035)";
+  ctx.fillStyle = "rgba(36, 66, 46, 0.06)";
   for (let x = 0; x < W; x += 24) ctx.fillRect(x, 0, 1, H);
   for (let y = 0; y < H; y += 24) ctx.fillRect(0, y, W, 1);
 
@@ -36,7 +36,7 @@ async function generate() {
   const photoX = 72;
   const photoY = (H - photoSize) / 2;
 
-  ctx.fillStyle = AMBER;
+  ctx.fillStyle = ACCENT;
   ctx.fillRect(photoX + 12, photoY + 12, photoSize, photoSize);
   pixelBorder(ctx, photoX, photoY, photoSize, photoSize, 6, TEXT);
 
@@ -44,7 +44,7 @@ async function generate() {
     const img = await loadImage(path.join(__dirname, "../public/images/headshot-og.png"));
     ctx.drawImage(pixelate(img), photoX, photoY, photoSize, photoSize);
   } catch (e) {
-    ctx.fillStyle = "#2a211a";
+    ctx.fillStyle = "#ccd7cc";
     ctx.fillRect(photoX, photoY, photoSize, photoSize);
     console.warn("Could not load headshot:", e.message);
   }
@@ -53,7 +53,7 @@ async function generate() {
   let textY = 150;
 
   ctx.font = "20px 'JetBrains Mono'";
-  ctx.fillStyle = AMBER;
+  ctx.fillStyle = ACCENT;
   ctx.fillText("> patricklehmann.io", textX, textY);
   textY += 100;
 
@@ -62,7 +62,7 @@ async function generate() {
   textY += 92;
   shadowText(ctx, "Lehmann", textX, textY);
   const cursorX = textX + ctx.measureText("Lehmann").width + 20;
-  ctx.fillStyle = AMBER;
+  ctx.fillStyle = ACCENT;
   ctx.fillRect(cursorX, textY - 60, 36, 64);
   textY += 76;
 
@@ -83,15 +83,15 @@ async function generate() {
   for (const tag of ["C#/.NET", "TypeScript", "React", "Go"]) {
     const tagW = ctx.measureText(tag).width + 28;
     const tagH = 34;
-    ctx.fillStyle = "rgba(212, 122, 63, 0.14)";
+    ctx.fillStyle = "rgba(36, 168, 91, 0.12)";
     ctx.fillRect(tagX, textY - 23, tagW, tagH);
-    pixelBorder(ctx, tagX, textY - 23, tagW, tagH, 3, AMBER);
-    ctx.fillStyle = AMBER;
+    pixelBorder(ctx, tagX, textY - 23, tagW, tagH, 3, ACCENT);
+    ctx.fillStyle = ACCENT;
     ctx.fillText(tag, tagX + 14, textY);
     tagX += tagW + 18;
   }
 
-  ctx.fillStyle = "rgba(0, 0, 0, 0.18)";
+  ctx.fillStyle = "rgba(36, 66, 46, 0.05)";
   for (let y = 0; y < H; y += 3) ctx.fillRect(0, y, W, 1);
 
   const out = path.join(__dirname, "../public/og-image.png");
@@ -131,9 +131,9 @@ function pixelBorder(ctx, x, y, w, h, size, color) {
 }
 
 function shadowText(ctx, text, x, y) {
-  ctx.fillStyle = AMBER_DARK;
+  ctx.fillStyle = ACCENT_DARK;
   ctx.fillText(text, x + 6, y + 6);
-  ctx.fillStyle = AMBER;
+  ctx.fillStyle = ACCENT;
   ctx.fillText(text, x, y);
 }
 
