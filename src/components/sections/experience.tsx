@@ -32,7 +32,7 @@ export function Experience() {
           name: "Genius Retail POS",
           period: "January 2025 - August 2026",
           highlights: [
-            "Implemented Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000+ merchants, integrating via postMessage-based iframe micro-frontend architecture",
+            "Implemented Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000+ merchants, integrating via a postMessage-based iframe micro-frontend architecture",
             "Contributed to international authentication for UK/Ireland market entry using Azure AD B2C",
             "Served as team GitHub Copilot SME, introducing SI-assisted development workflows that reduced PR cycle time by 40%+",
             "Collaborated with stakeholders to define acceptance criteria and get it right the first time"
@@ -42,7 +42,7 @@ export function Experience() {
           name: "Heartland Retail POS",
           period: "January 2024 - January 2025",
           highlights: [
-            "Maintained complex legacy codebase (React.js class components within Backbone.js views)",
+            "Maintained a complex legacy codebase (React.js class components within Backbone.js views)",
             "Delivered critical bug fixes and system stability improvements while managing technical debt"
           ]
         },
@@ -68,7 +68,7 @@ export function Experience() {
           period: "January 2019 - April 2022",
           highlights: [
             "Transitioned from Node.js microservices to C#/.NET full-stack development following CoStar Group acquisition",
-            "Built RESTful APIs, contributed to migration from monolithic ColdFusion to scalable Node.js microservices architecture",
+            "Built RESTful APIs and contributed to the migration from a monolithic ColdFusion system to a scalable Node.js microservices architecture",
             "Implemented Kubernetes logging systems and database integrations (MongoDB, SQL Server, Solr)"
           ]
         }
@@ -186,7 +186,7 @@ export function Experience() {
               Consistent Impact Across Teams
             </p>
             <p className="text-body text-muted-foreground">
-              7+ years shipping production systems at Global Payments and Homes.com, now serving as a federal software engineer at OPM modernizing retirement services systems.
+              7+ years shipping production systems at Global Payments and Homes.com, now serving as a federal software engineer at OPM, modernizing retirement services systems.
             </p>
           </div>
         </motion.div>

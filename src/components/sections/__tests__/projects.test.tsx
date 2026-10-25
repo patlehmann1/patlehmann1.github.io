@@ -32,7 +32,7 @@ describe("Projects", () => {
     expect(screen.getByText("Enterprise Analytics Integration")).toBeInTheDocument();
     expect(screen.getByText(/Full-stack implementation of Pendo Analytics and OneTrust Cookie Consent/i)).toBeInTheDocument();
     expect(screen.getByText("2025")).toBeInTheDocument();
-    expect(screen.getByText(/Analytics and cookie compliance deployed across 22,000\+ merchant portal/i)).toBeInTheDocument();
+    expect(screen.getByText(/Analytics and cookie compliance deployed across a portal serving 22,000\+ merchants/i)).toBeInTheDocument();
   });
 
   it("displays E-commerce POS Integration Platform project", () => {
@@ -48,7 +48,7 @@ describe("Projects", () => {
     render(<Projects />);
 
     expect(screen.getByText("Legacy System Modernization")).toBeInTheDocument();
-    expect(screen.getByText(/Contributed to migration from monolithic ColdFusion system/i)).toBeInTheDocument();
+    expect(screen.getByText(/Contributed to the migration from a monolithic ColdFusion system/i)).toBeInTheDocument();
     expect(screen.getByText("2019-2021")).toBeInTheDocument();
     expect(screen.getByText(/Reduced system complexity and improved scalability/i)).toBeInTheDocument();
   });

@@ -252,7 +252,7 @@ jobs:
 
       - name: Upload email previews (dry run only)
         if: steps.detect.outputs.new_post_count > 0 && (github.event.inputs.dry_run == 'true' || github.event.inputs.dry_run == true)
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         with:
           name: email-previews
           path: email-preview-*.html

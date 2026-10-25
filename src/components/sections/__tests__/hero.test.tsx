@@ -36,7 +36,7 @@ describe("Hero", () => {
   it("displays the tagline text", () => {
     render(<Hero />);
 
-    expect(screen.getByText(/Full-stack engineer · Federal Software Engineer at OPM · Retirement Services/i)).toBeInTheDocument();
+    expect(screen.getByText(/Full-stack engineer · Federal software engineer at OPM · Retirement Services/i)).toBeInTheDocument();
   });
 
   it("displays the introduction text", () => {
@@ -50,7 +50,7 @@ describe("Hero", () => {
 
     const typewriter = screen.getByTestId("typewriter");
     expect(typewriter).toBeInTheDocument();
-    expect(typewriter).toHaveTextContent("Faith Driven Developer");
+    expect(typewriter).toHaveTextContent("Faith-Driven Developer");
   });
 
   it("renders social media links", () => {

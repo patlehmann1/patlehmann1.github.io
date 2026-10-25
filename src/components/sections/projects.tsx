@@ -20,13 +20,13 @@ export function Projects() {
     {
       title: "Enterprise Analytics Integration",
       company: "Global Payments Inc.",
-      description: "Full-stack implementation of Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000+ merchants, integrated via postMessage-based iframe micro-frontend architecture.",
+      description: "Full-stack implementation of Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000+ merchants, integrated via a postMessage-based iframe micro-frontend architecture.",
       period: "2025",
-      impact: "Analytics and cookie compliance deployed across 22,000+ merchant portal with zero platform downtime",
+      impact: "Analytics and cookie compliance deployed across a portal serving 22,000+ merchants with zero platform downtime",
       technologies: ["Angular", "TypeScript", "C#/.NET", "Pendo", "OneTrust Cookie Consent"],
       highlights: [
         "postMessage iframe micro-frontend integration",
-        "Coordinated across the teams that own each microfrontend",
+        "Coordinated across the teams that own each micro-frontend",
         "Shipped right the first time on a high-visibility compliance initiative"
       ]
     },
@@ -46,7 +46,7 @@ export function Projects() {
     {
       title: "Legacy System Modernization",
       company: "Homes.com",
-      description: "Contributed to migration from monolithic ColdFusion system to scalable Node.js microservices architecture, improving system performance and maintainability.",
+      description: "Contributed to the migration from a monolithic ColdFusion system to a scalable Node.js microservices architecture, improving system performance and maintainability.",
       period: "2019-2021",
       impact: "Reduced system complexity and improved scalability",
       technologies: ["Node.js", "MongoDB", "SQL Server", "Kubernetes"],

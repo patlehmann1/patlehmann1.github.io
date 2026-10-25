@@ -174,7 +174,7 @@ describe("SkillsEnhanced", () => {
     expect(screen.getByText("Performance Optimization & Monitoring")).toBeInTheDocument();
     expect(screen.getByText("Accessibility (a11y) Best Practices")).toBeInTheDocument();
     expect(screen.getByText("Security-First Development")).toBeInTheDocument();
-    expect(screen.getByText("SEO Optimization & Web Vitals")).toBeInTheDocument();
+    expect(screen.getByText("SEO & Web Vitals")).toBeInTheDocument();
   });
 
   it("displays SI-Forward Development callout", () => {

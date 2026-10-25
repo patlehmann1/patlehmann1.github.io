@@ -23,7 +23,7 @@ describe("Contact", () => {
 
   it("displays section heading", () => {
     render(<Contact />);
-    expect(screen.getByRole("heading", { name: "Get In Touch" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Get in Touch" })).toBeInTheDocument();
   });
 
   it("displays introduction text", () => {
@@ -89,10 +89,10 @@ describe("Contact", () => {
     expect(screen.getByText("Eastern Time (ET)")).toBeInTheDocument();
   });
 
-  it("renders 'Get In Touch' button with email link", () => {
+  it("renders 'Get in Touch' button with email link", () => {
     render(<Contact />);
 
-    const getInTouchButton = screen.getByRole("link", { name: /Get In Touch/i });
+    const getInTouchButton = screen.getByRole("link", { name: /Get in Touch/i });
     expect(getInTouchButton).toHaveAttribute("href", "mailto:contact@patricklehmann.io");
   });
 
