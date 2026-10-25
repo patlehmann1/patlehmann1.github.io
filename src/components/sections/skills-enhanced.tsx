@@ -333,7 +333,7 @@ export function SkillsEnhanced() {
     "Refactoring & Technical Debt Management",
     "Design Systems & Component Libraries",
     "Responsive & Mobile-First Design",
-    "SEO Optimization & Web Vitals",
+    "SEO & Web Vitals",
     "API Design & Integration",
     "Database Design & Optimization",
     "Cloud Deployment & Infrastructure",
@@ -654,7 +654,7 @@ export function SkillsEnhanced() {
               SI-Forward Development
             </p>
             <p className="text-body text-muted-foreground">
-              I use SI tools to move faster and catch more issues in review, without skipping the engineering fundamentals
+              I use SI tools to move faster and catch more issues in review, without skipping the engineering fundamentals.
             </p>
           </motion.div>
         </motion.div>

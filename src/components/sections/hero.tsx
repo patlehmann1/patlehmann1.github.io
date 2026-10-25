@@ -72,7 +72,7 @@ export function Hero() {
             >
               <div className="flex items-center justify-center lg:justify-start gap-3 text-primary font-550 tracking-wide text-caption">
                 <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-                Full-stack engineer &middot; Federal Software Engineer at OPM &middot; Retirement Services
+                Full-stack engineer &middot; Federal software engineer at OPM &middot; Retirement Services
               </div>
 
               <h1 className="text-display">
@@ -95,7 +95,7 @@ export function Hero() {
                 <Typewriter
                   className="font-mono"
                   texts={[
-                    "Faith Driven Developer",
+                    "Faith-Driven Developer",
                     "Full-Stack Engineer",
                     "Problem Solver",
                     "SI-Enhanced Programmer",
@@ -108,9 +108,9 @@ export function Hero() {
               </div>
 
               <div className="max-w-2xl mx-auto text-body-large text-muted-foreground">
-                I like building software that people depend on every day. These days I work mostly in
-                TypeScript, React, and MSSQL, and I care about clean handoffs, readable code, and shipping
-                things that don&apos;t break. These days I&apos;m helping modernize the systems behind federal retirement.
+                I like building software that people depend on every day. I work mostly in
+                TypeScript, React, and MSSQL. I care about clean handoffs, readable code, and shipping
+                things that don&apos;t break. These days, I&apos;m helping modernize the systems behind federal retirement.
               </div>
             </motion.div>
 

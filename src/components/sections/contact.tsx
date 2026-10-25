@@ -59,7 +59,7 @@ export function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-heading text-shadow-sm mb-4">Get In Touch</h2>
+          <h2 className="text-heading text-shadow-sm mb-4">Get in Touch</h2>
           <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
             I enjoy connecting with other developers, whether it&apos;s about a tricky technical problem,
             something I wrote, or breaking into the industry. Feel free to reach out.
@@ -150,7 +150,7 @@ export function Contact() {
               <Button size="lg" asChild>
                 <a href="mailto:contact@patricklehmann.io">
                   <Mail className="mr-2 h-4 w-4" />
-                  Get In Touch
+                  Get in Touch
                 </a>
               </Button>
             </div>

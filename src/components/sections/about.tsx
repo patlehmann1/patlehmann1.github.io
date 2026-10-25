@@ -34,9 +34,9 @@ export function About() {
                 <p>
                   At Global Payments, I built production systems in C#/.NET and TypeScript that processed payments
                   and served merchants at scale. I shipped Pendo Analytics and OneTrust Cookie Consent across a
-                  portal used by 22,000+ merchants, integrating across Angular microfrontends with a
-                  postMessage-based iframe architecture, and contributed to UK and Ireland market expansion using
-                  Azure AD B2C authentication.
+                  portal used by 22,000+ merchants, integrating across Angular micro-frontends with a
+                  postMessage-based iframe architecture. I also contributed to UK and Ireland market expansion
+                  using Azure AD B2C authentication.
                 </p>
                 <p>
                   I&apos;ve also served as my team&apos;s GitHub Copilot SME, introducing SI-assisted workflows
@@ -51,7 +51,7 @@ export function About() {
               <ul className="space-y-2 text-caption text-muted-foreground">
                 <li>* Disc golf strategy & precision</li>
                 <li>* Christian study & apologetics</li>
-                <li>* Family time with Hillary, Adeline and Eloise</li>
+                <li>* Family time with Hillary, Adeline, and Eloise</li>
               </ul>
             </TuiBox>
 
@@ -93,7 +93,7 @@ export function About() {
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div>
                   <div className="font-display text-lg text-primary">7+</div>
-                  <div className="text-caption text-muted-foreground">Years Experience</div>
+                  <div className="text-caption text-muted-foreground">Years of Experience</div>
                 </div>
                 <div>
                   <div className="font-display text-lg text-primary">22K+</div>

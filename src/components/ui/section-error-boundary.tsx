@@ -61,7 +61,7 @@ export class SectionErrorBoundary extends Component<Props, State> {
 
               <p className="text-muted-foreground mb-6">
                 We&apos;re experiencing some technical difficulties loading this content.
-                Please try refreshing or contact us if the problem persists.
+                Please try refreshing or contact me if the problem persists.
               </p>
 
               <Button

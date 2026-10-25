@@ -62,7 +62,7 @@ describe("Experience", () => {
 
     expect(screen.getByText("Heartland Retail POS")).toBeInTheDocument();
     expect(screen.getByText("January 2024 - January 2025")).toBeInTheDocument();
-    expect(screen.getByText(/Maintained complex legacy codebase/i)).toBeInTheDocument();
+    expect(screen.getByText(/Maintained a complex legacy codebase/i)).toBeInTheDocument();
   });
 
   it("displays Heartland Retail Online team details", () => {
@@ -78,7 +78,7 @@ describe("Experience", () => {
 
     expect(screen.getByText("Full-Stack Development")).toBeInTheDocument();
     expect(screen.getByText(/Transitioned from Node.js microservices to C#\/.NET/i)).toBeInTheDocument();
-    expect(screen.getByText(/Built RESTful APIs, contributed to migration from monolithic ColdFusion/i)).toBeInTheDocument();
+    expect(screen.getByText(/Built RESTful APIs and contributed to the migration from a monolithic ColdFusion/i)).toBeInTheDocument();
   });
 
   it("displays impact summary at the bottom", () => {
@@ -86,7 +86,7 @@ describe("Experience", () => {
 
     expect(screen.getByText("Consistent Impact Across Teams")).toBeInTheDocument();
     expect(screen.getByText(/7\+ years shipping production systems at Global Payments and Homes\.com/i)).toBeInTheDocument();
-    expect(screen.getByText(/federal software engineer at OPM modernizing retirement services systems/i)).toBeInTheDocument();
+    expect(screen.getByText(/federal software engineer at OPM, modernizing retirement services systems/i)).toBeInTheDocument();
   });
 
   it("renders timeline visual elements on desktop", () => {
