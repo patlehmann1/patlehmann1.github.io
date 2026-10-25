@@ -189,7 +189,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
                 Questions or feedback? Feel free to reach out.
               </p>
             </div>
-            <div className="flex gap-2">
+            <div className="flex gap-4">
               <Button variant="outline" size="sm" asChild>
                 <Link href="/#contact">
                   Get in Touch
