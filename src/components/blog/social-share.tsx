@@ -53,7 +53,7 @@ export function SocialShare({ post, className }: SocialShareProps) {
             Found this helpful? Share it with your network to help others discover it too.
           </p>
 
-          <div className="flex gap-2 flex-wrap">
+          <div className="flex gap-4 flex-wrap">
             <Button
               variant="outline"
               size="sm"
