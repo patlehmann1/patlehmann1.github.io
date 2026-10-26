@@ -89,7 +89,7 @@ export default function RootLayout({
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange={false}
-          themes={['light', 'dark', 'ocean', 'forest', 'synthwave', 'cobalt2', 'minimal']}
+          themes={['light', 'dark', 'ocean', 'forest', 'synthwave', 'cobalt2']}
         >
           {children}
         </ThemeProvider>

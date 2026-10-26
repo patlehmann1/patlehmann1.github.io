@@ -80,7 +80,6 @@ describe('ThemeToggle', () => {
     expect(screen.getByText('Forest')).toBeInTheDocument()
     expect(screen.getByText('Synthwave')).toBeInTheDocument()
     expect(screen.getByText('Cobalt2')).toBeInTheDocument()
-    expect(screen.getByText('Minimal')).toBeInTheDocument()
   })
 
   it('should show check icon for current theme', () => {
@@ -150,7 +149,7 @@ describe('ThemeToggle', () => {
   })
 
   it('should allow selecting each theme option', () => {
-    const themes = ['light', 'dark', 'ocean', 'forest', 'synthwave', 'cobalt2', 'minimal']
+    const themes = ['light', 'dark', 'ocean', 'forest', 'synthwave', 'cobalt2']
 
     themes.forEach(themeValue => {
       mockTheme.mockReturnValue('light')
@@ -205,7 +204,7 @@ describe('ThemeToggle', () => {
     fireEvent.click(button)
 
     const colorDots = document.querySelectorAll('.w-4.h-4.rounded-full')
-    expect(colorDots.length).toBe(7)
+    expect(colorDots.length).toBe(6)
   })
 
   it('should have correct CSS classes on main button', () => {

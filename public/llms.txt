@@ -30,7 +30,7 @@ This is the professional portfolio of Patrick Lehmann (v1.6.6), a software devel
 
 - **Version**: 1.6.6
 - **Technology Stack**: Next.js 15, TypeScript, Tailwind CSS, React, Framer Motion, Three.js
-- **Features**: Multi-theme system (7 themes including synthwave and Cobalt2), Three.js particle animations, Apple Music integration, responsive design, SEO optimization, blog system
+- **Features**: Multi-theme system (6 themes including synthwave and Cobalt2), Three.js particle animations, Apple Music integration, responsive design, SEO optimization, blog system
 - **Development Practices**: 26 comprehensive practices covering Agile/Scrum, TDD, CI/CD, Performance Optimization, Accessibility, Security-First Development, SEO, API Design, Cloud Deployment, and more
 - **Content Management**: JSON-based blog system with RSS and sitemap generation
 - **Testing**: Comprehensive Jest test suite with React Testing Library (814 tests, 93%+ coverage)

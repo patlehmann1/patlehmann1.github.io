@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 @layer base {
+  /* :root makes Light the fallback when a saved theme no longer exists */
+  :root,
   .light {
     /* Warm, professional palette inspired by natural tones */
     --background: 38 15% 97%;
@@ -139,29 +141,6 @@
     --border: 205 52% 25%;
     --input: 205 52% 25%;
     --ring: 47 100% 50%;
-  }
-
-  .minimal {
-    /* High contrast black and white */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 10%;
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 10%;
-    --primary: 0 0% 20%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 92%;
-    --secondary-foreground: 0 0% 10%;
-    --muted: 0 0% 94%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 0 0% 88%;
-    --accent-foreground: 0 0% 10%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 85%;
-    --input: 0 0% 85%;
-    --ring: 0 0% 20%;
   }
 }
 

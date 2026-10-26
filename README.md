@@ -11,7 +11,7 @@ This is my personal portfolio website showcasing my work as a Full-Stack Softwar
 ## Key Features
 
 - ✨ **Modern Design** - Clean, professional interface with smooth animations and particle effects
-- 🎨 **Multi-Theme System** - 6 distinct themes including synthwave/retrowave with neon effects (light, dark, ocean, forest, synthwave, minimal)
+- 🎨 **Multi-Theme System** - 6 distinct themes including synthwave/retrowave with neon effects and Cobalt2 (light, dark, ocean, forest, synthwave, cobalt2)
 - 🎵 **Music Integration** - Embedded Apple Music player with curated developer playlist
 - 💫 **Interactive Particle Background** - Three.js powered particle system with mouse interaction
 - 📝 **Blog System** - JSON-powered blog with markdown support, syntax highlighting, and RSS feed
@@ -34,7 +34,7 @@ This is my personal portfolio website showcasing my work as a Full-Stack Softwar
 - **Three.js + @react-three/fiber** - 3D particle animations and visual effects
 - **@react-three/drei** - Three.js utilities
 - **Lucide React** - Modern icon library
-- **next-themes** - Multi-theme support (7 themes)
+- **next-themes** - Multi-theme support (6 themes)
 - **Geist & Geist Mono** - Modern font system
 
 ### Content & Forms
@@ -174,7 +174,7 @@ For detailed information, see:
 ## Features Breakdown
 
 ### Multi-Theme System
-- 6 distinct themes: light, dark, ocean, forest, synthwave, minimal
+- 6 distinct themes: light, dark, ocean, forest, synthwave, cobalt2
 - Synthwave/retrowave theme with electric neon colors and glow effects
 - System preference detection
 - Smooth theme transitions
