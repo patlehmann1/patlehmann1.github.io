@@ -1,32 +1,14 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "@/components/ui/icons/pixel";
 import { Button } from "@/components/ui/button";
 import { getFeaturedPosts } from "@/lib/blog";
 import Link from "next/link";
 import { BlogCard } from "@/components/blog/blog-card";
-import { BlogCardSkeleton } from "@/components/ui/skeleton";
-import { BlogPost } from "@/lib/types";
 
 export function Blog() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [featuredPosts, setFeaturedPosts] = useState<BlogPost[]>([]);
-
-  const loadFeaturedPosts = useCallback(() => {
-    const timer = setTimeout(() => {
-      setFeaturedPosts(getFeaturedPosts(3));
-      setIsLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  useEffect(() => {
-    const cleanup = loadFeaturedPosts();
-    return cleanup;
-  }, [loadFeaturedPosts]);
+  const featuredPosts = getFeaturedPosts(3);
 
   return (
     <section id="blog" className="py-16 sm:py-20 px-3 sm:px-4 lg:px-6">
@@ -36,7 +18,7 @@ export function Blog() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <h2 className="text-heading text-shadow-sm mb-4">Articles & Insights</h2>
           <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
@@ -44,23 +26,12 @@ export function Blog() {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-12">
-          {isLoading ? (
-            Array.from({ length: 3 }).map((_, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-              >
-                <BlogCardSkeleton />
-              </motion.div>
-            ))
-          ) : (
-            featuredPosts.map((post, index) => (
-              <BlogCard key={post.slug} post={post} index={index} isHomePage={true} />
-            ))
-          )}
+        <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory scroll-px-3 -mx-3 px-3 pb-4 mb-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-8 md:overflow-visible md:mx-0 md:px-0 md:pb-0 md:mb-12">
+          {featuredPosts.map((post, index) => (
+            <div key={post.slug} className="snap-start shrink-0 w-[85%] md:w-auto">
+              <BlogCard post={post} index={index} isHomePage={true} />
+            </div>
+          ))}
         </div>
 
         <motion.div

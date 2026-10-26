@@ -29,7 +29,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen relative overflow-hidden">
+    <section className="lg:min-h-screen relative overflow-hidden">
       <ParticleBackground />
       <div className="absolute inset-0 bg-grid opacity-20 sm:opacity-30" />
 

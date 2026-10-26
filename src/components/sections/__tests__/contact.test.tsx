@@ -89,18 +89,11 @@ describe("Contact", () => {
     expect(screen.getByText("Eastern Time (ET)")).toBeInTheDocument();
   });
 
-  it("renders 'Get in Touch' button with email link", () => {
-    render(<Contact />);
-
-    const getInTouchButton = screen.getByRole("link", { name: /Get in Touch/i });
-    expect(getInTouchButton).toHaveAttribute("href", "mailto:contact@patricklehmann.io");
-  });
-
   it("displays footer text about tech stack", () => {
     render(<Contact />);
 
     expect(screen.getByText(/Built with Next.js, TypeScript, and Tailwind CSS/i)).toBeInTheDocument();
-    expect(screen.getByText(/Demonstrating modern development practices/i)).toBeInTheDocument();
+    expect(screen.queryByText(/Demonstrating modern development practices/i)).not.toBeInTheDocument();
   });
 
   it("copies email to clipboard when copy button clicked", async () => {

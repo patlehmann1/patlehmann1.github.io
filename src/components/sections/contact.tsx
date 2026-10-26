@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Clock, Copy, Check } from "@/components/ui/icons/pixel";
 import { GitHubIcon } from "@/components/ui/icons/github-icon";
 import { LinkedInIcon } from "@/components/ui/icons/linkedin-icon";
-import { Button } from "@/components/ui/button";
 import { Toast } from "@/components/ui/toast";
 
 export function Contact() {
@@ -57,7 +56,7 @@ export function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
           <h2 className="text-heading text-shadow-sm mb-4">Get in Touch</h2>
           <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
@@ -82,6 +81,27 @@ export function Contact() {
               </p>
             </div>
 
+            <div className="grid grid-cols-2 gap-4">
+              <div className="bg-card border rounded-lg p-4 text-center">
+                <MapPin className="h-5 w-5 mx-auto mb-2 text-primary" />
+                <div className="font-medium text-caption">Location</div>
+                <div className="text-caption text-muted-foreground">Perry, GA</div>
+              </div>
+              <div className="bg-card border rounded-lg p-4 text-center">
+                <Clock className="h-5 w-5 mx-auto mb-2 text-primary" />
+                <div className="font-medium text-caption">Time Zone</div>
+                <div className="text-caption text-muted-foreground">Eastern Time (ET)</div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="mt-8 lg:mt-0"
+          >
             <div className="space-y-4 sm:space-y-6">
               {contactLinks.map((link, index) => (
                 <motion.div
@@ -124,37 +144,6 @@ export function Contact() {
               ))}
             </div>
           </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="space-y-4 sm:space-y-6 mt-8 lg:mt-0"
-          >
-
-            <div className="grid grid-cols-2 gap-4">
-              <div className="bg-card border rounded-lg p-4 text-center">
-                <MapPin className="h-5 w-5 mx-auto mb-2 text-primary" />
-                <div className="font-medium text-caption">Location</div>
-                <div className="text-caption text-muted-foreground">Perry, GA</div>
-              </div>
-              <div className="bg-card border rounded-lg p-4 text-center">
-                <Clock className="h-5 w-5 mx-auto mb-2 text-primary" />
-                <div className="font-medium text-caption">Time Zone</div>
-                <div className="text-caption text-muted-foreground">Eastern Time (ET)</div>
-              </div>
-            </div>
-
-            <div className="text-center">
-              <Button size="lg" asChild>
-                <a href="mailto:contact@patricklehmann.io">
-                  <Mail className="mr-2 h-4 w-4" />
-                  Get in Touch
-                </a>
-              </Button>
-            </div>
-          </motion.div>
         </div>
 
         <motion.div
@@ -165,8 +154,7 @@ export function Contact() {
           className="mt-12 text-center"
         >
           <p className="text-muted-foreground text-caption">
-            Built with Next.js, TypeScript, and Tailwind CSS •
-            <span className="ml-1">Demonstrating modern development practices</span>
+            Built with Next.js, TypeScript, and Tailwind CSS
           </p>
         </motion.div>
       </div>

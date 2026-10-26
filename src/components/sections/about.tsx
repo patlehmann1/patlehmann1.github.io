@@ -29,20 +29,17 @@ export function About() {
             className="lg:col-span-2 space-y-6 sm:space-y-8"
           >
             <div>
-              <h3 className="text-subheading gradient-warm text-shadow-warm mb-6">Impact at Scale</h3>
+              <h3 className="text-subheading gradient-warm text-shadow-warm mb-6">How I Got Here</h3>
               <div className="space-y-6 text-body-large text-muted-foreground">
                 <p>
-                  At Global Payments, I built production systems in C#/.NET and TypeScript that processed payments
-                  and served merchants at scale. I shipped Pendo Analytics and OneTrust Cookie Consent across a
-                  portal used by 22,000+ merchants, integrating across Angular micro-frontends with a
-                  postMessage-based iframe architecture. I also contributed to UK and Ireland market expansion
-                  using Azure AD B2C authentication.
+                  I started out writing Node.js microservices at Homes.com and grew into full-stack work across
+                  C#/.NET, TypeScript, Angular, and React. Most of my career has been in payments, where merchants
+                  depend on the software working every day.
                 </p>
                 <p>
-                  I&apos;ve also served as my team&apos;s GitHub Copilot SME, introducing SI-assisted workflows
-                  that cut PR cycle time by 40%+. I now serve as a federal software engineer at the US Office of
-                  Personnel Management, working in the Retirement Services Division to modernize legacy federal
-                  systems.
+                  The parts of the job I enjoy most happen around the code. I like getting a requirement right
+                  before work starts, leaving a codebase easier to change than I found it, and helping a team get
+                  real value out of SI tools without cutting corners.
                 </p>
               </div>
             </div>

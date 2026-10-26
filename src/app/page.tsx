@@ -3,7 +3,7 @@ import { Navigation } from "@/components/layout/navigation";
 import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Experience } from "@/components/sections/experience";
-import { SkillsEnhanced } from "@/components/sections/skills-enhanced";
+import { Skills } from "@/components/sections/skills";
 import { Projects } from "@/components/sections/projects";
 import { Blog } from "@/components/sections/blog";
 import { Contact } from "@/components/sections/contact";
@@ -56,7 +56,7 @@ export default function Home() {
         </SectionErrorBoundary>
         <div className="section-divider" />
         <SectionErrorBoundary sectionName="Skills">
-          <SkillsEnhanced />
+          <Skills />
         </SectionErrorBoundary>
         <div className="section-divider-gradient" />
         <SectionErrorBoundary sectionName="Projects">

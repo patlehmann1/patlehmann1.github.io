@@ -12,98 +12,54 @@ describe("Projects", () => {
 
   it("displays section heading", () => {
     render(<Projects />);
-    expect(screen.getByRole("heading", { name: "Key Projects" })).toBeInTheDocument();
-  });
-
-  it("displays subtitle text", () => {
-    render(<Projects />);
-    expect(screen.getByText(/A few projects from my time in payments and real estate tech/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Side Projects" })).toBeInTheDocument();
   });
 
   it("renders all 3 project cards", () => {
     const { container } = render(<Projects />);
-    const projectCards = container.querySelectorAll(".project-card");
-    expect(projectCards).toHaveLength(3);
+    expect(container.querySelectorAll(".project-card")).toHaveLength(3);
   });
 
-  it("displays Enterprise Analytics Integration project", () => {
+  it("links fl-launches to its GitHub repository", () => {
     render(<Projects />);
 
-    expect(screen.getByText("Enterprise Analytics Integration")).toBeInTheDocument();
-    expect(screen.getByText(/Full-stack implementation of Pendo Analytics and OneTrust Cookie Consent/i)).toBeInTheDocument();
-    expect(screen.getByText("2025")).toBeInTheDocument();
-    expect(screen.getByText(/Analytics and cookie compliance deployed across a portal serving 22,000\+ merchants/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "fl-launches" })).toBeInTheDocument();
+    expect(screen.getByText(/next rocket launches from Cape Canaveral/i)).toBeInTheDocument();
+    const links = screen.getAllByRole("link", { name: /View Source/i });
+    expect(links[0]).toHaveAttribute("href", "https://github.com/patlehmann1/space_coast_fl_launches");
   });
 
-  it("displays E-commerce POS Integration Platform project", () => {
+  it("links daily-verse to its GitHub repository", () => {
     render(<Projects />);
 
-    expect(screen.getByText("E-commerce POS Integration Platform")).toBeInTheDocument();
-    expect(screen.getByText(/Developed comprehensive features integrating e-commerce systems/i)).toBeInTheDocument();
-    expect(screen.getByText("2022-2024")).toBeInTheDocument();
-    expect(screen.getByText(/Streamlined retail operations for thousands of merchants/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "daily-verse" })).toBeInTheDocument();
+    expect(screen.getByText(/Prints a Bible verse/i)).toBeInTheDocument();
+    const links = screen.getAllByRole("link", { name: /View Source/i });
+    expect(links[1]).toHaveAttribute("href", "https://github.com/patlehmann1/daily-verse");
   });
 
-  it("displays Legacy System Modernization project", () => {
+  it("links this site to its GitHub repository", () => {
     render(<Projects />);
 
-    expect(screen.getByText("Legacy System Modernization")).toBeInTheDocument();
-    expect(screen.getByText(/Contributed to the migration from a monolithic ColdFusion system/i)).toBeInTheDocument();
-    expect(screen.getByText("2019-2021")).toBeInTheDocument();
-    expect(screen.getByText(/Reduced system complexity and improved scalability/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "This Site" })).toBeInTheDocument();
+    const links = screen.getAllByRole("link", { name: /View Source/i });
+    expect(links[2]).toHaveAttribute("href", "https://github.com/patlehmann1/patlehmann1.github.io");
   });
 
-  it("displays company names with Users icon", () => {
+  it("opens project links in a new tab safely", () => {
     render(<Projects />);
 
-    const globalPaymentsElements = screen.getAllByText("Global Payments Inc.");
-    expect(globalPaymentsElements.length).toBeGreaterThan(0);
-    expect(screen.getByText("Homes.com")).toBeInTheDocument();
+    for (const link of screen.getAllByRole("link")) {
+      expect(link).toHaveAttribute("target", "_blank");
+      expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    }
   });
 
   it("renders technology badges for each project", () => {
     const { container } = render(<Projects />);
 
-    const techBadges = container.querySelectorAll(".tech-badge");
-    expect(techBadges.length).toBeGreaterThan(0);
-
-    const angularBadges = screen.getAllByText("Angular");
-    expect(angularBadges.length).toBeGreaterThan(0);
-    const typescriptBadges = screen.getAllByText("TypeScript");
-    expect(typescriptBadges.length).toBeGreaterThan(0);
-    expect(screen.getByText("C#/.NET")).toBeInTheDocument();
-    const nodejsBadges = screen.getAllByText("Node.js");
-    expect(nodejsBadges.length).toBeGreaterThan(0);
-  });
-
-  it("displays key highlights for each project", () => {
-    const { container } = render(<Projects />);
-
-    const highlightDots = container.querySelectorAll(".highlight-dot");
-    expect(highlightDots.length).toBeGreaterThan(0);
-
-    expect(screen.getByText(/postMessage iframe micro-frontend integration/i)).toBeInTheDocument();
-    expect(screen.getByText(/Backend to full-stack role evolution/i)).toBeInTheDocument();
-    expect(screen.getByText(/Contributed to monolithic-to-microservices migration/i)).toBeInTheDocument();
-  });
-
-  it("displays Business Impact sections", () => {
-    render(<Projects />);
-
-    const businessImpactLabels = screen.getAllByText("Business Impact");
-    expect(businessImpactLabels.length).toBe(3);
-  });
-
-  it("renders call-to-action section at the bottom", () => {
-    render(<Projects />);
-
-    expect(screen.getByText("Consistent Value Delivery")).toBeInTheDocument();
-    expect(screen.getByText(/Each project reflects real business impact/i)).toBeInTheDocument();
-  });
-
-  it("has proper grid layout for projects", () => {
-    const { container } = render(<Projects />);
-    const gridContainer = container.querySelector(".grid.lg\\:grid-cols-2");
-    expect(gridContainer).toBeInTheDocument();
+    expect(container.querySelectorAll(".tech-badge").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Go")).toHaveLength(2);
+    expect(screen.getAllByText("Homebrew")).toHaveLength(2);
   });
 });
