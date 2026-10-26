@@ -13,6 +13,12 @@ interface Project {
 
 const projects: Project[] = [
   {
+    title: "Hearth",
+    description: "A dashboard for our future home NAS. It brings photos, documents, media, DNS, and backups into one place. It runs on mock data until the hardware arrives.",
+    technologies: ["Go", "htmx"],
+    href: "https://github.com/patlehmann1/homelab",
+  },
+  {
     title: "fl-launches",
     description: "A terminal app that shows the next rocket launches from Cape Canaveral. It pulls from the Launch Library 2 API and installs with Homebrew.",
     technologies: ["Go", "Launch Library 2", "Homebrew"],
@@ -49,7 +55,7 @@ export function Projects() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid md:grid-cols-2 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <motion.article
               key={project.title}
