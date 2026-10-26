@@ -221,7 +221,7 @@ export function ParticleBackground() {
     }
   }, []);
 
-  const primaryColor = theme === "dark" ? "#d2804d" : "#c86428";
+  const primaryColor = theme === "cobalt2" ? "#ffc600" : theme === "dark" ? "#d2804d" : "#c86428";
   const particleCount = isMobileRef.current ? 30 : 60;
 
   if (prefersReducedMotion || contextLost) {
