@@ -137,7 +137,7 @@ export function Contact() {
               <div className="bg-card border rounded-lg p-4 text-center">
                 <MapPin className="h-5 w-5 mx-auto mb-2 text-primary" />
                 <div className="font-medium text-caption">Location</div>
-                <div className="text-caption text-muted-foreground">Palm Bay, FL</div>
+                <div className="text-caption text-muted-foreground">Perry, GA</div>
               </div>
               <div className="bg-card border rounded-lg p-4 text-center">
                 <Clock className="h-5 w-5 mx-auto mb-2 text-primary" />
