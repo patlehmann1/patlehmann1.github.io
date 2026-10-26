@@ -79,7 +79,7 @@ describe("Contact", () => {
     render(<Contact />);
 
     expect(screen.getByText("Location")).toBeInTheDocument();
-    expect(screen.getByText("Palm Bay, FL")).toBeInTheDocument();
+    expect(screen.getByText("Perry, GA")).toBeInTheDocument();
   });
 
   it("displays timezone information", () => {
