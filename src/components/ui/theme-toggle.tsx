@@ -13,7 +13,6 @@ const themes = [
   { value: "forest", label: "Forest", color: "hsl(145, 65%, 40%)" },
   { value: "synthwave", label: "Synthwave", color: "hsl(320, 100%, 60%)" },
   { value: "cobalt2", label: "Cobalt2", color: "hsl(205, 49%, 19%)" },
-  { value: "minimal", label: "Minimal", color: "hsl(0, 0%, 20%)" },
 ] as const;
 
 export function ThemeToggle() {
