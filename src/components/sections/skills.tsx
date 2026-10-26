@@ -9,11 +9,11 @@ const skillGroups = [
   },
   {
     title: "Frameworks",
-    skills: [".NET", "ASP.NET Core", "Node.js", "Express.js", "Hapi.js", "React", "Redux", "Angular", "Material-UI", "Bootstrap"],
+    skills: [".NET", "ASP.NET Core", "Node.js", "Express.js", "Hapi.js", "React", "Next.js", "Redux", "Angular", "Tailwind CSS", "htmx", "Backbone.js", "Material-UI", "Bootstrap"],
   },
   {
     title: "Data & APIs",
-    skills: ["REST APIs", "Swagger/OpenAPI", "SQL Server", "MongoDB", "MySQL", "Redis", "Firebase", "RabbitMQ", "Amazon SQS"],
+    skills: ["REST APIs", "Swagger/OpenAPI", "SQL Server", "MongoDB", "MySQL", "Solr", "Redis", "Firebase", "RabbitMQ", "Amazon SQS"],
   },
   {
     title: "Infrastructure",
@@ -21,7 +21,7 @@ const skillGroups = [
   },
   {
     title: "Tools",
-    skills: ["Git", "Jest", "Postman", "VS Code", "Visual Studio", "Claude Code", "GitHub Copilot"],
+    skills: ["Git", "Jest", "Claude Code", "GitHub Copilot", "Pendo", "OneTrust"],
   },
   {
     title: "Practices",
