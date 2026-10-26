@@ -29,6 +29,7 @@ const SyntaxHighlighter = dynamic(
 // Import themes statically for better TypeScript support
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { cobalt2 } from '@/lib/cobalt2-prism';
 
 interface CodeBlockProps {
   children: React.ReactNode;
@@ -139,7 +140,7 @@ export function CodeBlock({
       <div className="relative">
         <SyntaxHighlighter
           language={normalizedLanguage}
-          style={theme === 'dark' ? vscDarkPlus : oneLight}
+          style={theme === 'cobalt2' ? cobalt2 : theme === 'dark' ? vscDarkPlus : oneLight}
           showLineNumbers={displayLineNumbers}
           className={cn(
             "!mt-0 !rounded-t-none !rounded-b-lg !border-t-0",

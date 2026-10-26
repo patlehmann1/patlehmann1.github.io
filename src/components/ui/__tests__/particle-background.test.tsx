@@ -205,6 +205,12 @@ describe("ParticleBackground", () => {
     expect(getByTestId("canvas")).toBeInTheDocument();
   });
 
+  it("renders with the cobalt2 theme", () => {
+    mockTheme.mockReturnValue("cobalt2");
+    const { getByTestId } = render(<ParticleBackground />);
+    expect(getByTestId("canvas")).toBeInTheDocument();
+  });
+
   it("handles theme being undefined", () => {
     mockTheme.mockReturnValue(undefined);
     const { getByTestId } = render(<ParticleBackground />);

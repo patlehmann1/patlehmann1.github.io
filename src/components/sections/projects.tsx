@@ -32,7 +32,7 @@ const projects: Project[] = [
   },
   {
     title: "This Site",
-    description: "My portfolio and blog. It has six themes, articles you can listen to, and a chiptune soundtrack you can turn on from the header.",
+    description: "My portfolio and blog. It has seven themes, articles you can listen to, and a chiptune soundtrack you can turn on from the header.",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Jest"],
     href: "https://github.com/patlehmann1/patlehmann1.github.io",
   },

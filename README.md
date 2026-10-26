@@ -34,7 +34,7 @@ This is my personal portfolio website showcasing my work as a Full-Stack Softwar
 - **Three.js + @react-three/fiber** - 3D particle animations and visual effects
 - **@react-three/drei** - Three.js utilities
 - **Lucide React** - Modern icon library
-- **next-themes** - Multi-theme support (6 themes)
+- **next-themes** - Multi-theme support (7 themes)
 - **Geist & Geist Mono** - Modern font system
 
 ### Content & Forms
