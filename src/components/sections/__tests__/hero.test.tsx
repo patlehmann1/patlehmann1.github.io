@@ -85,7 +85,7 @@ describe("Hero", () => {
     const { container } = render(<Hero />);
 
     const section = container.querySelector("section");
-    expect(section).toHaveClass("min-h-screen");
+    expect(section).toHaveClass("lg:min-h-screen");
     expect(section).toHaveClass("relative");
     expect(section).toHaveClass("overflow-hidden");
   });

@@ -1,168 +1,85 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Calendar, Users, Target } from "@/components/ui/icons/pixel";
+import { GitHubIcon } from "@/components/ui/icons/github-icon";
 import { Button } from "@/components/ui/button";
 
 interface Project {
   title: string;
-  company: string;
   description: string;
-  period: string;
-  impact: string;
   technologies: string[];
-  highlights: string[];
-  link?: string;
+  href: string;
 }
 
-export function Projects() {
-  const projects: Project[] = [
-    {
-      title: "Enterprise Analytics Integration",
-      company: "Global Payments Inc.",
-      description: "Full-stack implementation of Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000+ merchants, integrated via a postMessage-based iframe micro-frontend architecture.",
-      period: "2025",
-      impact: "Analytics and cookie compliance deployed across a portal serving 22,000+ merchants with zero platform downtime",
-      technologies: ["Angular", "TypeScript", "C#/.NET", "Pendo", "OneTrust Cookie Consent"],
-      highlights: [
-        "postMessage iframe micro-frontend integration",
-        "Coordinated across the teams that own each micro-frontend",
-        "Shipped right the first time on a high-visibility compliance initiative"
-      ]
-    },
-    {
-      title: "E-commerce POS Integration Platform",
-      company: "Global Payments Inc.",
-      description: "Developed comprehensive features integrating e-commerce systems with point-of-sale solutions, enabling seamless omnichannel retail experiences.",
-      period: "2022-2024",
-      impact: "Streamlined retail operations for thousands of merchants",
-      technologies: ["TypeScript", "Node.js", "Angular", "AWS", "GitHub Actions"],
-      highlights: [
-        "Backend to full-stack role evolution",
-        "CI/CD pipeline optimization",
-        "Complex system integration management"
-      ]
-    },
-    {
-      title: "Legacy System Modernization",
-      company: "Homes.com",
-      description: "Contributed to the migration from a monolithic ColdFusion system to a scalable Node.js microservices architecture, improving system performance and maintainability.",
-      period: "2019-2021",
-      impact: "Reduced system complexity and improved scalability",
-      technologies: ["Node.js", "MongoDB", "SQL Server", "Kubernetes"],
-      highlights: [
-        "Contributed to monolithic-to-microservices migration",
-        "Cross-platform technology transition",
-        "Database integration and optimization"
-      ]
-    },
-  ];
+const projects: Project[] = [
+  {
+    title: "fl-launches",
+    description: "A terminal app that shows the next rocket launches from Cape Canaveral. It pulls from the Launch Library 2 API and installs with Homebrew.",
+    technologies: ["Go", "Launch Library 2", "Homebrew"],
+    href: "https://github.com/patlehmann1/space_coast_fl_launches",
+  },
+  {
+    title: "daily-verse",
+    description: "Prints a Bible verse in your terminal, either random or the same one all day. You can filter by book or testament, and the verses ship inside a single binary.",
+    technologies: ["Go", "Homebrew"],
+    href: "https://github.com/patlehmann1/daily-verse",
+  },
+  {
+    title: "This Site",
+    description: "My portfolio and blog. It has six themes, articles you can listen to, and a chiptune soundtrack you can turn on from the header.",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Jest"],
+    href: "https://github.com/patlehmann1/patlehmann1.github.io",
+  },
+];
 
+export function Projects() {
   return (
-    <section id="projects" className="py-20 px-4 bg-muted/50">
+    <section id="projects" className="py-16 sm:py-20 px-3 sm:px-4 lg:px-6 bg-muted/50">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-heading text-shadow-sm mb-4">Key Projects</h2>
+          <h2 className="text-heading text-shadow-sm mb-4">Side Projects</h2>
           <p className="text-muted-foreground text-body-large max-w-2xl mx-auto">
-            A few projects from my time in payments and real estate tech
+            Things I build on my own time
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project, index) => (
-            <motion.div
+            <motion.article
               key={project.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-card p-8 pixel-box pixel-box-raised project-card group"
+              className="bg-card p-6 pixel-box pixel-box-raised project-card flex flex-col"
             >
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <div className="flex items-center gap-2 text-caption text-muted-foreground mb-2">
-                    <Users className="h-4 w-4" />
-                    <span>{project.company}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-caption text-muted-foreground">
-                    <Calendar className="h-4 w-4" />
-                    <span>{project.period}</span>
-                  </div>
-                </div>
+              <h3 className="text-xl font-semibold mb-3">{project.title}</h3>
+              <p className="text-body text-muted-foreground mb-4 flex-1">{project.description}</p>
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.technologies.map((tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 bg-primary/10 text-primary text-caption rounded-full font-medium tech-badge"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
-
-              <p className="text-body text-muted-foreground mb-4">{project.description}</p>
-
-              <div className="mb-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <Target className="h-4 w-4 text-primary" />
-                  <span className="font-medium text-primary">Business Impact</span>
-                </div>
-                <p className="text-body text-muted-foreground pl-6">{project.impact}</p>
-              </div>
-
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Key Highlights</h4>
-                <ul className="space-y-2">
-                  {project.highlights.map((highlight, highlightIndex) => (
-                    <li key={highlightIndex} className="flex items-start gap-2 text-body text-muted-foreground">
-                      <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0 highlight-dot" />
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mb-6">
-                <h4 className="font-medium mb-3">Technologies</h4>
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="px-3 py-1 bg-primary/10 text-primary text-caption rounded-full font-medium tech-badge"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
-              {project.link && (
-                <Button variant="outline" size="sm" asChild>
-                  <a href={project.link} target="_blank" rel="noopener noreferrer">
-                    <ExternalLink className="mr-2 h-4 w-4" />
-                    View Live
-                  </a>
-                </Button>
-              )}
-            </motion.div>
+              <Button variant="outline" size="sm" className="self-start" asChild>
+                <a href={project.href} target="_blank" rel="noopener noreferrer">
+                  <GitHubIcon className="mr-2 h-4 w-4" />
+                  View Source
+                </a>
+              </Button>
+            </motion.article>
           ))}
         </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-          viewport={{ once: true }}
-          className="mt-12 text-center"
-        >
-          <div className="bg-primary/5 border border-primary/20 rounded-lg p-8">
-            <h3 className="text-subheading font-semibold text-primary mb-4">
-              Consistent Value Delivery
-            </h3>
-            <p className="text-body text-muted-foreground max-w-3xl mx-auto">
-              Each project reflects real business impact: shipping to 22,000+ merchants, moving a monolith to
-              microservices, and improving developer workflows at scale.
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

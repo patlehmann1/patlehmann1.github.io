@@ -20,19 +20,15 @@ describe("About", () => {
     expect(screen.getByText(/Full-stack engineer with 7\+ years across fintech, enterprise, and federal government systems/i)).toBeInTheDocument();
   });
 
-  it("renders 'Impact at Scale' section", () => {
+  it("renders 'How I Got Here' section", () => {
     render(<About />);
-    expect(screen.getByText("Impact at Scale")).toBeInTheDocument();
+    expect(screen.getByText("How I Got Here")).toBeInTheDocument();
   });
 
-  it("displays experience description", () => {
+  it("tells the career story without repeating Experience details", () => {
     render(<About />);
-    expect(screen.getByText(/I built production systems in C#\/.NET and TypeScript/i)).toBeInTheDocument();
-  });
-
-  it("mentions work at Global Payments", () => {
-    render(<About />);
-    expect(screen.getByText(/At Global Payments/i)).toBeInTheDocument();
+    expect(screen.getByText(/I started out writing Node.js microservices at Homes.com/i)).toBeInTheDocument();
+    expect(screen.queryByText(/Pendo Analytics/i)).not.toBeInTheDocument();
   });
 
   it("displays 'Beyond Code' section with activities", () => {

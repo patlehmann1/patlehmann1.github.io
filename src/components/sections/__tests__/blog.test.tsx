@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { Blog } from "../blog";
 import "@testing-library/jest-dom";
 
@@ -44,20 +44,7 @@ jest.mock("@/components/blog/blog-card", () => ({
   ),
 }));
 
-jest.mock("@/components/ui/skeleton", () => ({
-  BlogCardSkeleton: () => <div data-testid="blog-card-skeleton">Loading...</div>,
-}));
-
 describe("Blog", () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    jest.runOnlyPendingTimers();
-    jest.useRealTimers();
-  });
-
   it("renders the blog section with proper id", () => {
     const { container } = render(<Blog />);
     const section = container.querySelector("section#blog");
@@ -74,35 +61,12 @@ describe("Blog", () => {
     expect(screen.getByText(/Exploring SI collaboration, work-life balance, faith-driven development/i)).toBeInTheDocument();
   });
 
-  it("shows loading skeletons initially", () => {
+  it("renders the featured blog posts immediately", () => {
     render(<Blog />);
 
-    const skeletons = screen.getAllByTestId("blog-card-skeleton");
-    expect(skeletons).toHaveLength(3);
-  });
-
-  it("loads and displays featured blog posts after delay", async () => {
-    render(<Blog />);
-
-    jest.advanceTimersByTime(1000);
-
-    await waitFor(() => {
-      expect(screen.getByText("Test Post 1")).toBeInTheDocument();
-      expect(screen.getByText("Test Post 2")).toBeInTheDocument();
-      expect(screen.getByText("Test Post 3")).toBeInTheDocument();
-    });
-  });
-
-  it("renders exactly 3 blog cards after loading", async () => {
-    render(<Blog />);
-
-    jest.advanceTimersByTime(1000);
-
-    await waitFor(() => {
-      expect(screen.getByTestId("blog-card-test-post-1")).toBeInTheDocument();
-      expect(screen.getByTestId("blog-card-test-post-2")).toBeInTheDocument();
-      expect(screen.getByTestId("blog-card-test-post-3")).toBeInTheDocument();
-    });
+    expect(screen.getByTestId("blog-card-test-post-1")).toBeInTheDocument();
+    expect(screen.getByTestId("blog-card-test-post-2")).toBeInTheDocument();
+    expect(screen.getByTestId("blog-card-test-post-3")).toBeInTheDocument();
   });
 
   it("renders 'View All Articles' button with correct link", () => {
@@ -112,21 +76,9 @@ describe("Blog", () => {
     expect(viewAllButton).toHaveAttribute("href", "/blog");
   });
 
-  it("has proper grid layout structure", () => {
+  it("swipes horizontally on mobile and switches to a grid on larger screens", () => {
     const { container } = render(<Blog />);
-    const gridContainer = container.querySelector(".grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-3");
-    expect(gridContainer).toBeInTheDocument();
-  });
-
-  it("removes skeletons after posts load", async () => {
-    render(<Blog />);
-
-    expect(screen.getAllByTestId("blog-card-skeleton")).toHaveLength(3);
-
-    jest.advanceTimersByTime(1000);
-
-    await waitFor(() => {
-      expect(screen.queryByTestId("blog-card-skeleton")).not.toBeInTheDocument();
-    });
+    const row = container.querySelector(".overflow-x-auto.snap-x");
+    expect(row).toHaveClass("md:grid", "md:grid-cols-2", "lg:grid-cols-3");
   });
 });

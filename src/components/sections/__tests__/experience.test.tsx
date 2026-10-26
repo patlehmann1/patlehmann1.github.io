@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { Experience } from "../experience";
 import "@testing-library/jest-dom";
 
@@ -17,7 +17,7 @@ describe("Experience", () => {
 
   it("displays subtitle text", () => {
     render(<Experience />);
-    expect(screen.getByText(/7\+ years building fintech and enterprise systems across payments, real estate, and e-commerce/i)).toBeInTheDocument();
+    expect(screen.getByText(/From real estate and payments to federal retirement systems/i)).toBeInTheDocument();
   });
 
   it("displays US Office of Personnel Management as current role", () => {
@@ -26,7 +26,6 @@ describe("Experience", () => {
     expect(screen.getByText("US Office of Personnel Management")).toBeInTheDocument();
     expect(screen.getAllByText("September 2026 - Present").length).toBeGreaterThan(0);
     expect(screen.getByText("Janus Team, Retirement Services Division")).toBeInTheDocument();
-    expect(screen.queryByText("Upcoming")).not.toBeInTheDocument();
   });
 
   it("displays Global Payments Inc. experience", () => {
@@ -81,12 +80,21 @@ describe("Experience", () => {
     expect(screen.getByText(/Built RESTful APIs and contributed to the migration from a monolithic ColdFusion/i)).toBeInTheDocument();
   });
 
-  it("displays impact summary at the bottom", () => {
+  it("hides earlier roles on small screens until expanded", () => {
     render(<Experience />);
 
-    expect(screen.getByText("Consistent Impact Across Teams")).toBeInTheDocument();
-    expect(screen.getByText(/7\+ years shipping production systems at Global Payments and Homes\.com/i)).toBeInTheDocument();
-    expect(screen.getByText(/federal software engineer at OPM, modernizing retirement services systems/i)).toBeInTheDocument();
+    const homes = screen.getByText("Homes.com").closest(".relative");
+    const heartland = screen.getByText("Heartland Retail POS").closest(".bg-card");
+    const genius = screen.getByText("Genius Retail POS").closest(".bg-card");
+    expect(homes).toHaveClass("hidden", "md:block");
+    expect(heartland).toHaveClass("hidden", "md:block");
+    expect(genius).not.toHaveClass("hidden");
+
+    fireEvent.click(screen.getByRole("button", { name: "Show Earlier Roles" }));
+
+    expect(homes).not.toHaveClass("hidden");
+    expect(heartland).not.toHaveClass("hidden");
+    expect(screen.queryByRole("button", { name: "Show Earlier Roles" })).not.toBeInTheDocument();
   });
 
   it("renders timeline visual elements on desktop", () => {
