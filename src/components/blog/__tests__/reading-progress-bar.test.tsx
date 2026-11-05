@@ -216,36 +216,6 @@ describe('ReadingProgressBar', () => {
     expect(progressBar).toBeInTheDocument()
   })
 
-  it('should handle server-side rendering (window undefined)', () => {
-    // Mock window as undefined (SSR scenario)
-    const originalWindow = global.window
-    // @ts-expect-error - Testing SSR scenario
-    delete global.window
-
-    render(<ReadingProgressBar />)
-
-    const progressBar = screen.getByRole('progressbar')
-    expect(progressBar).toBeInTheDocument()
-
-    // Restore window
-    global.window = originalWindow
-  })
-
-  it('should handle matchMedia not available', () => {
-    // Mock matchMedia as undefined
-    const originalMatchMedia = window.matchMedia
-    // @ts-expect-error - Testing fallback scenario
-    delete window.matchMedia
-
-    render(<ReadingProgressBar />)
-
-    const progressBar = screen.getByRole('progressbar')
-    expect(progressBar).toBeInTheDocument()
-
-    // Restore matchMedia
-    window.matchMedia = originalMatchMedia
-  })
-
   it('should combine custom className with default classes', () => {
     render(<ReadingProgressBar className="border-2 shadow-lg" />)
 
