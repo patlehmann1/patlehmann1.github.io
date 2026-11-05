@@ -1,4 +1,4 @@
-import { createLofiPlayer, noteToFrequency, SONG } from "../chiptune";
+import { createSynthwavePlayer, MELODY, noteToFrequency, SONG } from "../synthwave";
 
 function param() {
   return {
@@ -10,7 +10,7 @@ function param() {
 }
 
 function fakeContext() {
-  const oscillators: { start: jest.Mock }[] = [];
+  const oscillators: { type: string; detune: { value: number }; start: jest.Mock }[] = [];
   const noiseSources: { start: jest.Mock }[] = [];
   const ctx = {
     currentTime: 0,
@@ -18,7 +18,9 @@ function fakeContext() {
     destination: {},
     close: jest.fn(),
     createGain: () => ({ gain: param(), connect: jest.fn() }),
-    createBiquadFilter: () => ({ type: "", frequency: param(), connect: jest.fn() }),
+    createBiquadFilter: () => ({ type: "", frequency: param(), Q: param(), connect: jest.fn() }),
+    createConvolver: () => ({ buffer: null, connect: jest.fn() }),
+    createDelay: () => ({ delayTime: param(), connect: jest.fn() }),
     createPeriodicWave: jest.fn(() => ({})),
     createBuffer: (_channels: number, length: number) => {
       const data = new Float32Array(length);
@@ -63,11 +65,24 @@ describe("noteToFrequency", () => {
 });
 
 describe("SONG", () => {
+  it("only uses valid notes", () => {
+    for (const section of SONG) {
+      for (const chord of section.chords) {
+        expect(() => noteToFrequency(chord.bass)).not.toThrow();
+        chord.voicing.forEach((pitch) => expect(() => noteToFrequency(pitch)).not.toThrow());
+      }
+    }
+  });
+
+  it("runs 72 bars", () => {
+    expect(SONG.reduce((sum, section) => sum + section.bars, 0)).toBe(72);
+  });
+});
+
+describe("MELODY", () => {
   it("only uses valid notes and stays inside each bar", () => {
-    for (const bar of SONG) {
-      expect(() => noteToFrequency(bar.bass)).not.toThrow();
-      bar.chord.forEach((pitch) => expect(() => noteToFrequency(pitch)).not.toThrow());
-      for (const [step, pitch, length] of bar.lead) {
+    for (const bar of MELODY) {
+      for (const [step, pitch, length] of bar) {
         expect(() => noteToFrequency(pitch)).not.toThrow();
         expect(step + length).toBeLessThanOrEqual(16);
       }
@@ -75,13 +90,13 @@ describe("SONG", () => {
   });
 });
 
-describe("createLofiPlayer", () => {
+describe("createSynthwavePlayer", () => {
   beforeEach(() => jest.useFakeTimers());
   afterEach(() => jest.useRealTimers());
 
   it("schedules the first notes as soon as it starts", () => {
     const { ctx, oscillators } = fakeContext();
-    createLofiPlayer(() => ctx as unknown as AudioContext).start();
+    createSynthwavePlayer(() => ctx as unknown as AudioContext).start();
 
     const scheduled = oscillators.filter((osc) => osc.start.mock.calls.length > 0);
     expect(scheduled.length).toBeGreaterThan(0);
@@ -89,22 +104,39 @@ describe("createLofiPlayer", () => {
 
   it("keeps scheduling ahead as time passes and loops the song", () => {
     const { ctx, oscillators, noiseSources } = fakeContext();
-    createLofiPlayer(() => ctx as unknown as AudioContext).start();
+    createSynthwavePlayer(() => ctx as unknown as AudioContext).start();
 
-    const loopSeconds = (SONG.length * 16 * 60) / 78 / 4;
-    for (let t = 0; t < loopSeconds * 1.5; t += 0.025) {
+    const loopSeconds = (72 * 16 * 60) / 96 / 4;
+    for (let t = 0; t < loopSeconds + 5; t += 0.025) {
       ctx.currentTime = t;
       jest.advanceTimersByTime(25);
     }
 
-    const leadNotesPerLoop = SONG.reduce((sum, bar) => sum + bar.lead.length, 0);
-    expect(oscillators.length).toBeGreaterThan(leadNotesPerLoop * 1.5);
+    const startTimes = oscillators.flatMap((osc) => osc.start.mock.calls.map(([time]) => time as number));
+    expect(startTimes.some((time) => time > loopSeconds)).toBe(true);
     expect(noiseSources.length).toBeGreaterThan(0);
+  });
+
+  it("holds the lead back until the first chorus", () => {
+    const { ctx, oscillators } = fakeContext();
+    createSynthwavePlayer(() => ctx as unknown as AudioContext).start();
+
+    const chorusSeconds = (24 * 16 * 60) / 96 / 4;
+    for (let t = 0; t < chorusSeconds + 3; t += 0.025) {
+      ctx.currentTime = t;
+      jest.advanceTimersByTime(25);
+    }
+
+    const leadStarts = oscillators
+      .filter((osc) => osc.detune.value === 22)
+      .map((osc) => osc.start.mock.calls[0][0] as number);
+    expect(leadStarts.length).toBeGreaterThan(0);
+    expect(Math.min(...leadStarts)).toBeGreaterThanOrEqual(chorusSeconds);
   });
 
   it("ignores a second start while playing", () => {
     const factory = jest.fn(() => fakeContext().ctx as unknown as AudioContext);
-    const player = createLofiPlayer(factory);
+    const player = createSynthwavePlayer(factory);
     player.start();
     player.start();
     expect(factory).toHaveBeenCalledTimes(1);
@@ -112,7 +144,7 @@ describe("createLofiPlayer", () => {
 
   it("closes the context and stops scheduling on stop", () => {
     const { ctx, oscillators } = fakeContext();
-    const player = createLofiPlayer(() => ctx as unknown as AudioContext);
+    const player = createSynthwavePlayer(() => ctx as unknown as AudioContext);
     player.start();
     player.stop();
     const countAfterStop = oscillators.length;
@@ -126,7 +158,7 @@ describe("createLofiPlayer", () => {
 
   it("does nothing when stopped before starting, and can restart after stopping", () => {
     const factory = jest.fn(() => fakeContext().ctx as unknown as AudioContext);
-    const player = createLofiPlayer(factory);
+    const player = createSynthwavePlayer(factory);
     player.stop();
     player.start();
     player.stop();
@@ -139,7 +171,7 @@ describe("createLofiPlayer", () => {
     const original = (globalThis as { AudioContext?: unknown }).AudioContext;
     (globalThis as { AudioContext?: unknown }).AudioContext = jest.fn(() => ctx);
     try {
-      createLofiPlayer().start();
+      createSynthwavePlayer().start();
       expect((globalThis as unknown as { AudioContext: jest.Mock }).AudioContext).toHaveBeenCalledTimes(1);
     } finally {
       (globalThis as { AudioContext?: unknown }).AudioContext = original;
