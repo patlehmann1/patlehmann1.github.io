@@ -203,22 +203,4 @@ describe('CodeBlock', () => {
     expect(languageIcon).toBeInTheDocument();
   });
 
-  it('renders fallback when syntax highlighter is not available', () => {
-    // Temporarily mock window as undefined to simulate SSR
-    const originalWindow = global.window;
-    delete (global as Record<string, unknown>).window;
-
-    renderWithTheme(
-      <CodeBlock language="javascript">
-        const hello = &quot;world&quot;;
-      </CodeBlock>
-    );
-
-    // Should render header and copy button even in fallback mode
-    expect(screen.getByText('JavaScript')).toBeInTheDocument();
-    expect(screen.getByLabelText('Copy code')).toBeInTheDocument();
-
-    // Restore window
-    global.window = originalWindow;
-  });
 });

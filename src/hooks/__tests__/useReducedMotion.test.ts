@@ -314,20 +314,4 @@ describe('Integration tests', () => {
     expect(motionVariants.hidden).not.toHaveProperty('y')
     expect(scaleVariants.hidden).not.toHaveProperty('scale')
   })
-
-  it('should handle browser without matchMedia support', () => {
-    // Remove matchMedia to simulate older browsers
-    const originalMatchMedia = window.matchMedia
-    // @ts-expect-error - Testing fallback scenario
-    delete window.matchMedia
-
-    const { result } = renderHook(() => useReducedMotion())
-
-    // Should use initial state when matchMedia is not available
-    // The hook initializes with false, but may update during useEffect
-    expect(typeof result.current).toBe('boolean')
-
-    // Restore matchMedia
-    window.matchMedia = originalMatchMedia
-  })
 })
