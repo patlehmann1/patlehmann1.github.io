@@ -49,7 +49,7 @@ export function Experience() {
           highlights: [
             "Implemented Pendo Analytics and OneTrust Cookie Consent across a portal serving 22,000+ merchants, integrating via a postMessage-based iframe micro-frontend architecture",
             "Contributed to international authentication for UK/Ireland market entry using Azure AD B2C",
-            "Served as team GitHub Copilot SME, introducing SI-assisted development workflows that reduced PR cycle time by 40%+",
+            "Served as team GitHub Copilot SME, introducing agentic development workflows that reduced PR cycle time by 40%+",
             "Collaborated with stakeholders to define acceptance criteria and get it right the first time"
           ]
         },
