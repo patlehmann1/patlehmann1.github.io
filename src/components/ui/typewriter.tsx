@@ -61,7 +61,11 @@ export function Typewriter({
   return (
     <span className={className}>
       {currentText}
-      <span className="animate-blink" aria-hidden="true">█</span>
+      <span
+        className="animate-blink inline-block w-[1ch] h-[1em] align-text-bottom bg-current"
+        aria-hidden="true"
+        data-testid="typewriter-cursor"
+      />
     </span>
   );
 }
