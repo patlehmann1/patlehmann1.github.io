@@ -28,7 +28,7 @@ describe("Skills", () => {
     expect(screen.getByText("C#")).toBeInTheDocument();
     expect(screen.getByText("TypeScript")).toBeInTheDocument();
     expect(screen.getByText(".NET")).toBeInTheDocument();
-    expect(screen.getByText("SI-assisted development")).toBeInTheDocument();
+    expect(screen.getByText("Agentic development")).toBeInTheDocument();
     expect(container.querySelectorAll(".tech-badge").length).toBeGreaterThan(40);
   });
 

@@ -25,7 +25,7 @@ const skillGroups = [
   },
   {
     title: "Practices",
-    skills: ["SI-assisted development", "Legacy modernization", "Micro-frontends", "Accessibility", "Testing", "Code review", "Technical writing"],
+    skills: ["Agentic development", "Legacy modernization", "Micro-frontends", "Accessibility", "Testing", "Code review", "Technical writing"],
   },
 ];
 
