@@ -96,10 +96,10 @@ export function Hero() {
                   className="font-mono"
                   texts={[
                     "Faith-Driven Developer",
+                    "Agentic Workflow Builder",
                     "Full-Stack Engineer",
-                    "Problem Solver",
-                    "SI-Enhanced Programmer",
-                    "Team Collaborator"
+                    "Accessibility Advocate",
+                    "Technical Writer"
                   ]}
                   speed={80}
                   deleteSpeed={40}
