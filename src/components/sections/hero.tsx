@@ -97,7 +97,7 @@ export function Hero() {
                   texts={[
                     "Faith-Driven Developer",
                     "Agentic Workflow Builder",
-                    "Full-Stack Engineer",
+                    "Side Project Tinkerer",
                     "Accessibility Advocate",
                     "Technical Writer"
                   ]}
