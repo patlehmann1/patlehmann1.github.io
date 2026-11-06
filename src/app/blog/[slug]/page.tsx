@@ -1,4 +1,4 @@
-import { getPostBySlug, getAllPosts } from "@/lib/blog";
+import { getPostBySlug, getAllPosts, getPostOgImageUrl } from "@/lib/blog";
 import { notFound } from "next/navigation";
 import { BlogPostContent } from "@/components/blog/blog-post-content";
 import { Metadata } from "next";
@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 
   const postUrl = `${SITE_URL}/blog/${slug}/`;
-  const imageUrl = `${SITE_URL}/og-image.png`;
+  const imageUrl = getPostOgImageUrl(slug);
 
   return {
     title: `${post.title} | Patrick Lehmann`,
