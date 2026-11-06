@@ -1,4 +1,4 @@
-import { getAllPosts, getFeaturedPosts, getPostBySlug, getPostsByTag, getAllTags } from '../blog'
+import { getAllPosts, getFeaturedPosts, getPostBySlug, getPostsByTag, getAllTags, getPostOgImageUrl } from '../blog'
 
 describe('Blog utilities', () => {
   describe('getAllPosts', () => {
@@ -305,6 +305,12 @@ describe('Blog utilities', () => {
       const tags2 = getAllTags()
 
       expect(tags1).toEqual(tags2)
+    })
+  })
+
+  describe('getPostOgImageUrl', () => {
+    it('should return an absolute URL to the post\'s generated image', () => {
+      expect(getPostOgImageUrl('coding-as-worship')).toBe('https://patricklehmann.io/og/coding-as-worship.png')
     })
   })
 })

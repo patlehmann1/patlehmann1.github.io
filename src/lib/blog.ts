@@ -1,5 +1,6 @@
 import { BlogPost, BlogSlug } from './types';
 import articlesData from '@/content/blog/articles.json';
+import { SITE_URL } from './constants';
 
 export function getAllPosts(): BlogPost[] {
   return articlesData.map(article => ({
@@ -40,3 +41,7 @@ export function getAllTags(): string[] {
   return [...new Set(allTags)].sort();
 }
 
+
+export function getPostOgImageUrl(slug: string): string {
+  return `${SITE_URL}/og/${slug}.png`;
+}

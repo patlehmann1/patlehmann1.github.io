@@ -7,6 +7,7 @@ import { BlogPost } from "@/lib/types";
 import { useReducedMotion, createMotionVariants } from "@/hooks/useReducedMotion";
 import { SectionErrorBoundary } from "@/components/ui/section-error-boundary";
 import { SITE_URL } from "@/lib/constants";
+import { getPostOgImageUrl } from "@/lib/blog";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Link from "next/link";
@@ -39,7 +40,7 @@ export function BlogPostContent({ post }: BlogPostContentProps) {
     "description": post.description,
     "image": {
       "@type": "ImageObject",
-      "url": `${SITE_URL}/og-image.png`,
+      "url": getPostOgImageUrl(post.slug),
       "width": 1200,
       "height": 630
     },
