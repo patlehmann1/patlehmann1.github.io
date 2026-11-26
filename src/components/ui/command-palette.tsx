@@ -134,7 +134,7 @@ export function CommandPalette({ posts }: { posts: PostSummary[] }) {
               placeholder="type a command..."
               spellCheck={false}
               autoComplete="off"
-              className="flex-1 bg-transparent outline-none placeholder:text-muted-foreground"
+              className="flex-1 min-w-0 bg-transparent text-base sm:text-sm outline-none placeholder:text-muted-foreground"
             />
           </div>
 
