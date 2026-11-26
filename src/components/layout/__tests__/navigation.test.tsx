@@ -63,6 +63,10 @@ jest.mock('@/lib/ui-utils', () => ({
 }))
 
 // Mock child components
+jest.mock('@/components/ui/command-palette', () => ({
+  CommandPaletteTrigger: () => <button aria-label="Open command palette" />
+}))
+
 jest.mock('../navigation-logo', () => ({
   NavigationLogo: ({ onLogoClick }: { onLogoClick: () => void }) => (
     <div data-testid="navigation-logo" onClick={onLogoClick}>Logo</div>

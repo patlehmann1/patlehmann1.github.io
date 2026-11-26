@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Pixelify_Sans, Press_Start_2P } from "next/font/google";
 import { ThemeProvider } from "next-themes";
-import { SITE_CONFIG, SITE_URL } from "@/lib/constants";
+import { SITE_CONFIG, SITE_URL, THEMES } from "@/lib/constants";
+import { getAllPosts } from "@/lib/blog";
+import { CommandPalette } from "@/components/ui/command-palette";
 import "./globals.css";
 
 const pressStart = Press_Start_2P({
@@ -89,9 +91,10 @@ export default function RootLayout({
           defaultTheme="light"
           enableSystem
           disableTransitionOnChange={false}
-          themes={['light', 'dark', 'ocean', 'forest', 'synthwave', 'cobalt2']}
+          themes={THEMES.map((t) => t.value)}
         >
           {children}
+          <CommandPalette posts={getAllPosts().map(({ slug, title }) => ({ slug, title }))} />
         </ThemeProvider>
       </body>
     </html>

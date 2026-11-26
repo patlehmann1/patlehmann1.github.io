@@ -13,6 +13,17 @@ export const SITE_CONFIG = {
   },
 } as const;
 
+export const THEMES = [
+  { value: "light", label: "Light", color: "hsl(23, 72%, 44%)" },
+  { value: "dark", label: "Dark", color: "hsl(23, 65%, 55%)" },
+  { value: "ocean", label: "Ocean", color: "hsl(195, 85%, 45%)" },
+  { value: "forest", label: "Forest", color: "hsl(145, 65%, 40%)" },
+  { value: "synthwave", label: "Synthwave", color: "hsl(320, 100%, 60%)" },
+  { value: "cobalt2", label: "Cobalt2", color: "hsl(205, 49%, 19%)" },
+] as const;
+
+export const RESUME_PATH = "/Patrick W. Lehmann - Software Engineer.pdf";
+
 export const BLOG_CONFIG = {
   postsPerPage: 10,
   featuredPostsLimit: 3,

@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "@/components/ui/icons/pixel";
 import { Button } from "@/components/ui/button";
 import { MusicToggle } from "@/components/ui/music-toggle";
+import { CommandPaletteTrigger } from "@/components/ui/command-palette";
 import { usePathname } from "next/navigation";
 import { useScrollToSection } from "@/hooks/useScrollToSection";
 import { UI } from "@/lib/constants";
@@ -68,7 +69,10 @@ export function Navigation() {
 
           <div className="flex items-center gap-4 md:gap-8">
             <DesktopNavigation onNavClick={handleNavClick} isActiveItem={isActiveItem} />
-            <MusicToggle />
+            <div className="flex items-center gap-2">
+              <CommandPaletteTrigger />
+              <MusicToggle />
+            </div>
 
             <Button
               variant="ghost"

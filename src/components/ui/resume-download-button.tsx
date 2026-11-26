@@ -2,6 +2,7 @@
 
 import { Download } from '@/components/ui/icons/pixel'
 import { Button } from './button'
+import { RESUME_PATH } from '@/lib/constants'
 
 export function ResumeDownloadButton() {
   return (
@@ -18,7 +19,7 @@ export function ResumeDownloadButton() {
         className="group"
       >
         <a
-          href="/Patrick W. Lehmann - Software Engineer.pdf"
+          href={RESUME_PATH}
           download="Patrick-Lehmann-Resume.pdf"
           target="_blank"
           rel="noopener noreferrer"

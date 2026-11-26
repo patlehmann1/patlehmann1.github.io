@@ -5,15 +5,7 @@ import { createPortal } from "react-dom";
 import { Palette, Check } from "@/components/ui/icons/pixel";
 import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
-
-const themes = [
-  { value: "light", label: "Light", color: "hsl(23, 72%, 44%)" },
-  { value: "dark", label: "Dark", color: "hsl(23, 65%, 55%)" },
-  { value: "ocean", label: "Ocean", color: "hsl(195, 85%, 45%)" },
-  { value: "forest", label: "Forest", color: "hsl(145, 65%, 40%)" },
-  { value: "synthwave", label: "Synthwave", color: "hsl(320, 100%, 60%)" },
-  { value: "cobalt2", label: "Cobalt2", color: "hsl(205, 49%, 19%)" },
-] as const;
+import { THEMES } from "@/lib/constants";
 
 export function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -68,7 +60,7 @@ export function ThemeToggle() {
       data-theme-selector
     >
       <div className="p-2 space-y-1">
-        {themes.map((t) => (
+        {THEMES.map((t) => (
           <button
             key={t.value}
             onClick={(e) => {
