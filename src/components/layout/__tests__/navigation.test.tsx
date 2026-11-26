@@ -140,7 +140,7 @@ describe('Navigation', () => {
 
     expect(screen.getByTestId('navigation-logo')).toBeInTheDocument()
     expect(screen.getByTestId('desktop-navigation')).toBeInTheDocument()
-    expect(screen.getByTestId('mobile-navigation')).toBeInTheDocument()
+    expect(screen.queryByTestId('mobile-navigation')).not.toBeInTheDocument()
   })
 
   it('should render mobile menu toggle button', () => {
@@ -158,7 +158,7 @@ describe('Navigation', () => {
     const menuButton = screen.getByRole('button', { name: 'Open menu' })
 
     // Initially closed
-    expect(screen.getByTestId('mobile-navigation')).toHaveAttribute('data-open', 'false')
+    expect(screen.queryByTestId('mobile-navigation')).not.toBeInTheDocument()
 
     // Click to open
     fireEvent.click(menuButton)
@@ -168,7 +168,7 @@ describe('Navigation', () => {
 
     // Click to close
     fireEvent.click(menuButton)
-    expect(screen.getByTestId('mobile-navigation')).toHaveAttribute('data-open', 'false')
+    expect(screen.queryByTestId('mobile-navigation')).not.toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Open menu' })).toBeInTheDocument()
     expect(screen.getByTestId('menu-icon')).toBeInTheDocument()
   })
@@ -179,7 +179,7 @@ describe('Navigation', () => {
     render(<Navigation />)
 
     // Verify event listener is added
-    expect(window.addEventListener).toHaveBeenCalledWith('scroll', expect.any(Function))
+    expect(window.addEventListener).toHaveBeenCalledWith('scroll', expect.any(Function), { passive: true })
 
     // Initially not scrolled
     expect(navigationHeaderClasses).toHaveBeenCalledWith(false)
@@ -216,7 +216,7 @@ describe('Navigation', () => {
   it('should remove scroll listener on unmount', () => {
     const { unmount } = render(<Navigation />)
 
-    expect(window.addEventListener).toHaveBeenCalledWith('scroll', expect.any(Function))
+    expect(window.addEventListener).toHaveBeenCalledWith('scroll', expect.any(Function), { passive: true })
 
     unmount()
 
@@ -254,7 +254,7 @@ describe('Navigation', () => {
     fireEvent.click(contactButton)
 
     expect(mockScrollToSection).toHaveBeenCalledWith('#contact')
-    expect(screen.getByTestId('mobile-navigation')).toHaveAttribute('data-open', 'false')
+    expect(screen.queryByTestId('mobile-navigation')).not.toBeInTheDocument()
   })
 
   it('should determine active items correctly for path-based navigation', () => {
@@ -270,6 +270,7 @@ describe('Navigation', () => {
     mockUsePathname.mockReturnValue('/')
 
     render(<Navigation />)
+    fireEvent.click(screen.getByRole('button', { name: 'Open menu' }))
 
     // Hash links should not be active based on pathname
     expect(screen.getByTestId('active-about')).toHaveTextContent('inactive')

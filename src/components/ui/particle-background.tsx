@@ -1,27 +1,55 @@
 "use client";
 
-import { useRef, useMemo, useEffect, useState } from "react";
+import { useRef, useMemo, useEffect, useState, type MutableRefObject } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useTheme } from "next-themes";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import * as THREE from "three";
 
-interface ParticleSystemProps {
-  count: number;
-  mousePosition: { x: number; y: number };
-  primaryColor: string;
-  reducedMotion: boolean;
+const FALLBACK_COLORS: Record<string, string> = {
+  light: "#c86428",
+  dark: "#d2804d",
+  ocean: "#119cd4",
+  forest: "#24a85a",
+  synthwave: "#ff33cc",
+  cobalt2: "#ffc600",
+};
+
+const MAX_LINE_DISTANCE = 2.5;
+const TARGET_OPACITY = 0.6;
+
+interface MousePosition {
+  x: number;
+  y: number;
 }
 
-function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: ParticleSystemProps) {
+interface ParticleSystemProps {
+  count: number;
+  mouseRef: MutableRefObject<MousePosition>;
+  primaryColor: string;
+}
+
+/**
+ * Reads the active theme's --primary token so particles always match the theme,
+ * falling back to a fixed palette when CSS variables aren't available.
+ */
+function readPrimaryColor(theme: string | undefined): string {
+  const fallback = FALLBACK_COLORS[theme ?? ""] ?? FALLBACK_COLORS.light;
+  if (typeof window === "undefined") return fallback;
+
+  const hsl = getComputedStyle(document.documentElement).getPropertyValue("--primary").trim();
+  const parts = hsl.split(/\s+/);
+  if (parts.length !== 3) return fallback;
+
+  return `hsl(${parts[0]}, ${parts[1]}, ${parts[2]})`;
+}
+
+function ParticleSystem({ count, mouseRef, primaryColor }: ParticleSystemProps) {
   const pointsRef = useRef<THREE.Points>(null);
   const linesRef = useRef<THREE.LineSegments>(null);
-  const velocitiesRef = useRef<Float32Array>(new Float32Array(0));
-  const mousePosRef = useRef({ x: 0, y: 0 });
-  const [linesReady, setLinesReady] = useState(false);
-  const [particleOpacity, setParticleOpacity] = useState(0);
+  const pointsMaterialRef = useRef<THREE.PointsMaterial>(null);
 
-  const { positions, initialVelocities } = useMemo(() => {
+  const { positions, velocities, linePositions } = useMemo(() => {
     const pos = new Float32Array(count * 3);
     const vel = new Float32Array(count * 3);
 
@@ -46,28 +74,21 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
       vel[i3 + 2] = (Math.random() - 0.5) * 0.005;
     }
 
-    return { positions: pos, initialVelocities: vel };
+    const maxSegments = (count * (count - 1)) / 2;
+    return { positions: pos, velocities: vel, linePositions: new Float32Array(maxSegments * 6) };
   }, [count]);
-
-  useEffect(() => {
-    velocitiesRef.current = new Float32Array(initialVelocities);
-  }, [initialVelocities]);
-
-  useEffect(() => {
-    mousePosRef.current = mousePosition;
-  }, [mousePosition]);
 
   const particleColor = useMemo(() => new THREE.Color(primaryColor), [primaryColor]);
 
   useFrame(() => {
-    if (!pointsRef.current || velocitiesRef.current.length === 0 || reducedMotion) return;
+    if (!pointsRef.current) return;
 
-    if (particleOpacity < 0.6) {
-      setParticleOpacity((prev) => Math.min(0.6, prev + 0.02));
+    const material = pointsMaterialRef.current;
+    if (material && material.opacity < TARGET_OPACITY) {
+      material.opacity = Math.min(TARGET_OPACITY, material.opacity + 0.02);
     }
 
-    const positions = pointsRef.current.geometry.attributes.position.array as Float32Array;
-    const velocities = velocitiesRef.current;
+    const mouse = mouseRef.current;
 
     for (let i = 0; i < count; i++) {
       const i3 = i * 3;
@@ -76,8 +97,8 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
       positions[i3 + 1] += velocities[i3 + 1];
       positions[i3 + 2] += velocities[i3 + 2];
 
-      const dx = mousePosRef.current.x * 10 - positions[i3];
-      const dy = mousePosRef.current.y * 8 - positions[i3 + 1];
+      const dx = mouse.x * 10 - positions[i3];
+      const dy = mouse.y * 8 - positions[i3 + 1];
       const distance = Math.sqrt(dx * dx + dy * dy);
 
       if (distance < 3) {
@@ -96,36 +117,31 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
 
     pointsRef.current.geometry.attributes.position.needsUpdate = true;
 
-    if (linesRef.current) {
-      const linePositions: number[] = [];
-      const maxDistance = 2.5;
+    const lines = linesRef.current;
+    if (!lines) return;
 
-      for (let i = 0; i < count; i++) {
-        const i3 = i * 3;
-        for (let j = i + 1; j < count; j++) {
-          const j3 = j * 3;
-          const dx = positions[i3] - positions[j3];
-          const dy = positions[i3 + 1] - positions[j3 + 1];
-          const dz = positions[i3 + 2] - positions[j3 + 2];
-          const distance = Math.sqrt(dx * dx + dy * dy + dz * dz);
+    let offset = 0;
+    for (let i = 0; i < count; i++) {
+      const i3 = i * 3;
+      for (let j = i + 1; j < count; j++) {
+        const j3 = j * 3;
+        const dx = positions[i3] - positions[j3];
+        const dy = positions[i3 + 1] - positions[j3 + 1];
+        const dz = positions[i3 + 2] - positions[j3 + 2];
 
-          if (distance < maxDistance) {
-            linePositions.push(positions[i3], positions[i3 + 1], positions[i3 + 2]);
-            linePositions.push(positions[j3], positions[j3 + 1], positions[j3 + 2]);
-          }
-        }
-      }
-
-      if (linePositions.length > 0) {
-        linesRef.current.geometry.setAttribute(
-          "position",
-          new THREE.BufferAttribute(new Float32Array(linePositions), 3)
-        );
-        if (!linesReady) {
-          setLinesReady(true);
+        if (dx * dx + dy * dy + dz * dz < MAX_LINE_DISTANCE * MAX_LINE_DISTANCE) {
+          linePositions[offset++] = positions[i3];
+          linePositions[offset++] = positions[i3 + 1];
+          linePositions[offset++] = positions[i3 + 2];
+          linePositions[offset++] = positions[j3];
+          linePositions[offset++] = positions[j3 + 1];
+          linePositions[offset++] = positions[j3 + 2];
         }
       }
     }
+
+    lines.geometry.setDrawRange(0, offset / 3);
+    lines.geometry.attributes.position.needsUpdate = true;
   });
 
   return (
@@ -141,51 +157,55 @@ function ParticleSystem({ count, mousePosition, primaryColor, reducedMotion }: P
           />
         </bufferGeometry>
         <pointsMaterial
+          ref={pointsMaterialRef}
           size={0.08}
           color={particleColor}
           sizeAttenuation
           transparent
-          opacity={particleOpacity}
+          opacity={0}
           blending={THREE.AdditiveBlending}
         />
       </points>
 
-      {linesReady && (
-        <lineSegments ref={linesRef} frustumCulled={false}>
-          <bufferGeometry>
-            <bufferAttribute
-              attach="attributes-position"
-              count={0}
-              array={new Float32Array([])}
-              itemSize={3}
-              args={[new Float32Array([]), 3]}
-            />
-          </bufferGeometry>
-          <lineBasicMaterial
-            color={particleColor}
-            transparent
-            opacity={0.15}
-            blending={THREE.AdditiveBlending}
+      <lineSegments ref={linesRef} frustumCulled={false}>
+        <bufferGeometry drawRange={{ start: 0, count: 0 }}>
+          <bufferAttribute
+            attach="attributes-position"
+            count={linePositions.length / 3}
+            array={linePositions}
+            itemSize={3}
+            args={[linePositions, 3]}
+            usage={THREE.DynamicDrawUsage}
           />
-        </lineSegments>
-      )}
+        </bufferGeometry>
+        <lineBasicMaterial
+          color={particleColor}
+          transparent
+          opacity={0.15}
+          blending={THREE.AdditiveBlending}
+        />
+      </lineSegments>
     </>
   );
 }
 
 export function ParticleBackground() {
-  const { theme } = useTheme();
+  const { theme, resolvedTheme } = useTheme();
   const prefersReducedMotion = useReducedMotion();
-  const mousePosition = useRef({ x: 999, y: 999 });
-  const isMobileRef = useRef(false);
+  const mousePosition = useRef<MousePosition>({ x: 999, y: 999 });
+  const [isMobile, setIsMobile] = useState(false);
   const [contextLost, setContextLost] = useState(false);
-  const canvasRef = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(true);
+  const activeTheme = resolvedTheme ?? theme;
+  const [primaryColor, setPrimaryColor] = useState(() => FALLBACK_COLORS[activeTheme ?? ""] ?? FALLBACK_COLORS.light);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    isMobileRef.current = window.innerWidth < 768;
+    const mobile = window.innerWidth < 768;
+    setIsMobile(mobile);
 
     const handleMouseMove = (event: MouseEvent) => {
-      if (isMobileRef.current || prefersReducedMotion) return;
+      if (mobile || prefersReducedMotion) return;
 
       mousePosition.current = {
         x: (event.clientX / window.innerWidth) * 2 - 1,
@@ -198,59 +218,45 @@ export function ParticleBackground() {
   }, [prefersReducedMotion]);
 
   useEffect(() => {
-    const handleContextLost = (event: Event) => {
-      event.preventDefault();
-      console.warn("WebGL context lost - disabling particle background");
-      setContextLost(true);
-    };
+    const frame = requestAnimationFrame(() => setPrimaryColor(readPrimaryColor(activeTheme)));
+    return () => cancelAnimationFrame(frame);
+  }, [activeTheme]);
 
-    const handleContextRestored = () => {
-      console.log("WebGL context restored - re-enabling particle background");
-      setContextLost(false);
-    };
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || typeof IntersectionObserver === "undefined") return;
 
-    const canvas = canvasRef.current?.querySelector('canvas');
-    if (canvas) {
-      canvas.addEventListener('webglcontextlost', handleContextLost);
-      canvas.addEventListener('webglcontextrestored', handleContextRestored);
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting));
+    observer.observe(container);
+    return () => observer.disconnect();
+  }, [prefersReducedMotion, contextLost]);
 
-      return () => {
-        canvas.removeEventListener('webglcontextlost', handleContextLost);
-        canvas.removeEventListener('webglcontextrestored', handleContextRestored);
-      };
-    }
-  }, []);
-
-  const primaryColor = theme === "cobalt2" ? "#ffc600" : theme === "dark" ? "#d2804d" : "#c86428";
-  const particleCount = isMobileRef.current ? 30 : 60;
+  const particleCount = isMobile ? 30 : 60;
 
   if (prefersReducedMotion || contextLost) {
     return null;
   }
 
   return (
-    <div ref={canvasRef} className="absolute inset-0 w-full h-full -z-10 opacity-40">
+    <div ref={containerRef} className="absolute inset-0 w-full h-full -z-10 opacity-40" aria-hidden="true">
       <Canvas
         camera={{ position: [0, 0, 8], fov: 50 }}
         dpr={[1, 2]}
+        frameloop={inView ? "always" : "never"}
         gl={{ alpha: true, antialias: false }}
         onCreated={({ gl }) => {
-          gl.domElement.addEventListener('webglcontextlost', (event) => {
+          gl.domElement.addEventListener("webglcontextlost", (event) => {
             event.preventDefault();
             console.warn("WebGL context lost - disabling particle background");
             setContextLost(true);
           });
-          gl.domElement.addEventListener('webglcontextrestored', () => {
-            console.log("WebGL context restored - re-enabling particle background");
-            setContextLost(false);
-          });
         }}
       >
         <ParticleSystem
+          key={particleCount}
           count={particleCount}
-          mousePosition={mousePosition.current}
+          mouseRef={mousePosition}
           primaryColor={primaryColor}
-          reducedMotion={prefersReducedMotion}
         />
       </Canvas>
     </div>

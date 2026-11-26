@@ -99,6 +99,6 @@ describe('Toast', () => {
     render(<Toast message="Test" isVisible={true} onClose={mockOnClose} />);
 
     const toast = screen.getByText('Test').closest('div');
-    expect(toast).toHaveClass('fixed', 'bottom-6', 'right-6', 'z-50');
+    expect(toast).toHaveClass('fixed', 'bottom-24', 'right-6', 'z-50');
   });
 });

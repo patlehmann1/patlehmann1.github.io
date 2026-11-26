@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Clock, Copy, Check } from "@/components/ui/icons/pixel";
 import { GitHubIcon } from "@/components/ui/icons/github-icon";
@@ -11,6 +11,8 @@ export function Contact() {
   const [copiedItem, setCopiedItem] = useState<string | null>(null);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
+
+  const handleToastClose = useCallback(() => setShowToast(false), []);
 
   const handleCopy = async (value: string, label: string) => {
     try {
@@ -161,7 +163,7 @@ export function Contact() {
       <Toast
         message={toastMessage}
         isVisible={showToast}
-        onClose={() => setShowToast(false)}
+        onClose={handleToastClose}
       />
     </section>
   );

@@ -10,14 +10,18 @@ export function ScrollProgress() {
     const updateScrollProgress = () => {
       const scrollTop = window.scrollY;
       const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
-      setScrollProgress(progress);
+      const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
     };
 
     window.addEventListener("scroll", updateScrollProgress, { passive: true });
-    updateScrollProgress(); // Initial calculation
+    window.addEventListener("resize", updateScrollProgress, { passive: true });
+    updateScrollProgress();
 
-    return () => window.removeEventListener("scroll", updateScrollProgress);
+    return () => {
+      window.removeEventListener("scroll", updateScrollProgress);
+      window.removeEventListener("resize", updateScrollProgress);
+    };
   }, []);
 
   return (
@@ -27,15 +31,12 @@ export function ScrollProgress() {
       animate={{ opacity: scrollProgress > 0 ? 1 : 0 }}
       transition={{ duration: 0.2 }}
     >
-      <motion.div
+      <div
         className="h-full bg-gradient-to-r from-primary to-primary/80 origin-left"
         style={{
           width: `${scrollProgress}%`,
           background: "linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary) / 0.8))"
         }}
-        initial={{ scaleX: 0 }}
-        animate={{ scaleX: scrollProgress / 100 }}
-        transition={{ duration: 0.1, ease: "easeOut" }}
       />
     </motion.div>
   );

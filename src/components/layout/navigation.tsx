@@ -34,7 +34,8 @@ export function Navigation() {
       setScrolled(isScrolled);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -82,12 +83,15 @@ export function Navigation() {
         </div>
 
         <AnimatePresence>
-          <MobileNavigation
-            isMenuOpen={isMenuOpen}
-            onNavClick={handleNavClick}
-            isActiveItem={isActiveItem}
-            onClose={() => setIsMenuOpen(false)}
-          />
+          {isMenuOpen && (
+            <MobileNavigation
+              key="mobile-navigation"
+              isMenuOpen={isMenuOpen}
+              onNavClick={handleNavClick}
+              isActiveItem={isActiveItem}
+              onClose={() => setIsMenuOpen(false)}
+            />
+          )}
         </AnimatePresence>
       </nav>
     </motion.header>

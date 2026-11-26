@@ -120,7 +120,7 @@ export function Experience() {
                 key={exp.company}
                 className={`relative ${exp.earlier ? earlierClass : ""}`}
               >
-                <div className="hidden sm:block absolute left-6 top-2 w-4 h-4 rounded-full border-4 border-background shadow-warm bg-primary" />
+                <div className="hidden sm:block absolute left-[26px] top-2 w-4 h-4 bg-primary" />
 
                 <div className="ml-0 sm:ml-20">
                   <div className="mb-6">

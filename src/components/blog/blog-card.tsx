@@ -23,7 +23,6 @@ export function BlogCard({ post, index = 0, isHomePage = false }: BlogCardProps)
       variants={motionVariants}
       initial="hidden"
       whileInView="visible"
-      animate="visible"
       transition={{ delay: prefersReducedMotion ? 0 : index * 0.1 }}
       viewport={{ once: true }}
       className="group bg-card overflow-hidden pixel-box pixel-box-raised project-card"
