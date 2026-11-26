@@ -69,10 +69,8 @@ export function Navigation() {
 
           <div className="flex items-center gap-4 md:gap-8">
             <DesktopNavigation onNavClick={handleNavClick} isActiveItem={isActiveItem} />
-            <div className="flex items-center gap-2">
-              <CommandPaletteTrigger />
-              <MusicToggle />
-            </div>
+            <CommandPaletteTrigger />
+            <MusicToggle />
 
             <Button
               variant="ghost"
