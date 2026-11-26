@@ -32,6 +32,9 @@ Before committing, also:
 - Review relevant checklist items in [Code Review Checklist](docs/code-review-checklist.md)
 - Proofread any changed copy (site text, blog posts, metadata, alt text, aria labels) for grammar, spelling, and punctuation (see Proofreading below)
 
+### Commit Messages
+- Do not add Claude attribution trailers to commit messages: no `Co-Authored-By: Claude` line and no `Claude-Session:` link
+
 ### Content & Writing Guidelines
 - **Natural Language**: Write conversationally, avoid AI-generated patterns and corporate buzzwords
 - **Avoid Repetitive Structures**: No "Whether it's X, Y, or Z" patterns or forced analogies
